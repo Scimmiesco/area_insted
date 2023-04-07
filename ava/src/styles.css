@@ -1,0 +1,51 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap");
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-webkit-contacts-auto-fill-button {
+  display: none;
+}
+
+* {
+  font-family: "Lexend Deca", sans-serif;
+}
+input {
+  color: transparent;
+  outline: none;
+  align-items: center;
+  font-size: 1.125rem;
+  width: 100%;
+  font-weight: 600;
+  border-color: #fff;
+  border-width: 2px;
+  background-color: rgba(29, 169, 173, 0.85);
+  color: #fff;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+input::placeholder {
+
+  text-align: center;
+  color: rgba(244, 242, 255, 0.85);
+}
+
+app-login-form,
+app-forgot-password-form {
+  width: 100vw;
+  height: fit-content;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+#icon.hide {
+  background: url("./assets/olho-fechado.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.25s ease-in all;
+}
