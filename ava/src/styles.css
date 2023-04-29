@@ -11,7 +11,40 @@ input[type="password"]::-webkit-contacts-auto-fill-button {
 
 * {
   font-family: "Lexend Deca", sans-serif;
+  color: rgb(6, 59, 61);
 }
+h1,
+h2 {
+  color: rgb(22, 149, 153);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+button {
+  background-color: rgb(29, 169, 173) !important;
+  position: relative;
+  overflow: hidden;
+  border-color: rgb(244, 242, 255);
+  border-width: 2px;
+  border-radius: 3em;
+  padding: 0.35rem 0.55rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(244, 242, 255);
+}
+button.cancelar {
+  background-color: rgb(212, 88, 115) !important;
+}
+button.float {
+  position: inherit;
+}
+
 input {
   color: transparent;
   outline: none;
@@ -20,15 +53,14 @@ input {
   width: 100%;
   font-weight: 600;
   border-color: #fff;
-  border-width: 2px;
-  background-color: rgba(29, 169, 173, 0.85);
+  border-width: 1px;
+  background-color: rgba(29, 169, 173, 1);
   color: #fff;
   box-sizing: border-box;
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
 }
 input::placeholder {
-
   text-align: center;
   color: rgba(244, 242, 255, 0.85);
 }
@@ -48,4 +80,13 @@ app-forgot-password-form {
   background-repeat: no-repeat;
   background-position: center;
   transition: 0.25s ease-in all;
+}
+.mat-expansion-panel-body {
+  padding: 0 !important;
+}
+.header_filho {
+  flex-direction: column !important;
+}
+.okay_button {
+  background-color: rgb(12, 210, 155) !important;
 }

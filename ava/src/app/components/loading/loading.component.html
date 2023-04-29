@@ -1,0 +1,6 @@
+<div
+  *ngIf="this.loadingService.loading$ | async"
+  class="fixed flex top-0 left-0 h-full w-full justify-center items-center bg-green_insted_transp opacity-40 z-50"
+>
+  <mat-progress-spinner> </mat-progress-spinner>
+</div>

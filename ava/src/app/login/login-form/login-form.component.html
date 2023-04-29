@@ -5,11 +5,7 @@
 >
   <div class="flex flex-col w-full justify-center h-2/3 items-center gap-4">
     <div class="flex flex-col justify-center items-center w-11/12">
-      <input
-        formControlName="ra"
-        placeholder="Insira seu RA"
-        type="text"
-      />
+      <input formControlName="ra" placeholder="Insira seu RA" type="text" />
       <app-message
         *ngIf="loginForm.get('ra')?.errors?.['required']
       && loginForm.get('ra')?.touched"
@@ -37,29 +33,24 @@
         ></svg>
       </div>
       <app-message
-        *ngIf="loginForm.get('senha')?.errors?.['required']
-      && loginForm.get('senha')?.touched"
+        *ngIf="loginForm.get('password')?.errors?.['required']
+      && loginForm.get('password')?.touched"
         message="A senha é obrigatória."
       />
-
     </div>
     <div class="flex flex-row justify-center items-center">
       <input
         type="checkbox"
         id="checkbox1"
-        class="hover:cursor-pointer peer relative appearance-none w-3 h-3 box-content border-white border-[2px] rounded-xl focus:outline-none mx-2 bg-green_insted  checked:bg-white_transp checked:border-opacity-0 checked:bg-no-repeat checked:transition-all transition ease-linear delay-0 checked:bg-center checked:bg-contain checked:bg-checkmark"
+        class="hover:cursor-pointer peer relative appearance-none w-[0.5rem] h-[1rem] box-content border-white border-[2px] rounded-full focus:outline-none mx-2 aspect-square bg-green_insted checked:bg-white_transp checked:border-opacity-0 checked:bg-no-repeat checked:transition-all transition ease-linear delay-0 checked:bg-center checked:bg-contain checked:bg-checkmark"
       />
       <label for="checkbox1" class="text-green_insted font-semibold"
         >Manter-me conectado</label
       >
     </div>
   </div>
-  <button
-    type="submit"
-    class="bg-green_insted relative overflow-hidden border-white border-[2px] w-1/2 rounded-3xl p-3 text-2xl font-semibold text-white"
-  >
-    Entrar
-  </button>
+  <button class="w-1/2" type="submit">Entrar</button>
+  <app-message *ngIf="isUserValid === false" message="{{ errorMessage }}" />
   <a
     [routerLink]="['/login/recuperar-senha']"
     class="my-2 text-green_insted font-semibold underline underline-offset-1"

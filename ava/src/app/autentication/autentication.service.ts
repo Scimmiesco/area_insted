@@ -1,32 +1,25 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { UserService } from './user/user.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, map } from 'rxjs';
+import { LoginInterface, ResponseInterface } from '.././login/login.interface';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class AutenticationService {
-  constructor(
-    private httpClient: HttpClient,
-    private userService: UserService
-  ) {}
 
-  autenticate(user: string, password: string): Observable<HttpResponse<any>> {
-    return this.httpClient
-      .post(
-        'https://localhost:7003/user/login',
-        {
-          user: user,
-          password: password,
-        },
-        { observe: 'response' }
-      )
-      .pipe(
-        tap((response) => {
-          const authToken = response.headers.get('x-access-token') ?? '';
-          this.userService.SaveToken(authToken);
-        })
-      );
+  private apiUrl = "https://localhost:7003/"
+
+  constructor(private http: HttpClient) { }
+
+  auth(loginRequest: LoginInterface): Observable<ResponseInterface> {
+    const json = {
+      "login": loginRequest.login as string,
+      "password": loginRequest.password as string
+    }
+    const loginUrl = `${this.apiUrl}user/auth`;
+    return this.http.post<ResponseInterface>(`${loginUrl}`, json)
   }
 }
