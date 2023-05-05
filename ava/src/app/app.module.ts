@@ -9,8 +9,9 @@ import { MaterialModule } from './material/material.module';
 import { LoadingComponent } from './components/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { CarroselComponent } from './components/carrosel/carrosel.component';
 @NgModule({
-  declarations: [AppComponent, LoadingComponent],
+  declarations: [AppComponent, LoadingComponent, CarroselComponent],
   imports: [CommonModule, BrowserModule, AppRoutingModule, ProfileModule, BrowserAnimationsModule, MaterialModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,

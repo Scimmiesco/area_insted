@@ -90,3 +90,6 @@ app-forgot-password-form {
 .okay_button {
   background-color: rgb(12, 210, 155) !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
