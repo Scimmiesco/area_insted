@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-// register Swiper custom elements
+import Swiper from 'swiper';
 
 @Component({
-  selector: 'app-Home',
+  selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
-
   ngOnInit() {
+    const swiper = new Swiper('.swiper', {
+      speed: 400,
+      spaceBetween: 100,
+    }
+    )
   }
-
 }
+
+
+
+
+
+
