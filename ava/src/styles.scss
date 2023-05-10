@@ -1,7 +1,6 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap");
 
 input[type="password"]::-ms-reveal,
@@ -75,7 +74,7 @@ app-forgot-password-form {
 }
 
 #icon.hide {
-  background: url("./assets/olho-fechado.svg");
+  background: url("./assets/svg-icons/olho-fechado.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -90,3 +89,7 @@ app-forgot-password-form {
 .okay_button {
   background-color: rgb(12, 210, 155) !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
