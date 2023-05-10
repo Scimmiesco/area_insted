@@ -1,10 +1,10 @@
 <mdb-carousel
-  class=""
+  class="m-2"
   [controls]="true"
   [indicators]="true"
   [animation]="'slide'"
 >
-  <mdb-carousel-item class="">
+  <mdb-carousel-item>
     <img
       src="../../assets/images/painel-infos.png"
       class="d-block w-100"
@@ -27,35 +27,118 @@
     </div>
   </mdb-carousel-item>
 </mdb-carousel>
-<mat-grid-list cols="4" rows="2" rowHeight="2:1">
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
+<mat-grid-list
+  gap="2"
+  cols="4"
+  rows="2"
+  rowHeight="2.35:1"
+  ratio="16:9"
+  [gutterSize]="'0.75rem'"
+  class="m-2"
+>
+  <mat-grid-tile class="bg-green_insted rounded-xl"
+    ><img class="h-[80%]" src="../../assets/images/icons-home/calendar.png"
+  /></mat-grid-tile>
+  <mat-grid-tile class="bg-green_insted rounded-xl"
+    ><img src="../../assets/images/icons-home/clock.png" class="h-[80%]"
+  /></mat-grid-tile>
+  <mat-grid-tile class="bg-green_insted rounded-xl"
+    ><img src="../../assets/images/icons-home/financeiro.png" class="h-[80%]"
+  /></mat-grid-tile>
+  <mat-grid-tile class="bg-green_insted rounded-xl"
+    ><img src="../../assets/images/icons-home/grade.png" class="h-[80%]"
+  /></mat-grid-tile>
+  <mat-grid-tile class="bg-green_insted rounded-xl"
+    ><img src="../../assets/images/icons-home/library.png" class="h-[80%]"
+  /></mat-grid-tile>
+  <mat-grid-tile class="bg-green_insted rounded-xl"
+    ><img src="../../assets/images/icons-home/notification.png" class="h-[80%]"
+  /></mat-grid-tile>
+  <mat-grid-tile class="bg-green_insted rounded-xl"
+    ><img src="../../assets/images/icons-home/calendar.png" class="h-[80%]"
+  /></mat-grid-tile>
+  <mat-grid-tile class="bg-green_insted rounded-xl"
+    ><img src="../../assets/images/icons-home/calendar.png" class="h-[80%]"
+  /></mat-grid-tile>
 </mat-grid-list>
-<mdb-carousel>
-  <mdb-carousel-item>
-    <h2>Algebra linear</h2>
+
+<mdb-carousel class="flex m-2 pt-2 rounded-2xl bg-green_insted_transp"
+  ><div class="ml-4 my-1">
+    <h1 class="text-2xl text-text_color font-bold">Matérias</h1>
+  </div>
+  <mdb-carousel-item
+    class="flex flex-row justify-center items-start bg-white p-4 my-2 rounded-2xl"
+  >
+    <img
+      src="../../assets/images/education.png"
+      alt="Chapéu de formatura"
+      class="w-1/5 inline-block"
+    />
+    <div class="items-center">
+      <p class="inline-block text-verde-texto m-auto">Matemática aplicada</p>
+    </div>
   </mdb-carousel-item>
-  <mdb-carousel-item>
-    <h2>Programação orientada a objetos</h2>
+  <mdb-carousel-item
+    class="flex flex-row justify-center items-start bg-white p-4 my-2 rounded-2xl"
+  >
+    <img
+      src="../../assets/images/education.png"
+      alt="Chapéu de formatura"
+      class="w-1/5 inline-block"
+    />
+    <div class="items-center">
+      <p class="inline-block text-verde-texto m-auto">Algebra linear</p>
+    </div>
   </mdb-carousel-item>
-  <mdb-carousel-item>
-    <h2>projeto Integrador III</h2>
+  <mdb-carousel-item
+    class="flex flex-row justify-center items-start bg-white p-4 my-2 rounded-2xl"
+  >
+    <img
+      src="../../assets/images/education.png"
+      alt="Chapéu de formatura"
+      class="w-1/5 inline-block"
+    />
+    <div class="items-center">
+      <p class="inline-block text-verde-texto m-auto">Projeto Integrador III</p>
+    </div>
   </mdb-carousel-item>
 </mdb-carousel>
-<mdb-carousel>
-  <mdb-carousel-item>
-    <h2>Algebra linear</h2>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <h2>Programação orientada a objetos</h2>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <h2>projeto Integrador III</h2>
-  </mdb-carousel-item>
-</mdb-carousel>
+<section
+  class="bg-green_insted_transp m-2 pt-2 h-5/12 flex flex-col rounded-2xl shadow-md"
+>
+  <div class="ml-4 my-1">
+    <h1 class="text-2xl text-text_color font-semibold text-verde-texto">
+      Atividades
+    </h1>
+  </div>
+  <mdb-carousel class="flex m-0 pt-2 pb-6 px-2">
+    <mdb-carousel-item class="bg-white rounded-2xl flex flex-col h-fit">
+      <div
+        class="bg-text_color flex rounded-2xl flex-row justify-between py-2 px-5"
+      >
+        <h4 class="font-bold text-white">Quinta-Feira, 18/08</h4>
+        <p class="font-bold text-white">23:59</p>
+      </div>
+      <div class="flex flex-row justify-center items-center p-2">
+        <div class="text-center">
+          <h4 class="font-bold text-verde-texto">Exercício de compreensão</h4>
+          <p class="text-verde-texto">Programação Orientada à objetos</p>
+        </div>
+      </div>
+    </mdb-carousel-item>
+    <mdb-carousel-item class="bg-white rounded-2xl flex flex-col h-fit">
+      <div
+        class="bg-text_color flex rounded-2xl flex-row justify-between py-2 px-5"
+      >
+        <h4 class="font-bold text-white">Quinta-Feira, 18/08</h4>
+        <p class="font-bold text-white">23:59</p>
+      </div>
+      <div class="flex flex-row justify-center items-center p-2">
+        <div class="text-center">
+          <h4 class="font-bold text-verde-texto">Exercício de compreensão</h4>
+          <p class="text-verde-texto">Programação Orientada à objetos</p>
+        </div>
+      </div>
+    </mdb-carousel-item>
+  </mdb-carousel>
+</section>
