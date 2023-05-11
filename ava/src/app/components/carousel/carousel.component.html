@@ -1,0 +1,8 @@
+<div *ngIf="content && content.length > 0" class="">
+  <img
+    *ngFor="let image of content; let i = index"
+    [src]="image.imgSrc"
+    [alt]="image.imgAlt"
+    [ngClass]="{ 'image-active': selectedIndex === i }"
+  />
+</div>

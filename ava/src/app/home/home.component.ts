@@ -9,6 +9,15 @@ export class HomeComponent {
   ngOnInit() {
 
   }
+  content = [{
+    imgSrc: "/assets/images/painel-infos.png",
+    imgAlt: "Teste"
+  },
+  {
+    imgSrc: "/assets/images/painel-infos.png",
+    imgAlt: "Teste 2"
+  }
+  ]
 }
 
 
