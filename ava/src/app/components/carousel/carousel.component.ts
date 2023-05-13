@@ -13,11 +13,14 @@ interface carouselContent {
 export class CarouselComponent implements OnInit {
 
   @Input() content: carouselContent[] = [];
+  @Input() indicators = true;
   selectedIndex = 0;
 
   constructor() { }
 
   ngOnInit() {
   }
-
+  selectImage(index: number): void {
+    this.selectedIndex = index;
+  }
 }
