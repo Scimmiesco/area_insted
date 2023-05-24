@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Content } from './carousel.interface'
 
 interface carouselContent {
-  imgSrc: string;
-  imgAlt: string;
+  imagens?: Content["imagens"],
+  materias?: Content["materias"],
+  atividades?: Content["atividades"],
+
 }
 
 @Component({
