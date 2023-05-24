@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { HomeModule } from './home/home.module';
 import { CarouselModule } from './components/carousel/carousel.module';
+import { register } from 'swiper/element/bundle';
+
+register();
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
   imports: [CommonModule, BrowserModule, AppRoutingModule, ProfileModule, BrowserAnimationsModule, MaterialModule, HomeModule],
@@ -20,6 +23,7 @@ import { CarouselModule } from './components/carousel/carousel.module';
     multi: true
   }],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 

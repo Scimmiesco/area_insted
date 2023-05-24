@@ -1,25 +1,16 @@
 <main
-  class="flex justify-start flex-col items-center min-h-[100svh] bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white"
->
-  <section
-    class="bg-white my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md"
-  >
+  class="flex justify-start flex-col items-center min-h-[100svh] bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white">
+  <section class="bg-white my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md">
     <div class="flex flex-row justify-around">
       <div class="relative aspect-square w-4/12 m-2">
-        <img
-          src="assets/images/perfil-padrao1.png"
-          class="rounded-[50%] aspect-square object-cover"
-        />
+        <img src="assets/images/perfil-padrao1.png" class="rounded-[50%] aspect-square object-cover" />
         <span
-          class="material-icons absolute w-4/12 bottom-0 left-0 text-white shadow-md bg-green_insted rounded-full aspect-square flex justify-center items-center text-3xl"
-        >
+          class="material-icons absolute w-4/12 bottom-0 left-0 text-white shadow-md bg-green_insted rounded-full aspect-square flex justify-center items-center text-3xl">
           edit
         </span>
       </div>
       <div class="flex flex-col justify-center items-center">
-        <div
-          class="bg-green_insted text-sm text-center py-1 px-2 rounded-2xl w-fit text-white"
-        >
+        <div class="bg-green_insted text-sm text-center py-1 px-2 rounded-2xl w-fit text-white">
           <p class="font-semibold m-0 text-white">RA - {{ user.nrRegister }}</p>
         </div>
         <h2 class="text-xl font-bold pr-2 text-center">
@@ -29,10 +20,7 @@
 
         <p class="text-md">Cursando</p>
       </div>
-      <div
-        (click)="logout()"
-        class="h-fit flex justify-center hover:bg-green_insted active:bg-green_insted rounded-md"
-      >
+      <div (click)="logout()" class="h-fit flex justify-center hover:bg-green_insted active:bg-green_insted rounded-md">
         <span class="material-icons text-green_insted hover:text-white">
           logout
         </span>
@@ -42,31 +30,25 @@
       Tec. em Análise e Desenvolvimento de Sistemas
     </h3>
   </section>
-  <mat-accordion
-    class="bg-white my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md"
-  >
+  <mat-accordion class="bg-white my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md">
     <mat-expansion-panel [expanded]="true">
       <mat-expansion-panel-header class="text-text_color flex-col">
         <h1 class="text-verde-texto text-2xl font-bold">
           Informações pessoais
         </h1>
       </mat-expansion-panel-header>
-      <div
-        class="flex flex-col p-4 text-md rounded-2xl leading-7 py-2 w-full justify-center animate-aparecer"
-      >
+      <div class="flex flex-col p-4 text-md rounded-2xl leading-7 py-2 w-full justify-center animate-aparecer">
         <div class="flex flex-col justify-start">
           <h3 class="text-xl px-1">Nome completo:</h3>
           <p
-            class="flex justify-center items-center text-white font-semibold py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
-          >
+            class="flex justify-center items-center text-white font-semibold py-1 px-2 w-full rounded-2xl my-1 bg-green_insted">
             {{ user.nmUser }}
           </p>
         </div>
         <div class="flex flex-row justify-start items-center">
           <h3 class="text-xl px-1 whitespace-nowrap">E-mail:</h3>
           <p
-            class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
-          >
+            class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted">
             {{ user.nmEmail }}
           </p>
         </div>
@@ -74,83 +56,56 @@
           <h3 class="text-xl px-1">Telefones:</h3>
           <div class="flex flex-row justify-around text-center gap-1">
             <div
-              class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted"
-            >
+              class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted">
               <p class="text-white">{{ user.nmPhone1 }}</p>
             </div>
             <div
-              class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted"
-            >
+              class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted">
               <p class="text-white">{{ user.nmPhone2 }}</p>
             </div>
           </div>
         </div>
         <mat-expansion-panel>
-          <mat-expansion-panel-header
-            class="text-text_color flex-col header_filho"
-          ></mat-expansion-panel-header>
+          <mat-expansion-panel-header class="text-text_color flex-col header_filho"></mat-expansion-panel-header>
 
           <div class="flex flex-row justify-start items-center">
             <h3 class="text-xl px-1 whitespace-nowrap">CPF:</h3>
             <p
-              class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
-            >
+              class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted">
               {{ user.nrCpf }}
             </p>
           </div>
           <div class="flex flex-row justify-start items-center">
             <h3 class="text-xl px-1 whitespace-nowrap">Data de nascimento:</h3>
             <p
-              class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
-            >
+              class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted">
               {{ user.dtBirthdate | date : "dd/MM/yyyy" }}
             </p>
-          </div></mat-expansion-panel
-        >
+          </div>
+        </mat-expansion-panel>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion
-    class="bg-white my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md"
-  >
+  <mat-accordion class="bg-white my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md">
     <mat-expansion-panel>
       <mat-expansion-panel-header class="text-text_color flex-col">
         <h1 class="text-verde-texto text-2xl font-bold">Alterar senha</h1>
       </mat-expansion-panel-header>
-      <form
-        class="flex justify-between items-center gap-3 flex-col box-content py-4"
-      >
+      <form class="flex justify-between items-center gap-3 flex-col box-content py-4">
         <div class="flex flex-col w-full justify-center items-center gap-3">
           <div class="flex flex-col justify-center items-center w-11/12">
-            <input
-              formControlName="ra"
-              placeholder="Insira sua senha atual"
-              type="password"
-            />
+            <input formControlName="ra" placeholder="Insira sua senha atual" type="password" />
           </div>
           <div class="flex flex-col justify-center items-center w-11/12">
-            <input
-              formControlName="ra"
-              placeholder="Insira sua nova senha"
-              type="password"
-            />
+            <input formControlName="ra" placeholder="Insira sua nova senha" type="password" />
           </div>
-          <div
-            class="flex flex-col justify-center items-center relative w-11/12"
-          >
+          <div class="flex flex-col justify-center items-center relative w-11/12">
             <div class="flex flex-col w-full justify-center items-center">
-              <input
-                id="password"
-                formControlName="password"
-                type="password"
-                autocomplete="off"
-                placeholder="Confirme sua nova senha"
-              />
-              <svg
-                id="icon"
-                class="bg-opened_eye absolute top-50% right-[4%] bg-contain bg-center bg-no-repeat w-7 h-10 cursor-pointer"
-              ></svg>
+              <input id="password" formControlName="password" type="password" autocomplete="off"
+                placeholder="Confirme sua nova senha" />
+              <svg id="icon"
+                class="bg-opened_eye absolute top-50% right-[4%] bg-contain bg-center bg-no-repeat w-7 h-10 cursor-pointer"></svg>
             </div>
           </div>
         </div>
@@ -162,38 +117,5 @@
     </mat-expansion-panel>
   </mat-accordion>
 </main>
-<mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'">
-  <mdb-carousel-item>
-    <img
-      src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).webp"
-      class="d-block w-100"
-      alt="..."
-    />
-    <div class="carousel-caption d-none d-md-block">
-      <h5>First slide label</h5>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </div>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).webp"
-      class="d-block w-100"
-      alt="..."
-    />
-    <div class="carousel-caption d-none d-md-block">
-      <h5>Second slide label</h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).webp"
-      class="d-block w-100"
-      alt="..."
-    />
-    <div class="carousel-caption d-none d-md-block">
-      <h5>Third slide label</h5>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </div>
-  </mdb-carousel-item>
-</mdb-carousel>
+
+<app-menu-bottom></app-menu-bottom>

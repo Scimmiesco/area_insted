@@ -12,7 +12,6 @@ export class ProfileComponent {
 
   constructor(private userService: UserService, private router: Router) {
 
-
   }
 
   ngOnInit() {
