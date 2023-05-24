@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Content } from 'app/components/carousel/carousel.interface'
+import { register } from 'swiper/element/bundle';
+register();
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,45 +10,42 @@ export class HomeComponent {
   ngOnInit() {
 
   }
-  imagens: Content[] = [
-    {
-      imagens: {
-        imgSrc: '/assets/images/painel-infos.png',
-        imgAlt: 'Teste',
-      },
-    },
-    {
-      imagens: {
-        imgSrc: '/assets/images/painel-infos.png',
-        imgAlt: 'Teste 2',
-      },
-    },
-  ];
-  materias: Content[] = [
-    {
-      materias: {
-        id: 0,
-        materia: "Projeto Integrador"
-      }
-    },
-    {
-      materias: {
-        id: 1,
-        materia: "Matemática computacional"
-      }
-    }
-  ]
-  atividades: Content[] = [
-    {
-      atividades:
-      {
-        id: 0,
-        atividade: "Projeto Integrador",
-        expireDate: "00:00:00 2023-05-31"
-      }
-    },
-  ]
 
+  icons = [
+    {
+      src: "assets/images/icons-home/clock.png",
+      alt: "icone de relógio",
+      rotulo: "Horário"
+    },
+    {
+      src: "assets/images/icons-home/financeiro.png", alt: "icone de relógio",
+      rotulo: "Financeiro"
+    },
+    {
+      src: "assets/images/icons-home/grade.png", alt: "icone de relógio",
+      rotulo: "Notas"
+    },
+    {
+      src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
+      rotulo: "Notificações"
+    },
+    {
+      src: "assets/images/icons-home/library.png", alt: "icone de relógio",
+      rotulo: "Biblioteca"
+    },
+    {
+      src: "assets/images/icons-home/calendar.png", alt: "icone de relógio",
+      rotulo: "Calendário"
+    },
+    {
+      src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
+      rotulo: "Notificações"
+    },
+    {
+      src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
+      rotulo: "Notificações"
+    },
+  ]
 }
 
 
