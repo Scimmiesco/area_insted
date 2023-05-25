@@ -1,53 +1,84 @@
-<swiper-container class="p-2" slides-per-view="1.05" speed="500" loop="true" pagination="true" auto-play="true">
-  <swiper-slide class="p-2"><img class="rounded-xl" src="assets/images/painel-infos.png" /></swiper-slide>
-  <swiper-slide class="p-2"><img class="rounded-xl" src="assets/images/painel-infos.png" /></swiper-slide>
-  <swiper-slide class="p-2"><img class="rounded-xl" src="assets/images/painel-infos.png" /></swiper-slide>
+<swiper-container
+  class="p-2"
+  slides-per-view="1.05"
+  speed="500"
+  loop="true"
+  pagination="true"
+  auto-play="true"
+>
+  <swiper-slide class="p-2"
+    ><img class="rounded-xl" src="assets/images/painel-infos.png"
+  /></swiper-slide>
+  <swiper-slide class="p-2"
+    ><img class="rounded-xl" src="assets/images/painel-infos.png"
+  /></swiper-slide>
+  <swiper-slide class="p-2"
+    ><img class="rounded-xl" src="assets/images/painel-infos.png"
+  /></swiper-slide>
   <swiper-pagination></swiper-pagination>
-  <swiper-navigation prevEl=".swiper-button-prev" nextEl=".swiper-button-next"></swiper-navigation>
+  <swiper-navigation
+    prevEl=".swiper-button-prev"
+    nextEl=".swiper-button-next"
+  ></swiper-navigation>
 </swiper-container>
 
 <mat-grid-list cols="4" rows="2" gutterSize="12" rowHeight="3:2" class="m-2">
-  <mat-grid-tile *ngFor="let icon of icons" class="bg-green_insted rounded-lg">
-    <div class="h-full flex flex-col items-center justify-center">
-      <img src="{{ icon.src }}" alt="{{ icon.alt }}" class="h-1/2 bg-contain p-1" />
-      <p class="p-0 m-0">{{ icon.rotulo }}</p>
+  <mat-grid-tile *ngFor="let icon of icons" class="">
+    <div class="flex flex-col rounded-2xl w-full h-full">
+      <div class="h-2/3 flex items-center justify-center bg-green_insted rounded-2xl">
+        <img
+          src="{{ icon.src }}"
+          alt="{{ icon.alt }}"
+          class="h-2/3"
+        />
+      </div>
+      <p class="text-center text-text_color p-0 m-0">
+        {{ icon.rotulo }}
+      </p>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
 
-
 <section class="bg-green_insted rounded-xl flex flex-col p-2 m-2">
-  <h2 class="text-white">
-    Matérias
-  </h2>
-  <swiper-container class="bg-white p-2 mx-2 rounded-xl" pagination="true" navigation="true">
-    <swiper-slide class="flex flex-row justify-start text-center items-center py-4 px-4 m-auto">
-      <img class="w-1/4 " src="assets/images/education.png" />
+  <h2 class="text-white">Matérias</h2>
+  <swiper-container
+    class="bg-white p-2 mx-2 rounded-xl"
+    pagination="true"
+    navigation="true"
+  >
+    <swiper-slide
+      class="flex flex-row justify-start text-center items-center py-4 px-4 m-auto"
+    >
+      <img class="w-1/4" src="assets/images/education.png" />
       <div class="w-full text-center">
-        <h3 class="m-auto ">Algebra
-          Linear</h3>
+        <h3 class="m-auto">Algebra Linear</h3>
       </div>
     </swiper-slide>
-    <swiper-slide class="flex flex-row justify-start text-center items-center py-4 px-4 m-auto">
-      <img class="w-1/4 " src="assets/images/education.png" />
+    <swiper-slide
+      class="flex flex-row justify-start text-center items-center py-4 px-4 m-auto"
+    >
+      <img class="w-1/4" src="assets/images/education.png" />
       <div class="w-full text-center">
-        <h3 class="m-auto ">Algebra
-          Linear</h3>
+        <h3 class="m-auto">Algebra Linear</h3>
       </div>
     </swiper-slide>
   </swiper-container>
 </section>
 <section class="bg-green_insted rounded-xl flex flex-col m-2 p-2">
   <div>
-    <h2 class="text-white">
-      Atividades
-    </h2>
+    <h2 class="text-white">Atividades</h2>
   </div>
-  <swiper-container class=" w-full rounded-xl" pagination="true" slides-per-view="1.05" space-between="30">
+  <swiper-container
+    class="w-full rounded-xl"
+    pagination="true"
+    slides-per-view="1.05"
+    space-between="30"
+  >
     <swiper-slide class="bg-white flex flex-col rounded-xl m-2">
       <div class="text-center">
         <div
-          class="flex flex-row justify-between font-bold bg-green_insted_transp text-white text-center rounded-xl p-2">
+          class="flex flex-row justify-between font-bold bg-green_insted_transp text-white text-center rounded-xl p-2"
+        >
           <p class="m-0">Quinta-feira, 18/08</p>
           <p class="m-0">20:30</p>
         </div>
@@ -60,7 +91,8 @@
     <swiper-slide class="bg-white flex flex-col rounded-xl m-2">
       <div class="text-center">
         <div
-          class="flex flex-row justify-between font-bold bg-green_insted_transp text-white text-center rounded-xl p-2">
+          class="flex flex-row justify-between font-bold bg-green_insted_transp text-white text-center rounded-xl p-2"
+        >
           <p class="m-0">Quinta-feira, 18/08</p>
           <p class="m-0">20:30</p>
         </div>
