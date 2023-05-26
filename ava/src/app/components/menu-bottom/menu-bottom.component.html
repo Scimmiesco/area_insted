@@ -1,14 +1,29 @@
 <section
-    class="z-50 fixed bottom-0 left-0 right-0 flex justify-between items-center px-1 bg-white text-white  border-green_insted border-t-[1px]">
-    <div class="px-2 py-1 rounded-md aspect-video w-1/6 ">
-        <img src="assets/images/menu-button3.png" class="m-auto p-0 w-fit h-full" />
-        <p class="text-[12px] text-text_color p-0 m-0 text-center">Menu</p>
-    </div>
-    <a [routerLink]="['/home']" class="px-2 pb-1 rounded-md aspect-video w-1/5 bg-green_insted">
-        <img src="assets/images/botao-inicio.png" class="m-auto p-1  w-fit h-full" />
+  class="z-50 fixed bottom-0 left-0 right-0 flex justify-between items-center px-1 bg-white text-white border-green_insted border-t-[1px]"
+>
+  <div class="px-2 py-1 rounded-md aspect-video w-1/6">
+    <img src="assets/images/menu-button3.png" class="m-auto p-0 w-fit h-full" />
+    <p class="text-[12px] text-text_color p-0 m-0 text-center">Menu</p>
+  </div>
+  <div class="relative w-1/5 flex flex-col">
+    <a
+      [routerLink]="['/home']"
+      class="bg-green_insted absolute w-full h-full pb-1 rounded-md aspect-video bottom-2/3 border-2 border-white"
+    >
+      <img
+        src="assets/images/botao-inicio.png"
+        class="m-auto p-1 w-fit h-full"
+      />
     </a>
-    <a [routerLink]="['/perfil']" class="px-2 py-1 rounded-md aspect-video w-1/6 ">
-        <img src="assets/images/perfil-padrao.png" class="m-auto p-0 w-fit h-full" />
-        <p class="text-[12px] text-text_color p-0 m-0 text-center">Perfil</p>
-    </a>
+    <p class="text-[12px] text-center text-text_color p-0 m-auto">
+      Início
+    </p>
+  </div>
+  <a [routerLink]="['/perfil']" class="px-2 py-1 rounded-md aspect-video w-1/6">
+    <img
+      src="assets/images/perfil-padrao.png"
+      class="m-auto p-0 w-fit h-full"
+    />
+    <p class="text-[12px] text-text_color p-0 m-0 text-center">Perfil</p>
+  </a>
 </section>
