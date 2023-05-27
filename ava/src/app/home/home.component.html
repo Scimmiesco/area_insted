@@ -1,124 +1,117 @@
-<section class="pb-16">
-  <swiper-container
+<section
+  class="bg-gradient-to-t from-green_insted_transp via-white to-white h-[100svh]"
+>
+  <section class="">
+    <swiper-container
+      class="p-2"
+      slides-per-view="1.05"
+      speed="500"
+      loop="true"
+      pagination="true"
+      auto-play="true"
+    >
+      <swiper-slide class="p-2"
+        ><img class="rounded-xl" src="assets/images/painel-infos.png"
+      /></swiper-slide>
+      <swiper-slide class="p-2"
+        ><img class="rounded-xl" src="assets/images/painel-infos.png"
+      /></swiper-slide>
+      <swiper-slide class="p-2"
+        ><img class="rounded-xl" src="assets/images/painel-infos.png"
+      /></swiper-slide>
+      <swiper-pagination></swiper-pagination>
+      <swiper-navigation
+        prevEl=".swiper-button-prev"
+        nextEl=".swiper-button-next"
+      ></swiper-navigation>
+    </swiper-container>
 
-  class="p-2"
-
-  slides-per-view="1.05"
-
-  speed="500"
-
-  loop="true"
-
-  pagination="true"
-
-  auto-play="true"
-
-  >
-    <swiper-slide class="p-2"
-
-    ><img class="rounded-xl" src="assets/images/painel-infos.png"
-
-  /></swiper-slide>
-    <swiper-slide class="p-2"
-
-    ><img class="rounded-xl" src="assets/images/painel-infos.png"
-
-  /></swiper-slide>
-    <swiper-slide class="p-2"
-
-    ><img class="rounded-xl" src="assets/images/painel-infos.png"
-
-  /></swiper-slide>
-    <swiper-pagination></swiper-pagination>
-    <swiper-navigation
-
-    prevEl=".swiper-button-prev"
-
-    nextEl=".swiper-button-next"
-
-  ></swiper-navigation>
-  </swiper-container>
-
-  <mat-grid-list
-    cols="4"
-    rows="2"
-    gutterSize="8"
-    rowHeight="3:2"
-    class="m-2 px-2"
-  >
-    <mat-grid-tile *ngFor="let icon of icons" class="flex flex-col">
-      <div class="flex flex-col justify-start w-full h-full">
-        <div class="h-2/3 w-5/6 items-center bg-green_insted rounded-lg m-auto">
-          <img
-            src="{{ icon.src }}"
-            alt="{{ icon.alt }}"
-            class="bg-contain p-1 h-full m-auto"
-          />
+    <mat-grid-list cols="4" rows="2" gutterSize="8" rowHeight="3:2" class="m-2">
+      <mat-grid-tile *ngFor="let icon of icons" class="">
+        <div class="flex flex-col w-full h-full">
+          <div
+            class="h-2/3 w-5/6 items-center bg-green_insted_transp rounded-2xl m-auto"
+          >
+            <img
+              src="{{ icon.src }}"
+              alt="{{ icon.alt }}"
+              class="bg-contain p-1 h-full m-auto"
+            />
+          </div>
+          <div>
+            <p class="h-1/3 text-center text-sm p-0 m-0">{{ icon.rotulo }}</p>
+          </div>
         </div>
-        <div>
-          <p class="h-1/3 text-center text-sm p-0 m-0">{{ icon.rotulo }}</p>
-        </div>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+      </mat-grid-tile>
+    </mat-grid-list>
 
-
-<section class="bg-green_insted rounded-xl flex flex-col p-2 m-2">
-  <h2 class="text-white">
-    Matérias
-  </h2>
-  <swiper-container class="bg-white p-2 mx-2 rounded-xl" pagination="true" navigation="true">
-    <swiper-slide class="flex flex-row justify-start text-center items-center py-4 px-4 m-auto">
-      <img class="w-1/4 " src="assets/images/education.png" />
-      <div class="w-full text-center">
-        <h3 class="m-auto ">Algebra
-          Linear</h3>
+    <section class="bg-green_insted_transp rounded-xl flex flex-col p-2 m-2">
+      <h2 class="text-white font-bold">Matérias</h2>
+      <swiper-container
+        class="bg-white p-2 mx-2 rounded-xl"
+        pagination="true"
+        navigation="true"
+      >
+        <swiper-slide
+          class="flex flex-row justify-start text-center items-center py-4 px-10 m-auto"
+        >
+          <img class="w-1/4 px-2" src="assets/images/education.png" />
+          <div class="w-full text-center">
+            <h3 class="m-auto">Algebra Linear</h3>
+          </div>
+        </swiper-slide>
+        <swiper-slide
+          class="flex flex-row justify-start text-center items-center py-4 px-10 m-auto"
+        >
+          <img class="w-1/4 px-2" src="assets/images/education.png" />
+          <div class="w-full text-center">
+            <h3 class="m-auto">Projeto Integrador III</h3>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </section>
+    <section class="bg-green_insted rounded-xl flex flex-col m-2 p-2">
+      <div>
+        <h2 class="text-white">Atividades</h2>
       </div>
-    </swiper-slide>
-    <swiper-slide class="flex flex-row justify-start text-center items-center py-4 px-4 m-auto">
-      <img class="w-1/4 " src="assets/images/education.png" />
-      <div class="w-full text-center">
-        <h3 class="m-auto ">Algebra
-          Linear</h3>
-      </div>
-    </swiper-slide>
-  </swiper-container>
+      <swiper-container
+        class="w-full rounded-xl"
+        pagination="true"
+        slides-per-view="1.05"
+        space-between="30"
+      >
+        <swiper-slide class="bg-white flex flex-col rounded-xl m-2">
+          <div class="text-center">
+            <div
+              class="flex flex-row justify-between font-bold bg-green_insted_transp text-white text-center rounded-xl p-2"
+            >
+              <p class="m-0">Quinta-feira, 18/08</p>
+              <p class="m-0">20:30</p>
+            </div>
+            <div class="px-2 py-1">
+              <h2>Exercício de compreensão</h2>
+              <h3 class="text-lg">Programação Orientada à objetos</h3>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide class="bg-white flex flex-col rounded-xl m-2">
+          <div class="text-center">
+            <div
+              class="flex flex-row justify-between font-bold bg-green_insted_transp text-white text-center rounded-xl p-2"
+            >
+              <p class="m-0">Quinta-feira, 18/08</p>
+              <p class="m-0">20:30</p>
+            </div>
+            <div class="px-2 py-1">
+              <h2>Exercício de compreensão</h2>
+              <h3 class="text-lg">Programação Orientada à objetos</h3>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-pagination></swiper-pagination>
+        <swiper-navigation></swiper-navigation>
+      </swiper-container>
+    </section>
+    <app-menu-bottom></app-menu-bottom>
+  </section>
 </section>
-<section class="bg-green_insted rounded-xl flex flex-col m-2 p-2">
-  <div>
-    <h2 class="text-white">
-      Atividades
-    </h2>
-  </div>
-  <swiper-container class=" w-full rounded-xl" pagination="true" slides-per-view="1.05" space-between="30">
-    <swiper-slide class="bg-white flex flex-col rounded-xl m-2">
-      <div class="text-center">
-        <div
-          class="flex flex-row justify-between font-bold bg-green_insted_transp text-white text-center rounded-xl p-2">
-          <p class="m-0">Quinta-feira, 18/08</p>
-          <p class="m-0">20:30</p>
-        </div>
-        <div class="px-2 py-1">
-          <h2>Exercício de compreensão</h2>
-          <h3 class="text-lg">Programação Orientada à objetos</h3>
-        </div>
-      </div>
-    </swiper-slide>
-    <swiper-slide class="bg-white flex flex-col rounded-xl m-2">
-      <div class="text-center">
-        <div
-          class="flex flex-row justify-between font-bold bg-green_insted_transp text-white text-center rounded-xl p-2">
-          <p class="m-0">Quinta-feira, 18/08</p>
-          <p class="m-0">20:30</p>
-        </div>
-        <div class="px-2 py-1">
-          <h2>Exercício de compreensão</h2>
-          <h3 class="text-lg">Programação Orientada à objetos</h3>
-        </div>
-      </div>
-    </swiper-slide>
-    <swiper-pagination></swiper-pagination>
-    <swiper-navigation></swiper-navigation>
-  </swiper-container>
-</section>
-<app-menu-bottom></app-menu-bottom>
