@@ -1,13 +1,14 @@
 <section
   class="bg-gradient-to-t from-green_insted_transp via-white to-white h-[100svh]"
 >
+  <!--// Avisos-->
   <swiper-container
-    class="p-2"
+    class=""
     slides-per-view="1.05"
     speed="500"
     loop="true"
     pagination="true"
-    autoplay="true"
+    auto-play="true"
   >
     <swiper-slide class="p-2"
       ><img class="rounded-xl" src="assets/images/painel-infos.png"
@@ -15,10 +16,9 @@
     <swiper-slide class="p-2"
       ><img class="rounded-xl" src="assets/images/painel-infos.png"
     /></swiper-slide>
+    div.swiper-
   </swiper-container>
-
-  <!--// Atividades-->
-
+  <!--// Ícones-->
   <mat-grid-list cols="4" rows="2" gutterSize="8" rowHeight="3:2" class="m-1">
     <mat-grid-tile *ngFor="let icon of icons" class="">
       <div class="flex flex-col w-full h-full">
@@ -37,7 +37,7 @@
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-
+  <!--// Matérias-->
   <section class="bg-green_insted_transp rounded-xl flex flex-col p-2 m-2">
     <h2 class="text-white font-bold">Matérias</h2>
     <swiper-container
@@ -63,28 +63,23 @@
       </swiper-slide>
     </swiper-container>
   </section>
+  <!--// Atividades-->
   <section class="bg-green_insted_transp rounded-xl flex flex-col m-2 p-2">
     <div>
       <h2 class="text-white font-bold">Atividades</h2>
     </div>
-    <swiper-container
-      class="w-full rounded-xl"
-      pagination="true"
-      space-between="30"
-    >
+    <swiper-container class="w-full rounded-xl text-center" pagination="true">
       <swiper-slide class="bg-white flex flex-col rounded-xl m-auto">
-
-          <div
-            class="flex flex-row justify-between font-bold bg-green_insted text-center rounded-xl p-2"
-          >
-            <p class="m-0 text-white">Quinta-feira, 18/08</p>
-            <p class="m-0 text-white">20:30</p>
-          </div>
-          <div class="px-2 py-1">
-            <h2 class="text-xl">Exercício de compreensão</h2>
-            <h3 class="text-lg">Programação Orientada à objetos</h3>
-          </div>
-        
+        <div
+          class="flex flex-row justify-between font-bold bg-green_insted text-center rounded-xl p-2"
+        >
+          <p class="m-0 text-white">Quinta-feira, 18/08</p>
+          <p class="m-0 text-white">20:30</p>
+        </div>
+        <div class="px-2 py-1">
+          <h2 class="text-xl">Exercício de compreensão</h2>
+          <h3 class="text-lg">Programação Orientada à objetos</h3>
+        </div>
       </swiper-slide>
       <swiper-slide class="bg-white flex flex-col rounded-xl m-auto">
         <div class="text-center">
@@ -100,10 +95,8 @@
           </div>
         </div>
       </swiper-slide>
-
-      <swiper-pagination></swiper-pagination>
-      <swiper-navigation></swiper-navigation>
     </swiper-container>
   </section>
+  <!--// Menu-->
   <app-menu-bottom></app-menu-bottom>
 </section>

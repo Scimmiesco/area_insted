@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
 @import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap");
 
 input[type="password"]::-ms-reveal,
@@ -114,4 +115,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+.swiper-pagination-bullet-active {
+   background-color: red !important;
+}
