@@ -27,7 +27,7 @@ export class HomeComponent {
     },
     {
       src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
-      rotulo: "Notificações"
+      rotulo: "Avisos"
     },
     {
       src: "assets/images/icons-home/library.png", alt: "icone de relógio",
@@ -39,11 +39,11 @@ export class HomeComponent {
     },
     {
       src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
-      rotulo: "Notificações"
+      rotulo: "Avisos"
     },
     {
       src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
-      rotulo: "Notificações"
+      rotulo: "Avisos"
     },
   ]
 }
