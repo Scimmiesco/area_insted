@@ -9,6 +9,7 @@ import { Router } from "@angular/router"
 })
 export class ProfileComponent {
   user!: Pessoa["user"];
+  status: boolean = true;
 
   constructor(private userService: UserService, private router: Router) {
 
@@ -25,5 +26,8 @@ export class ProfileComponent {
   logout() {
     localStorage.removeItem(this.user.nrCpf)
     this.router.navigate(['/'])
+  }
+  botaoEditar() {
+    this.status = !this.status;
   }
 }
