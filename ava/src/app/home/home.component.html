@@ -1,29 +1,35 @@
 <section
-  class="bg-gradient-to-t from-green_insted_transp via-white to-white h-[100svh]"
+  class="bg-gradient-to-t from-green_insted_transp via-white to-white h-[100svh] pb-16 box-content"
 >
   <!--// Avisos-->
   <swiper-container
-    class=""
+    class="py-2 px-1 pb-4"
+    space-between="10"
     slides-per-view="1.05"
     speed="500"
     loop="true"
     pagination="true"
-    auto-play="true"
+    autoplay="true"
   >
-    <swiper-slide class="p-2"
-      ><img class="rounded-xl" src="assets/images/painel-infos.png"
+    <swiper-slide class=""
+      ><img class="rounded-3xl" src="assets/images/painel-infos.png"
     /></swiper-slide>
-    <swiper-slide class="p-2"
-      ><img class="rounded-xl" src="assets/images/painel-infos.png"
+    <swiper-slide class=""
+      ><img class="rounded-3xl" src="assets/images/painel-infos.png"
     /></swiper-slide>
-    div.swiper-
   </swiper-container>
   <!--// Ícones-->
-  <mat-grid-list cols="4" rows="2" gutterSize="8" rowHeight="3:2" class="m-1">
+  <mat-grid-list
+    cols="4"
+    rows="2"
+    gutterSize="6"
+    rowHeight="3:2"
+    class="my-2 mx-2"
+  >
     <mat-grid-tile *ngFor="let icon of icons" class="">
       <div class="flex flex-col w-full h-full">
         <div
-          class="h-2/3 w-5/6 items-center bg-green_insted rounded-2xl m-auto"
+          class="h-2/3 w-full items-center bg-green_insted rounded-3xl m-auto aspect-video"
         >
           <img
             src="{{ icon.src }}"
@@ -38,15 +44,18 @@
     </mat-grid-tile>
   </mat-grid-list>
   <!--// Matérias-->
-  <section class="bg-green_insted_transp rounded-xl flex flex-col p-2 m-2">
-    <h2 class="text-white font-bold">Matérias</h2>
+  <section
+    class="bg-green_insted_transp rounded-3xl flex flex-col justify-start p-2 my-2 mx-1"
+  >
+    <h2 class="text-white font-bold py-1">Matérias</h2>
     <swiper-container
-      class="bg-white p-1 mx-0 rounded-xl"
+      class="bg-white m-0 rounded-3xl h-full py-2"
       pagination="true"
+      crossFade="true"
       navigation="true"
     >
       <swiper-slide
-        class="flex flex-row justify-start text-center items-center py-2 px-10 m-auto"
+        class="flex flex-row justify-start text-center items-center px-10 m-auto"
       >
         <img class="w-1/4 px-2" src="assets/images/education.png" />
         <div class="w-full text-center">
@@ -54,37 +63,43 @@
         </div>
       </swiper-slide>
       <swiper-slide
-        class="flex flex-row justify-start text-center items-center py-2 px-10 m-auto"
+        class="flex flex-row justify-start text-center items-center px-10 m-auto"
       >
         <img class="w-1/4 px-2" src="assets/images/education.png" />
         <div class="w-full text-center">
-          <h3 class="m-auto">Projeto Integrador III</h3>
+          <h3 class="m-auto">Análise e desenvolvimeno de sistemas</h3>
         </div>
       </swiper-slide>
+      <div class="swiper-pagination bg-okay_button"></div>
     </swiper-container>
   </section>
   <!--// Atividades-->
-  <section class="bg-green_insted_transp rounded-xl flex flex-col m-2 p-2">
+  <section
+    class="bg-green_insted_transp rounded-3xl flex flex-col my-2 mx-1 p-2 h-[26%]"
+  >
     <div>
-      <h2 class="text-white font-bold">Atividades</h2>
+      <h2 class="text-white font-bold py-1">Atividades</h2>
     </div>
-    <swiper-container class="w-full rounded-xl text-center" pagination="true">
-      <swiper-slide class="bg-white flex flex-col rounded-xl m-auto">
+    <swiper-container
+      class="w-full rounded-3xl h-full m-auto py-1"
+      pagination="true"
+    >
+      <swiper-slide class="bg-white flex flex-col rounded-3xl m-auto">
         <div
-          class="flex flex-row justify-between font-bold bg-green_insted text-center rounded-xl p-2"
+          class="flex flex-row justify-between font-bold bg-green_insted text-center rounded-full p-2"
         >
           <p class="m-0 text-white">Quinta-feira, 18/08</p>
           <p class="m-0 text-white">20:30</p>
         </div>
-        <div class="px-2 py-1">
+        <div class="px-2 py-2 flex flex-col justify-center items-center h-full">
           <h2 class="text-xl">Exercício de compreensão</h2>
           <h3 class="text-lg">Programação Orientada à objetos</h3>
         </div>
       </swiper-slide>
-      <swiper-slide class="bg-white flex flex-col rounded-xl m-auto">
+      <swiper-slide class="bg-white flex flex-col rounded-3xl m-auto">
         <div class="text-center">
           <div
-            class="flex flex-row justify-between font-bold bg-green_insted text-center rounded-xl p-2"
+            class="flex flex-row justify-between font-bold bg-green_insted text-center rounded-full p-2"
           >
             <p class="m-0 text-white">Quinta-feira, 18/08</p>
             <p class="m-0 text-white">20:30</p>
@@ -98,5 +113,5 @@
     </swiper-container>
   </section>
   <!--// Menu-->
-  <app-menu-bottom></app-menu-bottom>
+<app-menu-bottom></app-menu-bottom>
 </section>

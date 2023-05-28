@@ -8,10 +8,13 @@ input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-contacts-auto-fill-button {
   display: none;
 }
-
+:root {
+  --swiper-theme-color: #063b3d;
+  --swiper-pagination-bottom: 0px;
+}
 * {
   font-family: "Lexend Deca", sans-serif;
-  color: rgb(6, 59, 61);
+  color: #063b3d;
 }
 
 h1,
@@ -114,7 +117,6 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
-.swiper-pagination-bullet-active {
-   background-color: red !important;
+.my-custom-pagination-item {
+  background-color: red !important;
 }
