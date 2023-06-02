@@ -1,8 +1,6 @@
-<div>TA FUNFANDO</div>
 <mat-sidenav-container
   class="example-container"
   (backdropClick)="close('backdrop')"
-  *ngIf="shouldRun"
 >
   <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
     <p>
@@ -14,10 +12,5 @@
   <mat-sidenav-content>
     <p><button mat-button (click)="sidenav.open()">Open</button></p>
     <p>Closed due to: {{ reason }}</p>
+  </mat-sidenav-content>
 </mat-sidenav-container>
-
-<div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>
-
-<!-- Copyright 2019 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license -->

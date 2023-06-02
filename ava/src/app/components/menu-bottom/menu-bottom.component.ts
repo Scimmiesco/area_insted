@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
@@ -7,7 +7,11 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./menu-bottom.component.css']
 })
 export class MenuBottomComponent {
+  @Output() menuClick = new EventEmitter<boolean>();
 
+  abrirSideNav() {
+    this.menuClick.emit(true);
+  }
 }
 
 

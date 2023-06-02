@@ -17,5 +17,4 @@ export class SideNavComponent {
     this.sidenav.close();
   }
 
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 }

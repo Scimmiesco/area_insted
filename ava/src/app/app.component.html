@@ -1,3 +1,13 @@
 <app-loading></app-loading>
-<router-outlet></router-outlet>
-
+<mat-sidenav-container class="example-container">
+  <mat-sidenav
+    #sidenav
+    (keydown.escape)="close('escape')"
+    disableClose
+    mode="over"
+    opened
+  >
+    <!-- Conteúdo do menu lateral -->
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

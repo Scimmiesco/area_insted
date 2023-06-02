@@ -27,7 +27,4 @@ export class ProfileComponent {
     localStorage.removeItem(this.user.nrCpf)
     this.router.navigate(['/'])
   }
-  botaoEditar() {
-    this.status = !this.status;
-  }
 }
