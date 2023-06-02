@@ -1,6 +1,6 @@
-import { UserService } from '../autentication/user/user.service';
+import { UserService } from 'app/autentication/user/user.service';
 import { Component } from '@angular/core';
-import { Pessoa } from '../autentication/user/Pessoa.interface';
+import { Pessoa } from 'app/autentication/user/Pessoa.interface';
 import { Router } from "@angular/router"
 
 @Component({

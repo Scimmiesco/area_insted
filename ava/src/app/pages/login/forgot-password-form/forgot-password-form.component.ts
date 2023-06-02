@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { CustomValidations } from '../../validators.component';
+import { CustomValidations } from 'app/validators.component';
 import { catchError, throwError } from 'rxjs';
 import { ForgotPasswordService } from './forgot-password.service';
 @Component({
