@@ -1,0 +1,9 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="push" opened="false" class="example-sidenav" fixedInViewport="true"
+        class="w-[66vw] rounded-r-3xl">teste
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet><app-menu-bottom (menuClick)="sidenav.open()"></app-menu-bottom>
+    </mat-sidenav-content>
+</mat-sidenav-container>
