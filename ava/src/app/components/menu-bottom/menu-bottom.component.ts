@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+// menu-bottom.component.ts
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-menu-bottom',
@@ -9,9 +9,9 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class MenuBottomComponent {
   @Output() menuClick = new EventEmitter<boolean>();
 
-  abrirSideNav() {
-    this.menuClick.emit(true);
+  aberto = false;
+
+  abrirSideNav(aberto: boolean) {
+    this.menuClick.emit(aberto);
   }
 }
-
-

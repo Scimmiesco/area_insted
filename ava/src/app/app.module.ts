@@ -11,11 +11,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { HomeModule } from './home/home.module';
 import { register } from 'swiper/element/bundle';
+import { MenuBottomModule } from './components/menu-bottom/menu-bottom.module';
 
 register();
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
-  imports: [CommonModule, BrowserModule, AppRoutingModule, ProfileModule, BrowserAnimationsModule, MaterialModule, HomeModule],
+  imports: [CommonModule, BrowserModule, AppRoutingModule, ProfileModule, BrowserAnimationsModule, MaterialModule, HomeModule,MenuBottomModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: LoadingInterceptor,

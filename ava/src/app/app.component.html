@@ -1,13 +1,16 @@
 <app-loading></app-loading>
-<mat-sidenav-container class="example-container">
+<mat-sidenav-container>
   <mat-sidenav
     #sidenav
-    (keydown.escape)="close('escape')"
-    disableClose
-    mode="over"
-    opened
+    mode="push"
+    opened="true"
+    class="example-sidenav"
+    fixedInViewport="true"
+    class="w-[66vw] rounded-r-3xl"
   >
-    <!-- Conteúdo do menu lateral -->
   </mat-sidenav>
-  <router-outlet></router-outlet>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet
+    ><app-menu-bottom (menuClick)="sidenav.open()"></app-menu-bottom>
+  </mat-sidenav-content>
 </mat-sidenav-container>

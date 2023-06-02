@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Fechar o mat-sidenav sempre que a rota for alterada
+        // Close the mat-sidenav whenever the route changes
         this.sidenav.close();
       }
     });
@@ -29,7 +29,7 @@ export class AppComponent {
     this.sidenav.open();
   }
 
-  closeSidenav() {
-    this.sidenav.close();
+  teste(event: boolean) {
+    console.log(event);
   }
 }
