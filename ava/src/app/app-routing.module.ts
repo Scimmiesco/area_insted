@@ -12,7 +12,7 @@ const routes: Routes = [
       import('app/pages/login/login.module').then((m) => m.LoginModule),
   },
   {
-    path: 'layout',
+    path: 'area',
     component: LayoutsComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },

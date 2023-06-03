@@ -38,7 +38,7 @@ export class LoginFormComponent implements OnInit {
       next: (response) => {
         if (response.success) {
           this.userService.setUser(response.user);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/area/home']);
         }
       },
       error: (error) => {
