@@ -10,30 +10,11 @@ export interface DialogData {
 /**
  * @title Injecting data when opening a dialog
  */
-@Component({
-  selector: 'app-calendar',
-  templateUrl: 'calendar.component.html',
-  standalone: true,
-  imports: [MatButtonModule, MatDialogModule],
-})
-export class DialogDataExample {
-  constructor(public dialog: MatDialog) {}
-
-  openDialog() {
-    this.dialog.open(DialogDataExampleDialog, {
-      data: {
-        animal: 'panda',
-      },
-    });
-  }
-}
 
 @Component({
-  selector: 'dialog-data-example-dialog',
-  templateUrl: 'dialog-data-example-dialog.html',
-  standalone: true,
-  imports: [MatDialogModule, NgIf],
+  selector: 'app-modal-calendar',
+  templateUrl: 'calendar.component.html'
 })
-export class DialogDataExampleDialog {
+export class calendarDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 }

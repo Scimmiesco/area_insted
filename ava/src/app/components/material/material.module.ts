@@ -5,7 +5,8 @@ import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 import {MatSidenavModule} from '@angular/material/sidenav';
-const MODULES = [MatProgressSpinnerModule, MatExpansionModule, MdbCarouselModule, MatGridListModule, MdbDropdownModule, MatSidenavModule, ]
+import { MatDialogModule } from '@angular/material/dialog';
+const MODULES = [MatProgressSpinnerModule, MatExpansionModule, MdbCarouselModule, MatGridListModule, MdbDropdownModule, MatSidenavModule, MatDialogModule ]
 
 @NgModule
   ({

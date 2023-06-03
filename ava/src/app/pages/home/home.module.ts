@@ -4,11 +4,12 @@ import { MaterialModule } from 'app/components/material/material.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { MenuBottomModule } from 'app/components/menu-bottom/menu-bottom.module';
+import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
 
 @NgModule({
   declarations: [HomeComponent],
   imports: [CommonModule, RouterModule, MaterialModule, MenuBottomModule],
-  exports: [HomeComponent], 
+  exports: [HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeModule { }

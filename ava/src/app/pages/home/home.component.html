@@ -27,7 +27,7 @@
     rowHeight="3:2"
     class="my-2 mx-2"
   >
-    <mat-grid-tile *ngFor="let icon of icons" class="">
+    <mat-grid-tile *ngFor="let icon of icons" class="" (click)="onItemClick(icon)">
       <div class="flex flex-col w-full h-full">
         <div
           class="h-2/3 w-full items-center bg-green_insted rounded-3xl m-auto aspect-video"

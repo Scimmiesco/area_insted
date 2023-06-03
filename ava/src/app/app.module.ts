@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,12 +13,12 @@ import { HomeModule } from './pages/home/home.module';
 import { register } from 'swiper/element/bundle';
 import { MenuBottomModule } from './components/menu-bottom/menu-bottom.module';
 import { LayoutsComponent } from 'app/layouts/layouts.component';
-import { CalendarComponent } from './components/modais/calendar/calendar.component';
+import { CalendarModule } from './components/modais/calendar/calendar.module';
 
 register();
 @NgModule({
-  declarations: [AppComponent, LoadingComponent, LayoutsComponent, CalendarComponent],
-  imports: [CommonModule, BrowserModule, AppRoutingModule, ProfileModule, BrowserAnimationsModule, MaterialModule, HomeModule,MenuBottomModule],
+  declarations: [AppComponent, LoadingComponent, LayoutsComponent],
+  imports: [CommonModule, BrowserModule, AppRoutingModule, ProfileModule, BrowserAnimationsModule, MaterialModule, HomeModule, MenuBottomModule, CalendarModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: LoadingInterceptor,
