@@ -18,9 +18,9 @@ interface Icon {
 })
 export class HomeComponent {
 
-  constructor(public dialog: MatDialog, public materiasService: MateriasService) { }
+  constructor(public dialog: MatDialog, private materiasService: MateriasService) { }
   user!: Pessoa["user"];
-  materias!: any; 
+  materias!: any;
   ngOnInit() {
     const localStorageKey = localStorage.key(0);
     if (localStorageKey) {
