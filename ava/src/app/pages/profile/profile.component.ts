@@ -11,7 +11,7 @@ export class ProfileComponent {
   user!: Pessoa["user"];
   status: boolean = true;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private router: Router) {
 
   }
 

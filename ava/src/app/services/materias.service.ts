@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class MateriasService {
 
-  private apiUrl = "https://localhost:7003/"
+  private apiUrl = "https://localhost:7003/user"
 
   constructor(private http: HttpClient) { }
 
-  auth(ra: string): Observable<string> {
-    
-    const loginUrl = `${this.apiUrl}user/auth`;
-    return this.http.post<ResponseInterface>(`${loginUrl}`, json)
+  getMaterias(ra: string): Observable<string> {
+
+    const loginUrl = `${this.apiUrl}user/GetMaterias`;
+    return this.http.post<string>(`${loginUrl}`, ra)
   }
 }

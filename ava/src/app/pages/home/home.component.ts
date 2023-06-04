@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
+import { MateriasService } from 'app/services/materias.service';
+import { Pessoa } from 'app/autentication/user/Pessoa.interface';
 register();
 interface Icon {
   id: number,
@@ -15,11 +17,17 @@ interface Icon {
 
 })
 export class HomeComponent {
+
+  constructor(public dialog: MatDialog, public materiasService: MateriasService) { }
+  user!: Pessoa["user"];
+  materias!: any; 
   ngOnInit() {
-
+    const localStorageKey = localStorage.key(0);
+    if (localStorageKey) {
+      this.user = JSON.parse(localStorage.getItem(localStorageKey) ?? '{}');
+    }
+    let materias = this.materiasService.getMaterias(this.user.nrRegister);
   }
-  constructor(public dialog: MatDialog) { }
-
   OpenModalCalendar(iconId: number) {
 
     if (iconId === 6) {
