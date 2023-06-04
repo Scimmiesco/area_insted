@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
 register();
+interface Icon {
+  id: number,
+  src: string,
+  alt: string,
+  rotulo: string
+}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,18 +20,21 @@ export class HomeComponent {
   }
   constructor(public dialog: MatDialog) { }
 
-  onItemClick(icon: any) {
+  OpenModalCalendar(iconId: number) {
 
-    if (icon.id === 6) {
+    if (iconId === 6) {
       this.dialog.open(calendarDialogComponent, {
         data: {
           animal: 'panda',
-        }
+        },
+        autoFocus: true,
+        closeOnNavigation: true,
       }
       )
     }
   }
-  icons = [
+
+  icons: Icon[] = [
     {
       id: 1,
       src: "assets/images/icons-home/clock.png",

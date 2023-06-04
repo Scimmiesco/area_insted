@@ -18,7 +18,7 @@ import { CalendarModule } from './components/modais/calendar/calendar.module';
 register();
 @NgModule({
   declarations: [AppComponent, LoadingComponent, LayoutsComponent],
-  imports: [CommonModule, BrowserModule, AppRoutingModule, ProfileModule, BrowserAnimationsModule, MaterialModule, HomeModule, MenuBottomModule, CalendarModule],
+  imports: [CommonModule, BrowserModule, AppRoutingModule, ProfileModule, BrowserAnimationsModule, MaterialModule, HomeModule, MenuBottomModule],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: LoadingInterceptor,

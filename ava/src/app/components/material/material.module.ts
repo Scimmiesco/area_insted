@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
-const MODULES = [MatProgressSpinnerModule, MatExpansionModule, MdbCarouselModule, MatGridListModule, MdbDropdownModule, MatSidenavModule, MatDialogModule ]
+import { MatButtonModule } from '@angular/material/button';
+const MODULES = [MatProgressSpinnerModule, MatExpansionModule, MatGridListModule, MdbDropdownModule, MatSidenavModule, MatDialogModule, MatButtonModule]
 
 @NgModule
   ({

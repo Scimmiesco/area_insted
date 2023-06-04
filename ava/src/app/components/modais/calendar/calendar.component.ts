@@ -1,7 +1,7 @@
-import {Component, Inject} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
-import {NgIf} from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
+import { Component, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
+import { NgIf } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -13,8 +13,11 @@ export interface DialogData {
 
 @Component({
   selector: 'app-modal-calendar',
-  templateUrl: 'calendar.component.html'
+  templateUrl: 'calendar.component.html',
+  styleUrls: ['calendar.component.scss']
 })
 export class calendarDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+
+  
 }
