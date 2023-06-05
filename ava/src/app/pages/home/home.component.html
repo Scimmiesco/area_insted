@@ -8,9 +8,9 @@
     space-between="10"
     slides-per-view="1.05"
     speed="500"
-    loop="true"
+    Loop="true"
     pagination="true"
-    autoplay="true"
+    Autoplay="true"
   >
     <swiper-slide class=""
       ><img class="rounded-3xl" src="assets/images/painel-infos.png"
@@ -30,7 +30,7 @@
     <mat-grid-tile
       *ngFor="let icon of icons"
       class=""
-      (click)="OpenModalCalendar(icon.id)"
+      (click)="OpenModalCalendar(icon.rotulo)"
     >
       <div class="flex flex-col w-full h-full">
         <div
@@ -60,22 +60,16 @@
       navigation="true"
     >
       <swiper-slide
+      *ngFor="let materia of materias"
         class="flex flex-row justify-start text-center items-center px-10 m-auto"
       >
         <img class="w-1/4 px-2" src="assets/images/education.png" />
         <div class="w-full text-center">
-          <h3 class="m-auto">Algebra Linear</h3>
+          <h3 class="m-auto p-3">{{ materia.nmClass }}</h3>
         </div>
       </swiper-slide>
-      <swiper-slide
-        class="flex flex-row justify-start text-center items-center px-10 m-auto"
-      >
-        <img class="w-1/4 px-2" src="assets/images/education.png" />
-        <div class="w-full text-center">
-          <h3 class="m-auto">Análise e desenvolvimeno de sistemas</h3>
-        </div>
-      </swiper-slide>
-      <div class="swiper-pagination bg-okay_button"></div>
+
+      <div class="swiper-pagination"></div>
     </swiper-container>
   </section>
   <!--// Atividades-->

@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
 import { MateriasService } from 'app/services/materias.service';
 import { Pessoa } from 'app/autentication/user/Pessoa.interface';
+import { ResponseMateriasInterface } from './home.interface';
 register();
 interface Icon {
   id: number,
@@ -20,17 +21,34 @@ export class HomeComponent {
 
   constructor(public dialog: MatDialog, private materiasService: MateriasService) { }
   user!: Pessoa["user"];
-  materias!: any;
+  materias: ResponseMateriasInterface["materias"] = null;
+
   ngOnInit() {
+    this.materias = this.materiasService.getMaterias();
+
     const localStorageKey = localStorage.key(0);
     if (localStorageKey) {
       this.user = JSON.parse(localStorage.getItem(localStorageKey) ?? '{}');
     }
-    let materias = this.materiasService.getMaterias(this.user.nrRegister);
-  }
-  OpenModalCalendar(iconId: number) {
+    console.log(this.materias);
+    if (this.materias?.length === 0) {
+      console.log(this.materias);
+      this.materiasService.getHttpMaterias(this.user.nrRegister).subscribe({
+        next: (response) => {
+          this.materiasService.setMaterias(response.materias);
+          this.materias = response.materias
+          console.log(this.materias);
+        },
+        error: (error) => {
 
-    if (iconId === 6) {
+        }
+      });
+    }
+    console.log(this.materias);
+  }
+  OpenModalCalendar(iconRotulo: string) {
+
+    if (iconRotulo === 'horario') {
       this.dialog.open(calendarDialogComponent, {
         data: {
           animal: 'panda',
@@ -47,7 +65,7 @@ export class HomeComponent {
       id: 1,
       src: "assets/images/icons-home/clock.png",
       alt: "icone de relógio",
-      rotulo: "Horário"
+      rotulo: "horario"
     },
     {
       id: 2,
