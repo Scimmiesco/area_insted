@@ -118,10 +118,10 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
-.dialog-calendar {
-  background-color: antiquewhite !important;
-}
-.cdk-overlay-container {
-  background-color: rgba(6, 59, 61, 0.2);
+.mat-mdc-dialog-surface,
+.mdc-dialog__surface {
+  & ::before {
+    border-radius: 1.5rem !important;
+  }
+  border-radius: 1.5rem !important;
 }

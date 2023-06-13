@@ -5,7 +5,7 @@ export const Icons: IconInterface[] = [
     id: 1,
     src: "assets/images/icons-home/clock.png",
     alt: "icone de relógio",
-    rotulo: "horario"
+    rotulo: "Horário"
   },
   {
     id: 2,

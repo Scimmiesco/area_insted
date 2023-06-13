@@ -50,14 +50,15 @@ export class HomeComponent {
 
   }
 
-  OpenModalCalendar(iconRotulo: string) {
-    if (iconRotulo === 'horario') {
+  OpenModalCalendar(iconId: number) {
+    if (iconId === 1) {
       this.dialog.open(calendarDialogComponent, {
         data: {
           animal: 'panda',
         },
         autoFocus: true,
         closeOnNavigation: true,
+        panelClass: 'horario-modal'
       }
       )
     }
