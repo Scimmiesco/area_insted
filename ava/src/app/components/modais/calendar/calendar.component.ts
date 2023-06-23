@@ -15,7 +15,6 @@ export interface DialogData {
 @Component({
   selector: 'app-modal-calendar',
   templateUrl: 'calendar.component.html',
-  styleUrls: ['calendar.component.scss']
 })
 export class calendarDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }

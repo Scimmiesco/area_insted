@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
+import { HorarioDialogComponent } from 'app/components/modais/horario/horario.component';
 import { MateriasService } from 'app/services/materias.service';
 import { Pessoa } from 'app/autentication/user/Pessoa.interface';
 import { ResponseMateriasInterface } from './home.interface';
@@ -50,19 +51,34 @@ export class HomeComponent {
 
   }
 
-  OpenModalCalendar(iconId: number) {
-    if (iconId === 1) {
-      this.dialog.open(calendarDialogComponent, {
-        data: {
-          animal: 'panda',
-        },
-        autoFocus: true,
-        closeOnNavigation: true,
-        panelClass: 'horario-modal'
-      }
-      )
+  OpenModais(iconId: number) {
+    switch (iconId) {
+      case 1:
+        this.dialog.open(HorarioDialogComponent, {
+          data: {
+            animal: 'panda',
+          },
+          autoFocus: true,
+          closeOnNavigation: true,
+          panelClass: 'horario-modal'
+        });
+        break;
+      case 6:
+        this.dialog.open(calendarDialogComponent, {
+          data: {
+            animal: 'panda',
+          },
+          autoFocus: true,
+          closeOnNavigation: true,
+          panelClass: 'horario-modal'
+        });
+        break;
+      default:
+        // Ação padrão caso o iconId não corresponda a nenhum caso
+        break;
     }
   }
+
 
 
 }

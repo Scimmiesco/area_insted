@@ -8,9 +8,8 @@ import { calendarDialogComponent } from './calendar.component';
 @NgModule({
   declarations: [calendarDialogComponent],
   imports: [
-    CommonModule, MaterialModule
+    CommonModule, 
   ],
-  exports: [calendarDialogComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CalendarModule { }
