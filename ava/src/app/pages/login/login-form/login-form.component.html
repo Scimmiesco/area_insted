@@ -48,6 +48,13 @@
         >Manter-me conectado</label
       >
     </div>
+    <div class="flex justify-center flex-col items-center">
+      <re-captcha id="recaptcha" formControlName="recaptcha"></re-captcha>
+      <app-message
+        *ngIf="!loginForm.get('recaptcha')?.value && (loginForm.get('recaptcha')?.touched || loginForm.get('recaptcha')?.dirty)"
+        message="Necessário validar o captcha."
+      />
+    </div>
   </div>
   <button class="w-1/2" type="submit">Entrar</button>
   <app-message *ngIf="isUserValid === false" message="{{ errorMessage }}" />

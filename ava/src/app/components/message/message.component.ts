@@ -6,7 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
   @Input()
-  message = '';
+  message = '' as string;
+  class = '' as string;
 
   constructor() {}
 

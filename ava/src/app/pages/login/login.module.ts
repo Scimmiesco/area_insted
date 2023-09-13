@@ -13,6 +13,13 @@ import { ForgotPasswordService } from './forgot-password-form/forgot-password.se
 import { UserService } from 'app/autentication/user/user.service';
 import { MaterialModule } from 'app/components/material/material.module';
 import { LoadingInterceptor } from 'app/interceptors/loading.interceptor';
+import {
+  RECAPTCHA_SETTINGS,
+  RecaptchaFormsModule,
+  RecaptchaModule,
+  RecaptchaSettings,
+} from 'ng-recaptcha';
+import { environment } from 'environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +35,19 @@ import { LoadingInterceptor } from 'app/interceptors/loading.interceptor';
     ReactiveFormsModule,
     MessageModule,
     HttpClientModule,
-  ], providers: [ForgotPasswordService, AutenticationService, UserService,
-  ]
+    RecaptchaModule,
+    RecaptchaFormsModule,
+  ],
+  providers: [
+    ForgotPasswordService,
+    AutenticationService,
+    UserService,
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: environment.recaptcha.siteKey,
+      } as RecaptchaSettings,
+    },
+  ],
 })
-export class LoginModule { }
+export class LoginModule {}

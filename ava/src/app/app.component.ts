@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -8,4 +9,5 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent {
   title = 'AVA Insted';
+
 }

@@ -14,7 +14,8 @@ export class ForgotPasswordFormComponent implements OnInit {
   ra = '' as string;
   email = '' as string;
   cpf = '' as string;
-  someInputFilled = false as boolean;
+  moreThanOneInputFilled = false as boolean;
+  filledInputs = [] as Array<string>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,49 +27,59 @@ export class ForgotPasswordFormComponent implements OnInit {
       ra: ['', [Validators.minLength(10)]],
       email: ['', [Validators.email]],
       cpf: ['', [CustomValidations.validateCpf]],
+      recaptcha: [null],
     });
   }
 
   RecoverPassword() {
-    let recoverField = '';
-    let fieldType = '';
-
-    if (this.forgotPasswordForm.get('ra')?.value) {
-      recoverField = this.forgotPasswordForm.get('ra')?.value;
-      fieldType = 'ra';
-    } else if (this.forgotPasswordForm.get('email')?.value) {
-      recoverField = this.forgotPasswordForm.get('email')?.value;
-      fieldType = 'email';
-    } else if (this.forgotPasswordForm.get('cpf')?.value) {
-      recoverField = this.forgotPasswordForm.get('cpf')?.value;
-      fieldType = 'cpf';
+    if ((this.filledInputs.length === 0)) {
+      return;
     }
+    if (
+      this.forgotPasswordForm.valid &&
+      this.forgotPasswordForm.get('recaptcha')?.value &&
+      !this.moreThanOneInputFilled
+    ) {
+      let recoverField: string = '';
+      let fieldType: string = '';
 
-    this.recoverPasswordService
-      .getUserOnSystem(fieldType, recoverField)
-      .pipe(
-        catchError((error) => {
-          console.error(error);
-          return throwError(() => new Error(error));
-        })
-      )
-      .subscribe({
-        next: (response: object) => {
-          console.log('e-mail do usuário: ', response.toString());
-        },
-        error: (error: any) => {
-          console.error(error);
-        },
-      });
+      const fieldMap: { [key: string]: any } = {
+        ra: this.forgotPasswordForm.get('ra')?.value,
+        email: this.forgotPasswordForm.get('email')?.value,
+        cpf: this.forgotPasswordForm.get('cpf')?.value,
+      };
+
+      for (const field in fieldMap) {
+        if (fieldMap[field]) {
+          recoverField = fieldMap[field];
+          fieldType = field;
+          break;
+        }
+      }
+
+      this.recoverPasswordService
+        .getUserOnSystem(fieldType, recoverField)
+        .pipe(
+          catchError((error) => {
+            console.error(error);
+            return throwError(() => new Error(error));
+          })
+        )
+        .subscribe({
+          next: (response: object) => {
+            console.log('e-mail do usuário: ', response.toString());
+          },
+          error: (error: any) => {
+            console.error(error);
+          },
+        });
+    }
   }
 
-  verificarInputs(e: KeyboardEvent) {
-    if (this.ra != '' || this.email != '' || this.cpf != '') {
-      this.someInputFilled = true;
-    } else {
-      if (this.ra == '' && this.email == '' && this.cpf == '') {
-        this.someInputFilled = false;
-      }
-    }
+  isMoreThanOneInputFilled(e: KeyboardEvent) {
+    const inputs = [this.ra, this.email, this.cpf];
+    this.filledInputs = inputs.filter((input) => input && input.length > 0);
+
+    this.moreThanOneInputFilled = this.filledInputs.length > 1;
   }
 }
