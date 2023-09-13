@@ -1,10 +1,9 @@
 <section
   class="bg-gradient-to-t from-green_insted_transp via-white to-white h-[100svh] pb-16 box-content"
 >
-  <app-side-nav></app-side-nav>
   <!--// Avisos-->
   <swiper-container
-    class="py-2 px-1 pb-4"
+    class="py-2 px-1 m-auto pb-4 min-h-20vh"
     space-between="10"
     slides-per-view="1.05"
     speed="500"
@@ -12,11 +11,8 @@
     pagination="true"
     Autoplay="true"
   >
-    <swiper-slide class=""
-      ><img class="rounded-3xl" src="assets/images/painel-infos.png"
-    /></swiper-slide>
-    <swiper-slide class=""
-      ><img class="rounded-3xl" src="assets/images/painel-infos.png"
+    <swiper-slide *ngFor="let aviso of avisos"
+      ><img class="rounded-3xl" src="{{ aviso.src }}" alt="{{ aviso.alt }}"
     /></swiper-slide>
   </swiper-container>
   <!--// Ícones-->
@@ -30,7 +26,7 @@
     <mat-grid-tile
       *ngFor="let icon of icons"
       class=""
-      (click)="OpenModalCalendar(icon.rotulo)"
+      (click)="OpenModais(icon.id)"
     >
       <div class="flex flex-col w-full h-full">
         <div
@@ -60,7 +56,7 @@
       navigation="true"
     >
       <swiper-slide
-      *ngFor="let materia of materias"
+        *ngFor="let materia of materias"
         class="flex flex-row justify-start text-center items-center px-10 m-auto"
       >
         <img class="w-1/4 px-2" src="assets/images/education.png" />

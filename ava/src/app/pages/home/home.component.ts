@@ -1,17 +1,18 @@
+
 import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
+import { HorarioDialogComponent } from 'app/components/modais/horario/horario.component';
 import { MateriasService } from 'app/services/materias.service';
 import { Pessoa } from 'app/autentication/user/Pessoa.interface';
 import { ResponseMateriasInterface } from './home.interface';
+import { Icons } from 'app/shared/icons-home/mock-icons-home';
+import { IconInterface } from 'app/shared/icons-home/icons-home.model';
+import { PainelInterface } from 'app/shared/info-painel/painel-home.model';
+import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 register();
-interface Icon {
-  id: number,
-  src: string,
-  alt: string,
-  rotulo: string
-}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,89 +21,66 @@ interface Icon {
 export class HomeComponent {
 
   constructor(public dialog: MatDialog, private materiasService: MateriasService) { }
+
   user!: Pessoa["user"];
   materias: ResponseMateriasInterface["materias"] = null;
+  icons!: IconInterface[]
+  avisos!: PainelInterface[]
 
   ngOnInit() {
+    this.avisos = Avisos
+    this.icons = Icons
     this.materias = this.materiasService.getMaterias();
-
     const localStorageKey = localStorage.key(0);
+
     if (localStorageKey) {
       this.user = JSON.parse(localStorage.getItem(localStorageKey) ?? '{}');
     }
-    console.log(this.materias);
+
     if (this.materias?.length === 0) {
-      console.log(this.materias);
       this.materiasService.getHttpMaterias(this.user.nrRegister).subscribe({
         next: (response) => {
           this.materiasService.setMaterias(response.materias);
           this.materias = response.materias
-          console.log(this.materias);
         },
         error: (error) => {
 
         }
       });
     }
-    console.log(this.materias);
-  }
-  OpenModalCalendar(iconRotulo: string) {
 
-    if (iconRotulo === 'horario') {
-      this.dialog.open(calendarDialogComponent, {
-        data: {
-          animal: 'panda',
-        },
-        autoFocus: true,
-        closeOnNavigation: true,
-      }
-      )
+  }
+
+  OpenModais(iconId: number) {
+    switch (iconId) {
+      case 1:
+        this.dialog.open(HorarioDialogComponent, {
+          data: {
+            animal: 'panda',
+          },
+          autoFocus: true,
+          closeOnNavigation: true,
+          panelClass: 'horario-modal'
+        });
+        break;
+      case 6:
+        this.dialog.open(calendarDialogComponent, {
+          data: {
+            animal: 'panda',
+          },
+          autoFocus: true,
+          closeOnNavigation: true,
+          panelClass: 'horario-modal'
+        });
+        break;
+      default:
+        // Ação padrão caso o iconId não corresponda a nenhum caso
+        break;
     }
   }
 
-  icons: Icon[] = [
-    {
-      id: 1,
-      src: "assets/images/icons-home/clock.png",
-      alt: "icone de relógio",
-      rotulo: "horario"
-    },
-    {
-      id: 2,
-      src: "assets/images/icons-home/financeiro.png", alt: "icone de relógio",
-      rotulo: "Financeiro"
-    },
-    {
-      id: 3,
-      src: "assets/images/icons-home/grade.png", alt: "icone de relógio",
-      rotulo: "Notas"
-    },
-    {
-      id: 4,
-      src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
-      rotulo: "Avisos"
-    },
-    {
-      id: 5,
-      src: "assets/images/icons-home/library.png", alt: "icone de relógio",
-      rotulo: "Biblioteca"
-    },
-    {
-      id: 6,
-      src: "assets/images/icons-home/calendar.png", alt: "Calendário",
-      rotulo: "Calendário"
-    },
-    {
-      id: 7,
-      src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
-      rotulo: "Avisos"
-    },
-    {
-      id: 8,
-      src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
-      rotulo: "Avisos"
-    },
-  ]
+
+
 }
 
 
