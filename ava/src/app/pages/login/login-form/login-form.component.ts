@@ -44,6 +44,7 @@ export class LoginFormComponent implements OnInit {
       this.authService.auth(loginRequest).subscribe({
         next: (response) => {
           if (response.success) {
+            console.log(response.user, "Método login")
             this.userService.setUser(response.user);
             this.router.navigate(['/area/home']);
           }
