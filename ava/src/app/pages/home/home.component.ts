@@ -30,12 +30,10 @@ export class HomeComponent {
   avisos!: PainelInterface[];
 
   ngOnInit() {
-    this.userService.getUser().subscribe((user) => {
-      if (user) {
-        this.user = user;
-      }
+    this.userService.getUser().subscribe((value) => {
+      this.user = value;
     });
-    console.log(this.user)
+    console.log(this.user);
     this.avisos = Avisos;
     this.icons = Icons;
     this.materias = this.materiasService.getMaterias();

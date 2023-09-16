@@ -5,36 +5,37 @@ import { Pessoa } from './Pessoa.interface';
 @Injectable({
   providedIn: 'root',
 })
-
 export class UserService {
+  private userDefault: Pessoa['user'] = {
+    idUser: 0,
+    idAddress: 0,
+    nmUser: 'Default',
+    nrRegister: '100000000',
+    nrCpf: '100000000',
+    nrRg: 0,
+    nmExpedition: 'sspms',
+    dtBirthdate: new Date('2000-01-01'),
+    nmSex: 'm',
+    nmPhone1: '67999999999',
+    nmPhone2: '67999999999',
+    nmEmail: 'email@email.com',
+    imgFile: null,
+    snTeacher: false,
+  };
 
-  private user$ = new BehaviorSubject<Pessoa["user"]>(  );
+  private user$ = new BehaviorSubject<Pessoa['user']>(this.userDefault);
 
-  constructor() {
-  Pessoa{user={
-      idUser= 0,
-      idAddress= 0,
-      nmUser= 'Default',
-      nrRegister= '100000000',
-      nrCpf= '100000000',
-      nrRg= 0,
-      nmExpedition= 'sspms',
-      dtBirthdate= '2000-01-01',
-      nmSex= 'm',
-      nmPhone1= '67999999999',
-      nmPhone2= '67999999999',
-      nmEmail= 'email@email.com',
-      imgFile= null,
-      snTeacher= false,
-    }}
-    }
+  constructor() {}
 
-  setUser(user: Pessoa["user"]) {
+  setUser(user: Pessoa['user']) {
     this.user$.next(user);
   }
 
-  getUser(): Observable<Pessoa["user"]> {
-    // Retorna um Observable que os componentes podem assinar para receber atualizações do usuário
-    return this.user$.asObservable();
+  // getUser(): Observable<Pessoa["user"]> {
+  //   // Retorna um Observable que os componentes podem assinar para receber atualizações do usuário
+  //   return this.user$.asObservable();
+  // }
+  getUser() {
+    return this.user$;
   }
 }
