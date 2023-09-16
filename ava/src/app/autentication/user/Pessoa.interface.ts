@@ -12,7 +12,7 @@ export interface Pessoa {
     "nmPhone1": string,
     "nmPhone2": string,
     "nmEmail": string,
-    "imgFile": string,
+    "imgFile": string | null,
     "snTeacher": boolean,
-  } 
+  }
 }

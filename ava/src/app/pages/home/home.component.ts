@@ -33,16 +33,12 @@ export class HomeComponent {
     this.userService.getUser().subscribe((user) => {
       if (user) {
         this.user = user;
-        console.log(this.user, '- OnInit do home');
-        // Agora você pode acessar o usuário com segurança
       }
     });
-    console.log(this.user, '- On init do home');
+    console.log(this.user)
     this.avisos = Avisos;
     this.icons = Icons;
     this.materias = this.materiasService.getMaterias();
-
-    console.log(this.materias, this.materias?.length, 'Vei do céu');
 
     if (this.materias?.length === 0) {
       this.materiasService.getHttpMaterias(this.user.nrRegister).subscribe({

@@ -22,14 +22,15 @@
         <input
           id="password"
           formControlName="password"
-          type="password"
+          type="{{ passwordIsVisible ? 'text' : 'password' }}"
           autocomplete="on"
           placeholder="Insira sua senha"
         />
         <svg
           id="icon"
-          (click)="ToggleIcon($event)"
-          class="bg-opened_eye absolute top-50% right-[4%] bg-contain bg-center bg-no-repeat w-7 h-10 cursor-pointer"
+          (click)="ToggleIcon()"
+          [ngClass]="passwordIsVisible ? 'bg-opened_eye' : 'bg-closed_eye'"
+          class="absolute top-50% right-[4%] bg-contain bg-center bg-no-repeat w-7 h-10 cursor-pointer"
         ></svg>
       </div>
       <app-message
@@ -51,13 +52,17 @@
     <div class="flex justify-center flex-col items-center">
       <re-captcha id="recaptcha" formControlName="recaptcha"></re-captcha>
       <app-message
-        *ngIf="!loginForm.get('recaptcha')?.value && (loginForm.get('recaptcha')?.touched || loginForm.get('recaptcha')?.dirty)"
+        *ngIf="
+          !loginForm.get('recaptcha')?.value &&
+          (loginForm.get('recaptcha')?.touched ||
+            loginForm.get('recaptcha')?.dirty)
+        "
         message="Necessário validar o captcha."
       />
     </div>
   </div>
   <button class="w-1/2" type="submit">Entrar</button>
-  <app-message *ngIf="isUserValid === false" message="{{ errorMessage }}" />
+  <app-message *ngIf="errorMessage != null" message="{{ errorMessage }}" />
   <a
     [routerLink]="['/login/recuperar-senha']"
     class="my-2 text-green_insted font-semibold underline underline-offset-1"

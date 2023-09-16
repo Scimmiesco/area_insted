@@ -6,9 +6,9 @@ module.exports = {
       backgroundImage: {
         insted_logo: "url('/assets/images/logo-insted.svg')",
         insted_background: "url('/assets/images/fundo-insted.png')",
-        checkmark: "url('/assets/checkmark.svg')",
+        checkmark: "url('/assets/svg-icons/checkmark.svg')",
         opened_eye: "url('/assets/svg-icons/olho-aberto.svg')",
-        closed_eye: "url('/assets/olho-fechado.svg')",
+        closed_eye: "url('/assets/svg-icons/olho-fechado.svg')",
       },
     },
     colors: {

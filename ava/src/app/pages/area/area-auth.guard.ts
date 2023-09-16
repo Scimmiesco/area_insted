@@ -11,10 +11,9 @@ export class AreaAuthGuard  {
   ) {}
 
   canActivate(): boolean {
-    if (!this.autenticationService.getIsAuthenticated()) {
+    if (this.autenticationService.getIsAuthenticated()) {
       return true; // Permite o acesso à rota dentro da área
     } else {
-      console.log('Usuário não autenticado. Redirecionando para o login.');
       this.router.navigate(['/login']); // Redireciona para a página de login se não estiver autenticado
       return false;
     }
