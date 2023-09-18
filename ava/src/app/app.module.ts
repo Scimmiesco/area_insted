@@ -13,20 +13,32 @@ import { HomeModule } from './pages/home/home.module';
 import { register } from 'swiper/element/bundle';
 import { MenuBottomModule } from './components/menu-bottom/menu-bottom.module';
 import { LayoutsComponent } from 'app/layouts/layouts.component';
+import { appReducer } from './store/app.state';
+import { StoreModule } from '@ngrx/store';
 
 register();
 @NgModule({
   declarations: [AppComponent, LoadingComponent, LayoutsComponent],
-  imports: [CommonModule, BrowserModule, AppRoutingModule, ProfileModule, BrowserAnimationsModule, MaterialModule, HomeModule, MenuBottomModule, HttpClientModule],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: LoadingInterceptor,
-    multi: true
-  }],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    ProfileModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HomeModule,
+    MenuBottomModule,
+    HttpClientModule,
+    StoreModule.forRoot({app: appReducer}),
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {
-
-
-}
+export class AppModule {}

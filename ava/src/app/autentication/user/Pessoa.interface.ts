@@ -7,7 +7,7 @@ export interface Pessoa {
     "nrCpf": string,
     "nrRg": number,
     "nmExpedition": string,
-    "dtBirthdate": Date,
+    "dtBirthdate": string,
     "nmSex": string,
     "nmPhone1": string,
     "nmPhone2": string,

@@ -10,7 +10,8 @@ import { Icons } from 'app/shared/icons-home/mock-icons-home';
 import { IconInterface } from 'app/shared/icons-home/icons-home.model';
 import { PainelInterface } from 'app/shared/info-painel/painel-home.model';
 import { Avisos } from 'app/shared/info-painel/mock-painel-home';
-import { UserService } from 'app/autentication/user/user.service';
+import { Store } from '@ngrx/store';
+import { IappState } from 'app/store/app.state';
 register();
 
 @Component({
@@ -18,26 +19,27 @@ register();
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  constructor(
-    public dialog: MatDialog,
-    private materiasService: MateriasService,
-    public userService: UserService
-  ) {}
-
   user!: Pessoa['user'];
   materias: ResponseMateriasInterface['materias'] = [];
   icons!: IconInterface[];
   avisos!: PainelInterface[];
 
+  constructor(
+    public dialog: MatDialog,
+    private materiasService: MateriasService,
+    public store: Store<{ app: IappState }>
+  ) {}
+
   ngOnInit() {
-    this.userService.getUser().subscribe((value) => {
-      this.user = value;
-    });
-    console.log(this.user);
+    this.store
+      .select((state) => state.app.user)
+      .subscribe((user) => {
+        this.user = user;
+      });
+
     this.avisos = Avisos;
     this.icons = Icons;
     this.materias = this.materiasService.getMaterias();
-
     if (this.materias?.length === 0) {
       this.materiasService.getHttpMaterias(this.user.nrRegister).subscribe({
         next: (response) => {

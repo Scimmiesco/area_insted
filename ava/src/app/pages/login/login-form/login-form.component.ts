@@ -1,11 +1,12 @@
+import { IappState, appInitialState } from './../../../store/app.state';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AutenticationService } from 'app/autentication/autentication.service';
-import { UserService } from 'app/autentication/user/user.service';
 
 import { LoginInterface, ResponseInterface } from '../login.interface';
+import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -19,7 +20,7 @@ export class LoginFormComponent implements OnInit {
     private authService: AutenticationService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private store: Store<{ app: IappState }>
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +45,6 @@ export class LoginFormComponent implements OnInit {
     this.authService.auth(loginRequest).subscribe({
       next: (response: ResponseInterface) => {
         if (response.success) {
-          this.userService.setUser(response.user);
           this.router.navigate(['/area/home']);
         }
       },
