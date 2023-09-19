@@ -12,6 +12,7 @@ import { PainelInterface } from 'app/shared/info-painel/painel-home.model';
 import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
+import { map } from 'rxjs';
 register();
 
 @Component({
@@ -24,6 +25,8 @@ export class HomeComponent {
   icons!: IconInterface[];
   avisos!: PainelInterface[];
 
+  user$ = this.store.select('app').pipe(map((app) => app.user));
+
   constructor(
     public dialog: MatDialog,
     private materiasService: MateriasService,
@@ -32,9 +35,18 @@ export class HomeComponent {
 
   ngOnInit() {
     this.store
-      .select((state) => state.app.user)
-      .subscribe((user) => {
-        this.user = user;
+      .select('app')
+      .pipe(map((app) => app.user))
+      .subscribe({
+        next: (user) => {
+          if (user.idUser !== 0) {
+            this.store
+              .select((state) => state.app.user)
+              .subscribe((user) => {
+                this.user = user;
+              });
+          }
+        },
       });
 
     this.avisos = Avisos;
@@ -45,8 +57,6 @@ export class HomeComponent {
         next: (response) => {
           this.materiasService.setMaterias(response.materias);
           this.materias = response.materias;
-          console.log(response.materias);
-          console.log(this.materias);
         },
         error: (error) => {},
       });

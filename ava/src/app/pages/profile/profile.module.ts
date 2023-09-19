@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
-import { UserService } from 'app/autentication/user/user.service';
 import { MaterialModule } from 'app/components/material/material.module';
 import { MenuBottomModule } from 'app/components/menu-bottom/menu-bottom.module';
 
@@ -11,6 +10,6 @@ import { MenuBottomModule } from 'app/components/menu-bottom/menu-bottom.module'
   declarations: [ProfileComponent],
   imports: [CommonModule, RouterModule, MaterialModule, MenuBottomModule],
   exports: [ProfileComponent],
-  providers: [UserService, AutenticationService]
+  providers: [AutenticationService]
 })
 export class ProfileModule { }

@@ -1,4 +1,3 @@
-import { UserService } from 'app/autentication/user/user.service';
 import { Component } from '@angular/core';
 import { Pessoa } from 'app/autentication/user/Pessoa.interface';
 import { Router } from "@angular/router"

@@ -10,7 +10,6 @@ import { MessageModule } from 'app/components/message/message.module';
 import { InputRestrictionDirective } from 'app/directives/input-restriction.directive';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ForgotPasswordService } from './forgot-password-form/forgot-password.service';
-import { UserService } from 'app/autentication/user/user.service';
 import { MaterialModule } from 'app/components/material/material.module';
 import { LoadingInterceptor } from 'app/interceptors/loading.interceptor';
 import {
@@ -41,7 +40,6 @@ import { environment } from 'environments/environment';
   providers: [
     ForgotPasswordService,
     AutenticationService,
-    UserService,
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {

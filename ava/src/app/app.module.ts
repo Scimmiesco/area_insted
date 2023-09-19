@@ -15,6 +15,8 @@ import { MenuBottomModule } from './components/menu-bottom/menu-bottom.module';
 import { LayoutsComponent } from 'app/layouts/layouts.component';
 import { appReducer } from './store/app.state';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'environments/environment.development';
 
 register();
 @NgModule({
@@ -29,7 +31,10 @@ register();
     HomeModule,
     MenuBottomModule,
     HttpClientModule,
-    StoreModule.forRoot({app: appReducer}),
+    StoreModule.forRoot({ app: appReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
   ],
   providers: [
     {

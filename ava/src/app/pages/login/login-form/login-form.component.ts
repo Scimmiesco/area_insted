@@ -1,4 +1,8 @@
-import { IappState, appInitialState } from './../../../store/app.state';
+import {
+  IappState,
+  appInitialState,
+  setUser,
+} from './../../../store/app.state';
 import { Component, OnInit, Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -45,6 +49,7 @@ export class LoginFormComponent implements OnInit {
     this.authService.auth(loginRequest).subscribe({
       next: (response: ResponseInterface) => {
         if (response.success) {
+          this.store.dispatch(setUser({ payload: response.user }));
           this.router.navigate(['/area/home']);
         }
       },

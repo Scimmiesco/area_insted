@@ -1,4 +1,4 @@
-import { createAction, createReducer, on } from '@ngrx/store';
+import { createAction, createReducer, on, props } from '@ngrx/store';
 import { Pessoa } from 'app/autentication/user/Pessoa.interface';
 
 export interface IappState {
@@ -26,9 +26,15 @@ export const appInitialState: IappState = {
   },
 };
 
-export const setUser = createAction('[AppUser] SetUser');
+export const setUser = createAction(
+  '[AppUser] SetUser',
+  props<{ payload: Pessoa['user'] }>()
+);
 
 export const appReducer = createReducer(
   appInitialState,
-  on(setUser, (state, { user. }) => ({ ...state, user: user }))
+  on(setUser, (state, { payload }) => ({
+    ...state,
+    user: payload,
+  }))
 );
