@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AutenticationService } from 'app/autentication/autentication.service';
-import { IappState } from 'app/store/app.state';
+import { IappState, setToken } from 'app/store/app.state';
 import { LoginInterface, ResponseInterface } from '../login.interface';
 
 @Component({
@@ -45,7 +45,7 @@ export class LoginFormComponent implements OnInit {
     this.authService.auth(loginRequest).subscribe({
       next: (response: ResponseInterface) => {
         if (response.success) {
-          sessionStorage.setItem('user', JSON.stringify(response.user));
+          this.store.dispatch(setToken({ payload: response.token }));
           this.router.navigate(['/area/home']);
         }
       },

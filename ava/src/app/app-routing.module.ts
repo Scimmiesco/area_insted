@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from 'app/pages/profile/profile.component';
 import { HomeComponent } from 'app/pages/home/home.component';
 import { LayoutsComponent } from 'app/layouts/layouts.component';
-import { AreaAuthGuard } from './pages/area/area-auth.guard';
+import { AreaAuthGuard } from 'app/layouts/area-auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'area',
     component: LayoutsComponent,
-    canActivate:[AreaAuthGuard],
+    canActivate: [AreaAuthGuard],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeComponent },

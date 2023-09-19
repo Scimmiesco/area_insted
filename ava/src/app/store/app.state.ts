@@ -4,6 +4,7 @@ import { Pessoa } from 'app/autentication/user/Pessoa.interface';
 export interface IappState {
   isAuthenticated: number;
   user: Pessoa['user'];
+  token: string;
 }
 
 export const appInitialState: IappState = {
@@ -24,6 +25,7 @@ export const appInitialState: IappState = {
     imgFile: null,
     snTeacher: false,
   },
+  token: '',
 };
 
 export const setUser = createAction(
@@ -40,6 +42,12 @@ export const browseReload = createAction(
   '[AppUser] browseReload',
   props<{ payload: Pessoa['user'] }>()
 );
+
+export const setToken = createAction(
+  '[AppUser] setToken',
+  props<{ payload: string }>()
+);
+
 export const appReducer = createReducer(
   appInitialState,
   on(setUser, browseReload, (state, { payload }) => ({
@@ -50,5 +58,9 @@ export const appReducer = createReducer(
   on(setIsAuthenticated, (state, { payload }) => ({
     ...state,
     isAuthenticated: payload,
+  })),
+  on(setToken, (state, { payload }) => ({
+    ...state,
+    token: payload,
   }))
 );

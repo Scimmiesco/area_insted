@@ -14,5 +14,4 @@ export interface ResponseInterface {
   success: boolean;
   message: string;
   token: string;
-  user: Pessoa['user']
 }
