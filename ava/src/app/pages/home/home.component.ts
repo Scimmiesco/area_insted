@@ -34,6 +34,7 @@ export class HomeComponent {
   ) {}
 
   ngOnInit() {
+
     this.store
       .select('app')
       .pipe(map((app) => app.user))

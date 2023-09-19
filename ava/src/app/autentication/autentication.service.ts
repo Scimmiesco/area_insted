@@ -1,7 +1,7 @@
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import {
   LoginInterface,
   ResponseInterface,
@@ -23,13 +23,11 @@ export class AutenticationService {
     };
     const loginUrl = `${this.apiUrl}user/auth`;
 
-    // Fazer a solicitação de autenticação
     return this.http.post<ResponseInterface>(`${loginUrl}`, json).pipe(
       map((response: ResponseInterface) => {
-        // Verificar se a autenticação foi bem-sucedida
         if (response.success) {
-          sessionStorage.setItem(this.sessionStorageKey, 'true');
-         }
+          sessionStorage.setItem(this.sessionStorageKey, '1');
+        }
         return response;
       })
     );
@@ -37,6 +35,6 @@ export class AutenticationService {
 
   getIsAuthenticated(): boolean {
     const value = sessionStorage.getItem(this.sessionStorageKey);
-    return value === 'true'; // Converte a string armazenada de volta em booleano
+    return value === '1'; // Converte a string armazenada de volta em booleano
   }
 }

@@ -2,12 +2,12 @@ import { createAction, createReducer, on, props } from '@ngrx/store';
 import { Pessoa } from 'app/autentication/user/Pessoa.interface';
 
 export interface IappState {
-  isAuthenticated: boolean;
+  isAuthenticated: number;
   user: Pessoa['user'];
 }
 
 export const appInitialState: IappState = {
-  isAuthenticated: false,
+  isAuthenticated: 0,
   user: {
     idUser: 0,
     idAddress: 0,
@@ -31,10 +31,24 @@ export const setUser = createAction(
   props<{ payload: Pessoa['user'] }>()
 );
 
+export const setIsAuthenticated = createAction(
+  '[AppUser] setIsAuthenticated',
+  props<{ payload: number }>()
+);
+
+export const browseReload = createAction(
+  '[AppUser] browseReload',
+  props<{ payload: Pessoa['user'] }>()
+);
 export const appReducer = createReducer(
   appInitialState,
-  on(setUser, (state, { payload }) => ({
+  on(setUser, browseReload, (state, { payload }) => ({
     ...state,
     user: payload,
+    error: null,
+  })),
+  on(setIsAuthenticated, (state, { payload }) => ({
+    ...state,
+    isAuthenticated: payload,
   }))
 );

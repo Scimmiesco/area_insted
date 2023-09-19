@@ -31,11 +31,15 @@
         <div
           class="bg-green_insted text-sm text-center py-1 px-2 rounded-2xl w-fit text-white"
         >
-          <p class="font-semibold m-0 text-white">RA - {{ user.nrRegister }}</p>
+          <p class="font-semibold m-0 text-white">
+            RA - {{ (user$ | async)?.nrRegister }}
+          </p>
         </div>
-        <h2 class="text-xl font-bold pr-2 text-center">
-          {{ user.nmUser.split(" ")[0] }}
-          {{ user.nmUser.split(" ")[user.nmUser.split(" ").length - 1] }}
+        <h2
+          *ngIf="user$ | async as user"
+          class="text-xl font-bold pr-2 text-center"
+        > 
+          {{ user.nmUser.split(" ")[0] }}  {{ user.nmUser.split(" ").slice(-1) }}
         </h2>
 
         <p class="text-md">Cursando</p>
@@ -70,7 +74,7 @@
           <p
             class="flex justify-center items-center text-white font-semibold py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
           >
-            {{ user.nmUser }}
+            {{ (user$ | async)?.nmUser }}
           </p>
         </div>
         <div class="flex flex-row justify-start items-center">
@@ -78,7 +82,7 @@
           <p
             class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
           >
-            {{ user.nmEmail }}
+            {{ (user$ | async)?.nmEmail }}
           </p>
         </div>
         <div class="flex flex-col">
@@ -87,12 +91,12 @@
             <div
               class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted"
             >
-              <p class="text-white m-0">{{ user.nmPhone1 }}</p>
+              <p class="text-white m-0">{{ (user$ | async)?.nmPhone1 }}</p>
             </div>
             <div
               class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted"
             >
-              <p class="text-white m-0">{{ user.nmPhone2 }}</p>
+              <p class="text-white m-0">{{ (user$ | async)?.nmPhone2 }}</p>
             </div>
           </div>
         </div>
@@ -106,7 +110,7 @@
             <p
               class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
             >
-              {{ user.nrCpf }}
+              {{ (user$ | async)?.nrCpf }}
             </p>
           </div>
           <div class="flex flex-row justify-start items-center">
@@ -114,7 +118,7 @@
             <p
               class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
             >
-              {{ user.dtBirthdate | date : "dd/MM/yyyy" }}
+              {{ (user$ | async)?.dtBirthdate | date : "dd/MM/yyyy" }}
             </p>
           </div>
         </mat-expansion-panel>
