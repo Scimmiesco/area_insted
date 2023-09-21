@@ -47,7 +47,10 @@ export const setToken = createAction(
   '[AppUser] setToken',
   props<{ payload: string }>()
 );
-
+export const browseReloadToken = createAction(
+  '[AppUser] setToken',
+  props<{ payload: string }>()
+);
 export const appReducer = createReducer(
   appInitialState,
   on(setUser, browseReload, (state, { payload }) => ({
@@ -59,7 +62,7 @@ export const appReducer = createReducer(
     ...state,
     isAuthenticated: payload,
   })),
-  on(setToken, (state, { payload }) => ({
+  on(setToken, browseReloadToken, (state, { payload }) => ({
     ...state,
     token: payload,
   }))

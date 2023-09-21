@@ -1,3 +1,4 @@
+import { TokenService } from 'app/services/token.service';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -20,7 +21,7 @@ export class LoginFormComponent implements OnInit {
     private authService: AutenticationService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private store: Store<{ app: IappState }>
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +46,8 @@ export class LoginFormComponent implements OnInit {
     this.authService.auth(loginRequest).subscribe({
       next: (response: ResponseInterface) => {
         if (response.success) {
-          this.store.dispatch(setToken({ payload: response.token }));
+          console.log('Passando para o save token:',response.token)
+          this.tokenService.saveToken(response.token);
           this.router.navigate(['/area/home']);
         }
       },

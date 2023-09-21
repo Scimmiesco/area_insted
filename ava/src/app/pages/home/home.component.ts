@@ -13,6 +13,7 @@ import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
 import { map } from 'rxjs';
+import { layoutService } from 'app/layouts/layout.service';
 register();
 
 @Component({
@@ -20,41 +21,23 @@ register();
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  user!: Pessoa['user'];
   materias: ResponseMateriasInterface['materias'] = [];
   icons!: IconInterface[];
   avisos!: PainelInterface[];
 
-  user$ = this.store.select('app').pipe(map((app) => app.user));
-
   constructor(
     public dialog: MatDialog,
     private materiasService: MateriasService,
-    public store: Store<{ app: IappState }>
+    public store: Store<{ app: IappState }>,
+    private layoutService: layoutService
   ) {}
 
   ngOnInit() {
-
-    this.store
-      .select('app')
-      .pipe(map((app) => app.user))
-      .subscribe({
-        next: (user) => {
-          if (user.idUser !== 0) {
-            this.store
-              .select((state) => state.app.user)
-              .subscribe((user) => {
-                this.user = user;
-              });
-          }
-        },
-      });
-
     this.avisos = Avisos;
     this.icons = Icons;
-    this.materias = this.materiasService.getMaterias();
+
     if (this.materias?.length === 0) {
-      this.materiasService.getHttpMaterias(this.user.nrRegister).subscribe({
+      this.materiasService.getHttpMaterias(this.layoutService.user.nrRegister).subscribe({
         next: (response) => {
           this.materiasService.setMaterias(response.materias);
           this.materias = response.materias;

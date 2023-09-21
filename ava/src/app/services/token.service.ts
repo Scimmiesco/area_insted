@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IappState } from 'app/store/app.state';
+import { ResponseInterface } from 'app/pages/login/login.interface';
+import { IappState, setToken } from 'app/store/app.state';
 import jwtDecode from 'jwt-decode';
 import { map } from 'rxjs';
 
@@ -8,25 +9,64 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class TokenService {
-  tokenStore!: string;
-  decodeToken!: any;
+  private tokenStore = '' as string;
 
-  constructor(private store: Store<{ app: IappState }>) {
-    this.store.select('app').pipe(
-      map((e) => {
-        this.tokenStore = e.token;
-      })
-    );
+  constructor(private store: Store<{ app: IappState }>) {}
 
-    this.decodeToken = jwtDecode(this.tokenStore);
+  getToken(): string {
+    if (this.isTokenValid() && this.tokenIsNotEmpty()) {
+      return this.tokenStore;
+    } else {
+      return '';
+    }
   }
 
-  getDataFromToken(dataType : string) {
-    let dataFromToken : any;
-    switch(dataType){
-case 'ra'
-    dataFromToken = this.decodeToken.unique_name;
-    break;
-  }}
-  return dataFromToken
+  saveToken(token: ResponseInterface['token']) {
+    console.log('SaveToken:', token);
+    this.setToken(token);
+    this.store.dispatch(setToken({ payload: token }));
+
+    this.setTokenOnLocalStorage();
+  }
+
+  setToken(token: string) {
+    this.tokenStore = token;
+  }
+
+  setTokenOnLocalStorage() {
+    if (this.isTokenValid()) {
+      localStorage.setItem('setTokenOnLocalStorage', this.tokenStore);
+    }
+  }
+
+  getDataFromToken(dataType: string) {
+    let dataFromToken: any;
+    let expDateToken: any;
+    let emailFromToken: any;
+    console.log('getDataFromToken : ' + dataType);
+    let decodeToken = jwtDecode(this.tokenStore) as any;
+
+    if (this.tokenStore !== '') {
+      switch (dataType) {
+        case 'ra':
+          return (dataFromToken = decodeToken.unique_name);
+        case 'expDate':
+          return (expDateToken = decodeToken.exp);
+        case 'email':
+          return (emailFromToken = decodeToken.email);
+      }
+    }
+  }
+
+  isTokenValid() {
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+    return (
+      this.tokenStore !== '' &&
+      this.getDataFromToken('expDate') > currentTimestamp
+    );
+  }
+
+  tokenIsNotEmpty() {
+    return this.tokenStore != '';
+  }
 }
