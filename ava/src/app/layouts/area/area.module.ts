@@ -10,4 +10,4 @@ import { MaterialModule } from 'app/components/material/material.module';
     CommonModule, MaterialModule
   ]
 })
-export class LayoutsModule { }
+export class AreaModule { }

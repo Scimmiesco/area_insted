@@ -1,5 +1,5 @@
 import { createAction, createReducer, on, props } from '@ngrx/store';
-import { Pessoa } from 'app/autentication/user/Pessoa.interface';
+import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 
 export interface IappState {
   isAuthenticated: number;

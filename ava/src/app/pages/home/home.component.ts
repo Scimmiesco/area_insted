@@ -1,11 +1,12 @@
+import { AreaService } from 'app/services/area.service';
 import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
 import { HorarioDialogComponent } from 'app/components/modais/horario/horario.component';
 import { MateriasService } from 'app/services/materias.service';
-import { Pessoa } from 'app/autentication/user/Pessoa.interface';
-import { ResponseMateriasInterface } from './home.interface';
+import { Pessoa } from 'app/Interfaces/Pessoa.interface';
+import { ResponseMateriasInterface } from '../../Interfaces/home.interface';
 import { Icons } from 'app/shared/icons-home/mock-icons-home';
 import { IconInterface } from 'app/shared/icons-home/icons-home.model';
 import { PainelInterface } from 'app/shared/info-painel/painel-home.model';
@@ -13,7 +14,6 @@ import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
 import { map } from 'rxjs';
-import { layoutService } from 'app/layouts/layout.service';
 register();
 
 @Component({
@@ -29,7 +29,7 @@ export class HomeComponent {
     public dialog: MatDialog,
     private materiasService: MateriasService,
     public store: Store<{ app: IappState }>,
-    private layoutService: layoutService
+    private areaService: AreaService
   ) {}
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class HomeComponent {
     this.icons = Icons;
 
     if (this.materias?.length === 0) {
-      this.materiasService.getHttpMaterias(this.layoutService.user.nrRegister).subscribe({
+      this.materiasService.getHttpMaterias(this.areaService.user.nrRegister).subscribe({
         next: (response) => {
           this.materiasService.setMaterias(response.materias);
           this.materias = response.materias;

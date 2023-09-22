@@ -3,12 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { IappState } from 'app/store/app.state';
 import { Store } from '@ngrx/store';
 import { UserService } from 'app/services/user.service';
-import { Pessoa } from 'app/autentication/user/Pessoa.interface';
+import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class layoutService {
+export class AreaService {
   constructor(
     private userService: UserService,
     private http: HttpClient,

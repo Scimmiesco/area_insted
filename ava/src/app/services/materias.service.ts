@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseMateriasInterface } from 'app/pages/home/home.interface';
+import { ResponseMateriasInterface } from 'app/Interfaces/home.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({

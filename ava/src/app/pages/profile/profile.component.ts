@@ -1,6 +1,6 @@
 import { IappState } from 'app/store/app.state';
 import { Component } from '@angular/core';
-import { Pessoa } from 'app/autentication/user/Pessoa.interface';
+import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';

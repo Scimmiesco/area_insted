@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AutenticationService } from 'app/autentication/autentication.service';
+import { AutenticationService } from 'app/services/autentication.service';
 import { IappState, setToken } from 'app/store/app.state';
 import { LoginInterface, ResponseInterface } from '../login.interface';
 

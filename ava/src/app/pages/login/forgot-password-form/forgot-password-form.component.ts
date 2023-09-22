@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CustomValidations } from 'app/validators.component';
 import { catchError, throwError } from 'rxjs';
-import { ForgotPasswordService } from './forgot-password.service';
+import { ForgotPasswordService } from '../../../services/forgot-password.service';
 @Component({
   selector: 'app-forgot-password-form',
   templateUrl: './forgot-password-form.component.html',

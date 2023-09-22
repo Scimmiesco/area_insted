@@ -1,4 +1,4 @@
-import { Pessoa } from './autentication/user/Pessoa.interface';
+import { Pessoa } from './Pessoa.interface';
 
 export interface userResponse {
   success: boolean;

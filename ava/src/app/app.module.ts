@@ -12,7 +12,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { HomeModule } from './pages/home/home.module';
 import { register } from 'swiper/element/bundle';
 import { MenuBottomModule } from './components/menu-bottom/menu-bottom.module';
-import { LayoutsComponent } from 'app/layouts/layouts.component';
+import { AreaComponent } from 'app/layouts/area/area.component';
 import { appReducer } from './store/app.state';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -20,7 +20,7 @@ import { environment } from 'environments/environment.development';
 
 register();
 @NgModule({
-  declarations: [AppComponent, LoadingComponent, LayoutsComponent],
+  declarations: [AppComponent, LoadingComponent, AreaComponent],
   imports: [
     CommonModule,
     BrowserModule,

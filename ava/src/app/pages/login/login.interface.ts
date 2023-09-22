@@ -1,4 +1,4 @@
-import { Pessoa } from "app/autentication/user/Pessoa.interface";
+import { Pessoa } from "app/Interfaces/Pessoa.interface";
 
 export interface LoginInterface {
   login: {

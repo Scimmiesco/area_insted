@@ -3,26 +3,26 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IappState, browseReloadToken, setUser } from 'app/store/app.state';
 import { TokenService } from 'app/services/token.service';
-import { layoutService } from './layout.service';
+import { AreaService } from 'app/services/area.service';
 
 @Component({
-  selector: 'app-layouts',
-  templateUrl: './layouts.component.html',
+  selector: 'app-area',
+  templateUrl: './area.component.html',
 })
-export class LayoutsComponent {
+export class AreaComponent {
   tokenSession = localStorage.getItem('token') || '';
 
   constructor(
     store: Store<{ app: IappState }>,
     tokenservice: TokenService,
     userService: UserService,
-    layoutService: layoutService
+    areaService: AreaService
   ) {
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
     userService.getUser().subscribe({
       next: (response) => {
         if (response.success) console.log(response.message);
-        layoutService.user = response.user;
+        areaService.user = response.user;
       },
       error: (error) => {
         if (error.status === 404) {
@@ -37,6 +37,6 @@ export class LayoutsComponent {
       },
     });
 
-    store.dispatch(setUser({ payload: layoutService.user }));
+    store.dispatch(setUser({ payload: areaService.user }));
   }
 }

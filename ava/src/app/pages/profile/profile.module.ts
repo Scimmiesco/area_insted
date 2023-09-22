@@ -1,4 +1,4 @@
-import { AutenticationService } from 'app/autentication/autentication.service';
+import { AutenticationService } from 'app/services/autentication.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';

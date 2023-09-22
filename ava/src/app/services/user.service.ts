@@ -2,10 +2,10 @@ import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { Pessoa } from 'app/autentication/user/Pessoa.interface';
+import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 import { IappState } from 'app/store/app.state';
 import { Store } from '@ngrx/store';
-import { userResponse } from 'app/userInterface';
+import { userResponse } from 'app/Interfaces/user.Interface';
 
 @Injectable({
   providedIn: 'root',
