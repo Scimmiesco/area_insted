@@ -6,7 +6,7 @@ export interface LoginInterface {
     email?: string;
     cpf?: string;
   }
-  password: string;
+  passwordHashed: string;
 }
 
 export interface ResponseInterface {

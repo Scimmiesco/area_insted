@@ -19,7 +19,7 @@ export class AutenticationService {
   auth(loginRequest: LoginInterface): Observable<ResponseInterface> {
     const json = {
       login: loginRequest.login as string,
-      password: loginRequest.password as string,
+      password: loginRequest.passwordHashed as string,
     };
     const loginUrl = `${this.apiUrl}user/auth`;
 

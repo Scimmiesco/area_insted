@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { AutenticationService } from 'app/services/autentication.service';
 import { IappState, setToken } from 'app/store/app.state';
 import { LoginInterface, ResponseInterface } from '../login.interface';
-
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -34,11 +34,15 @@ export class LoginFormComponent implements OnInit {
 
   Login() {
     if (this.loginForm.valid && this.loginForm.get('recaptcha')?.value) {
-      const loginRequest = {
-        login: this.loginForm.get('ra')?.value,
-        password: this.loginForm.get('password')?.value,
+      let password: string = this.loginForm.get('password')?.value;
+      let passwordHashed: string = CryptoJS.SHA512(password).toString();
+
+      const loginRequest: LoginInterface = {
+        login: this.loginForm.get('ra')?.value.toString(),
+        passwordHashed,
       };
       this.authentication(loginRequest);
+      console.log(loginRequest.passwordHashed);
     }
   }
 
@@ -46,7 +50,7 @@ export class LoginFormComponent implements OnInit {
     this.authService.auth(loginRequest).subscribe({
       next: (response: ResponseInterface) => {
         if (response.success) {
-          console.log('Passando para o save token:',response.token)
+          console.log('Passando para o save token:', response.token);
           this.tokenService.saveToken(response.token);
           this.router.navigate(['/area/home']);
         }
