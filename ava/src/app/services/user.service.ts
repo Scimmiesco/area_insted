@@ -11,7 +11,7 @@ import { userResponse } from 'app/Interfaces/user.Interface';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'https://webapi20230927142946.azurewebsites.net/swagger/';
+  private apiUrl = 'https://webapi20230927142946.azurewebsites.net/';
 
   constructor(
     private http: HttpClient,

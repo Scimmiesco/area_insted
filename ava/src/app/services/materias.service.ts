@@ -17,7 +17,7 @@ export class MateriasService {
     this.materias = materias;
   }
 
-  private apiUrl = "https://webapi20230927142946.azurewebsites.net/swagger/user"
+  private apiUrl = "https://webapi20230927142946.azurewebsites.net/user"
 
   constructor(private http: HttpClient) { }
 
