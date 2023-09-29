@@ -11,7 +11,7 @@ export class ForgotPasswordService {
 
   getUserOnSystem(fieldType : string, recoverField: string) {
     return this.http.get(
-      `https://localhost:7003/user/recover-password/${fieldType}/${recoverField}`
+      `https://webapi20230927142946.azurewebsites.net/swagger/user/recover-password/${fieldType}/${recoverField}`
     );
   }
 
