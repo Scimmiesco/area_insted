@@ -9,20 +9,18 @@ import { Pessoa } from 'app/Interfaces/Pessoa.interface';
   providedIn: 'root',
 })
 export class AreaService {
+  user!: Pessoa['user'];
+
   constructor(
     private userService: UserService,
     private http: HttpClient,
     private store: Store<{ app: IappState }>
-  ) {}
-
-  user!: Pessoa['user'];
-
-  getUser() {
+  ) {
     this.userService.getUser().subscribe({
       next: (response) => {
         if (response.success) {
           this.store.dispatch(setUser({ payload: response.user }));
-          (this.user = response.user);
+          this.user = response.user;
         }
       },
       error: (error) => {

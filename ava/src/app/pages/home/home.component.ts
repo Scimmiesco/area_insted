@@ -31,12 +31,12 @@ export class HomeComponent {
     private materiasService: MateriasService,
     public store: Store<{ app: IappState }>,
     private token: TokenService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
+    this.materias = this.materiasService.getMaterias();
 
     if (this.materias?.length === 0) {
       this.materiasService
@@ -44,7 +44,6 @@ export class HomeComponent {
         .subscribe({
           next: (response) => {
             this.materiasService.setMaterias(response.materias);
-            this.materias = response.materias;
           },
           error: (error) => {},
         });
