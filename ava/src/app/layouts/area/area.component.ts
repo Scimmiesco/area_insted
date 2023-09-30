@@ -19,6 +19,7 @@ export class AreaComponent {
     areaService: AreaService
   ) {
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
+
     userService.getUser().subscribe({
       next: (response) => {
         if (response.success) console.log(response.message);

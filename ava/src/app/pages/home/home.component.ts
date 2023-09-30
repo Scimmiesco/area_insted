@@ -1,11 +1,10 @@
 import { AreaService } from 'app/services/area.service';
 import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
 import { HorarioDialogComponent } from 'app/components/modais/horario/horario.component';
 import { MateriasService } from 'app/services/materias.service';
-import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 import { ResponseMateriasInterface } from '../../Interfaces/home.interface';
 import { Icons } from 'app/shared/icons-home/mock-icons-home';
 import { IconInterface } from 'app/shared/icons-home/icons-home.model';
@@ -13,7 +12,7 @@ import { PainelInterface } from 'app/shared/info-painel/painel-home.model';
 import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
-import { map } from 'rxjs';
+import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 register();
 
 @Component({
@@ -24,6 +23,7 @@ export class HomeComponent {
   materias: ResponseMateriasInterface['materias'] = [];
   icons!: IconInterface[];
   avisos!: PainelInterface[];
+  user!: Pessoa['user'];
 
   constructor(
     public dialog: MatDialog,
@@ -36,14 +36,20 @@ export class HomeComponent {
     this.avisos = Avisos;
     this.icons = Icons;
 
+    this.store.select('app').subscribe((e) => {
+      this.user = e.user;
+    });
+
     if (this.materias?.length === 0) {
-      this.materiasService.getHttpMaterias(this.areaService.user.nrRegister).subscribe({
-        next: (response) => {
-          this.materiasService.setMaterias(response.materias);
-          this.materias = response.materias;
-        },
-        error: (error) => {},
-      });
+      this.materiasService
+        .getHttpMaterias(this.user.nrRegister)
+        .subscribe({
+          next: (response) => {
+            this.materiasService.setMaterias(response.materias);
+            this.materias = response.materias;
+          },
+          error: (error) => {},
+        });
     }
   }
 

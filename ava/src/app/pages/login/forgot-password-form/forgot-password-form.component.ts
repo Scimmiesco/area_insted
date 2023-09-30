@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { catchError, throwError } from 'rxjs';
 
 import { CustomValidations } from 'app/validators.component';
-import { catchError, throwError } from 'rxjs';
-import { ForgotPasswordService } from '../../../services/forgot-password.service';
+import { ForgotPasswordService } from 'app/services/forgot-password.service';
 @Component({
   selector: 'app-forgot-password-form',
   templateUrl: './forgot-password-form.component.html',
