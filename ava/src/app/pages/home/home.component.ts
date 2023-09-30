@@ -10,9 +10,10 @@ import { Icons } from 'app/shared/icons-home/mock-icons-home';
 import { IconInterface } from 'app/shared/icons-home/icons-home.model';
 import { PainelInterface } from 'app/shared/info-painel/painel-home.model';
 import { Avisos } from 'app/shared/info-painel/mock-painel-home';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
 import { Pessoa } from 'app/Interfaces/Pessoa.interface';
+import { TokenService } from 'app/services/token.service';
 register();
 
 @Component({
@@ -29,20 +30,17 @@ export class HomeComponent {
     public dialog: MatDialog,
     private materiasService: MateriasService,
     public store: Store<{ app: IappState }>,
-    private areaService: AreaService
-  ) {}
+    private token: TokenService
+  ) {
+  }
 
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
 
-    this.store.select('app').subscribe((e) => {
-      this.user = e.user;
-    });
-
     if (this.materias?.length === 0) {
       this.materiasService
-        .getHttpMaterias(this.user.nrRegister)
+        .getHttpMaterias(this.token.getDataFromToken().unique_name)
         .subscribe({
           next: (response) => {
             this.materiasService.setMaterias(response.materias);

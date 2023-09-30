@@ -42,7 +42,7 @@ export class LoginFormComponent implements OnInit {
         passwordHashed,
       };
       this.authentication(loginRequest);
-      console.log(loginRequest.passwordHashed);
+      console.log('passwordHashed', loginRequest.passwordHashed);
     }
   }
 

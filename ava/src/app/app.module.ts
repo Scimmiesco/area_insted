@@ -16,8 +16,6 @@ import { AreaComponent } from 'app/layouts/area/area.component';
 import { appReducer } from './store/app.state';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'environments/environment.development';
-
 register();
 @NgModule({
   declarations: [AppComponent, LoadingComponent, AreaComponent],
@@ -34,6 +32,7 @@ register();
     StoreModule.forRoot({ app: appReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
+      trace: true,
     }),
   ],
   providers: [
