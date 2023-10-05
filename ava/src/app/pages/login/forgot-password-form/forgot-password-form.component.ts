@@ -67,7 +67,6 @@ export class ForgotPasswordFormComponent implements OnInit {
         )
         .subscribe({
           next: (response: object) => {
-            console.log('e-mail do usuário: ', response.toString());
           },
           error: (error: any) => {
             console.error(error);

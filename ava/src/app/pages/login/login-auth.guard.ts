@@ -9,7 +9,7 @@ export class LoginAuthGuard {
   isAuthenticated = sessionStorage.getItem('isAuthenticated') as string | null;
 
   constructor(private tokenService: TokenService, private router: Router) {
-    console.log(this.isAuthenticated);
+   
   }
 
   canActivate(): boolean {

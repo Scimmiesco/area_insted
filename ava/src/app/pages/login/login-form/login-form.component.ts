@@ -34,15 +34,16 @@ export class LoginFormComponent implements OnInit {
 
   Login() {
     if (this.loginForm.valid && this.loginForm.get('recaptcha')?.value) {
-      let password: string = this.loginForm.get('password')?.value;
-      let passwordHashed: string = CryptoJS.SHA512(password).toString();
+      let passwordHashed: string = CryptoJS.SHA512(
+        this.loginForm.get('password')?.value
+      ).toString();
 
       const loginRequest: LoginInterface = {
         login: this.loginForm.get('ra')?.value.toString(),
         passwordHashed,
       };
+      console.log('Informações passadas para o login: ', loginRequest);
       this.authentication(loginRequest);
-      console.log('passwordHashed', loginRequest.passwordHashed);
     }
   }
 
@@ -50,8 +51,8 @@ export class LoginFormComponent implements OnInit {
     this.authService.auth(loginRequest).subscribe({
       next: (response: ResponseInterface) => {
         if (response.success) {
-          console.log('Passando para o save token:', response.token);
           this.tokenService.saveToken(response.token);
+          console.log('Aqui recebemos o token: ', response.token);
           this.router.navigate(['/area/home']);
         }
       },

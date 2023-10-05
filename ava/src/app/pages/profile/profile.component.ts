@@ -24,9 +24,8 @@ export class ProfileComponent {
   }
 
   logout() {
-    sessionStorage.setItem('isAuthenticated', 'false');
     sessionStorage.clear();
-    // localStorage.removeItem(this.user.nrCpf)
-    this.router.navigate(['/']);
+    localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

@@ -23,7 +23,6 @@ export class TokenService {
   }
 
   saveToken(token: ResponseInterface['token']) {
-    console.log('SaveToken:', token);
     this.setToken(token);
     this.store.dispatch(setToken({ payload: token }));
     this.setTokenOnLocalStorage();
@@ -34,7 +33,6 @@ export class TokenService {
   }
 
   setTokenOnLocalStorage() {
-    console.log(this.isTokenValid());
     if (this.isTokenValid()) {
       localStorage.setItem('token', this.tokenStore);
     }
@@ -59,7 +57,6 @@ export class TokenService {
 
   isTokenValid() {
     const currentTimestamp = Math.floor(Date.now() / 1000);
-    console.log(this.getDataFromToken());
     return (
       this.tokenStore !== '' &&
       this.getDataFromToken().exp > currentTimestamp
