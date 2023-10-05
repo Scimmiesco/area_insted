@@ -1,3 +1,4 @@
+import { Token } from './../Interfaces/token.interface';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ResponseInterface } from 'app/pages/login/login.interface';
@@ -22,10 +23,8 @@ export class TokenService {
   }
 
   saveToken(token: ResponseInterface['token']) {
-    console.log('SaveToken:', token);
     this.setToken(token);
     this.store.dispatch(setToken({ payload: token }));
-
     this.setTokenOnLocalStorage();
   }
 
@@ -35,26 +34,24 @@ export class TokenService {
 
   setTokenOnLocalStorage() {
     if (this.isTokenValid()) {
-      localStorage.setItem('setTokenOnLocalStorage', this.tokenStore);
+      localStorage.setItem('token', this.tokenStore);
     }
   }
 
-  getDataFromToken(dataType: string) {
-    let dataFromToken: any;
-    let expDateToken: any;
-    let emailFromToken: any;
-    console.log('getDataFromToken : ' + dataType);
-    let decodeToken = jwtDecode(this.tokenStore) as any;
+  getDataFromToken(): Token {
+    let decodedToken = {
+      email: 'string',
+      exp: 0,
+      iat: 0,
+      nbf: 0,
+      unique_name: 'string',
+    } as Token;
 
-    if (this.tokenStore !== '') {
-      switch (dataType) {
-        case 'ra':
-          return (dataFromToken = decodeToken.unique_name);
-        case 'expDate':
-          return (expDateToken = decodeToken.exp);
-        case 'email':
-          return (emailFromToken = decodeToken.email);
-      }
+    try {
+      return (decodedToken = jwtDecode(this.tokenStore) as Token);
+    } catch (error) {
+      console.error('Erro ao decodificar o token:', error);
+      return decodedToken;
     }
   }
 
@@ -62,7 +59,7 @@ export class TokenService {
     const currentTimestamp = Math.floor(Date.now() / 1000);
     return (
       this.tokenStore !== '' &&
-      this.getDataFromToken('expDate') > currentTimestamp
+      this.getDataFromToken().exp > currentTimestamp
     );
   }
 

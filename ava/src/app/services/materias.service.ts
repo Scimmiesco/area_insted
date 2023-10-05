@@ -23,7 +23,6 @@ export class MateriasService {
 
   getHttpMaterias(ra: string): Observable<ResponseMateriasInterface> {
     const loginUrl = `${this.apiUrl}/GetMaterias`;
-    console.log("get materias", ra)
     return this.http.get<ResponseMateriasInterface>(loginUrl + '?ra=' + ra);
   }
 }

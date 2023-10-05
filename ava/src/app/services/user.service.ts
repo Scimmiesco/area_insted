@@ -20,9 +20,10 @@ export class UserService {
   ) {}
 
   getUser(): Observable<userResponse> {
-    let ra = this.tokenService.getDataFromToken('ra');
+    let ra = this.tokenService.getDataFromToken().unique_name;
     let urlGetUserByRA = `${this.apiUrl}user/get-user/${ra}`;
     let token = this.tokenService.getToken();
+
     const headers = new HttpHeaders({
       Authorization: `${token}`,
     });
