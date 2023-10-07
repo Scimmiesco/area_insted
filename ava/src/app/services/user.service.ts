@@ -20,7 +20,7 @@ export class UserService {
   ) { }
 
   getUser(){
-    let ra = this.tokenService.getDataFromToken('ra');
+    let ra = this.tokenService.getDataFromToken().unique_name;
     let urlGetUserByRA = `${this.apiUrl}user/get-user/${ra}`;
     let token = this.tokenService.getToken();
 

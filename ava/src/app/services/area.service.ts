@@ -17,7 +17,6 @@ export class AreaService {
     private store: Store<{ app: IappState }>
   ) { }
 
-  user!: Pessoa['user'];
 
   getUser() {
 

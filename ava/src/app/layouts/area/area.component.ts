@@ -28,12 +28,13 @@ export class AreaComponent {
   }
 
   getDados() {
+    this.getUser();
     this.getMaterias();
 
   }
   getMaterias() {
-    this.materiasService.getHttpMaterias(this.tokenService.getDataFromToken());
-    
+    this.materiasService.getHttpMaterias(this.tokenService.getDataFromToken().unique_name);
+
   }
 
   getUser() {

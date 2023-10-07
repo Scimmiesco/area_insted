@@ -10,13 +10,13 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class TokenService {
-  private tokenStore = '' as string;
+  private tokenStorage = localStorage.getItem('token') || '' as string;
 
   constructor(private store: Store<{ app: IappState }>) { }
 
   getToken(): string {
     if (this.isTokenValid() && this.tokenIsNotEmpty()) {
-      return this.tokenStore;
+      return this.tokenStorage;
     } else {
       return '';
     }
@@ -29,12 +29,12 @@ export class TokenService {
   }
 
   setToken(token: string) {
-    this.tokenStore = token;
+    this.tokenStorage = token;
   }
 
   setTokenOnLocalStorage() {
     if (this.isTokenValid()) {
-      localStorage.setItem('token', this.tokenStore);
+      localStorage.setItem('token', this.tokenStorage);
     }
   }
 
@@ -48,7 +48,7 @@ export class TokenService {
     } as Token;
 
     try {
-      return (decodedToken = jwtDecode(this.tokenStore) as Token);
+      return (decodedToken = jwtDecode(this.tokenStorage) as Token);
     } catch (error) {
       console.error('Erro ao decodificar o token:', error);
       return decodedToken;
@@ -59,15 +59,15 @@ export class TokenService {
     const currentTimestamp = Math.floor(Date.now() / 1000);
 
     console.log('chama',
-      this.tokenStore !== '' &&
-      this.getDataFromToken('expDate') > currentTimestamp)
+      this.tokenStorage !== '' &&
+      this.getDataFromToken().exp > currentTimestamp)
     return (
-      this.tokenStore !== '' &&
+      this.tokenStorage !== '' &&
       this.getDataFromToken().exp > currentTimestamp
     );
   }
 
   tokenIsNotEmpty() {
-    return this.tokenStore != '';
+    return this.tokenStorage != '';
   }
 }
