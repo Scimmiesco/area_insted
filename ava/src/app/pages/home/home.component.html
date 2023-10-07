@@ -50,6 +50,7 @@
   >
     <h2 class="text-white font-bold py-1">Matérias</h2>
     <swiper-container
+      *ngIf="materias$ | async as materias"
       class="bg-white m-0 rounded-3xl h-full py-2"
       pagination="true"
       crossFade="true"
