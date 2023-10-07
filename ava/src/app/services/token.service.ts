@@ -10,13 +10,16 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class TokenService {
-  private tokenStore = '' as string;
+  private tokenStorage = localStorage.getItem('token') || '';
 
-  constructor(private store: Store<{ app: IappState }>) {}
+  constructor(private store: Store<{ app: IappState }>) {
+    console.log(this.tokenStorage, 'tokenStorage Constructor');
+  }
 
   getToken(): string {
+    console.log('get token', this.isTokenValid() && this.tokenIsNotEmpty());
     if (this.isTokenValid() && this.tokenIsNotEmpty()) {
-      return this.tokenStore;
+      return this.tokenStorage;
     } else {
       return '';
     }
@@ -29,12 +32,12 @@ export class TokenService {
   }
 
   setToken(token: string) {
-    this.tokenStore = token;
+    this.tokenStorage = token;
   }
 
   setTokenOnLocalStorage() {
     if (this.isTokenValid()) {
-      localStorage.setItem('token', this.tokenStore);
+      localStorage.setItem('token', this.tokenStorage);
     }
   }
 
@@ -48,22 +51,27 @@ export class TokenService {
     } as Token;
 
     try {
-      return (decodedToken = jwtDecode(this.tokenStore) as Token);
+      console.log('tokenStorage no getDataFromToken', this.tokenStorage);
+      return (decodedToken = jwtDecode(this.tokenStorage) as Token);
     } catch (error) {
-      console.error('Erro ao decodificar o token:', error);
+      console.error('Erro ao decodificar o token:', error, 'e', decodedToken);
       return decodedToken;
     }
   }
 
   isTokenValid() {
     const currentTimestamp = Math.floor(Date.now() / 1000);
+
+    console.log(
+      'chama',
+      this.tokenStorage !== '' && this.getDataFromToken().exp > currentTimestamp
+    );
     return (
-      this.tokenStore !== '' &&
-      this.getDataFromToken().exp > currentTimestamp
+      this.tokenStorage !== '' && this.getDataFromToken().exp > currentTimestamp
     );
   }
 
   tokenIsNotEmpty() {
-    return this.tokenStore != '';
+    return this.tokenStorage != '';
   }
 }

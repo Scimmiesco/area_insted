@@ -19,7 +19,7 @@ export class UserService {
     private tokenService: TokenService
   ) {}
 
-  getUser(): Observable<userResponse> {
+  getUser(){
     let ra = this.tokenService.getDataFromToken().unique_name;
     let urlGetUserByRA = `${this.apiUrl}user/get-user/${ra}`;
     let token = this.tokenService.getToken();

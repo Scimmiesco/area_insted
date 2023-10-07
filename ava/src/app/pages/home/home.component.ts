@@ -12,8 +12,7 @@ import { PainelInterface } from 'app/shared/info-painel/painel-home.model';
 import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store, select } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
-import { Pessoa } from 'app/Interfaces/Pessoa.interface';
-import { TokenService } from 'app/services/token.service';
+import { Observable } from 'rxjs';
 register();
 
 @Component({
@@ -21,33 +20,22 @@ register();
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  materias: ResponseMateriasInterface['materias'] = [];
   icons!: IconInterface[];
   avisos!: PainelInterface[];
-  user!: Pessoa['user'];
+  materias$!: Observable<ResponseMateriasInterface['materias']> ;
 
   constructor(
     public dialog: MatDialog,
     private materiasService: MateriasService,
     public store: Store<{ app: IappState }>,
-    private token: TokenService
+    private areaService: AreaService
   ) {}
 
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
-    this.materias = this.materiasService.getMaterias();
+    this.materias$ = this.materiasService.getMaterias();
 
-    if (this.materias?.length === 0) {
-      this.materiasService
-        .getHttpMaterias(this.token.getDataFromToken().unique_name)
-        .subscribe({
-          next: (response) => {
-            this.materiasService.setMaterias(response.materias);
-          },
-          error: (error) => {},
-        });
-    }
   }
 
   OpenModais(iconId: number) {
