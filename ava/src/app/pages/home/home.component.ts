@@ -13,7 +13,6 @@ import { PainelInterface } from 'app/shared/info-painel/painel-home.model';
 import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
-import { map } from 'rxjs';
 register();
 
 @Component({
@@ -21,30 +20,20 @@ register();
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  materias: ResponseMateriasInterface['materias'] = [];
   icons!: IconInterface[];
   avisos!: PainelInterface[];
+  materias$ = this.materiasService.getMaterias();
 
   constructor(
     public dialog: MatDialog,
     private materiasService: MateriasService,
     public store: Store<{ app: IappState }>,
     private areaService: AreaService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
-
-    if (this.materias?.length === 0) {
-      this.materiasService.getHttpMaterias(this.areaService.user.nrRegister).subscribe({
-        next: (response) => {
-          this.materiasService.setMaterias(response.materias);
-          this.materias = response.materias;
-        },
-        error: (error) => {},
-      });
-    }
   }
 
   OpenModais(iconId: number) {

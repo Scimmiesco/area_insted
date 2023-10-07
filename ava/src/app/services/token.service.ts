@@ -11,7 +11,7 @@ import { map } from 'rxjs';
 export class TokenService {
   private tokenStore = '' as string;
 
-  constructor(private store: Store<{ app: IappState }>) {}
+  constructor(private store: Store<{ app: IappState }>) { }
 
   getToken(): string {
     if (this.isTokenValid() && this.tokenIsNotEmpty()) {
@@ -35,7 +35,7 @@ export class TokenService {
 
   setTokenOnLocalStorage() {
     if (this.isTokenValid()) {
-      localStorage.setItem('setTokenOnLocalStorage', this.tokenStore);
+      localStorage.setItem('token', this.tokenStore);
     }
   }
 
@@ -60,6 +60,10 @@ export class TokenService {
 
   isTokenValid() {
     const currentTimestamp = Math.floor(Date.now() / 1000);
+
+    console.log('chama',
+      this.tokenStore !== '' &&
+      this.getDataFromToken('expDate') > currentTimestamp)
     return (
       this.tokenStore !== '' &&
       this.getDataFromToken('expDate') > currentTimestamp
