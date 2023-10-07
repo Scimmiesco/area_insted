@@ -2,17 +2,18 @@
   class="flex justify-start flex-col items-center min-h-[100svh] bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white pb-20"
 >
   <section
-    class="bg-white my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md"
+    class=" my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md bg-white"
   >
     <div class="flex flex-row justify-around">
       <div mdbDropdown class="dropend relative aspect-square w-4/12 m-2">
         <img
           src="assets/images/perfil-padrao1.png"
           class="rounded-full aspect-square object-cover"
+          alt="teste"
         />
         <div
           mdbDropdownToggle
-          aria-expanded="false"
+          expanded="false"
           class="material-icons absolute w-4/12 bottom-0 left-0 text-white bg-green_insted aspect-square flex justify-center items-center text-3xl border-2 border-white transition-all duration-300 ease-in-out"
           [ngClass]="
             status
@@ -38,8 +39,8 @@
         <h2
           *ngIf="user$ | async as user"
           class="text-xl font-bold pr-2 text-center"
-        > 
-          {{ user.nmUser.split(" ")[0] }}  {{ user.nmUser.split(" ").slice(-1) }}
+        >
+          {{ user.nmUser.split(" ")[0] }} {{ user.nmUser.split(" ").slice(-1) }}
         </h2>
 
         <p class="text-md">Cursando</p>

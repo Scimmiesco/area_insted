@@ -23,6 +23,7 @@ export class UserService {
     let ra = this.tokenService.getDataFromToken('ra');
     let urlGetUserByRA = `${this.apiUrl}user/get-user/${ra}`;
     let token = this.tokenService.getToken();
+
     const headers = new HttpHeaders({
       Authorization: `${token}`,
     });

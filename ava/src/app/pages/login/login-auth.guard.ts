@@ -5,14 +5,18 @@ import { TokenService } from 'app/services/token.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AreaAuthGuard {
-  constructor(private tokenService: TokenService, private router: Router) {}
+export class LoginAuthGuard {
+  isAuthenticated = sessionStorage.getItem('isAuthenticated') as string | null;
+
+  constructor(private tokenService: TokenService, private router: Router) {
+   
+  }
 
   canActivate(): boolean {
-    if (sessionStorage.getItem('isAuthenticated') === '1') {
+    if (this.isAuthenticated !== '1' || null) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/area/']);
       return false;
     }
   }

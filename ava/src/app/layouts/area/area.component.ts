@@ -32,7 +32,7 @@ export class AreaComponent {
 
   }
   getMaterias() {
-    this.materiasService.getHttpMaterias(this.tokenService.getDataFromToken('ra'));
+    this.materiasService.getHttpMaterias(this.tokenService.getDataFromToken());
     
   }
 
