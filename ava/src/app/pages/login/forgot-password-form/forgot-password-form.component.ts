@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { catchError, throwError } from 'rxjs';
-
+import { MatDialog } from '@angular/material/dialog';
 import { CustomValidations } from 'app/validators.component';
 import { ForgotPasswordService } from 'app/services/forgot-password.service';
+import { ResetPasswordsService } from 'app/services/reset-password.service';
+import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/sucesso.component';
 @Component({
   selector: 'app-forgot-password-form',
   templateUrl: './forgot-password-form.component.html',
@@ -19,7 +20,8 @@ export class ForgotPasswordFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private recoverPasswordService: ForgotPasswordService
+    public dialog: MatDialog,
+    private resetPassswordService: ResetPasswordsService
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class ForgotPasswordFormComponent implements OnInit {
   }
 
   RecoverPassword() {
-    if ((this.filledInputs.length === 0)) {
+    if (this.filledInputs.length === 0) {
       return;
     }
     if (
@@ -40,8 +42,8 @@ export class ForgotPasswordFormComponent implements OnInit {
       this.forgotPasswordForm.get('recaptcha')?.value &&
       !this.moreThanOneInputFilled
     ) {
-      let recoverField: string = '';
-      let fieldType: string = '';
+      let campoRecuperacao: string = '';
+      let tipoCampoRecuperacao: string = '';
 
       const fieldMap: { [key: string]: any } = {
         ra: this.forgotPasswordForm.get('ra')?.value,
@@ -51,34 +53,40 @@ export class ForgotPasswordFormComponent implements OnInit {
 
       for (const field in fieldMap) {
         if (fieldMap[field]) {
-          recoverField = fieldMap[field];
-          fieldType = field;
+          tipoCampoRecuperacao = fieldMap[field];
+          campoRecuperacao = field;
           break;
         }
       }
-
-      this.recoverPasswordService
-        .getUserOnSystem(fieldType, recoverField)
-        .pipe(
-          catchError((error) => {
-            console.error(error);
-            return throwError(() => new Error(error));
-          })
-        )
-        .subscribe({
-          next: (response: object) => {
-          },
-          error: (error: any) => {
-            console.error(error);
-          },
-        });
+      this.enviaEmail(tipoCampoRecuperacao, campoRecuperacao);
     }
+  }
+
+  enviaEmail(tipoCampoRecuperacao: string, campoRecuperacao: string) {
+    console.log('chamei');
+    this.resetPassswordService
+      .enviaEmail(tipoCampoRecuperacao, campoRecuperacao)
+      .subscribe((response) => {
+        if (response.statusCode === 200) {
+          this.modalSucessoEnvioEmail();
+        }
+      });
+  }
+
+  modalSucessoEnvioEmail() {
+    this.dialog.open(SucessoModalComponent, {
+      data: {
+        animal: 'panda',
+      },
+      autoFocus: true,
+      closeOnNavigation: true,
+      panelClass: 'horario-modal',
+    });
   }
 
   isMoreThanOneInputFilled(e: KeyboardEvent) {
     const inputs = [this.ra, this.email, this.cpf];
     this.filledInputs = inputs.filter((input) => input && input.length > 0);
-
     this.moreThanOneInputFilled = this.filledInputs.length > 1;
   }
 }

@@ -22,14 +22,13 @@ register();
 export class HomeComponent {
   icons!: IconInterface[];
   avisos!: PainelInterface[];
-  materias$!: Observable<ResponseMateriasInterface['materias']> ;
+  materias$!: Observable<ResponseMateriasInterface['materias']>;
 
   constructor(
     public dialog: MatDialog,
     private materiasService: MateriasService,
     public store: Store<{ app: IappState }>,
-    private areaService: AreaService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.avisos = Avisos;
