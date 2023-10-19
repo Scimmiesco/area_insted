@@ -53,8 +53,8 @@ export class ForgotPasswordFormComponent implements OnInit {
 
       for (const field in fieldMap) {
         if (fieldMap[field]) {
-          tipoCampoRecuperacao = fieldMap[field];
-          campoRecuperacao = field;
+          campoRecuperacao = fieldMap[field];
+          tipoCampoRecuperacao = field;
           break;
         }
       }
