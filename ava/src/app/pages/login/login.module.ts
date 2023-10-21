@@ -26,6 +26,7 @@ import { environment } from 'environments/environment';
     LoginFormComponent,
     ForgotPasswordFormComponent,
     InputRestrictionDirective,
+    
   ],
   exports: [LoginComponent],
   imports: [

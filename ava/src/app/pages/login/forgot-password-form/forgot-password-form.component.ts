@@ -5,6 +5,7 @@ import { CustomValidations } from 'app/validators.component';
 import { ForgotPasswordService } from 'app/services/forgot-password.service';
 import { ResetPasswordsService } from 'app/services/reset-password.service';
 import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/sucesso.component';
+import { LoadingService } from 'app/services/loading.service';
 @Component({
   selector: 'app-forgot-password-form',
   templateUrl: './forgot-password-form.component.html',
@@ -21,8 +22,10 @@ export class ForgotPasswordFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private resetPassswordService: ResetPasswordsService
-  ) {}
+    private resetPassswordService: ResetPasswordsService,
+    private loadingService: LoadingService
+  ) {
+  }
 
   ngOnInit(): void {
     this.forgotPasswordForm = this.formBuilder.group({
@@ -58,6 +61,7 @@ export class ForgotPasswordFormComponent implements OnInit {
           break;
         }
       }
+      this.loadingService.show();
       this.enviaEmail(tipoCampoRecuperacao, campoRecuperacao);
     }
   }

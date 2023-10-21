@@ -15,7 +15,7 @@ const routes: Routes = [
         component: LoginFormComponent,
       },
       {
-        path: 'recuperar-senha',
+        path: 'recuperarsenha',
         component: ForgotPasswordFormComponent,
       },
     ],

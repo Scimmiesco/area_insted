@@ -5,6 +5,7 @@ import { HomeComponent } from 'app/pages/home/home.component';
 import { AreaComponent } from 'app/layouts/area/area.component';
 import { AreaAuthGuard } from 'app/layouts/area/area-auth.guard';
 import { LoginAuthGuard } from './pages/login/login-auth.guard';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -22,6 +23,13 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeComponent },
       { path: 'perfil', component: ProfileComponent },
+    ],
+  },
+  {
+    path: 'minhaconta',  
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'trocarsenha' },
+      { path: 'trocarsenha', component: ResetPasswordComponent },
     ],
   },
 ];
