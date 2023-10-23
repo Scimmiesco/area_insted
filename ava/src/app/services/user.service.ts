@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Pessoa } from 'app/Interfaces/Pessoa.interface';
-import { IappState, setUser } from 'app/store/app.state';
+import { IappState } from 'app/store/app.state';
 import { Store } from '@ngrx/store';
 import { userResponse } from 'app/Interfaces/user.Interface';
 
@@ -17,7 +17,7 @@ export class UserService {
     private http: HttpClient,
     private store: Store<{ app: IappState }>,
     private tokenService: TokenService
-  ) { }
+  ) {}
 
   getUser(){
     let ra = this.tokenService.getDataFromToken().unique_name;
@@ -29,23 +29,6 @@ export class UserService {
     });
     const options = { headers: headers };
 
-    this.http.get<userResponse>(urlGetUserByRA, options).subscribe({
-      next: (Response) => {
-        if (Response.success) {
-          this.store.dispatch(setUser({ payload: Response.user }))
-        }
-      },
-      error: (error) => {
-        if (error.status === 404) {
-          console.log('usuário não encontrado');
-        }
-        if (error.status === 401) {
-          console.log('usuário não autorizado');
-        }
-        if (error.status === 500) {
-          console.log('Erro na requisição');
-        }
-      }
-    });
+    return this.http.get<userResponse>(urlGetUserByRA, options);
   }
 }
