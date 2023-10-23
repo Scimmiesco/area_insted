@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ResetPasswordsService {
-  private url: string = 'https://localhost:7003/user';
+  private apiUrl = 'https://webapi20230927142946.azurewebsites.net/user';
   private userid: string = '';
   private token: string = '';
 
@@ -25,7 +25,7 @@ export class ResetPasswordsService {
   enviaEmail(tipo: string, param: string): Observable<emailResponse> {
     console.log('enviaEmailHttp');
     return this.http.get<emailResponse>(
-      `${this.url}/recoverPass?tipo=${tipo}&param=${param}`
+      `${this.apiUrl}/recoverPass?tipo=${tipo}&param=${param}`
     );
   }
   trocaSenha(
@@ -46,7 +46,7 @@ export class ResetPasswordsService {
     };
 
     return this.http.post<emailResponse>(
-      `${this.url}/trocasenha`,
+      `${this.apiUrl}/trocasenha`,
       requestBody,
       httpOptions
     );
