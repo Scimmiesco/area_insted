@@ -28,8 +28,8 @@ const routes: Routes = [
   {
     path: 'minhaconta',  
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'trocarsenha' },
-      { path: 'trocarsenha', component: ResetPasswordComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'trocasenha' },
+      { path: 'trocasenha', component: ResetPasswordComponent },
     ],
   },
 ];

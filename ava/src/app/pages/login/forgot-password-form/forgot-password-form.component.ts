@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomValidations } from 'app/validators.component';
+import { CustomValidations } from 'app/validators/customValidator.validator';
 import { ForgotPasswordService } from 'app/services/forgot-password.service';
 import { ResetPasswordsService } from 'app/services/reset-password.service';
 import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/sucesso.component';
@@ -71,7 +71,7 @@ export class ForgotPasswordFormComponent implements OnInit {
     this.resetPassswordService
       .enviaEmail(tipoCampoRecuperacao, campoRecuperacao)
       .subscribe((response) => {
-        if (response.statusCode === 200) {
+        if (response.StatusCode === 200) {
           this.modalSucessoEnvioEmail();
         }
       });

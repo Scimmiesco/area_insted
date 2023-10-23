@@ -1,14 +1,24 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Input,
+} from '@angular/core';
 
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../../calendar/calendar.component';
+import { modalSucessoI } from 'app/Interfaces/sucesso.interface';
 
 @Component({
   selector: 'app-sucesso',
   templateUrl: './sucesso.component.html',
-  styleUrls: ['./sucesso.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+@Input()
 export class SucessoModalComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  message = '' as string;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: modalSucessoI) {
+    this.message = data.message;
+    console.log('this.message: ', this.message, 'data.message:', data.message);
+  }
 }

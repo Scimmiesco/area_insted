@@ -1,9 +1,8 @@
 <div
-  class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl"
-  style="max-width: 90vw"
+  class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl shadow-2xl "
 >
   <div
-    class="mat-dialog-container min-h-fit w-[75svw] rounded-3xl bg-gradient-to-t from-green_insted_transp via-green_insted_transp to-white"
+    class="mat-dialog-container min-h-fit rounded-3xl min-w-[75vw] max-w-[90vw] shadow-2xl shadow-white_transp bg-white_transp border border-white"
   >
     <div class="mat-dialog-content h-full w-full flex flex-col justify-start">
       <div
@@ -14,8 +13,8 @@
       <div
         class="mat-dialog-description h-full flex flex-col justify-between py-3 px-1 gap-2"
       >
-        <p class="text-center">
-          O e-mail com o link para a alteração de senha foi enviado com êxito.
+        <p class="text-lg text-center">
+          {{ message }}
         </p>
       </div>
     </div>
