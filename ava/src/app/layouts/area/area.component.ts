@@ -21,7 +21,9 @@ export class AreaComponent {
     private tokenService: TokenService,
     private userService: UserService,
     private areaService: AreaService,
-    private materiasService: MateriasService
+    private materiasService: MateriasService,
+
+    public store: Store<{ app: IappState }>,
   ) {
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
     this.getDados();
