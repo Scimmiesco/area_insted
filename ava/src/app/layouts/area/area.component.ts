@@ -19,8 +19,6 @@ export class AreaComponent {
     private userService: UserService,
     private areaService: AreaService,
     private materiasService: MateriasService,
-
-    public store: Store<{ app: IappState }>,
   ) {
     console.log('tokenSession AreaInsted', this.tokenSession);
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
