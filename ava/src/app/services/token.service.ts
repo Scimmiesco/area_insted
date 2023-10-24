@@ -41,7 +41,8 @@ export class TokenService {
     }
   }
 
-  getDataFromToken(): Token {
+  getDataFromToken(token?: string): Token {
+    const tokenToCheck = token || this.tokenStorage; // Use o token passado por parâmetro, se disponível, senão use o token no armazenamento.
     let decodedToken = {
       email: 'string',
       exp: 0,
@@ -51,24 +52,21 @@ export class TokenService {
     } as Token;
 
     try {
-      console.log('tokenStorage no getDataFromToken', this.tokenStorage);
-      return (decodedToken = jwtDecode(this.tokenStorage) as Token);
+      return (decodedToken = jwtDecode(tokenToCheck) as Token);
     } catch (error) {
-      console.error('Erro ao decodificar o token:', error, 'e', decodedToken);
       return decodedToken;
     }
   }
 
-  isTokenValid() {
+  isTokenValid(token?: string) {
     const currentTimestamp = Math.floor(Date.now() / 1000);
-
-    console.log(
-      'chama',
-      this.tokenStorage !== '' && this.getDataFromToken().exp > currentTimestamp
-    );
-    return (
-      this.tokenStorage !== '' && this.getDataFromToken().exp > currentTimestamp
-    );
+    const tokenToCheck = token || this.tokenStorage; // Use o token passado por parâmetro, se disponível, senão use o token no armazenamento.
+   
+    if (tokenToCheck !== '') {
+      return this.getDataFromToken(tokenToCheck).exp > currentTimestamp;
+    } else {
+      return false;
+    }
   }
 
   tokenIsNotEmpty() {
