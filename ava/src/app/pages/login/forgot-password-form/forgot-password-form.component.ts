@@ -24,8 +24,7 @@ export class ForgotPasswordFormComponent implements OnInit {
     public dialog: MatDialog,
     private resetPassswordService: ResetPasswordsService,
     private loadingService: LoadingService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.forgotPasswordForm = this.formBuilder.group({
@@ -67,20 +66,25 @@ export class ForgotPasswordFormComponent implements OnInit {
   }
 
   enviaEmail(tipoCampoRecuperacao: string, campoRecuperacao: string) {
-    console.log('chamei');
     this.resetPassswordService
       .enviaEmail(tipoCampoRecuperacao, campoRecuperacao)
-      .subscribe((response) => {
-        if (response.StatusCode === 200) {
-          this.modalSucessoEnvioEmail();
+      .subscribe(
+        (response) => {
+          if (response.StatusCode === 200) {
+            this.modalSucessoEnvioEmail(response.Message);
+          }
+        },
+        (error) => {
+          if (error.statusCode === 404)
+            this.modalSucessoEnvioEmail('Usuário não encontrado.');
         }
-      });
+      );
   }
 
-  modalSucessoEnvioEmail() {
+  modalSucessoEnvioEmail(message: string) {
     this.dialog.open(SucessoModalComponent, {
       data: {
-        animal: 'panda',
+        message: message,
       },
       autoFocus: true,
       closeOnNavigation: true,

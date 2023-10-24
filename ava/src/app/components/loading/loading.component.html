@@ -1,6 +1,6 @@
 <div
-  *ngIf="(this.loadingService.loading$ | async) === true"
-  class="fixed flex top-0 left-0 h-full w-full justify-center items-center bg-green_insted_transp opacity-40 z-50"
+  *ngIf="this.loadingService.loading$ | async"
+  class="fixed flex top-0 left-0 h-full w-full justify-center items-center bg-green_insted_fundo_modal z-50"
 >
-  <h1>TESTANDO LOADING</h1>
+  <mat-spinner></mat-spinner>
 </div>

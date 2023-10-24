@@ -23,7 +23,6 @@ export class ResetPasswordsService {
   }
 
   enviaEmail(tipo: string, param: string): Observable<emailResponse> {
-    console.log('enviaEmailHttp');
     return this.http.get<emailResponse>(
       `${this.url}/recoverPass?tipo=${tipo}&param=${param}`
     );
