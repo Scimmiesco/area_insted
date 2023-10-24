@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomValidations } from 'app/validators/customValidator.validator';
+import { CustomValidations } from 'app/validators/custom.validator';
 import { ForgotPasswordService } from 'app/services/forgot-password.service';
 import { ResetPasswordsService } from 'app/services/reset-password.service';
 import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/sucesso.component';

@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/sucesso.component';
 import { LoadingService } from 'app/services/loading.service';
 import { ResetPasswordsService } from 'app/services/reset-password.service';
-import { CustomValidations } from 'app/validators/customValidator.validator';
+import { CustomValidations } from 'app/validators/custom.validator';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
@@ -24,23 +24,34 @@ export class ResetPasswordComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    this.resetPasswordForm = this.formBuilder.group(
-      {
-        senhaNova: ['', [Validators.minLength(8), Validators.maxLength(16)]],
-        confirmaSenhaNova: [
-          '',
-          [Validators.minLength(8), Validators.maxLength(16)],
-        ],
-      },
-      {
-        validators: CustomValidations.matchInputs(
-          'senhaNova',
-          'confirmaSenhaNova'
-        ),
-      }
-    );
-  }
+    ngOnInit(): void {
+      this.resetPasswordForm = this.formBuilder.group(
+        {
+          senhaNova: [
+            '',
+            [
+              Validators.required,
+              Validators.minLength(8),
+              Validators.maxLength(16),
+            ],
+          ],
+          confirmaSenhaNova: [
+            '',
+            [
+              Validators.required,
+              Validators.minLength(8),
+              Validators.maxLength(16),
+            ],
+          ],
+        },
+        {
+          validators: CustomValidations.matchInputs(
+            'senhaNova',
+            'confirmaSenhaNova'
+          ),
+        }
+      );
+    }
   onSubmit() {
     if (this.resetPasswordForm.valid) {
       this.alteraSenha();
