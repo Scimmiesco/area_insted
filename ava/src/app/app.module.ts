@@ -18,17 +18,14 @@ import { appReducer } from './store/app.state';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ResetPasswordModule } from './pages/reset-password/reset-password.module';
 register();
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoadingComponent,
-    AreaComponent,
-    ResetPasswordComponent,
-  ],
+  declarations: [AppComponent, LoadingComponent, AreaComponent],
   imports: [
     CommonModule,
     BrowserModule,
+    ResetPasswordModule,
     AppRoutingModule,
     ProfileModule,
     BrowserAnimationsModule,

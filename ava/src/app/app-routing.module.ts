@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from 'app/pages/profile/profile.component';
 import { HomeComponent } from 'app/pages/home/home.component';
 import { AreaComponent } from 'app/layouts/area/area.component';
-import { AreaAuthGuard } from 'app/layouts/area/area-auth.guard';
-import { LoginAuthGuard } from './pages/login/login-auth.guard';
+import { AreaAuthGuard } from 'app/guards/area-auth.guard';
+import { LoginAuthGuard } from './guards/login-auth.guard';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ResetPasswordAuthGuard } from './guards/reset-password.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -26,7 +27,9 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'minhaconta',  
+    path: 'minhaconta',
+    
+    canActivate: [ResetPasswordAuthGuard],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'trocasenha' },
       { path: 'trocasenha', component: ResetPasswordComponent },

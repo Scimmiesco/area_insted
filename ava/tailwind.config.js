@@ -17,6 +17,7 @@ module.exports = {
       okay_button: "rgb(22, 129, 193)",
       green_insted: "#1da9ad",
       green_insted_transp: "rgba(29, 169, 173, 0.651)",
+      green_insted_fundo_modal: "rgba(3, 110, 114, 0.384)",
       white: "rgb(244, 242, 255)",
       white_transp: "rgba(244, 242, 255,0.85)",
       invalid_text: "rgba(210,70,70,0.85)",

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/sucesso.component';
 import { LoadingService } from 'app/services/loading.service';
 import { ResetPasswordsService } from 'app/services/reset-password.service';
-import { CustomValidations } from 'app/validators/customValidator.validator';
+import { TokenService } from 'app/services/token.service';
+import { CustomValidations } from 'app/validators/custom.validator';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
@@ -21,16 +23,29 @@ export class ResetPasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loadingService: LoadingService,
     private resetPasswordsService: ResetPasswordsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private activatedRoute: ActivatedRoute,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit(): void {
     this.resetPasswordForm = this.formBuilder.group(
       {
-        senhaNova: ['', [Validators.minLength(8), Validators.maxLength(16)]],
+        senhaNova: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(16),
+          ],
+        ],
         confirmaSenhaNova: [
           '',
-          [Validators.minLength(8), Validators.maxLength(16)],
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(16),
+          ],
         ],
       },
       {
@@ -41,10 +56,21 @@ export class ResetPasswordComponent implements OnInit {
       }
     );
   }
+
   onSubmit() {
-    if (this.resetPasswordForm.valid) {
+    console.log(this.validaTokenUrl())
+    if (this.resetPasswordForm.valid && this.validaTokenUrl()) {
       this.alteraSenha();
     }
+  }
+
+  validaTokenUrl(): boolean {
+    let token = '' as string;
+
+    this.activatedRoute.queryParams.subscribe((params) => {
+      token = params['token'];
+    });
+    return this.tokenService.isTokenValid(token) ? true : false;
   }
 
   alteraSenha() {

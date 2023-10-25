@@ -13,6 +13,11 @@ input[type="password"]::-webkit-contacts-auto-fill-button {
   --swiper-pagination-bottom: 0px;
   --mdc-dialog-container-color: #063b3d;
 }
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: rgba(244, 242, 255, 0.85) !important;
+}
+
+
 * {
   font-family: "Lexend Deca", sans-serif;
   color: #063b3d;
