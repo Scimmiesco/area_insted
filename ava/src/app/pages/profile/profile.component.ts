@@ -17,11 +17,14 @@ export class ProfileComponent {
   constructor(
     private router: Router,
     private store: Store<{ app: IappState }>
-  ) {}
-
-  ngOnInit() {
-    this.user$ = this.store.select('app').pipe(map((e) => e.user));
+  ) {
+    this.user$ = this.store.select(
+      (state: { app: IappState }) => state.app.user
+    );
+    console.log(this.user$.subscribe((val) => console.log(val)));
   }
+
+  ngOnInit() {}
 
   logout() {
     sessionStorage.clear();

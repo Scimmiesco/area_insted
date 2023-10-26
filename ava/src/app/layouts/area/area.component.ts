@@ -27,17 +27,17 @@ export class AreaComponent {
 
   getDados() {
     this.getUser();
-    this.materiasService.materias$.subscribe((val) => {
-      if (val?.length === 0) {
-        this.getMaterias();
-      }
-    });
+    this.getMaterias();
   }
 
   getMaterias() {
-    this.materiasService.getHttpMaterias(
-      this.tokenService.getDataFromToken().unique_name
-    );
+    let ra = this.tokenService.getDataFromToken().unique_name;
+
+    this.materiasService.materias$.subscribe((materias) => {
+      if (materias === null || materias.length === 0) {
+        this.materiasService.getHttpMaterias(ra);
+      }
+    });
   }
 
   getUser() {
