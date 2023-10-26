@@ -22,19 +22,16 @@ register();
 export class HomeComponent {
   icons!: IconInterface[];
   avisos!: PainelInterface[];
-  materias$!: Observable<ResponseMateriasInterface['materias']>;
 
   constructor(
     public dialog: MatDialog,
-    private materiasService: MateriasService,
+    public materiasService: MateriasService,
     public store: Store<{ app: IappState }>,
   ) { }
 
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
-    this.materias$ = this.materiasService.getMaterias();
-
   }
 
   OpenModais(iconId: number) {

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Pessoa } from 'app/Interfaces/Pessoa.interface';
-import { IappState } from 'app/store/app.state';
+import { IappState, setUser } from 'app/store/app.state';
 import { Store } from '@ngrx/store';
 import { userResponse } from 'app/Interfaces/user.Interface';
 
@@ -19,7 +19,7 @@ export class UserService {
     private tokenService: TokenService
   ) {}
 
-  getUser(){
+  getUser() {
     let ra = this.tokenService.getDataFromToken().unique_name;
     let urlGetUserByRA = `${this.apiUrl}user/get-user/${ra}`;
     let token = this.tokenService.getToken();
@@ -29,6 +29,14 @@ export class UserService {
     });
     const options = { headers: headers };
 
-    return this.http.get<userResponse>(urlGetUserByRA, options);
+    return this.http.get<userResponse>(urlGetUserByRA, options).subscribe({
+      next: (response) => {
+        this.setUserInStore(response.user);
+      },
+      error: (error) => {},
+    });
+  }
+  setUserInStore(user: Pessoa['user']) {
+    this.store.dispatch(setUser({ payload: user }));
   }
 }

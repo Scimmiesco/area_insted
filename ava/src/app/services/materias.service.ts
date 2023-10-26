@@ -1,23 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseMateriasInterface } from 'app/Interfaces/home.interface';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MateriasService {
-  private materias$: ResponseMateriasInterface['materias'] = [];
+  private materiasSubject: BehaviorSubject<
+    ResponseMateriasInterface['materias']
+  > = new BehaviorSubject<ResponseMateriasInterface['materias']>([]);
 
-  getMaterias(): Observable<ResponseMateriasInterface['materias']> {
-    return new Observable((observer) => {
-      observer.next(this.materias$);
-      observer.complete();
-    });
-  }
+  materias$: Observable<ResponseMateriasInterface['materias']> =
+    this.materiasSubject.asObservable();
 
   setMaterias(materias: ResponseMateriasInterface['materias']): void {
-    this.materias$ = materias;
+    this.materiasSubject.next(materias);
   }
 
   private apiUrl = 'https://webapi20230927142946.azurewebsites.net/user';
