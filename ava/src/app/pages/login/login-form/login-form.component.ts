@@ -52,7 +52,6 @@ export class LoginFormComponent implements OnInit {
       next: (response: ResponseInterface) => {
         if (response.success) {
           this.tokenService.saveToken(response.token);
-          console.log('Aqui recebemos o token: ', response.token);
           this.router.navigate(['/area/home']);
         }
       },
