@@ -42,7 +42,6 @@ export class LoginFormComponent implements OnInit {
         login: this.loginForm.get('ra')?.value.toString(),
         passwordHashed,
       };
-      console.log('Informações passadas para o login: ', loginRequest);
       this.authentication(loginRequest);
     }
   }

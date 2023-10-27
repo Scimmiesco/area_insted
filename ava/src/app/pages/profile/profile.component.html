@@ -32,12 +32,11 @@
         <div
           class="bg-green_insted text-sm text-center py-1 px-2 rounded-2xl w-fit text-white"
         >
-          <p class="font-semibold m-0 text-white">
-            RA - {{ (user$ | async)?.nrRegister }}
-          </p>
+          <p class="font-semibold m-0 text-white">RA - {{ user.nrRegister }}</p>
+        <p>{{user}}</p>
         </div>
         <h2
-          *ngIf="(user$ | async)?.nmUser as nmUser"
+          *ngIf="(this.userService.user$ | async)?.nmUser as nmUser"
           class="text-xl font-bold pr-2 text-center"
         >
           {{ nmUser.split(" ")[0] }} {{ nmUser.split(" ").slice(-1) }}

@@ -13,6 +13,7 @@ import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store, select } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
 import { Observable } from 'rxjs';
+import { UserService } from 'app/services/user.service';
 register();
 
 @Component({
@@ -26,6 +27,7 @@ export class HomeComponent {
   constructor(
     public dialog: MatDialog,
     public materiasService: MateriasService,
+    public userService: UserService,
     public store: Store<{ app: IappState }>,
   ) { }
 

@@ -19,6 +19,5 @@ export class SucessoModalComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: modalSucessoI) {
     this.message = data.message;
-    console.log('this.message: ', this.message, 'data.message:', data.message);
   }
 }

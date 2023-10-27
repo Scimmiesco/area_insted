@@ -20,7 +20,6 @@ export class AreaComponent {
     private areaService: AreaService,
     private materiasService: MateriasService
   ) {
-    console.log('tokenSession AreaInsted', this.tokenSession);
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
     this.getDados();
   }

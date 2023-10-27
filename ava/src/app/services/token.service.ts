@@ -17,11 +17,9 @@ export class TokenService {
     private store: Store<{ app: IappState }>,
     private activatedRoute: ActivatedRoute
   ) {
-    console.log(this.tokenStorage, 'tokenStorage Constructor');
   }
 
   getToken(): string {
-    console.log('get token', this.isTokenValid() && this.tokenIsNotEmpty());
     if (this.isTokenValid() && this.tokenIsNotEmpty()) {
       return this.tokenStorage;
     } else {
@@ -75,7 +73,6 @@ export class TokenService {
   validaTokenUrl(tokenUrl: string): boolean {
     let token = '' as string;
 
-    console.log('validaTokenUrl():', token);
     return this.isTokenValid(tokenUrl) ? true : false;
   }
 

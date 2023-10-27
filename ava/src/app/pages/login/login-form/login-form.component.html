@@ -35,7 +35,7 @@
       </div>
       <app-message
         *ngIf="loginForm.get('password')?.errors?.['required']
-      && loginForm.get('password')?.touched"
+      && loginForm.get('password')?.touched && loginForm.get('ra')?.value"
         message="A senha é obrigatória."
       />
     </div>
