@@ -70,4 +70,11 @@ export class CustomValidations {
       }
     };
   }
+  static tipoDoCampo(control: AbstractControl) {
+    const campoPreenchido = control.value as string;
+    const regex = /^\d{10}$/ as RegExp;
+
+    if (campoPreenchido) {
+    }
+  }
 }
