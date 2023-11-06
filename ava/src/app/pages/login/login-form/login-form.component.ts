@@ -55,10 +55,19 @@ export class LoginFormComponent implements OnInit {
         }
       },
       error: (error) => {
-        if (error.status === 500) {
-          this.errorMessage = 'Erro de conexão com o servidor.';
-        } else if (error.status === 404) {
-          this.errorMessage = 'Usuário ou senha inválidos.';
+        switch (error.status) {
+          case 500:
+            this.errorMessage = 'Erro de conexão com o servidor.';
+            break;
+          case 404:
+            this.errorMessage = 'Usuário Inválido.';
+            break;
+          case 401:
+            this.errorMessage = 'Senha inválida.';
+            break;
+          case 403:
+            this.errorMessage = 'Usuário bloqueado, tente em 3 minutos.';
+            break;
         }
       },
     });
