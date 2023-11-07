@@ -8,11 +8,13 @@ input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-contacts-auto-fill-button {
   display: none;
 }
+
 :root {
   --swiper-theme-color: #063b3d;
   --swiper-pagination-bottom: 0px;
   --mdc-dialog-container-color: #063b3d;
 }
+
 .mat-mdc-progress-spinner {
   --mdc-circular-progress-active-indicator-color: rgba(244, 242, 255, 0.85) !important;
 }
@@ -27,6 +29,14 @@ h1,
 h2,
 h4 {
   color: rgb(22, 149, 153);
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+h3 {
+  margin: 0;
   margin-block-start: 0px;
   margin-block-end: 0px;
   margin-inline-start: 0px;
@@ -123,10 +133,12 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 .mat-mdc-dialog-surface,
 .mdc-dialog__surface {
   & ::before {
     border-radius: 1.5rem !important;
   }
+
   border-radius: 1.5rem !important;
 }

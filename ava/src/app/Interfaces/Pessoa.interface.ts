@@ -1,18 +1,18 @@
 export interface Pessoa {
   user: {
-    idUser: number;
-    idAddress: number;
-    nmUser: string;
-    nrRegister: string;
-    nrCpf: string;
-    nrRg: number;
-    nmExpedition: string;
-    dtBirthdate: string;
-    nmSex: string;
-    nmPhone1: string;
-    nmPhone2: string;
-    nmEmail: string;
-    imgFile: string | null;
-    snTeacher: boolean;
+    IdUser: number;
+    IdAddress: number;
+    NmUser: string;
+    NrRegister: string;
+    NrCpf: string;
+    NrRg: number;
+    NmExpedition: string;
+    DtBirthdate: string;
+    NmSex: string;
+    NmPhone1: string;
+    NmPhone2: string;
+    NmEmail: string;
+    ImgFile: string | null;
+    SnTeacher: boolean;
   };
 }

@@ -9,7 +9,6 @@ import { Pessoa } from 'app/Interfaces/Pessoa.interface';
   providedIn: 'root',
 })
 export class AreaService {
-  user!: Pessoa['user'];
 
   constructor(
     private userService: UserService,
