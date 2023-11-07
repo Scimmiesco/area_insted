@@ -13,12 +13,6 @@ import { userResponse } from 'app/Interfaces/user.Interface';
 export class UserService {
   private apiUrl = 'https://webapi20230927142946.azurewebsites.net/';
 
-  userDefault!: Pessoa['user'];
-  userSubject: BehaviorSubject<Pessoa['user']> = new BehaviorSubject<
-    Pessoa['user']
-  >(this.userDefault);
-  user$: Observable<Pessoa['user']> = this.userSubject.asObservable();
-
   constructor(
     private http: HttpClient,
     private store: Store<{ app: IappState }>,

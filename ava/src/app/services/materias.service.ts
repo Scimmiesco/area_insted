@@ -1,20 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseMateriasInterface } from 'app/Interfaces/home.interface';
+import { ResponseMateriasI } from 'app/Interfaces/materias.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MateriasService {
-  private materiasSubject: BehaviorSubject<
-    ResponseMateriasInterface['materias']
-  > = new BehaviorSubject<ResponseMateriasInterface['materias']>([]);
+  private materiasSubject: BehaviorSubject<ResponseMateriasI['materias']> =
+    new BehaviorSubject<ResponseMateriasI['materias']>([]);
 
-  materias$: Observable<ResponseMateriasInterface['materias']> =
+  materias$: Observable<ResponseMateriasI['materias']> =
     this.materiasSubject.asObservable();
 
-  setMaterias(materias: ResponseMateriasInterface['materias']): void {
+  setMaterias(materias: ResponseMateriasI['materias']): void {
     this.materiasSubject.next(materias);
   }
 
@@ -24,12 +23,10 @@ export class MateriasService {
 
   getHttpMaterias(ra: string) {
     const loginUrl = `${this.apiUrl}/GetMaterias`;
-    return this.http
-      .get<ResponseMateriasInterface>(loginUrl + '?ra=' + ra)
-      .subscribe({
-        next: (response) => {
-          this.setMaterias(response.materias);
-        },
-      });
+    return this.http.get<ResponseMateriasI>(loginUrl + '?ra=' + ra).subscribe({
+      next: (response) => {
+        this.setMaterias(response.materias);
+      },
+    });
   }
 }
