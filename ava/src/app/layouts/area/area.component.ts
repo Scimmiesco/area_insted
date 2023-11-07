@@ -18,26 +18,25 @@ export class AreaComponent {
     private tokenService: TokenService,
     private userService: UserService,
     private areaService: AreaService,
-    private materiasService: MateriasService,
+    private materiasService: MateriasService
   ) {
-    console.log('tokenSession AreaInsted', this.tokenSession);
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
     this.getDados();
   }
 
   getDados() {
     this.getUser();
-    this.materiasService.getMaterias().subscribe((materias) => {
-      console.log(materias?.length === 0, 'tamanho do materias');
-      if (materias?.length === 0) {
-        this.getMaterias();
+    this.getMaterias();
+  }
+
+  getMaterias() {
+    let ra = this.tokenService.getDataFromToken().unique_name;
+
+    this.materiasService.materias$.subscribe((materias) => {
+      if (materias === null || materias.length === 0) {
+        this.materiasService.getHttpMaterias(ra);
       }
     });
-  }
-  getMaterias() {
-    this.materiasService.getHttpMaterias(
-      this.tokenService.getDataFromToken().unique_name
-    );
   }
 
   getUser() {

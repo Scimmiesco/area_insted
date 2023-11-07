@@ -18,6 +18,7 @@ export class ResetPasswordComponent implements OnInit {
   senhaNova = '' as string;
   confirmaSenhaNova = '' as string;
   errorMessage = '' as string;
+  semEspacoBranco = /^\S+$/ as RegExp;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,7 +28,6 @@ export class ResetPasswordComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private tokenService: TokenService
   ) {}
-
   ngOnInit(): void {
     this.resetPasswordForm = this.formBuilder.group(
       {
@@ -37,6 +37,7 @@ export class ResetPasswordComponent implements OnInit {
             Validators.required,
             Validators.minLength(8),
             Validators.maxLength(16),
+            Validators.pattern(this.semEspacoBranco),
           ],
         ],
         confirmaSenhaNova: [
@@ -45,6 +46,7 @@ export class ResetPasswordComponent implements OnInit {
             Validators.required,
             Validators.minLength(8),
             Validators.maxLength(16),
+            Validators.pattern(this.semEspacoBranco),
           ],
         ],
       },
@@ -58,7 +60,6 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.validaTokenUrl())
     if (this.resetPasswordForm.valid && this.validaTokenUrl()) {
       this.alteraSenha();
     }

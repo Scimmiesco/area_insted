@@ -13,6 +13,7 @@ import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store, select } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
 import { Observable } from 'rxjs';
+import { UserService } from 'app/services/user.service';
 register();
 
 @Component({
@@ -22,19 +23,17 @@ register();
 export class HomeComponent {
   icons!: IconInterface[];
   avisos!: PainelInterface[];
-  materias$!: Observable<ResponseMateriasInterface['materias']>;
 
   constructor(
     public dialog: MatDialog,
-    private materiasService: MateriasService,
+    public materiasService: MateriasService,
+    public userService: UserService,
     public store: Store<{ app: IappState }>,
   ) { }
 
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
-    this.materias$ = this.materiasService.getMaterias();
-
   }
 
   OpenModais(iconId: number) {

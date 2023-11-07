@@ -49,19 +49,32 @@ export class CustomValidations {
 
     return { isCpfInvalid: true };
   }
-
   static matchInputs(controlName1: string, controlName2: string) {
     return (formGroup: AbstractControl) => {
       const control1 = formGroup.get(controlName1);
       const control2 = formGroup.get(controlName2);
 
-      if (control1 && control2 && control1.value !== control2.value) {
-        control2.setErrors({ matchInputs: true });
-        return { matchInputs: true };
+      if (control1 && control2) {
+        const value1 = control1.value;
+        const value2 = control2.value;
+
+        if (value1 !== value2) {
+          control2.setErrors({ matchInputs: true });
+          return { matchInputs: true };
+        } else {
+          control2.setErrors(null);
+          return null;
+        }
       } else {
-        control2?.setErrors(null);
         return null;
       }
     };
+  }
+  static tipoDoCampo(control: AbstractControl) {
+    const campoPreenchido = control.value as string;
+    const regex = /^\d{10}$/ as RegExp;
+
+    if (campoPreenchido) {
+    }
   }
 }

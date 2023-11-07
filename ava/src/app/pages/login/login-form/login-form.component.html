@@ -12,7 +12,7 @@
         message="O RA é obrigatório."
       />
       <app-message
-        *ngIf="loginForm.get('ra')?.errors?.['minLength']
+        *ngIf="loginForm.get('ra')?.errors?.['minlength']
       && loginForm.get('ra')?.touched"
         message="O RA deve ter no mínimo 10 números."
       />
@@ -35,7 +35,7 @@
       </div>
       <app-message
         *ngIf="loginForm.get('password')?.errors?.['required']
-      && loginForm.get('password')?.touched"
+      && loginForm.get('password')?.touched && loginForm.get('ra')?.value"
         message="A senha é obrigatória."
       />
     </div>

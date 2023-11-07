@@ -2,7 +2,7 @@
   class="flex justify-start flex-col items-center min-h-[100svh] bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white pb-20"
 >
   <section
-    class=" my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md bg-white"
+    class="my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md bg-white"
   >
     <div class="flex flex-row justify-around">
       <div mdbDropdown class="dropend relative aspect-square w-4/12 m-2">
@@ -32,15 +32,14 @@
         <div
           class="bg-green_insted text-sm text-center py-1 px-2 rounded-2xl w-fit text-white"
         >
-          <p class="font-semibold m-0 text-white">
-            RA - {{ (user$ | async)?.nrRegister }}
-          </p>
+          <p class="font-semibold m-0 text-white">RA - {{ user.nrRegister }}</p>
+        <p>{{user}}</p>
         </div>
         <h2
-          *ngIf="user$ | async as user"
+          *ngIf="(this.userService.user$ | async)?.nmUser as nmUser"
           class="text-xl font-bold pr-2 text-center"
         >
-          {{ user.nmUser.split(" ")[0] }} {{ user.nmUser.split(" ").slice(-1) }}
+          {{ nmUser.split(" ")[0] }} {{ nmUser.split(" ").slice(-1) }}
         </h2>
 
         <p class="text-md">Cursando</p>

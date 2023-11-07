@@ -12,7 +12,7 @@ import {
 })
 export class AutenticationService {
   private sessionStorageKey = 'isAuthenticated';
-  private apiUrl = 'https://webapi20230927142946.azurewebsites.net/';
+  private apiUrl = 'https://localhost:7003/';
 
   constructor(private http: HttpClient) {}
 

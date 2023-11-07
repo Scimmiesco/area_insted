@@ -42,7 +42,6 @@ export class LoginFormComponent implements OnInit {
         login: this.loginForm.get('ra')?.value.toString(),
         passwordHashed,
       };
-      console.log('Informações passadas para o login: ', loginRequest);
       this.authentication(loginRequest);
     }
   }
@@ -52,15 +51,23 @@ export class LoginFormComponent implements OnInit {
       next: (response: ResponseInterface) => {
         if (response.success) {
           this.tokenService.saveToken(response.token);
-          console.log('Aqui recebemos o token: ', response.token);
           this.router.navigate(['/area/home']);
         }
       },
       error: (error) => {
-        if (error.status === 500) {
-          this.errorMessage = 'Erro de conexão com o servidor.';
-        } else if (error.status === 404) {
-          this.errorMessage = 'Usuário ou senha inválidos.';
+        switch (error.status) {
+          case 500:
+            this.errorMessage = 'Erro de conexão com o servidor.';
+            break;
+          case 404:
+            this.errorMessage = 'Usuário Inválido.';
+            break;
+          case 401:
+            this.errorMessage = 'Senha inválida.';
+            break;
+          case 403:
+            this.errorMessage = 'Usuário bloqueado, tente em 3 minutos.';
+            break;
         }
       },
     });
