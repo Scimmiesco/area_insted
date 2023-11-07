@@ -66,7 +66,8 @@ export class LoginFormComponent implements OnInit {
             this.errorMessage = 'Senha inválida.';
             break;
           case 403:
-            this.errorMessage = 'Usuário bloqueado, tente em 3 minutos.';
+            this.errorMessage =
+              'Tentativas inválidas excedidas. Tente novamente em 3 min.';
             break;
         }
       },
