@@ -25,9 +25,6 @@ export class UserService {
     private tokenService: TokenService
   ) {
     store.select(getUser);
-    this.user$.subscribe((val) => {
-      console.log(val);
-    });
   }
 
   getUser() {
@@ -40,15 +37,15 @@ export class UserService {
     });
     const options = { headers: headers };
 
-    return this.http.get<userResponse>(urlGetUserByRA, options).subscribe({
+    this.http.get<userResponse>(urlGetUserByRA, options).subscribe({
       next: (response) => {
         this.setUserInStore(response.user);
       },
       error: (error) => {},
     });
   }
+
   setUserInStore(user: Pessoa['user']) {
     this.store.dispatch(setUser({ payload: user }));
-    this.store.select(this.getUser);
   }
 }

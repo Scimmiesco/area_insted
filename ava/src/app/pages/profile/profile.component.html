@@ -14,7 +14,7 @@
         <div
           mdbDropdownToggle
           expanded="false"
-          class="material-icons absolute w-4/12 bottom-0 left-0 text-white bg-green_insted aspect-square flex justify-center items-center text-3xl border-2 border-white transition-all duration-300 ease-in-out"
+          class="material-symbols-outlined absolute w-4/12 bottom-0 left-0 text-white bg-green_insted aspect-square flex justify-center items-center text-3xl border-2 border-white transition-all duration-300 ease-in-out"
           [ngClass]="
             status
               ? 'rounded-full transition-all duration-300 ease-in-out delay-0'
@@ -23,7 +23,6 @@
         >
           edit
         </div>
-
         <ul mdbDropdownMenu class="dropdown-menu m-auto">
           <li class="dropdown-item">Editar</li>
         </ul>
@@ -32,14 +31,15 @@
         <div
           class="bg-green_insted text-sm text-center py-1 px-2 rounded-2xl w-fit text-white"
         >
-          <p class="font-semibold m-0 text-white">RA - {{ user.nrRegister }}</p>
-        <p>{{user}}</p>
+          <p class="font-semibold m-0 text-white">
+            RA - {{ (user$ | async)?.NrRegister }}
+          </p>
         </div>
         <h2
-          *ngIf="(this.userService.user$ | async)?.nmUser as nmUser"
+          *ngIf="(this.user$ | async)?.NmUser as NmUser"
           class="text-xl font-bold pr-2 text-center"
         >
-          {{ nmUser.split(" ")[0] }} {{ nmUser.split(" ").slice(-1) }}
+          {{ NmUser.split(" ")[0] }} {{ NmUser.split(" ").slice(-1) }}
         </h2>
 
         <p class="text-md">Cursando</p>
@@ -48,7 +48,9 @@
         (click)="logout()"
         class="h-fit flex justify-center hover:bg-green_insted active:bg-green_insted rounded-md"
       >
-        <span class="material-icons text-green_insted hover:text-white">
+        <span
+          class="material-symbols-outlined text-green_insted hover:text-white"
+        >
           logout
         </span>
       </div>
@@ -74,7 +76,7 @@
           <p
             class="flex justify-center items-center text-white font-semibold py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
           >
-            {{ (user$ | async)?.nmUser }}
+            {{ (user$ | async)?.NmUser }}
           </p>
         </div>
         <div class="flex flex-row justify-start items-center">
@@ -82,7 +84,7 @@
           <p
             class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
           >
-            {{ (user$ | async)?.nmEmail }}
+            {{ (user$ | async)?.NmEmail }}
           </p>
         </div>
         <div class="flex flex-col">
@@ -91,12 +93,12 @@
             <div
               class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted"
             >
-              <p class="text-white m-0">{{ (user$ | async)?.nmPhone1 }}</p>
+              <p class="text-white m-0">{{ (user$ | async)?.NmPhone1 }}</p>
             </div>
             <div
               class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted"
             >
-              <p class="text-white m-0">{{ (user$ | async)?.nmPhone2 }}</p>
+              <p class="text-white m-0">{{ (user$ | async)?.NmPhone2 }}</p>
             </div>
           </div>
         </div>
@@ -110,7 +112,7 @@
             <p
               class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
             >
-              {{ (user$ | async)?.nrCpf }}
+              {{ (user$ | async)?.NrCpf }}
             </p>
           </div>
           <div class="flex flex-row justify-start items-center">
@@ -118,7 +120,7 @@
             <p
               class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
             >
-              {{ (user$ | async)?.dtBirthdate | date : "dd/MM/yyyy" }}
+              {{ (user$ | async)?.DtBirthdate | date : "dd/MM/yyyy" }}
             </p>
           </div>
         </mat-expansion-panel>

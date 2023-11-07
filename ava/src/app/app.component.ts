@@ -8,6 +8,6 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'AVA Insted';
+  title = 'Área do aluno - INSTED';
 
 }
