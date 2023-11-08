@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseMateriasI } from 'app/Interfaces/materias.interface';
+import { environment } from 'environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -17,12 +18,12 @@ export class MateriasService {
     this.materiasSubject.next(materias);
   }
 
-  private apiUrl = 'https://webapi20230927142946.azurewebsites.net/user';
+  private APIURL = environment.URLAPI;
 
   constructor(private http: HttpClient) {}
 
   getHttpMaterias(ra: string) {
-    const loginUrl = `${this.apiUrl}/GetMaterias`;
+    const loginUrl = `${this.APIURL}/GetMaterias`;
     return this.http.get<ResponseMateriasI>(loginUrl + '?ra=' + ra).subscribe({
       next: (response) => {
         this.setMaterias(response.materias);

@@ -1,4 +1,3 @@
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
@@ -6,13 +5,14 @@ import {
   LoginInterface,
   ResponseInterface,
 } from 'app/pages/login/login.interface';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AutenticationService {
   private sessionStorageKey = 'isAuthenticated';
-  private apiUrl = 'https://webapi20230927142946.azurewebsites.net/';
+  private APIURL = environment.URLAPI;
 
   constructor(private http: HttpClient) {}
 
@@ -21,7 +21,7 @@ export class AutenticationService {
       login: loginRequest.login as string,
       password: loginRequest.passwordHashed as string,
     };
-    const loginUrl = `${this.apiUrl}user/auth`;
+    const loginUrl = `${this.APIURL}user/auth`;
 
     return this.http.post<ResponseInterface>(`${loginUrl}`, json).pipe(
       map((response: ResponseInterface) => {

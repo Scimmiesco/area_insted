@@ -1,17 +1,17 @@
 import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 import { IappState, getUser, setUser } from 'app/store/app.state';
 import { Store } from '@ngrx/store';
 import { userResponse } from 'app/Interfaces/user.Interface';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'https://webapi20230927142946.azurewebsites.net/';
+  private APIURL = environment.URLAPI;
 
   constructor(
     private http: HttpClient,
@@ -23,7 +23,7 @@ export class UserService {
 
   getUser() {
     let ra = this.tokenService.getDataFromToken().unique_name;
-    let urlGetUserByRA = `${this.apiUrl}user/get-user/${ra}`;
+    let urlGetUserByRA = `${this.APIURL}user/get-user/${ra}`;
     let token = this.tokenService.getToken();
 
     const headers = new HttpHeaders({

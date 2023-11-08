@@ -2,13 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NovaSenha, emailResponse } from 'app/Interfaces/response.interface';
+import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResetPasswordsService {
-  private apiUrl = 'https://webapi20230927142946.azurewebsites.net/user';
+  private APIURL = environment.URLAPI;
+
   private userid: string = '';
   private token: string = '';
 
@@ -24,7 +26,7 @@ export class ResetPasswordsService {
 
   enviaEmail(tipo: string, param: string): Observable<emailResponse> {
     return this.http.get<emailResponse>(
-      `${this.apiUrl}/recoverPass?tipo=${tipo}&param=${param}`
+      `${this.APIURL}/recoverPass?tipo=${tipo}&param=${param}`
     );
   }
   trocaSenha(
@@ -45,7 +47,7 @@ export class ResetPasswordsService {
     };
 
     return this.http.post<emailResponse>(
-      `${this.apiUrl}/trocasenha`,
+      `${this.APIURL}/trocasenha`,
       requestBody,
       httpOptions
     );
