@@ -3,7 +3,7 @@
   "version": "0.20.0",
   "scripts": {
     "ng": "ng",
-    "start":"ng serve --o --ssl",
+    "start": "ng serve --o --ssl",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -27,6 +27,7 @@
     "material": "^0.5.3",
     "mdb-angular-ui-kit": "^4.1.0",
     "ng-recaptcha": "^11.0.0",
+    "primeng": "^15.4.10-lts",
     "rxjs": "~7.8.0",
     "save": "^2.9.0",
     "swiper": "^9.3.2",

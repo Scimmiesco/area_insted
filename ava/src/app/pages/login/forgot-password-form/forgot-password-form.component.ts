@@ -5,15 +5,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { ResetPasswordsService } from 'app/services/reset-password.service';
 import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/sucesso.component';
 import { LoadingService } from 'app/services/loading.service';
+import { CustomValidations } from 'app/validators/custom.validator';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Component({
   selector: 'app-forgot-password-form',
   templateUrl: './forgot-password-form.component.html',
 })
 export class ForgotPasswordFormComponent implements OnInit {
   forgotPasswordForm!: FormGroup;
-
-  recuperaSenhaInput = '' as string;
+  private tipoCampoSubject = new BehaviorSubject<string>('');
+  tipoCampo$: Observable<string> = this.tipoCampoSubject.asObservable();
   apenasNumero = /^\d{10}$/ as RegExp;
+
   constructor(
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -24,65 +27,101 @@ export class ForgotPasswordFormComponent implements OnInit {
   ngOnInit(): void {
     this.forgotPasswordForm = this.formBuilder.group({
       recuperaSenhaInput: ['', [Validators.required]],
+      recaptcha: [null, [Validators.nullValidator]],
     });
   }
 
-  recuperaTipoCampo(): string {
-    let campo = this.forgotPasswordForm.get('recuperaSenhaInput')
-      ?.value as string;
+  recuperaTipoCampo() {
+    let campo = this.forgotPasswordForm.get('recuperaSenhaInput');
 
-    if (campo.length === 10) {
-      return 'ra';
-    } else if (campo.length === 11) {
-      return 'cpf';
-    } else {
-      return 'email';
+    if (campo?.value.length === 10 && this.apenasNumero.test(campo?.value)) {
+      this.tipoCampoSubject.next('ra');
+      return;
     }
+    if (campo?.value.length === 11) {
+      this.tipoCampoSubject.next('cpf');
+      return;
+    }
+    if (campo?.value.includes('@')) {
+      this.tipoCampoSubject.next('email');
+      return;
+    }
+  }
+  addValidacoes() {
+    this.tipoCampo$.subscribe((tipoCampo) => {
+      console.log(tipoCampo, 'tipo');
+      switch (tipoCampo) {
+        case 'ra': {
+          this.forgotPasswordForm
+            .get('recuperaSenhaInput')
+            ?.setValidators([
+              Validators.minLength(10),
+              Validators.maxLength(10),
+              Validators.pattern(this.apenasNumero),
+            ]);
+          break;
+        }
+        case 'cpf': {
+          this.forgotPasswordForm
+            .get('recuperaSenhaInput')
+            ?.setValidators([
+              Validators.pattern(this.apenasNumero),
+              Validators.minLength(11),
+              Validators.maxLength(11),
+              CustomValidations.validateCpf,
+            ]);
+          const formattedValue = this.forgotPasswordForm
+            .get('recuperaSenhaInput')
+            ?.value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+          this.forgotPasswordForm
+            .get('recuperaSenhaInput')
+            ?.setValue(formattedValue, { emitEvent: false });
+          break;
+        }
+        case 'email': {
+          this.forgotPasswordForm
+            .get('recuperaSenhaInput')
+            ?.setValidators([Validators.email]);
+          break;
+        }
+        default: {
+          return;
+        }
+      }
+      this.forgotPasswordForm
+        .get('recuperaSenhaInput')
+        ?.updateValueAndValidity();
+    });
   }
 
   RecoverPassword() {
     let campo = this.forgotPasswordForm.get('recuperaSenhaInput')
       ?.value as string;
-    if (
-      this.forgotPasswordForm.valid &&
-      this.forgotPasswordForm.get('recaptcha')?.value
-    ) {
-      switch (this.recuperaTipoCampo()) {
-        case 'ra':
-          if (this.apenasNumero.test(campo) && campo.length === 11) {
-          }
-          break;
-        case 'email':
-          if (
-            this.forgotPasswordForm
-              .get('recuperaSenhaInput')
-              ?.addValidators(Validators.email)
-          ) {
-          }
-      }
-
-      this.loadingService.show();
+    this.loadingService.show();
+    let tipoCampo = '' as string;
+    this.tipoCampo$.subscribe((value) => {
+      tipoCampo = value;
+    }),
       this.enviaEmail(
-        this.recuperaTipoCampo(),
+        tipoCampo,
         this.forgotPasswordForm.get('recuperaSenhaInput')?.value as string
       );
-    }
   }
 
   enviaEmail(tipoCampoRecuperacao: string, campoRecuperacao: string) {
     this.resetPassswordService
       .enviaEmail(tipoCampoRecuperacao, campoRecuperacao)
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           if (response.StatusCode === 200) {
             this.modalSucessoEnvioEmail(response.Message);
           }
         },
-        (error) => {
+        error: (error) => {
           if (error.statusCode === 404)
             this.modalSucessoEnvioEmail('Usuário não encontrado.');
-        }
-      );
+        },
+      });
   }
 
   modalSucessoEnvioEmail(message: string) {

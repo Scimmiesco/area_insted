@@ -6,11 +6,20 @@ import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-const MODULES = [MatProgressSpinnerModule, MatExpansionModule, MatGridListModule, MdbDropdownModule, MatSidenavModule, MatDialogModule, MatButtonModule]
+import { InputMaskModule } from 'primeng/inputmask';
+const MODULES = [
+  MatProgressSpinnerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MdbDropdownModule,
+  MatSidenavModule,
+  MatDialogModule,
+  MatButtonModule,
+  InputMaskModule,
+];
 
-@NgModule
-  ({
-    imports: [MODULES],
-    exports: [MODULES]
-  })
-export class MaterialModule { }
+@NgModule({
+  imports: [MODULES],
+  exports: [MODULES],
+})
+export class MaterialModule {}

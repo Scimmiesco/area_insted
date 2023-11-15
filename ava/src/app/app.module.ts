@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProfileModule } from './pages/profile/profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,8 +17,9 @@ import { AreaComponent } from 'app/layouts/area/area.component';
 import { appReducer } from './store/app.state';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetPasswordModule } from './pages/reset-password/reset-password.module';
+import { InputMaskModule } from 'primeng/inputmask';
+
 register();
 @NgModule({
   declarations: [AppComponent, LoadingComponent, AreaComponent],
@@ -30,8 +31,10 @@ register();
     ProfileModule,
     BrowserAnimationsModule,
     MaterialModule,
+    InputMaskModule,
     HomeModule,
     MenuBottomModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot({ app: appReducer }),
