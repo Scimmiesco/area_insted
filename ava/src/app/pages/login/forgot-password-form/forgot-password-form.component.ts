@@ -15,7 +15,7 @@ export class ForgotPasswordFormComponent implements OnInit {
   forgotPasswordForm!: FormGroup;
   private tipoCampoSubject = new BehaviorSubject<string>('');
   tipoCampo$: Observable<string> = this.tipoCampoSubject.asObservable();
-  apenasNumero = /^\d{10}$/ as RegExp;
+  apenasNumero = /^[0-9]+$/ as RegExp;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,24 +29,32 @@ export class ForgotPasswordFormComponent implements OnInit {
       recuperaSenhaInput: ['', [Validators.required]],
       recaptcha: [null, [Validators.nullValidator]],
     });
+    this.tipoCampo$.subscribe((value) => {
+      console.log(value);
+    });
   }
-
   recuperaTipoCampo() {
     let campo = this.forgotPasswordForm.get('recuperaSenhaInput');
 
-    if (campo?.value.length === 10 && this.apenasNumero.test(campo?.value)) {
-      this.tipoCampoSubject.next('ra');
-      return;
-    }
-    if (campo?.value.length === 11) {
-      this.tipoCampoSubject.next('cpf');
-      return;
-    }
-    if (campo?.value.includes('@')) {
+    if (this.apenasNumero.test(campo?.value) || campo?.value === '') {
+      switch (campo?.value.length) {
+        case 0:
+          this.tipoCampoSubject.next('');
+          break;
+        case 10:
+          this.tipoCampoSubject.next('ra');
+          break;
+        case 11:
+          this.tipoCampoSubject.next('cpf');
+          break;
+        default:
+          break;
+      }
+    } else if (campo?.value.includes('@')) {
       this.tipoCampoSubject.next('email');
-      return;
     }
   }
+
   addValidacoes() {
     this.tipoCampo$.subscribe((tipoCampo) => {
       console.log(tipoCampo, 'tipo');

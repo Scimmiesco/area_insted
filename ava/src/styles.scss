@@ -57,13 +57,13 @@ button {
   background-color: rgb(29, 169, 173) !important;
   position: relative;
   overflow: hidden;
-  border-color: rgb(244, 242, 255);
-  border-width: 2px;
-  border-radius: 3em;
-  padding: 0.35rem 0.55rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: rgb(244, 242, 255);
+  border-color: rgb(244, 242, 255) !important;
+  border-width: 2px !important;
+  border-radius: 3em !important;
+  padding: 0.35rem 0.55rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: rgb(244, 242, 255) !important;
 }
 
 button.cancelar {
