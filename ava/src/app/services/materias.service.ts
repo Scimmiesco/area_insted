@@ -23,11 +23,12 @@ export class MateriasService {
   constructor(private http: HttpClient) {}
 
   getHttpMaterias(ra: string) {
-    const loginUrl = `${this.APIURL}/GetMaterias`;
-    return this.http.get<ResponseMateriasI>(loginUrl + '?ra=' + ra).subscribe({
-      next: (response) => {
-        this.setMaterias(response.materias);
-      },
-    });
+    return this.http
+      .get<ResponseMateriasI>(`${this.APIURL}user/GetMaterias?ra=${ra}`)
+      .subscribe({
+        next: (response) => {
+          this.setMaterias(response.materias);
+        },
+      });
   }
 }
