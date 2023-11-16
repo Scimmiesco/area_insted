@@ -27,6 +27,7 @@
     "material": "^0.5.3",
     "mdb-angular-ui-kit": "^4.1.0",
     "ng-recaptcha": "^11.0.0",
+    "ngx-mask": "^15.2.1",
     "primeng": "^15.4.10-lts",
     "rxjs": "~7.8.0",
     "save": "^2.9.0",

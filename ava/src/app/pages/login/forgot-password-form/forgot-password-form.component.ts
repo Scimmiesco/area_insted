@@ -7,6 +7,7 @@ import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/suc
 import { LoadingService } from 'app/services/loading.service';
 import { CustomValidations } from 'app/validators/custom.validator';
 import { BehaviorSubject, Observable } from 'rxjs';
+
 @Component({
   selector: 'app-forgot-password-form',
   templateUrl: './forgot-password-form.component.html',

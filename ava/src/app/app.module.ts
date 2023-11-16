@@ -1,5 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +19,13 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ResetPasswordModule } from './pages/reset-password/reset-password.module';
 import { InputMaskModule } from 'primeng/inputmask';
+import {
+  IConfig,
+  NgxMaskDirective,
+  NgxMaskPipe,
+  provideEnvironmentNgxMask,
+  provideNgxMask,
+} from 'ngx-mask';
 
 register();
 @NgModule({
@@ -29,6 +36,8 @@ register();
     ResetPasswordModule,
     AppRoutingModule,
     ProfileModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
     BrowserAnimationsModule,
     MaterialModule,
     InputMaskModule,
@@ -49,6 +58,7 @@ register();
       useClass: LoadingInterceptor,
       multi: true,
     },
+    provideNgxMask(),
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
