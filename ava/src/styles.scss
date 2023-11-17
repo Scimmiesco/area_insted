@@ -8,6 +8,10 @@ input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-contacts-auto-fill-button {
   display: none;
 }
+input:-webkit-autofill {
+  -webkit-text-fill-color: #fff; /* Cor do texto */
+  box-shadow: 0 0 0px 1000px rgba(0, 247, 255, 0.651) inset; /* Cor do plano de fundo */
+}
 
 :root {
   --swiper-theme-color: #063b3d;
