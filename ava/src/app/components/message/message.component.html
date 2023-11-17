@@ -1,1 +1,8 @@
-<small class="font-semibold text-sm text-center text-invalid_text {{class}}">{{ message }}</small>
+<small
+  class="font-semibold text-sm text-center {{ class }}"
+  [ngClass]="{
+    'text-invalid_text': erro === 'true' ? 'text-text_color' : erro === 'false'
+  }"
+>
+  {{ message }}
+</small>

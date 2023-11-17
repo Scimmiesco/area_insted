@@ -6,12 +6,14 @@
   <div class="flex flex-col w-full justify-center h-2/3 items-center gap-4">
     <div class="flex flex-col justify-center items-center w-11/12">
       <input formControlName="ra" placeholder="Insira seu RA" type="text" />
-      <app-message
+      <app-message 
+      erro= "true"
         *ngIf="loginForm.get('ra')?.errors?.['required']
       && loginForm.get('ra')?.touched"
         message="O RA é obrigatório."
       />
-      <app-message
+      <app-message 
+      erro= "true"
         *ngIf="loginForm.get('ra')?.errors?.['minlength']
       && loginForm.get('ra')?.touched"
         message="O RA deve ter no mínimo 10 números."
@@ -34,6 +36,7 @@
         ></svg>
       </div>
       <app-message
+        erro="true"
         *ngIf="loginForm.get('password')?.errors?.['required']
       && loginForm.get('password')?.touched && loginForm.get('ra')?.value"
         message="A senha é obrigatória."
@@ -50,19 +53,28 @@
       >
     </div>
     <div class="flex justify-center flex-col items-center">
-      <re-captcha id="recaptcha" formControlName="recaptcha"></re-captcha>
+      <re-captcha
+        id="recaptcha"
+        formControlName="recaptcha"
+        class="w-full"
+      ></re-captcha>
       <app-message
         *ngIf="
           !loginForm.get('recaptcha')?.value &&
           (loginForm.get('recaptcha')?.touched ||
             loginForm.get('recaptcha')?.dirty)
         "
+        erro="true"
         message="Necessário validar o captcha."
       />
     </div>
   </div>
   <button class="w-1/2" type="submit">Entrar</button>
-  <app-message *ngIf="errorMessage != null" message="{{ errorMessage }}" />
+  <app-message
+    erro="true"
+    *ngIf="errorMessage != null"
+    message="{{ errorMessage }}"
+  />
   <a
     [routerLink]="['/login/recuperarsenha']"
     class="my-2 text-green_insted font-semibold underline underline-offset-1"

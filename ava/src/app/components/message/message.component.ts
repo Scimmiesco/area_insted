@@ -8,6 +8,7 @@ export class MessageComponent implements OnInit {
   @Input()
   message = '' as string;
   class = '' as string;
+  erro = 'false' as string;
 
   constructor() {}
 
