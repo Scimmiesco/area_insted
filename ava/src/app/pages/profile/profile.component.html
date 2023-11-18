@@ -1,20 +1,21 @@
 <main
   class="flex justify-start flex-col items-center min-h-[100svh] bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white pb-20"
 >
-  <section
-    class="my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md bg-white"
-  >
-    <div class="flex flex-row justify-around">
-      <div mdbDropdown class="dropend relative aspect-square w-4/12 m-2">
+  <section class="my-1 w-[98%] py-2 rounded-3xl shadow-md bg-white">
+    <div class="flex flex-row justify-around  ">
+      <div
+        mdbDropdown
+        class="dropend relative w-4/12 m-1 [aspect-ratio:_1_/_1]"
+      >
         <img
           src="assets/images/perfil-padrao1.png"
-          class="rounded-full aspect-square object-cover"
+          class="rounded-full object-contain [aspect-ratio:_1_/_1]  w-auto h-auto block"
           alt="teste"
         />
         <div
           mdbDropdownToggle
           expanded="false"
-          class="material-symbols-outlined absolute w-4/12 bottom-0 left-0 text-white bg-green_insted aspect-square flex justify-center items-center text-3xl border-2 border-white transition-all duration-300 ease-in-out"
+          class="material-symbols-outlined absolute w-4/12 bottom-0 left-0 text-white bg-green_insted [aspect-ratio:_1_/_1] flex justify-center items-center text-3xl border-2 border-white transition-all duration-300 ease-in-out"
           [ngClass]="
             status
               ? 'rounded-full transition-all duration-300 ease-in-out delay-0'
@@ -59,9 +60,7 @@
       Tec. em Análise e Desenvolvimento de Sistemas
     </h3>
   </section>
-  <mat-accordion
-    class="bg-white my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md"
-  >
+  <mat-accordion class="bg-white my-1 w-[98%] py-2 rounded-3xl shadow-md">
     <mat-expansion-panel [expanded]="true">
       <mat-expansion-panel-header class="text-text_color flex-col h-auto">
         <h1 class="text-verde-texto text-2xl font-bold py-1">
@@ -128,9 +127,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion
-    class="bg-white my-1 w-[calc(100vw-0.5rem)] py-2 rounded-3xl shadow-md"
-  >
+  <mat-accordion class="bg-white my-1 w-[98%] py-2 rounded-3xl shadow-md">
     <mat-expansion-panel>
       <mat-expansion-panel-header class="text-text_color flex-col h-auto">
         <h1 class="text-verde-texto text-2xl font-bold py-1">Alterar senha</h1>

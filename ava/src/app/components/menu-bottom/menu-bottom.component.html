@@ -1,30 +1,33 @@
 <section
-  class="z-40 fixed bottom-0 left-0 right-0 flex justify-between items-center pt-1 px-1 bg-white text-white rounded-t-3xl"
+  class="tablet:w-[66vh] mx-auto z-40 fixed bottom-0 left-0 right-0 flex justify-between items-center pt-1 px-1 bg-white text-white rounded-t-3xl"
 >
   <div
-    class="px-2 py-1 rounded-md aspect-video w-1/6"
+    class="px-2 py-1 rounded-md [aspect-ratio:_16_/_9] w-1/6"
     (click)="abrirSideNav(!aberto)"
     id="sideNavButton"
     #sideNavButton
   >
-    <img src="assets/images/menu-button3.png" class="m-auto p-0 w-fit h-full" />
+    <img src="assets/images/menu-button3.png" class="m-auto p-0 w-fit h-full [aspect-ratio:_1_/_1]" />
     <p class="text-[12px] text-text_color p-0 m-0 text-center">Menu</p>
   </div>
-  <div class="relative w-1/5 h-full flex flex-col aspect-video">
+  <div class="relative w-1/5 h-full flex flex-col [aspect-ratio:_16_/_9]">
     <a
       [routerLink]="['home']"
       class="bg-green_insted absolute w-full h-full pb-1 rounded-3xl bottom-2/3 border-2 border-white"
     >
       <img
         src="assets/images/botao-inicio.png"
-        class="m-auto p-1 w-fit h-full"
+        class="m-auto p-1 w-fit h-full  [aspect-ratio:_1_/_1]"
       />
     </a>
   </div>
-  <a [routerLink]="['perfil']" class="px-2 py-1 rounded-md aspect-video w-1/6">
+  <a
+    [routerLink]="['perfil']"
+    class="px-2 py-1 rounded-md [aspect-ratio:_16_/_9] w-1/6"
+  >
     <img
       src="assets/images/perfil-padrao.png"
-      class="m-auto p-0 w-fit h-full"
+      class="m-auto p-0 w-fit h-full [aspect-ratio:_1_/_1]"
     />
     <p class="text-[12px] text-text_color p-0 m-0 text-center">Perfil</p>
   </a>
