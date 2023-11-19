@@ -1,11 +1,46 @@
-<mat-sidenav-container class="tablet:w-[66vh] mx-auto">
+<mat-sidenav-container class="tablet:w-[60vh] mx-auto">
   <mat-sidenav
     #sidenav
     mode="push"
-    opened="false"
+    opened="true"
     fixedInViewport="true"
-    class="w-[66vw] rounded-r-3xl"
-  >
+    class="w-[66vw] tablet:w-[50vh] dark:bg-green_insted bg-white rounded-r-3xl"
+    ><section class="flex justify-start w-full h-fit p-1">
+      <div mdbDropdown>
+        <button
+          class="flex text-center flex-row items-center"
+          mdbDropdownToggle
+          expanded="false"
+        >
+          <span class="material-symbols-outlined text-3xl dark:text-white"
+            >light_mode</span
+          >
+          <span class="material-symbols-outlined text-xl dark:text-white"
+            >expand_more</span
+          >
+        </button>
+        <ul mdbDropdownMenu class="dropdown-menu m-auto">
+          <li
+            class="dropdown-item flex p-1 flex-row items-center text-center justify-start"
+          >
+            <span class="material-symbols-outlined text-xl p-1"
+              >light_mode</span
+            >
+            <p>Modo claro</p>
+          </li>
+          <li class="dropdown-item flex text-center flex-row items-center p-1">
+            <span class="material-symbols-outlined text-xl p-1">dark_mode</span>
+            <p>Modo escuro</p>
+          </li>
+          <li class="dropdown-item flex text-center flex-row items-center p-1">
+            <span class="material-symbols-outlined text-xl p-1"
+              >smartphone</span
+            >
+            <p>Sistema</p>
+          </li>
+        </ul>
+      </div>
+    </section>
   </mat-sidenav>
 
   <mat-sidenav-content>

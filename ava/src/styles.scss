@@ -10,7 +10,7 @@ input[type="password"]::-webkit-contacts-auto-fill-button {
 }
 input:-webkit-autofill {
   -webkit-text-fill-color: #fff; /* Cor do texto */
-  box-shadow: 0 0 0px 1000px rgba(0, 247, 255, 0.651) inset; /* Cor do plano de fundo */
+  box-shadow: 0 0 0px 1000px rgba(17, 223, 230, 0.651) inset; /* Cor do plano de fundo */
 }
 
 :root {
@@ -25,7 +25,6 @@ input:-webkit-autofill {
 
 * {
   font-family: "Lexend Deca", sans-serif;
-  color: #063b3d;
 }
 
 h1,
@@ -55,12 +54,14 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
+p {
+  margin: 0 !important;
+}
 button {
   background-color: rgb(29, 169, 173) !important;
   position: relative;
   overflow: hidden;
-  border-color: rgb(244, 242, 255) !important;
+  border-style: none !important;
   border-width: 2px !important;
   border-radius: 3em !important;
   padding: 0.35rem 0.55rem !important;
@@ -84,7 +85,7 @@ input {
   font-size: 1.125rem;
   width: 100%;
   font-weight: 600;
-  border-color: #fff;
+  border-style: none;
   border-width: 1px;
   background-color: rgba(29, 169, 173, 1);
   color: #fff;

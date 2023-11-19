@@ -1,7 +1,7 @@
 <form
   [formGroup]="loginForm"
   (submit)="Login()"
-  class="flex justify-between items-center text-center w-10/12 tablet:w-[66vh] flex-col box-content shadow-2xl shadow-white_transp bg-white_transp h-[60vh] rounded-3xl border-white border-[2px]"
+  class="flex justify-between items-center text-center w-10/12 tablet:w-[60vh] flex-col box-content shadow-2xl shadow-white_transp bg-white_transp border-white dark:shadow-green_insted_dark dark:bg-green_insted_dark dark:border-none h-[60vh] rounded-3xl border-[2px]"
 >
   <div class="flex flex-col w-full justify-center h-2/3 items-center gap-4">
     <div class="flex flex-col justify-center items-center w-11/12">
@@ -48,15 +48,16 @@
         id="checkbox1"
         class="hover:cursor-pointer peer relative appearance-none w-[0.5rem] h-[1rem] box-content border-white border-[2px] rounded-full focus:outline-none mx-2 aspect-square bg-green_insted checked:bg-white_transp checked:border-opacity-0 checked:bg-no-repeat checked:transition-all transition ease-linear delay-0 checked:bg-center checked:bg-contain checked:bg-checkmark"
       />
-      <label for="checkbox1" class="text-green_insted font-semibold"
-        >Manter-me conectado</label
+      <label for="checkbox" class="  dark:text-white text-text_color font-semibold"
+        >Manter conectado</label
       >
     </div>
     <div class="flex justify-center flex-col items-center">
       <re-captcha
         id="recaptcha"
         formControlName="recaptcha"
-        class="w-full"
+        class="w-full bg-text_color"
+        theme="dark"
       ></re-captcha>
       <app-message
         *ngIf="
@@ -77,7 +78,7 @@
   />
   <a
     [routerLink]="['/login/recuperarsenha']"
-    class="my-2 text-green_insted font-semibold underline underline-offset-1"
+    class="my-2  dark:text-white text-text_color font-semibold underline underline-offset-1"
   >
     Esqueci minha senha
   </a>
