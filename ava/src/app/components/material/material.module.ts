@@ -6,7 +6,7 @@ import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatMenuModule } from '@angular/material/menu';
 const MODULES = [
   MatProgressSpinnerModule,
   MatExpansionModule,
@@ -15,6 +15,7 @@ const MODULES = [
   MatSidenavModule,
   MatDialogModule,
   MatButtonModule,
+  MatMenuModule,
 ];
 
 @NgModule({

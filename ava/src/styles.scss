@@ -8,9 +8,12 @@ input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-contacts-auto-fill-button {
   display: none;
 }
+
 input:-webkit-autofill {
-  -webkit-text-fill-color: #fff; /* Cor do texto */
-  box-shadow: 0 0 0px 1000px rgba(17, 223, 230, 0.651) inset; /* Cor do plano de fundo */
+  -webkit-text-fill-color: #fff;
+  /* Cor do texto */
+  box-shadow: 0 0 0px 1000px rgba(17, 223, 230, 0.651) inset;
+  /* Cor do plano de fundo */
 }
 
 :root {
@@ -54,9 +57,11 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 p {
   margin: 0 !important;
 }
+
 button {
   background-color: rgb(29, 169, 173) !important;
   position: relative;
@@ -145,4 +150,12 @@ body {
   }
 
   border-radius: 1.5rem !important;
+}
+
+.mat-mdc-menu-panel {
+  border-top-left-radius: 1rem !important;
+  border-top-right-radius: 1rem !important;
+  border-bottom-right-radius: 1rem !important;
+  border-bottom-left-radius: 1rem !important;
+  gap: 0.25rem !important;
 }
