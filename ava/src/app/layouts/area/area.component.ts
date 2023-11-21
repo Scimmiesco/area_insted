@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserService } from 'app/services/user.service';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -13,12 +14,19 @@ import { MateriasService } from 'app/services/materias.service';
 export class AreaComponent {
   tokenSession = localStorage.getItem('token') || '';
 
+  temas = [
+    { id: 1, label: 'Modo claro', icon: 'light_mode' },
+    { id: 2, label: 'Modo escuro', icon: 'dark_mode' },
+    { id: 3, label: 'Sistema', icon: 'smartphone' },
+  ];
+
   constructor(
     store: Store<{ app: IappState }>,
     private tokenService: TokenService,
     private userService: UserService,
     private areaService: AreaService,
-    private materiasService: MateriasService
+    private materiasService: MateriasService,
+    private router: Router
   ) {
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
     this.getDados();
@@ -41,5 +49,19 @@ export class AreaComponent {
 
   getUser() {
     this.userService.getUser();
+  }
+  mudarTema(id: number) {
+    const themes = ['light', 'dark'];
+    const currentTheme = localStorage.getItem('theme');
+    const selectedTheme = id === 3 ? null : themes[id - 1];
+
+    if (currentTheme !== selectedTheme) {
+      if (selectedTheme === null) {
+        localStorage.removeItem('theme');
+      } else {
+        localStorage.setItem('theme', selectedTheme);
+      }
+      location.reload();
+    }
   }
 }

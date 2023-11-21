@@ -4,12 +4,12 @@
     mode="push"
     opened="true"
     fixedInViewport="true"
-    class="w-[66vw] tablet:w-[50vh] dark:bg-green_insted bg-white rounded-r-3xl"
+    class="w-[66vw] tablet:w-[50vh] dark:bg-green_insted_dark bg-white rounded-r-3xl"
     ><section class="flex justify-start w-full h-fit p-1">
-      <div mdbDropdown>
+      <div>
         <button
-          class="flex text-center flex-row items-center"
-          mdbDropdownToggle
+          class="flex text-center flex-row items-center m-auto"
+          [matMenuTriggerFor]="menu"
           expanded="false"
         >
           <span class="material-symbols-outlined text-3xl dark:text-white"
@@ -19,26 +19,22 @@
             >expand_more</span
           >
         </button>
-        <ul mdbDropdownMenu class="dropdown-menu m-auto">
+        <mat-menu #menu="matMenu" class="m-auto">
           <li
-            class="dropdown-item flex p-1 flex-row items-center text-center justify-start"
+            *ngFor="let tema of temas"
+            class="first:rounded-t-3xl last:rounded-b-3xl gap-1"
           >
-            <span class="material-symbols-outlined text-xl p-1"
-              >light_mode</span
+            <div
+              (click)="mudarTema(tema.id)"
+              class="flex p-1 flex-row items-center text-center justify-start m-1"
             >
-            <p>Modo claro</p>
+              <span class="material-symbols-outlined text-xl p-1">{{
+                tema.icon
+              }}</span>
+              <label>{{ tema.label }}</label>
+            </div>
           </li>
-          <li class="dropdown-item flex text-center flex-row items-center p-1">
-            <span class="material-symbols-outlined text-xl p-1">dark_mode</span>
-            <p>Modo escuro</p>
-          </li>
-          <li class="dropdown-item flex text-center flex-row items-center p-1">
-            <span class="material-symbols-outlined text-xl p-1"
-              >smartphone</span
-            >
-            <p>Sistema</p>
-          </li>
-        </ul>
+        </mat-menu>
       </div>
     </section>
   </mat-sidenav>

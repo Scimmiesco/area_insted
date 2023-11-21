@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'minhaconta',
-    
+
     canActivate: [ResetPasswordAuthGuard],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'trocasenha' },
