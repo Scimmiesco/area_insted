@@ -4,7 +4,7 @@ import { Observable, map } from 'rxjs';
 import {
   LoginInterface,
   ResponseInterface,
-} from 'app/pages/login/login.interface';
+} from 'app/Interfaces/login.interface';
 import { environment } from 'environments/environment';
 
 @Injectable({

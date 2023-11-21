@@ -2,7 +2,7 @@ import { Token } from './../Interfaces/token.interface';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ResponseInterface } from 'app/pages/login/login.interface';
+import { ResponseInterface } from 'app/Interfaces/login.interface';
 import { IappState, setToken } from 'app/store/app.state';
 import jwtDecode from 'jwt-decode';
 import { map } from 'rxjs';

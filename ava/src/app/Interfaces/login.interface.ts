@@ -1,4 +1,3 @@
-import { Pessoa } from "app/Interfaces/Pessoa.interface";
 
 export interface LoginInterface {
   login: {
@@ -10,7 +9,6 @@ export interface LoginInterface {
 }
 
 export interface ResponseInterface {
-
   success: boolean;
   message: string;
   token: string;

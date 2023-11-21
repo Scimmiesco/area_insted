@@ -1,11 +1,13 @@
 import { TokenService } from 'app/services/token.service';
-import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AutenticationService } from 'app/services/autentication.service';
-import { LoginInterface, ResponseInterface } from '../login.interface';
+import {
+  LoginInterface,
+  ResponseInterface,
+} from 'app/Interfaces/login.interface';
 import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-login-form',
