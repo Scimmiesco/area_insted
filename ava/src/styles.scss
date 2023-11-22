@@ -158,4 +158,16 @@ body {
   border-bottom-right-radius: 1rem !important;
   border-bottom-left-radius: 1rem !important;
   gap: 0.25rem !important;
+
+}
+
+.cdk-overlay-pane {
+  margin: 4px;
+}
+
+.firstRounded:first-child{
+  div {
+    border-radius: 0px !important;
+  }
+
 }

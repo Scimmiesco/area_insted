@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
 export class LoadingComponent {
   constructor(public loadingService: LoadingService) {
 
-  }
+  }   
 }

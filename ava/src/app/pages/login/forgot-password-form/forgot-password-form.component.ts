@@ -7,6 +7,7 @@ import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/suc
 import { LoadingService } from 'app/services/loading.service';
 import { CustomValidations } from 'app/validators/custom.validator';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { LoginFormService } from 'app/services/login-form.service';
 
 @Component({
   selector: 'app-forgot-password-form',
@@ -22,7 +23,8 @@ export class ForgotPasswordFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     public dialog: MatDialog,
     private resetPassswordService: ResetPasswordsService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    public loginFormService: LoginFormService
   ) {}
 
   ngOnInit(): void {

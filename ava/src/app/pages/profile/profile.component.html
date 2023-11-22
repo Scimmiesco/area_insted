@@ -1,21 +1,23 @@
 <main
-  class="flex justify-start flex-col items-center min-h-[100svh] bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white pb-20"
+  class="flex justify-start flex-col items-center min-h-[100svh] bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white dark:from-green_insted_dark dark:via-green_insted_dark dark:to-green_insted pb-20"
 >
-  <section class="my-1 w-[98%] py-2 rounded-3xl shadow-md bg-white">
-    <div class="flex flex-row justify-around  ">
+  <section
+    class="my-1 w-[98%] py-2 rounded-3xl shadow-md bg-white dark:bg-green_insted"
+  >
+    <div class="flex flex-row justify-around">
       <div
         mdbDropdown
         class="dropend relative w-4/12 m-1 [aspect-ratio:_1_/_1]"
       >
         <img
           src="assets/images/perfil-padrao1.png"
-          class="rounded-full object-contain [aspect-ratio:_1_/_1]  w-auto h-auto block"
+          class="rounded-full object-contain [aspect-ratio:_1_/_1] w-auto h-auto block"
           alt="teste"
         />
         <div
           mdbDropdownToggle
           expanded="false"
-          class="material-symbols-outlined absolute w-4/12 bottom-0 left-0 text-white bg-green_insted [aspect-ratio:_1_/_1] flex justify-center items-center text-3xl border-2 border-white transition-all duration-300 ease-in-out"
+          class="material-symbols-outlined absolute w-4/12 bottom-0 left-0 text-white dark:text-text_color bg-green_insted dark:bg-white [aspect-ratio:_1_/_1] flex justify-center items-center text-3xl border-2 border-white dark:border-none cursor-pointer transition-all duration-300 ease-in-out"
           [ngClass]="
             status
               ? 'rounded-full transition-all duration-300 ease-in-out delay-0'
@@ -25,20 +27,20 @@
           edit
         </div>
         <ul mdbDropdownMenu class="dropdown-menu m-auto">
-          <li class="dropdown-item">Editar</li>
+          <li class="dropdown-item cursor-pointer">Editar</li>
         </ul>
       </div>
       <div class="flex flex-col justify-center items-center">
         <div
-          class="bg-green_insted text-sm text-center py-1 px-2 rounded-2xl w-fit text-white"
+          class="text-white bg-green_insted dark:bg-white text-sm text-center py-1 px-2 rounded-2xl w-fit"
         >
-          <p class="font-semibold m-0 text-white">
+          <p class="font-semibold m-0 text-white dark:text-text_color">
             RA - {{ (user$ | async)?.NrRegister }}
           </p>
         </div>
         <h2
           *ngIf="(this.user$ | async)?.NmUser as NmUser"
-          class="text-xl font-bold pr-2 text-center"
+          class="text-xl font-bold pr-2 text-center text-text_color"
         >
           {{ NmUser.split(" ")[0] }} {{ NmUser.split(" ").slice(-1) }}
         </h2>
@@ -47,33 +49,37 @@
       </div>
       <div
         (click)="logout()"
-        class="h-fit flex justify-center hover:bg-green_insted active:bg-green_insted rounded-md"
+        class="h-fit flex justify-center cursor-pointer hover:bg-green_insted active:bg-green_insted rounded-md"
       >
         <span
-          class="material-symbols-outlined text-green_insted hover:text-white"
+          class="material-symbols-outlined text-green_insted hover:text-white dark:text-text_color"
         >
           logout
         </span>
       </div>
     </div>
-    <h3 class="text-center px-1 text-header_color text-xl font-bold">
+    <h3
+      class="text-center px-1 text-header_color dark:text-white text-xl font-bold"
+    >
       Tec. em Análise e Desenvolvimento de Sistemas
     </h3>
   </section>
-  <mat-accordion class="bg-white my-1 w-[98%] py-2 rounded-3xl shadow-md">
-    <mat-expansion-panel [expanded]="true">
-      <mat-expansion-panel-header class="text-text_color flex-col h-auto">
-        <h1 class="text-verde-texto text-2xl font-bold py-1">
+  <mat-accordion
+    class="bg-white dark:bg-green_insted my-1 w-[98%] py-2 rounded-3xl shadow-md"
+  >
+    <mat-expansion-panel [expanded]="true" class="dark:bg-green_insted">
+      <mat-expansion-panel-header class="flex-col h-auto">
+        <h1 class="dark:text-white text-2xl font-bold py-1">
           Informações pessoais
         </h1>
       </mat-expansion-panel-header>
       <div
-        class="flex flex-col p-4 text-md rounded-2xl leading-7 py-2 w-full justify-center animate-aparecer"
+        class="flex flex-col p-2 text-md rounded-2xl leading-7 w-full justify-center animate-aparecer"
       >
         <div class="flex flex-col justify-start">
           <h3 class="text-xl px-1">Nome completo:</h3>
           <p
-            class="flex justify-center items-center text-white font-semibold py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
+            class="flex justify-center items-center text-white font-semibold py-1 px-2 w-full rounded-2xl my-1 bg-green_insted dark:bg-white dark:text-text_color"
           >
             {{ (user$ | async)?.NmUser }}
           </p>
@@ -81,7 +87,7 @@
         <div class="flex flex-row justify-start items-center text-center">
           <h3 class="text-xl px-1 whitespace-nowrap">E-mail:</h3>
           <p
-            class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
+            class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted dark:bg-white dark:text-text_color"
           >
             {{ (user$ | async)?.NmEmail }}
           </p>
@@ -90,18 +96,22 @@
           <h3 class="text-xl px-1">Telefones:</h3>
           <div class="flex flex-row justify-around text-center gap-1">
             <div
-              class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted"
+              class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted dark:bg-white"
             >
-              <p class="text-white m-0">{{ (user$ | async)?.NmPhone1 }}</p>
+              <p class="text-white m-0 dark:text-text_color">
+                {{ (user$ | async)?.NmPhone1 }}
+              </p>
             </div>
             <div
-              class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted"
+              class="flex justify-center items-center font-semibold py-1 px-2 rounded-2xl my-1 w-full bg-green_insted dark:bg-white"
             >
-              <p class="text-white m-0">{{ (user$ | async)?.NmPhone2 }}</p>
+              <p class="text-white m-0 dark:text-text_color">
+                {{ (user$ | async)?.NmPhone2 }}
+              </p>
             </div>
           </div>
         </div>
-        <mat-expansion-panel>
+        <mat-expansion-panel class="dark:bg-green_insted">
           <mat-expansion-panel-header
             class="text-text_color flex-col header_filho h-auto"
           ></mat-expansion-panel-header>
@@ -109,15 +119,16 @@
           <div class="flex flex-row justify-start items-center">
             <h3 class="text-xl px-1 whitespace-nowrap">CPF:</h3>
             <p
-              class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
+              mask="999.999.99.9"
+              class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted dark:bg-white dark:text-text_color"
             >
-              {{ (user$ | async)?.NrCpf }}
+              {{ (user$ | async)?.NrCpf! | cpfcnpj }}
             </p>
           </div>
           <div class="flex flex-row justify-start items-center">
             <h3 class="text-xl px-1 whitespace-nowrap">Data de nascimento:</h3>
             <p
-              class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted"
+              class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted dark:bg-white dark:text-text_color"
             >
               {{ (user$ | async)?.DtBirthdate | date : "dd/MM/yyyy" }}
             </p>
@@ -127,10 +138,12 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion class="bg-white my-1 w-[98%] py-2 rounded-3xl shadow-md">
-    <mat-expansion-panel>
-      <mat-expansion-panel-header class="text-text_color flex-col h-auto">
-        <h1 class="text-verde-texto text-2xl font-bold py-1">Alterar senha</h1>
+  <mat-accordion
+    class="bg-white dark:bg-green_insted my-1 w-[98%] py-2 rounded-3xl shadow-md"
+  >
+    <mat-expansion-panel class="dark:bg-green_insted">
+      <mat-expansion-panel-header class="flex-col h-auto">
+        <h1 class="dark:text-white text-2xl font-bold py-1">Alterar senha</h1>
       </mat-expansion-panel-header>
       <form
         class="flex justify-between items-center gap-3 flex-col box-content py-4"
@@ -139,14 +152,16 @@
           <div class="flex flex-col justify-center items-center w-11/12">
             <input
               formControlName="ra"
+              class="dark:bg-text_color"
               placeholder="Insira sua senha atual"
               type="password"
             />
           </div>
           <div class="flex flex-col justify-center items-center w-11/12">
             <input
+              class="dark:bg-text_color"
               formControlName="ra"
-              placeholder="Insira sua nova senha"
+              placeholder="Insira nova senha"
               type="password"
             />
           </div>
@@ -158,8 +173,9 @@
                 id="password"
                 formControlName="password"
                 type="password"
+                class="dark:bg-text_color"
                 autocomplete="off"
-                placeholder="Confirme sua nova senha"
+                placeholder="Confirmar nova senha"
               />
               <svg
                 id="icon"
@@ -168,9 +184,14 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-grow w-full justify-around">
-          <button class="okay_button w-1/3" type="submit">Alterar</button>
-          <button class="cancelar w-1/3">Cancelar</button>
+        <div class="flex flex-grow gap-1 w-full justify-around px-2">
+          <button
+            class="okay_button w-1/2 dark:bg-white dark:text-green_insted"
+            type="submit"
+          >
+            Alterar
+          </button>
+          <button class="cancelar w-1/2">Cancelar</button>
         </div>
       </form>
     </mat-expansion-panel>

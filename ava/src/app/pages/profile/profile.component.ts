@@ -2,8 +2,7 @@ import { IappState, getUser } from 'app/store/app.state';
 import { Component } from '@angular/core';
 import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 import { Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
-import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserService } from 'app/services/user.service';
 
@@ -27,7 +26,7 @@ export class ProfileComponent {
 
   logout() {
     sessionStorage.clear();
-    localStorage.clear();
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
 }

@@ -2,7 +2,7 @@
   <mat-sidenav
     #sidenav
     mode="push"
-    opened="true"
+    opened="false"
     fixedInViewport="true"
     class="w-[66vw] tablet:w-[50vh] dark:bg-green_insted_dark bg-white rounded-r-3xl"
     ><section class="flex justify-start w-full h-fit p-1">
@@ -10,7 +10,7 @@
         <button
           class="flex text-center flex-row items-center m-auto"
           [matMenuTriggerFor]="menu"
-          expanded="false"
+          expanded="true"
         >
           <span class="material-symbols-outlined text-3xl dark:text-white"
             >light_mode</span
@@ -19,19 +19,20 @@
             >expand_more</span
           >
         </button>
-        <mat-menu #menu="matMenu" class="m-auto">
-          <li
-            *ngFor="let tema of temas"
-            class="first:rounded-t-3xl last:rounded-b-3xl gap-1"
-          >
+        <mat-menu #menu="matMenu" class="m-auto dark:bg-green_insted">
+          <li *ngFor="let tema of temas" class="">
             <div
               (click)="mudarTema(tema.id)"
-              class="flex p-1 flex-row items-center text-center justify-start m-1"
+              class="transition ease-in-out duration-200 flex p-1 flex-row items-center text-center justify-start cursor-pointer hover:bg-green_insted_transp_dark group"
             >
-              <span class="material-symbols-outlined text-xl p-1">{{
-                tema.icon
-              }}</span>
-              <label>{{ tema.label }}</label>
+              <span
+                class="material-symbols-outlined text-xl p-1 dark:text-white dark:group-hover:text-text_color"
+                >{{ tema.icon }}</span
+              >
+              <label
+                class="cursor-pointer dark:text-white dark:group-hover:text-text_color"
+                >{{ tema.label }}</label
+              >
             </div>
           </li>
         </mat-menu>
@@ -40,7 +41,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <router-outlet></router-outlet
+    <router-outlet class="dark:bg-text_color bg-white"></router-outlet
     ><app-menu-bottom (menuClick)="sidenav.open()"></app-menu-bottom>
   </mat-sidenav-content>
 </mat-sidenav-container>

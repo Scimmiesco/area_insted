@@ -26,6 +26,7 @@ import {
   provideEnvironmentNgxMask,
   provideNgxMask,
 } from 'ngx-mask';
+import { CpfCnpjPipe } from './pipes/cpf-format.pipe';
 
 register();
 @NgModule({
@@ -46,6 +47,7 @@ register();
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CpfCnpjPipe,
     StoreModule.forRoot({ app: appReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
