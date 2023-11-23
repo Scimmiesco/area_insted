@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'area',
     component: AreaComponent,
-    canActivate: [AreaAuthGuard],
+    // canActivate: [AreaAuthGuard],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeComponent },

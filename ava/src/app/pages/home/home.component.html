@@ -62,18 +62,20 @@
       navigation="true"
     >
       <swiper-slide
-        *ngFor="let materia of materias"
+        *ngFor="let materia; in: materias"
         class="gap-x-1 h-auto flex flex-row justify-start text-center items-center mx-auto"
       >
         <img
-          class="w-1/4 p-2 bg-white dark:bg-green_insted_dark rounded-r-md rounded-l-3xl"
+          class="w-1/5 p-2 bg-white rounded-r-md rounded-l-3xl"
           src="assets/images/education.png"
           alt="Educação Ícone"
         />
         <div
           class="flex justify-center items-center w-3/4 h-full p-2 text-center bg-white dark:bg-green_insted_dark rounded-l-md rounded-r-3xl"
         >
-          <h3 class="h-full text-center text-text_color dark:text-white">
+          <h3
+            class="h-full flex justify-center items-center text-text_color dark:text-white"
+          >
             {{ materia.NmClass }}
           </h3>
         </div>

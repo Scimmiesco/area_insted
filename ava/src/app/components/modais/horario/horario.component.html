@@ -1,58 +1,80 @@
 <div class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl w-[66svw]">
   <div
-    class="mat-dialog-container min-h-fit w-full rounded-3xl bg-gradient-to-t from-green_insted_transp via-green_insted_transp to-white"
+    class="mat-dialog-container min-h-fit w-full rounded-3xl bg-gradient-to-t from-green_insted_transp via-green_insted_transp to-white dark:from-green_insted dark:via-green_insted dark:to-green_insted_dark"
   >
     <div class="mat-dialog-content h-full w-full flex flex-col justify-start">
       <div
         class="mat-dialog-title flex flex-col text-center justify-center w-full p-1"
       >
-        <h1 class="font-bold">Horário de aulas</h1>
-        <h2 class="mat-dialog-title-text text-text_color m-auto font-semibold">
-          Quarta-feira
-        </h2>
-        <p class="m-0">14/06</p>
+        <h1 class="font-bold dark:text-white">Horário de aulas</h1>
+        <div class="py-2">
+          <h2
+            class="mat-dialog-title-text text-text_color m-auto font-semibold dark:text-white"
+          >
+            Quarta-feira
+          </h2>
+          <p class="m-0 dark:text-white">14/06</p>
+        </div>
       </div>
 
       <div
-        class="mat-dialog-description h-full flex flex-col justify-between py-3 gap-2"
+        class="mat-dialog-description h-full flex flex-col justify-between py-2 gap-2"
       >
         <div
-          class="rounded-3xl bg-white flex flex-col justify-center shadow-md p-1 m-2"
+          class="rounded-3xl flex flex-col justify-center p-1 m-2 gap-1"
+        >
+          <div
+            class="bg-white dark:bg-green_insted_dark rounded-b-md rounded-t-3xl"
+          >
+            <h3 class="p-2 m-0 text-2xl font-semibold dark:text-green_insted">
+              Álgebra Linear
+            </h3>
+            <p class="px-2 m-0 text-lg dark:text-white">
+              Claudiano Alberto Roberto
+            </p>
+          </div>
+
+          <div
+            class="flex flex-row justify-between dark:bg-white rounded-b-3xl rounded-t-md p-2"
+          >
+            <p class="text-2xl m-0 text-green_insted_dark">Sala 54</p>
+            <p class="text-2xl m-0 font-semibold text-green_insted_dark">
+              19:00
+            </p>
+          </div>
+        </div>
+        <div
+          class="rounded-3xl bg-white dark:bg-green_insted_dark flex flex-col justify-center shadow-md p-1 m-2"
         >
           <div>
-            <h3 class="p-2 m-0 text-2xl font-semibold">Álgebra Linear</h3>
-            <p class="px-2 m-0 text-lg">Claudiano Alberto Roberto</p>
+            <h3 class="p-2 m-0 text-2xl font-semibold dark:text-green_insted">
+              Álgebra Linear
+            </h3>
+            <p class="px-2 m-0 text-lg dark:text-white">
+              Claudiano Alberto Roberto
+            </p>
           </div>
 
           <div class="flex flex-row justify-between p-2">
-            <p class="text-2xl m-0">Sala 54</p>
+            <p class="text-2xl m-0 dark:text-white">Sala 54</p>
             <p class="text-2xl m-0 font-semibold text-green_insted">19:00</p>
           </div>
         </div>
         <div
-          class="rounded-3xl bg-white flex flex-col justify-center shadow-md p-1 m-2"
+          class="rounded-3xl bg-white dark:bg-green_insted_dark flex flex-col justify-center shadow-md p-1 m-2"
         >
           <div>
-            <h3 class="p-2 m-0 text-2xl font-semibold">Álgebra Linear</h3>
-            <p class="px-2 m-0 text-lg">Claudiano Alberto Roberto</p>
+            <h3 class="p-2 m-0 text-2xl font-semibold dark:text-green_insted">
+              Álgebra Linear
+            </h3>
+            <p class="px-2 m-0 text-lg dark:text-white">
+              Claudiano Alberto Roberto
+            </p>
           </div>
 
           <div class="flex flex-row justify-between p-2">
-            <p class="text-2xl m-0">Sala 54</p>
-            <p class="text-2xl m-0 font-semibold text-green_insted">19:50</p>
-          </div>
-        </div>
-        <div
-          class="rounded-3xl bg-white flex flex-col justify-center shadow-md p-1 m-2"
-        >
-          <div>
-            <h3 class="p-2 m-0 text-2xl font-semibold">Álgebra Linear</h3>
-            <p class="px-2 m-0 text-lg">Claudiano Alberto Roberto</p>
-          </div>
-
-          <div class="flex flex-row justify-between p-2">
-            <p class="text-2xl m-0">Sala 54</p>
-            <p class="text-2xl m-0 font-semibold text-green_insted">20:50</p>
+            <p class="text-2xl m-0 dark:text-white">Sala 54</p>
+            <p class="text-2xl m-0 font-semibold text-green_insted">19:00</p>
           </div>
         </div>
       </div>

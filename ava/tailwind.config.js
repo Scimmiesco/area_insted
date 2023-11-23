@@ -32,7 +32,7 @@ module.exports = {
       green_insted_transp_dark: "rgba(35, 111, 114, 0.35)",
       green_insted_transp: "rgba(103, 219, 223, 0.5)",
       green_insted_fundo_modal: "rgba(186, 234, 236, 0.384)",
-      white: "rgb(244, 242, 255)",
+      white: "rgb(209, 224, 221)",
       white_transp: "rgba(244, 242, 255,0.85)",
       invalid_text: "rgba(232, 86, 86, 0.85)",
     },
