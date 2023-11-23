@@ -129,8 +129,18 @@ export class ForgotPasswordFormComponent implements OnInit {
           }
         },
         error: (error) => {
-          if (error.statusCode === 404)
-            this.modalSucessoEnvioEmail('Usuário não encontrado.');
+          switch (error.status) {
+            case 404: {
+              this.modalSucessoEnvioEmail('Usuário não encontrado.');
+              break;
+            }
+            case 400: {
+              this.modalSucessoEnvioEmail(
+                'Por favor, preencha CPF ou e-mail ou RA.'
+              );
+              break;
+            }
+          }
         },
       });
   }

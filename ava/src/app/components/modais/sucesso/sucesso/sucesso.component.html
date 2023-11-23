@@ -1,17 +1,19 @@
-<div class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl shadow-2xl">
+<div
+  class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl shadow-2xl dark:bg-green_insted_dark"
+>
   <div
-    class="mat-dialog-container min-h-fit rounded-3xl min-w-[75vw] max-w-[90vw] tablet:w-1/2 shadow-2xl shadow-white_transp bg-white_transp border border-white"
+    class="mat-dialog-container min-h-fit rounded-3xl min-w-[75vw] max-w-[90vw] tablet:w-1/2 shadow-2xl shadow-white_transp dark:shadow-text_color bg-white_transp dark:bg-green_insted_dark border border-white dark:border-hidden"
   >
     <div class="mat-dialog-content h-full w-full flex flex-col justify-start">
       <div
         class="mat-dialog-title flex flex-col text-center justify-center w-full p-1"
       >
-        <h2>Sucesso!</h2>
+        <h2 class="dark:text-white">Sucesso!</h2>
       </div>
       <div
         class="mat-dialog-description h-full flex flex-col justify-between py-3 px-1 gap-2"
       >
-        <p class="text-lg text-center">
+        <p class="text-lg text-center dark:text-white">
           {{ message }}
         </p>
       </div>
