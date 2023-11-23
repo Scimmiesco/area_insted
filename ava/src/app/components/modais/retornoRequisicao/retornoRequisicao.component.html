@@ -8,12 +8,20 @@
       <div
         class="mat-dialog-title flex flex-col text-center justify-center w-full p-1"
       >
-        <h2 class="dark:text-white">Sucesso!</h2>
+        <h2
+          [ngClass]="
+            tipoRetorno === 'erro'
+              ? 'text-green_insted dark:text-white'
+              : 'text-invalid_text dark:text-invalid_text'
+          "
+        >
+          {{ tipoRetorno === "erro" ? "Erro!" : "Sucesso" }}
+        </h2>
       </div>
       <div
         class="mat-dialog-description h-full flex flex-col justify-between py-3 px-1 gap-2"
       >
-        <p class="text-lg text-center dark:text-white">
+        <p class="text-lg text-center text-text_color dark:text-white">
           {{ message }}
         </p>
       </div>

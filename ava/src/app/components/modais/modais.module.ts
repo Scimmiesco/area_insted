@@ -3,18 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
 import { HorarioModule } from './horario/horario.module';
 import { CalendarModule } from './calendar/calendar.module';
-import { SucessoComponent } from './sucesso/sucesso/sucesso.component';
-
-
+import { RetornoRequisicaoModalComponent } from './retornoRequisicao/retornoRequisicao.component';
 
 @NgModule({
-  declarations: [
-    SucessoComponent
-  ],
-  imports: [
-    CommonModule, MaterialModule, HorarioModule, CalendarModule
-  ], exports: [HorarioModule, CalendarModule
-
-  ]
+  declarations: [RetornoRequisicaoModalComponent],
+  imports: [CommonModule, MaterialModule, HorarioModule, CalendarModule],
+  exports: [HorarioModule, CalendarModule, CommonModule],
 })
-export class ModaisModule { }
+export class ModaisModule {}

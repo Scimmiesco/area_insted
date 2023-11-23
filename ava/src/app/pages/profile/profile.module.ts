@@ -6,10 +6,11 @@ import { ProfileComponent } from './profile.component';
 import { MaterialModule } from 'app/components/material/material.module';
 import { MenuBottomModule } from 'app/components/menu-bottom/menu-bottom.module';
 import { CpfCnpjPipe } from 'app/pipes/cpf-format.pipe';
+import { PhonePipe } from 'app/pipes/telefone.pipe';
 
 @NgModule({
   declarations: [ProfileComponent],
-  imports: [CommonModule, RouterModule, MaterialModule, MenuBottomModule,CpfCnpjPipe],
+  imports: [CommonModule, RouterModule, MaterialModule, MenuBottomModule,CpfCnpjPipe,PhonePipe],
   exports: [ProfileComponent],
   providers: [AutenticationService]
 })

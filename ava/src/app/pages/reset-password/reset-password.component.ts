@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/sucesso.component';
+import { RetornoRequisicaoModalComponent } from 'app/components/modais/retornoRequisicao/retornoRequisicao.component';
 import { LoadingService } from 'app/services/loading.service';
 import { ResetPasswordsService } from 'app/services/reset-password.service';
 import { TokenService } from 'app/services/token.service';
@@ -89,8 +89,8 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   modalSucessoEnvioEmail(message: string) {
-    this.dialog.open(SucessoModalComponent, {
-      data: { message: message },
+    this.dialog.open(RetornoRequisicaoModalComponent, {
+      data: { message: message, tipoModal: 'sucesso' },
       autoFocus: true,
       closeOnNavigation: true,
       panelClass: 'sucesso',

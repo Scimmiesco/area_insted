@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ResetPasswordsService } from 'app/services/reset-password.service';
-import { SucessoModalComponent } from 'app/components/modais/sucesso/sucesso/sucesso.component';
+import { retornoRequisicaoModalComponent } from 'app/components/modais/retornoRequisicao/retornoRequisicao.component';
 import { LoadingService } from 'app/services/loading.service';
 import { CustomValidations } from 'app/validators/custom.validator';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -125,18 +125,19 @@ export class ForgotPasswordFormComponent implements OnInit {
       .subscribe({
         next: (response) => {
           if (response.StatusCode === 200) {
-            this.modalSucessoEnvioEmail(response.Message);
+            this.retornarModal(response.Message, 'sucesso');
           }
         },
         error: (error) => {
           switch (error.status) {
             case 404: {
-              this.modalSucessoEnvioEmail('Usuário não encontrado.');
+              this.retornarModal('Usuário não encontrado.', 'erro');
               break;
             }
             case 400: {
-              this.modalSucessoEnvioEmail(
-                'Por favor, preencha CPF ou e-mail ou RA.'
+              this.retornarModal(
+                'Por favor, preencha CPF ou e-mail ou RA.',
+                'erro'
               );
               break;
             }
@@ -145,14 +146,14 @@ export class ForgotPasswordFormComponent implements OnInit {
       });
   }
 
-  modalSucessoEnvioEmail(message: string) {
-    this.dialog.open(SucessoModalComponent, {
+  retornarModal(message: string, tipoRetorno: string) {
+    this.dialog.open(retornoRequisicaoModalComponent, {
       data: {
         message: message,
+        tipoRetorno: tipoRetorno,
       },
       autoFocus: true,
       closeOnNavigation: true,
-      panelClass: 'horario-modal',
     });
   }
 }
