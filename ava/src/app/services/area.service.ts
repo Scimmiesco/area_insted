@@ -16,7 +16,4 @@ export class AreaService {
     private store: Store<{ app: IappState }>
   ) { }
 
-  getUser() {
-
-  }
 }

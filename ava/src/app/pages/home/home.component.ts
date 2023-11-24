@@ -28,8 +28,8 @@ export class HomeComponent {
     public dialog: MatDialog,
     public materiasService: MateriasService,
     public userService: UserService,
-    public store: Store<{ app: IappState }>,
-  ) { }
+    public store: Store<{ app: IappState }>
+  ) {}
 
   ngOnInit() {
     this.avisos = Avisos;

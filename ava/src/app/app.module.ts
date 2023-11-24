@@ -28,6 +28,7 @@ import {
 } from 'ngx-mask';
 import { CpfCnpjPipe } from './pipes/cpf-format.pipe';
 import { RetornoRequisicaoModalModule } from './components/modais/retornoRequisicao/retornoRequisicao.module';
+import { HorarioModule } from './components/modais/horario/horario.module';
 
 register();
 @NgModule({
@@ -48,6 +49,7 @@ register();
     FormsModule,
     ReactiveFormsModule,
     RetornoRequisicaoModalModule,
+    HorarioModule,
     HttpClientModule,
     CpfCnpjPipe,
     StoreModule.forRoot({ app: appReducer }),

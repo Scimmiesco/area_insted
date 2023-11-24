@@ -19,62 +19,34 @@
 
       <div
         class="mat-dialog-description h-full flex flex-col justify-between py-2 gap-2"
+        *ngIf="this.materiasService.materias$ | async as materias"
       >
         <div
+          *ngFor="let materia of materias"
           class="rounded-3xl flex flex-col justify-center p-1 m-2 gap-1"
         >
           <div
-            class="bg-white dark:bg-green_insted_dark rounded-b-md rounded-t-3xl"
+            class="bg-green_insted dark:bg-green_insted_dark rounded-b-md rounded-t-3xl"
           >
-            <h3 class="p-2 m-0 text-2xl font-semibold dark:text-green_insted">
-              Álgebra Linear
+            <h3
+              class="p-2 m-0 text-2xl font-semibold dark:text-white text-white"
+            >
+              {{ materia.NmClass }}
             </h3>
-            <p class="px-2 m-0 text-lg dark:text-white">
-              Claudiano Alberto Roberto
+            <p class="px-2 m-0 text-lg dark:text-white text-white">
+              {{ materia.NmUser }}
             </p>
           </div>
 
           <div
-            class="flex flex-row justify-between dark:bg-white rounded-b-3xl rounded-t-md p-2"
+            class="flex flex-row justify-between bg-white rounded-b-3xl rounded-t-md p-2"
           >
-            <p class="text-2xl m-0 text-green_insted_dark">Sala 54</p>
+            <p class="text-2xl m-0 text-green_insted_dark">
+              {{ materia.NmClassroom }}
+            </p>
             <p class="text-2xl m-0 font-semibold text-green_insted_dark">
-              19:00
+              {{ materia.DtTime.substring(0, 5) }}
             </p>
-          </div>
-        </div>
-        <div
-          class="rounded-3xl bg-white dark:bg-green_insted_dark flex flex-col justify-center shadow-md p-1 m-2"
-        >
-          <div>
-            <h3 class="p-2 m-0 text-2xl font-semibold dark:text-green_insted">
-              Álgebra Linear
-            </h3>
-            <p class="px-2 m-0 text-lg dark:text-white">
-              Claudiano Alberto Roberto
-            </p>
-          </div>
-
-          <div class="flex flex-row justify-between p-2">
-            <p class="text-2xl m-0 dark:text-white">Sala 54</p>
-            <p class="text-2xl m-0 font-semibold text-green_insted">19:00</p>
-          </div>
-        </div>
-        <div
-          class="rounded-3xl bg-white dark:bg-green_insted_dark flex flex-col justify-center shadow-md p-1 m-2"
-        >
-          <div>
-            <h3 class="p-2 m-0 text-2xl font-semibold dark:text-green_insted">
-              Álgebra Linear
-            </h3>
-            <p class="px-2 m-0 text-lg dark:text-white">
-              Claudiano Alberto Roberto
-            </p>
-          </div>
-
-          <div class="flex flex-row justify-between p-2">
-            <p class="text-2xl m-0 dark:text-white">Sala 54</p>
-            <p class="text-2xl m-0 font-semibold text-green_insted">19:00</p>
           </div>
         </div>
       </div>

@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResponseMateriasI } from 'app/Interfaces/materias.interface';
+import {
+  ResponseMateriasI,
+  materiaPadrao,
+} from 'app/Interfaces/materias.interface';
 import { environment } from 'environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -9,7 +12,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class MateriasService {
   private materiasSubject: BehaviorSubject<ResponseMateriasI['materias']> =
-    new BehaviorSubject<ResponseMateriasI['materias']>([]);
+    new BehaviorSubject<ResponseMateriasI['materias']>([materiaPadrao]);
 
   materias$: Observable<ResponseMateriasI['materias']> =
     this.materiasSubject.asObservable();

@@ -6,6 +6,7 @@ import { IappState, browseReloadToken, setUser } from 'app/store/app.state';
 import { TokenService } from 'app/services/token.service';
 import { AreaService } from 'app/services/area.service';
 import { MateriasService } from 'app/services/materias.service';
+import { materiaPadrao } from 'app/Interfaces/materias.interface';
 
 @Component({
   selector: 'app-area',
@@ -24,9 +25,7 @@ export class AreaComponent {
     store: Store<{ app: IappState }>,
     private tokenService: TokenService,
     private userService: UserService,
-    private areaService: AreaService,
-    private materiasService: MateriasService,
-    private router: Router
+    private materiasService: MateriasService
   ) {
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
     this.getDados();
@@ -41,7 +40,11 @@ export class AreaComponent {
     let ra = this.tokenService.getDataFromToken().unique_name;
 
     this.materiasService.materias$.subscribe((materias) => {
-      if (materias === null || materias.length === 0) {
+      if (
+        materias === null ||
+        materias.length === 0 ||
+        materias[0] === materiaPadrao
+      ) {
         this.materiasService.getHttpMaterias(ra);
       }
     });

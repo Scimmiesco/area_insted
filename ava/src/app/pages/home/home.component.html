@@ -9,10 +9,14 @@
     speed="500"
     Loop="true"
     pagination="true"
-    Autoplay="true"
+    autoplay="{ delay: 5000, disableOnInteraction: false }"
   >
     <swiper-slide *ngFor="let aviso of avisos"
-      ><img class="rounded-3xl" src="{{ aviso.src }}" alt="{{ aviso.alt }}"
+      ><img
+        class="rounded-3xl"
+        src="{{ aviso.src }}"
+        alt="{{ aviso.alt }}"
+        loading="lazy"
     /></swiper-slide>
   </swiper-container>
   <!--// Ícones-->
@@ -54,35 +58,37 @@
     class="bg-green_insted rounded-3xl flex flex-col justify-start p-2 my-2 mx-1"
   >
     <h2 class="text-white font-bold py-1">Matérias</h2>
-    <swiper-container
-      *ngIf="this.materiasService.materias$ | async as materias"
-      class="m-0 rounded-3xl h-full py-2"
-      pagination="true"
-      crossFade="true"
-      navigation="true"
-    >
-      <swiper-slide
-        *ngFor="let materia; in: materias"
-        class="gap-x-1 h-auto flex flex-row justify-start text-center items-center mx-auto"
+    <div class="w-full flex flex-row flex-nowrap flex-1 gap-x-1">
+      <img
+        class="w-1/5 min-h-full p-2 bg-white rounded-r-md rounded-l-3xl"
+        src="assets/images/education.png"
+        alt="Educação Ícone"
+      />
+      <swiper-container
+        *ngIf="this.materiasService.materias$ | async as materias"
+        class="m-0 rounded-l-md rounded-r-3xl w-4/5 flex flex-row"
+        pagination="true"
+        crossFade="true"
+        navigation="true"
       >
-        <img
-          class="w-1/5 p-2 bg-white rounded-r-md rounded-l-3xl"
-          src="assets/images/education.png"
-          alt="Educação Ícone"
-        />
-        <div
-          class="flex justify-center items-center w-3/4 h-full p-2 text-center bg-white dark:bg-green_insted_dark rounded-l-md rounded-r-3xl"
+        <swiper-slide
+          class="w-full h-full flex flex-row justify-start text-center items-center mx-auto"
+          *ngFor="let materia of materias"
         >
-          <h3
-            class="h-full flex justify-center items-center text-text_color dark:text-white"
+          <div
+            class="flex justify-center items-center w-full min-h-full p-2 text-center bg-white dark:bg-green_insted_dark"
           >
-            {{ materia.NmClass }}
-          </h3>
-        </div>
-      </swiper-slide>
+            <h3
+              class="h-full flex justify-center items-center text-text_color dark:text-white"
+            >
+              {{ materia.NmClass }}
+            </h3>
+          </div>
+        </swiper-slide>
 
-      <div class="swiper-pagination"></div>
-    </swiper-container>
+        <div class="swiper-pagination"></div>
+      </swiper-container>
+    </div>
   </section>
   <!--// Atividades-->
   <section
