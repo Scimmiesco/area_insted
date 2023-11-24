@@ -13,10 +13,10 @@ import { retornoRequisicaoI } from 'app/Interfaces/retornoRequisicao-modal.inter
   templateUrl: './retornoRequisicao.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-@Input()
 export class RetornoRequisicaoModalComponent {
+  @Input()
   message = '' as string;
-  tipoRetorno: string = 'sucesso' || 'erro';
+  tipoRetorno: string = 'sucesso';
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: retornoRequisicaoI) {
     this.message = data.message;

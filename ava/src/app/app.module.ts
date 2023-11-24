@@ -27,6 +27,7 @@ import {
   provideNgxMask,
 } from 'ngx-mask';
 import { CpfCnpjPipe } from './pipes/cpf-format.pipe';
+import { RetornoRequisicaoModalModule } from './components/modais/retornoRequisicao/retornoRequisicao.module';
 
 register();
 @NgModule({
@@ -46,6 +47,7 @@ register();
     MenuBottomModule,
     FormsModule,
     ReactiveFormsModule,
+    RetornoRequisicaoModalModule,
     HttpClientModule,
     CpfCnpjPipe,
     StoreModule.forRoot({ app: appReducer }),

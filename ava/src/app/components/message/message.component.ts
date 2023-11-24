@@ -5,10 +5,9 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './message.component.html',
 })
 export class MessageComponent implements OnInit {
-  @Input()
-  message = '' as string;
-  class = '' as string;
-  erro = 'false' as string;
+  @Input() message: string = '';
+  @Input() class: string = '';
+  @Input() erro: string = '';
 
   constructor() {}
 
