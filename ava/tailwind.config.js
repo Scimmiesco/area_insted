@@ -21,6 +21,7 @@ module.exports = {
         checkmark: "url('/assets/svg-icons/checkmark.svg')",
         opened_eye: "url('/assets/svg-icons/olho-aberto.svg')",
         closed_eye: "url('/assets/svg-icons/olho-fechado.svg')",
+        placeholder_img: "url('/assets/svg-icons/placeholder_view_vector.svg')",
       },
     },
     colors: {

@@ -35,7 +35,6 @@ export class HomeComponent {
   }
 
   onImageLoad() {
-    console.log('Imagem carregada com sucesso!');
     this.imageLoaded = true;
   }
 
@@ -43,26 +42,17 @@ export class HomeComponent {
     switch (iconId) {
       case 1:
         this.dialog.open(HorarioDialogComponent, {
-          data: {
-            animal: 'panda',
-          },
           autoFocus: true,
           closeOnNavigation: true,
-          panelClass: 'horario-modal',
         });
         break;
       case 6:
         this.dialog.open(calendarDialogComponent, {
-          data: {
-            animal: 'panda',
-          },
           autoFocus: true,
           closeOnNavigation: true,
-          panelClass: 'horario-modal',
         });
         break;
       default:
-        // Ação padrão caso o iconId não corresponda a nenhum caso
         break;
     }
   }

@@ -11,26 +11,22 @@
     [pagination]="{ clickable: true }"
     [autoplay]="{ delay: 5000, disableOnInteraction: false }"
   >
-    <ng-container *ngFor="let aviso of avisos">
-      <swiper-slide class="h-1/5">
-        <img
-          class="rounded-3xl w-full"
-          src="assets\svg-icons\Placeholder_view_vector.svg"
-          alt="Loading..."
-          [hidden]="imageLoaded"
-        />
-
-        <img
-          class="rounded-3xl w-full"
-          [ngStyle]="{ visibility: !imageLoaded ? 'hidden' : 'visible' }"
-          title="avisosImg"
-          src="{{ aviso.src }}"
-          alt="{{ aviso.alt }}"
-          loading="lazy"
-          (load)="onImageLoad()"
-        />
-      </swiper-slide>
-    </ng-container>
+    <swiper-slide
+      *ngFor="let aviso of avisos"
+      class="min-h-full bg-placeholder_img bg-center bg-cover rounded-3xl"
+    >
+      <img
+        class="rounded-3xl object-cover object-center"
+        [ngClass]="
+          !imageLoaded ? 'opacity-0' : 'opacity-100 ease-in-out delay-200'
+        "
+        title="avisosImg"
+        src="{{ aviso.src }}"
+        alt="{{ aviso.alt }}"
+        loading="lazy"
+        (load)="onImageLoad()"
+      />
+    </swiper-slide>
 
     <swiper-pagination></swiper-pagination>
   </swiper-container>

@@ -13,7 +13,7 @@ import { UserService } from 'app/services/user.service';
 export class ProfileComponent {
   user$!: Observable<Pessoa['user']>;
   status: boolean = true;
-
+  imageLoaded = false;
   constructor(
     private router: Router,
     private store: Store<{ app: IappState }>,
@@ -23,7 +23,9 @@ export class ProfileComponent {
   ngOnInit() {
     this.user$ = this.store.select(getUser);
   }
-
+  onImageLoad() {
+    this.imageLoaded = true;
+  }
   logout() {
     sessionStorage.clear();
     localStorage.removeItem('token');
