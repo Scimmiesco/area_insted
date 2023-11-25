@@ -3,7 +3,7 @@
 >
   <!--// Avisos-->
   <swiper-container
-    class="py-2 px-1 m-auto pb-4 min-h-20vh"
+    class="py-2 px-1 m-auto pb-4 h-[25svh]"
     [spaceBetween]="10"
     [slidesPerView]="1.05"
     [speed]="500"
@@ -11,21 +11,20 @@
     [pagination]="{ clickable: true }"
     [autoplay]="{ delay: 5000, disableOnInteraction: false }"
   >
-    <swiper-slide
-      *ngFor="let aviso of avisos"
-      class="min-h-full bg-placeholder_img bg-center bg-cover rounded-3xl"
-    >
-      <img
-        class="rounded-3xl object-cover object-center"
-        [ngClass]="
-          !imageLoaded ? 'opacity-0' : 'opacity-100 ease-in-out delay-200'
-        "
-        title="avisosImg"
-        src="{{ aviso.src }}"
-        alt="{{ aviso.alt }}"
-        loading="lazy"
-        (load)="onImageLoad()"
-      />
+    <swiper-slide class="min-h-full rounded-3xl" *ngFor="let aviso of avisos"
+      ><div class="bg-placeholder_img bg-cover bg-center rounded-3xl">
+        <img
+          class="rounded-3xl object-cover object-center"
+          [ngClass]="
+            !imageLoaded ? 'opacity-0' : 'opacity-100 ease-in-out duration-500'
+          "
+          title="avisosImg"
+          src="{{ aviso.src }}"
+          alt="{{ aviso.alt }}"
+          loading="lazy"
+          (load)="onImageLoad()"
+        />
+      </div>
     </swiper-slide>
 
     <swiper-pagination></swiper-pagination>

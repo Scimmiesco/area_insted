@@ -5,20 +5,22 @@
     class="my-1 w-[98%] py-2 rounded-3xl shadow-md bg-white dark:bg-green_insted"
   >
     <div class="flex flex-row justify-around">
-      <div
-        mdbDropdown
-        class="dropend relative w-4/12 m-1 bg-placeholder_img bg-center bg-cover rounded-full"
-        [ngClass]="imageLoaded ? 'bg-none ease-in-out delay-200' : ''"
-      >
-        <img
-          src="assets/images/perfil-padrao1.png"
-          class="rounded-full object-contain w-auto h-auto block"
-          alt="teste"
-          (load)="onImageLoad()"
-          [ngClass]="
-            !imageLoaded ? 'opacity-0' : 'opacity-100 ease-in-out delay-200'
-          "
-        />
+      <div mdbDropdown class="dropend relative w-4/12 m-1 rounded-full">
+        <div
+          class="bg-placeholder_img bg-cover bg-center rounded-full w-[15vh] h-[15vh]"
+        >
+          <img
+            src="assets/images/perfil-padrao1.png"
+            class="w-full rounded-full object-cover object-center h-full block"
+            alt="teste"
+            (load)="onImageLoad()"
+            [ngClass]="
+              !imageLoaded
+                ? 'opacity-0'
+                : 'opacity-100 ease-in-out duration-500'
+            "
+          />
+        </div>
         <div
           mdbDropdownToggle
           expanded="false"
@@ -63,9 +65,7 @@
         </span>
       </div>
     </div>
-    <h3
-      class="text-center px-1 text-header_color dark:text-white text-xl font-bold"
-    >
+    <h3 class="text-center px-1 dark:text-white text-xl font-bold">
       Tec. em Análise e Desenvolvimento de Sistemas
     </h3>
   </section>
