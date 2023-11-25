@@ -6,7 +6,8 @@ import { IappState, getUser, setUser } from 'app/store/app.state';
 import { Store } from '@ngrx/store';
 import { userResponse } from 'app/Interfaces/user.Interface';
 import { environment } from 'environments/environment';
-
+import { take } from 'rxjs/operators';
+('');
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +19,6 @@ export class UserService {
     private store: Store<{ app: IappState }>,
     private tokenService: TokenService
   ) {
-    store.select(getUser);
   }
 
   getUser() {
@@ -31,12 +31,15 @@ export class UserService {
     });
     const options = { headers: headers };
 
-    this.http.get<userResponse>(urlGetUserByRA, options).subscribe({
-      next: (response) => {
-        this.setUserInStore(response.user);
-      },
-      error: (error) => {},
-    });
+    this.http
+      .get<userResponse>(urlGetUserByRA, options)
+      .pipe(take(1))
+      .subscribe({
+        next: (response) => {
+          this.setUserInStore(response.user);
+        },
+        error: (error) => {},
+      });
   }
 
   setUserInStore(user: Pessoa['user']) {

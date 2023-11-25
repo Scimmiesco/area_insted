@@ -4,21 +4,37 @@
   <!--// Avisos-->
   <swiper-container
     class="py-2 px-1 m-auto pb-4 min-h-20vh"
-    space-between="10"
-    slides-per-view="1.05"
-    speed="500"
-    Loop="true"
-    pagination="true"
-    autoplay="{ delay: 5000, disableOnInteraction: false }"
+    [spaceBetween]="10"
+    [slidesPerView]="1.05"
+    [speed]="500"
+    [loop]="true"
+    [pagination]="{ clickable: true }"
+    [autoplay]="{ delay: 5000, disableOnInteraction: false }"
   >
-    <swiper-slide *ngFor="let aviso of avisos"
-      ><img
-        class="rounded-3xl"
-        src="{{ aviso.src }}"
-        alt="{{ aviso.alt }}"
-        loading="lazy"
-    /></swiper-slide>
+    <ng-container *ngFor="let aviso of avisos">
+      <swiper-slide class="h-1/5">
+        <img
+          class="rounded-3xl w-full"
+          src="assets\svg-icons\Placeholder_view_vector.svg"
+          alt="Loading..."
+          [hidden]="imageLoaded"
+        />
+
+        <img
+          class="rounded-3xl w-full"
+          [ngStyle]="{ visibility: !imageLoaded ? 'hidden' : 'visible' }"
+          title="avisosImg"
+          src="{{ aviso.src }}"
+          alt="{{ aviso.alt }}"
+          loading="lazy"
+          (load)="onImageLoad()"
+        />
+      </swiper-slide>
+    </ng-container>
+
+    <swiper-pagination></swiper-pagination>
   </swiper-container>
+
   <!--// Ícones-->
   <mat-grid-list
     cols="4"
