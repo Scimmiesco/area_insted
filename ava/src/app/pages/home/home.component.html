@@ -1,5 +1,5 @@
 <section
-  class="mx-auto dark:from-green_insted dark:via-text_color dark:to-text_color bg-gradient-to-t from-green_insted_transp via-white to-white h-[100svh] tablet:w-[60vh] pb-16 box-content"
+  class="mx-auto dark:from-green_insted dark:via-text_color dark:to-text_color bg-gradient-to-t from-green_insted_transp via-white to-white h-[100svh] tablet:w-[60vh] pb-16 box-content tablet:from-white"
 >
   <!--// Avisos-->
   <swiper-container
@@ -18,7 +18,7 @@
           [ngClass]="
             !imageLoaded ? 'opacity-0' : 'opacity-100 ease-in-out duration-500'
           "
-          title="avisosImg"
+          title="avisosImg"   
           src="{{ aviso.src }}"
           alt="{{ aviso.alt }}"
           loading="lazy"

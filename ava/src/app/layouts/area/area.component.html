@@ -1,10 +1,10 @@
-<mat-sidenav-container class="tablet:w-[60vh] mx-auto">
+<mat-sidenav-container class="mx-auto">
   <mat-sidenav
     #sidenav
-    mode="push"
-    opened="false"
-    fixedInViewport="true"
-    class="w-[66vw] tablet:w-[50vh] dark:bg-green_insted_dark bg-white rounded-r-3xl"
+    [mode]="mobileQuery.matches ? 'push' : 'side'"
+    [opened]="mobileQuery.matches ? 'false' : 'true'"
+    fixedInViewport="false"
+    class="w-[66vw] tablet:w-[33vw] dark:bg-green_insted_dark bg-white rounded-r-3xl border-none"
     ><section class="flex justify-start w-full h-fit p-1">
       <div>
         <button
@@ -40,8 +40,11 @@
     </section>
   </mat-sidenav>
 
-  <mat-sidenav-content>
-    <router-outlet class="dark:bg-text_color bg-white"></router-outlet
-    ><app-menu-bottom (menuClick)="sidenav.open()"></app-menu-bottom>
+  <mat-sidenav-content
+    ><app-menu-bottom
+      (menuClick)="sidenav.open()"
+      [tamanhoTelaTablet]="mobileQuery.matches"
+    ></app-menu-bottom>
+    <router-outlet class="dark:bg-text_color bg-white"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
