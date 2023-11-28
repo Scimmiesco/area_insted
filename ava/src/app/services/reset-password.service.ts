@@ -26,7 +26,7 @@ export class ResetPasswordsService {
 
   enviaEmail(tipo: string, param: string): Observable<emailResponse> {
     return this.http.get<emailResponse>(
-      `${this.APIURL}user/recoverPass?tipo=${tipo}&param=${param}`
+      `${this.APIURL}senha/emailresetsenha?tipo=${tipo}&param=${param}`
     );
   }
   trocaSenha(
@@ -47,7 +47,7 @@ export class ResetPasswordsService {
     };
 
     return this.http.post<emailResponse>(
-      `${this.APIURL}/trocasenha`,
+      `${this.APIURL}senha/trocarsenha`,
       requestBody,
       httpOptions
     );

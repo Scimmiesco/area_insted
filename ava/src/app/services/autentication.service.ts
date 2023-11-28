@@ -21,7 +21,7 @@ export class AutenticationService {
       login: loginRequest.login as string,
       password: loginRequest.passwordHashed as string,
     };
-    const loginUrl = `${this.APIURL}user/auth`;
+    const loginUrl = `${this.APIURL}auth`;
 
     return this.http.post<ResponseInterface>(`${loginUrl}`, json).pipe(
       map((response: ResponseInterface) => {
