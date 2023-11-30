@@ -12,7 +12,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class MateriasService {
   private materiasSubject: BehaviorSubject<ResponseMateriasI['materias']> =
-    new BehaviorSubject<ResponseMateriasI['materias']>([materiaPadrao]);
+    new BehaviorSubject<ResponseMateriasI['materias']>(materiaPadrao);
 
   materias$: Observable<ResponseMateriasI['materias']> =
     this.materiasSubject.asObservable();

@@ -14,13 +14,35 @@ export interface ResponseMateriasI {
       }[]
     | null;
 }
-export const materiaPadrao = {
-  IdClass: '0',
-  IdUser: '0',
-  NmClass: 'Matéria do aluno',
-  NmWeekday: 'Segunda-feira',
-  NmClassroom: 'Sala 0',
-  NrTotal: 0,
-  NmUser: 'Professor da matéria',
-  DtTime: "19:00"
-};
+export const materiaPadrao: ResponseMateriasI['materias'] = [
+  {
+    IdClass: '0',
+    IdUser: '0',
+    NmClass: 'Matéria do aluno',
+    NmWeekday: 'Segunda-feira',
+    NmClassroom: 'Sala 0',
+    NrTotal: 0,
+    NmUser: 'Professor da matéria',
+    DtTime: '19:00',
+  },
+  {
+    IdClass: '0',
+    IdUser: '0',
+    NmClass: 'Matéria do aluno',
+    NmWeekday: 'Segunda-feira',
+    NmClassroom: 'Sala 0',
+    NrTotal: 0,
+    NmUser: 'Professor da matéria',
+    DtTime: '19:00',
+  },
+  {
+    IdClass: '0',
+    IdUser: '0',
+    NmClass: 'Matéria do aluno',
+    NmWeekday: 'Segunda-feira',
+    NmClassroom: 'Sala 0',
+    NrTotal: 0,
+    NmUser: 'Professor da matéria',
+    DtTime: '19:00',
+  },
+];

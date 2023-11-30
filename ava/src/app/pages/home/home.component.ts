@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { MatDialog } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
@@ -11,6 +11,7 @@ import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
 import { UserService } from 'app/services/user.service';
+import { MediaMatcher } from '@angular/cdk/layout';
 register();
 
 @Component({
@@ -21,13 +22,20 @@ export class HomeComponent {
   icons!: IconInterface[];
   avisos!: PainelInterface[];
   imageLoaded = false;
-
+  private _mobileQueryListener: () => void;
+  mobileQuery: MediaQueryList;
   constructor(
     public dialog: MatDialog,
     public materiasService: MateriasService,
     public userService: UserService,
-    public store: Store<{ app: IappState }>
-  ) {}
+    public store: Store<{ app: IappState }>,
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher
+  ) {
+    this.mobileQuery = media.matchMedia('(max-width: 750px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addEventListener('change', this._mobileQueryListener);
+  }
 
   ngOnInit() {
     this.avisos = Avisos;

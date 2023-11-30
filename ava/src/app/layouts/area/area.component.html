@@ -4,40 +4,89 @@
     [mode]="mobileQuery.matches ? 'push' : 'side'"
     [opened]="mobileQuery.matches ? 'false' : 'true'"
     fixedInViewport="false"
-    class="w-[66vw] tablet:w-[33vw] dark:bg-green_insted_dark bg-white rounded-r-3xl border-none"
-    ><section class="flex justify-start w-full h-fit p-1">
-      <div>
-        <button
-          class="flex text-center flex-row items-center m-auto"
-          [matMenuTriggerFor]="menu"
-          expanded="true"
+    class="w-[66vw] tablet:w-[85px] dark:bg-green_insted_dark bg-green_insted border-none h-[100svh] fixed"
+  >
+    <nav *ngIf="!mobileQuery.matches" class="flex flex-col flex-1 my-2">
+      <ul class="flex flex-col flex-1 gap-1">
+        <li
+          class="p-1 cursor-pointer"
+          id="sideNavButton"
+          #sideNavButton
+          [routerLink]="['home']"
         >
-          <span class="material-symbols-outlined text-3xl dark:text-white"
-            >light_mode</span
+          <img
+            alt="teste"
+            src="assets/images/menu-button3.png"
+            class="bg-contain p-1 m-auto h-14"
+          />
+        </li>
+        <li
+          *ngFor="let icon of icons; let i = index"
+          class="flex flex-col rounded-3xl min-w-full group cursor-pointer"
+          (click)="OpenModais(icon.id)"
+        >
+          <div
+            class="w-full rounded-full group-hover:bg-green_insted_transp_dark transition ease-in-out duration-200"
           >
-          <span class="material-symbols-outlined text-xl dark:text-white"
-            >expand_more</span
+            <img
+              src="{{ icon.src }}"
+              alt="{{ icon.alt }}"
+              class="bg-contain p-2 m-auto h-12"
+            />
+          </div>
+          <div class="w-full m-auto">
+            <p class="text-center">{{ icon.rotulo }}</p>
+          </div>
+        </li>
+
+        <li
+          [routerLink]="['perfil']"
+          class="flex flex-col justify-center items-center text-center mt-auto"
+        >
+          <img
+            src="assets/images/perfil-padrao1.png"
+            class="cursor-pointer rounded-full object-cover object-center h-14 w-14 aspect-square border-2 border-green_insted hover:border-white transition ease-in-out duration-200 box-content hover:shadow-green_insted_dark hover:shadow-md"
+            alt="teste"
+          />
+          <p
+            class="text-sm text-text_color dark:text-white p-0 m-0 text-center font-bold"
           >
-        </button>
-        <mat-menu #menu="matMenu" class="m-auto dark:bg-green_insted">
-          <li *ngFor="let tema of temas" class="">
-            <div
-              (click)="mudarTema(tema.id)"
-              class="transition ease-in-out duration-200 flex p-1 flex-row items-center text-center justify-start cursor-pointer hover:bg-green_insted_transp_dark group"
+            Perfil
+          </p>
+        </li>
+        <li class="">
+          <button
+            class="flex text-center flex-row items-center m-auto"
+            [matMenuTriggerFor]="menu"
+            expanded="true"
+          >
+            <span class="material-symbols-outlined text-3xl dark:text-white"
+              >light_mode</span
             >
-              <span
-                class="material-symbols-outlined text-xl p-1 dark:text-white dark:group-hover:text-text_color"
-                >{{ tema.icon }}</span
+            <span class="material-symbols-outlined text-xl dark:text-white"
+              >expand_more</span
+            >
+          </button>
+          <mat-menu #menu="matMenu" class="m-auto dark:bg-green_insted">
+            <li *ngFor="let tema of temas" class="">
+              <div
+                (click)="mudarTema(tema.id)"
+                class="transition ease-in-out duration-200 flex p-1 flex-row items-center text-center justify-start cursor-pointer hover:bg-green_insted_transp_dark group"
               >
-              <label
-                class="cursor-pointer dark:text-white dark:group-hover:text-text_color"
-                >{{ tema.label }}</label
-              >
-            </div>
-          </li>
-        </mat-menu>
-      </div>
-    </section>
+                <span
+                  class="material-symbols-outlined text-xl p-1 dark:text-white dark:group-hover:text-text_color"
+                  >{{ tema.icon }}</span
+                >
+                <label
+                  class="cursor-pointer dark:text-white dark:group-hover:text-text_color"
+                  >{{ tema.label }}</label
+                >
+              </div>
+            </li></mat-menu
+          >
+        </li>
+      </ul>
+    </nav>
   </mat-sidenav>
 
   <mat-sidenav-content
