@@ -27,7 +27,7 @@ export class MateriasService {
 
   getHttpMaterias(ra: string) {
     return this.http
-      .get<ResponseMateriasI>(`${this.APIURL}user/GetMaterias?ra=${ra}`)
+      .get<ResponseMateriasI>(`${this.APIURL}materias/getmaterias?ra=${ra}`)
       .subscribe({
         next: (response) => {
           this.setMaterias(response.materias);

@@ -1,0 +1,43 @@
+/* Reset de scrollbar para todos os navegadores */
+::-webkit-scrollbar {
+    width: 8px; /* Largura da scrollbar para navegadores Webkit (Chrome, Safari) */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #ffffff; /* Cor da thumb da scrollbar */
+    border-radius: 18px;
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent; /* Cor do fundo da scrollbar */
+  }
+  
+  /* Para navegadores baseados em Firefox */
+  html {
+    scrollbar-width: thin;
+  }
+  
+  body {
+    scrollbar-color: #ffffff transparent; /* Cor da thumb e do fundo da scrollbar */
+  }
+  
+  /* Para navegadores baseados em Internet Explorer e Edge */
+  body {
+    -ms-overflow-style: none; /* Esconde a scrollbar no IE e Edge */
+  }
+  
+  body::-ms-scrollbar-thumb {
+    background-color: #ffffff; /* Cor da thumb da scrollbar no IE e Edge */
+  }
+  
+  body::-ms-scrollbar-track {
+    background-color: transparent; /* Cor do fundo da scrollbar no IE e Edge */
+  }
+  
+  /* Estilo adicional para tornar a scrollbar mais fina e sutil */
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff transparent;
+  }
+  

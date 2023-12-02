@@ -4,7 +4,7 @@
     [mode]="mobileQuery.matches ? 'push' : 'side'"
     [opened]="mobileQuery.matches ? 'false' : 'true'"
     fixedInViewport="false"
-    class="w-[66vw] tablet:w-[85px] dark:bg-green_insted_dark bg-green_insted border-none h-[100svh] fixed"
+    class="w-[66vw] tablet:w-[85px] max-h-[100svh] dark:bg-green_insted_dark bg-green_insted border-none h-[100svh] fixed"
   >
     <nav *ngIf="!mobileQuery.matches" class="flex flex-col flex-1 my-2">
       <ul class="flex flex-col flex-1 gap-1">

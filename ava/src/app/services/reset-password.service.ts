@@ -25,10 +25,15 @@ export class ResetPasswordsService {
   }
 
   enviaEmail(tipo: string, param: string): Observable<emailResponse> {
-    return this.http.get<emailResponse>(
-      `${this.APIURL}senha/emailresetsenha?tipo=${tipo}&param=${param}`
-    );
+    const parametros = new URLSearchParams({
+      tipo: tipo,
+      param: param
+    });
+  
+    const url = `${this.APIURL}senha/emailresetsenha?${parametros}`;
+    return this.http.get<emailResponse>(url);
   }
+  
   trocaSenha(
     novaSenha: NovaSenha['confirmaSenhaNova']
   ): Observable<emailResponse> {
