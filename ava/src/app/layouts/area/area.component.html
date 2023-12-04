@@ -4,7 +4,7 @@
     [mode]="mobileQuery.matches ? 'push' : 'side'"
     [opened]="mobileQuery.matches ? 'false' : 'true'"
     fixedInViewport="false"
-    class="w-[66vw] laptop:w-[85px] max-h-[100svh] dark:bg-green_insted_dark bg-white_transp border-none h-[100svh] fixed"
+    class="w-[66vw] laptop:w-FIT laptop:max-w-[110px] max-h-[100svh] rounded-l-3xl ml-1 my-1 h-full dark:bg-green_insted_dark bg-white_transp border-none laptop:h-[100svh] fixed"
   >
     <nav *ngIf="!mobileQuery.matches" class="flex flex-col flex-1 my-2">
       <ul class="flex flex-col flex-1 gap-1">
@@ -53,16 +53,16 @@
             Perfil
           </p>
         </li>
-        <li (click)="mudarTema(localStorageTema)" class="cursor-pointer">
-          <span
-            class="material-symbols-outlined text-3xl dark:text-white text-text_color"
-            >{{
-              localStorageTema === "light" ? "light_mode" : "dark_mode"
-            }}</span
-          >
-        </li>
       </ul>
     </nav>
+    <li (click)="mudarTema()" class="cursor-pointer">
+      <span
+        class="material-symbols-outlined text-3xl w-full dark:text-white text-text_color text-center transition delay-150 ease-in-out"
+        >{{
+          (temaService.tema$ | async) === "light" ? "light_mode" : "dark_mode"
+        }}</span
+      >
+    </li>
   </mat-sidenav>
 
   <mat-sidenav-content class="bg-green_insted m-1 rounded-3xl"

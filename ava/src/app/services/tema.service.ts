@@ -5,9 +5,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TemaService {
-  private temaSubject = new BehaviorSubject<string>('light');
+  private temaSubject = new BehaviorSubject<string>(
+    localStorage.getItem('tema') || 'light'
+  );
   tema$: Observable<string> = this.temaSubject.asObservable();
-
   mudarTema(novoTema: string) {
     this.temaSubject.next(novoTema);
     localStorage.setItem('tema', novoTema);

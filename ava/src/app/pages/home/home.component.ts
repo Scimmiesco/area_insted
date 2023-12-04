@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { MatDialog } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
@@ -12,6 +12,12 @@ import { Store } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
 import { UserService } from 'app/services/user.service';
 import { MediaMatcher } from '@angular/cdk/layout';
+import {
+  Swiper,
+  SwiperEvents,
+  SwiperModule,
+  SwiperOptions,
+} from 'swiper/types';
 register();
 
 @Component({
@@ -24,6 +30,8 @@ export class HomeComponent {
   imageLoaded = false;
   private _mobileQueryListener: () => void;
   mobileQuery: MediaQueryList;
+  @ViewChild('swiperMaterias') swiperMaterias?: Swiper;
+
   constructor(
     public dialog: MatDialog,
     public materiasService: MateriasService,
@@ -41,7 +49,6 @@ export class HomeComponent {
     this.avisos = Avisos;
     this.icons = Icons;
   }
-
   onImageLoad() {
     this.imageLoaded = true;
   }

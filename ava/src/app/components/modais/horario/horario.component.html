@@ -1,6 +1,6 @@
-<div class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl w-[66svw] tablet:w-[50vw] max-w-[560px]]">
+<div class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl w-[80vw] tablet:w-[50vw] max-w-[560px]]">
   <div
-    class="mat-dialog-container min-h-fit w-full rounded-3xl bg-gradient-to-t from-green_insted_transp via-green_insted_transp to-white dark:from-green_insted dark:via-green_insted dark:to-green_insted_dark"
+    class="mat-dialog-container min-h-fit max-h-[80vh] w-full rounded-3xl bg-white dark:bg-green_insted_dark "
   >
     <div class="mat-dialog-content h-full w-full flex flex-col justify-start">
       <div
@@ -18,15 +18,15 @@
       </div>
 
       <div
-        class="mat-dialog-description h-full flex flex-col justify-between py-2 gap-2"
+        class="mat-dialog-description h-full flex flex-col justify-between py-2 gap-1"
         *ngIf="this.materiasService.materias$ | async as materias"
       >
         <div
           *ngFor="let materia of materias"
-          class="rounded-3xl flex flex-col justify-center p-1 m-2 gap-1"
+          class="rounded-3xl flex flex-col justify-center p-1 gap-1"
         >
           <div
-            class="bg-green_insted dark:bg-green_insted_dark rounded-b-md rounded-t-3xl"
+            class="bg-green_insted dark:bg-green_insted rounded-b-md rounded-t-3xl"
           >
             <h3
               class="p-2 m-0 text-2xl font-semibold dark:text-white text-white"
@@ -39,7 +39,7 @@
           </div>
 
           <div
-            class="flex flex-row justify-between bg-white rounded-b-3xl rounded-t-md p-2"
+            class="flex flex-row justify-between bg-green_insted dark:bg-white rounded-b-3xl rounded-t-md p-2"
           >
             <p class="text-2xl m-0 text-green_insted_dark">
               {{ materia.NmClassroom }}

@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'area',
     component: AreaComponent,
-    // canActivate: [AreaAuthGuard],
+    canActivate: [AreaAuthGuard],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeComponent },
@@ -28,7 +28,6 @@ const routes: Routes = [
   },
   {
     path: 'minhaconta',
-
     canActivate: [ResetPasswordAuthGuard],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'trocasenha' },

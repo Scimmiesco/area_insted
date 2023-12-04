@@ -26,7 +26,6 @@ import { TemaService } from 'app/services/tema.service';
 })
 export class AreaComponent {
   tokenSession = localStorage.getItem('token') || '';
-  localStorageTema: string = '';
 
   private _mobileQueryListener: () => void;
   mobileQuery: MediaQueryList;
@@ -37,7 +36,7 @@ export class AreaComponent {
     public dialog: MatDialog,
     private userService: UserService,
     private materiasService: MateriasService,
-    private temaService: TemaService,
+    public temaService: TemaService,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher
   ) {
@@ -48,7 +47,6 @@ export class AreaComponent {
 
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
     this.getDados();
-    this.localStorageTema = localStorage.getItem('tema') || 'light';
   }
   ngOnDestroy() {
     this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
@@ -92,10 +90,10 @@ export class AreaComponent {
   getUser() {
     this.userService.getUser();
   }
-  mudarTema(localStorageTemaParam: string) {
+  mudarTema() {
     let temas = ['light', 'dark'] as string[];
-
-    let index = temas.indexOf(localStorageTemaParam);
+    let localStorageTema = localStorage.getItem('tema') || 'light';
+    let index = temas.indexOf(localStorageTema);
 
     let proximoIndice = (index + 1) % temas.length;
 

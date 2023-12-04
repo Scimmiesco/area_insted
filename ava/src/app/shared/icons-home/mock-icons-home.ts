@@ -23,8 +23,8 @@ export const Icons: IconInterface[] = [
   },
   {
     id: 5,
-    icone: "grade",
-    rotulo: "Notas"
+    icone: "book_5",
+    rotulo: "Biblioteca"
   },
   {
     id: 6,
