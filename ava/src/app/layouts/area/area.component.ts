@@ -1,6 +1,11 @@
 import { Router } from '@angular/router';
 import { UserService } from 'app/services/user.service';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IappState, browseReloadToken, setUser } from 'app/store/app.state';
 import { TokenService } from 'app/services/token.service';
@@ -13,6 +18,7 @@ import { Icons } from 'app/shared/icons-home/mock-icons-home';
 import { MatDialog } from '@angular/material/dialog';
 import { HorarioDialogComponent } from 'app/components/modais/horario/horario.component';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
+import { TemaService } from 'app/services/tema.service';
 
 @Component({
   selector: 'app-area',
@@ -20,12 +26,8 @@ import { calendarDialogComponent } from 'app/components/modais/calendar/calendar
 })
 export class AreaComponent {
   tokenSession = localStorage.getItem('token') || '';
+  localStorageTema: string = '';
 
-  temas = [
-    { id: 1, label: 'Modo claro', icon: 'light_mode' },
-    { id: 2, label: 'Modo escuro', icon: 'dark_mode' },
-    { id: 3, label: 'Sistema', icon: 'smartphone' },
-  ];
   private _mobileQueryListener: () => void;
   mobileQuery: MediaQueryList;
   icons!: IconInterface[];
@@ -35,16 +37,18 @@ export class AreaComponent {
     public dialog: MatDialog,
     private userService: UserService,
     private materiasService: MateriasService,
+    private temaService: TemaService,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 750px)');
+    this.mobileQuery = media.matchMedia('(max-width: 1024px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this._mobileQueryListener);
     this.icons = Icons;
 
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
     this.getDados();
+    this.localStorageTema = localStorage.getItem('tema') || 'light';
   }
   ngOnDestroy() {
     this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
@@ -88,18 +92,15 @@ export class AreaComponent {
   getUser() {
     this.userService.getUser();
   }
-  mudarTema(id: number) {
-    const themes = ['light', 'dark'];
-    const currentTheme = localStorage.getItem('theme');
-    const selectedTheme = id === 3 ? null : themes[id - 1];
+  mudarTema(localStorageTemaParam: string) {
+    let temas = ['light', 'dark'] as string[];
 
-    if (currentTheme !== selectedTheme) {
-      if (selectedTheme === null) {
-        localStorage.removeItem('theme');
-      } else {
-        localStorage.setItem('theme', selectedTheme);
-      }
-      location.reload();
-    }
+    let index = temas.indexOf(localStorageTemaParam);
+
+    let proximoIndice = (index + 1) % temas.length;
+
+    localStorage.setItem('tema', temas[proximoIndice]);
+
+    this.temaService.mudarTema(temas[proximoIndice]);
   }
 }

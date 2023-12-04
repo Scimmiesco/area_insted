@@ -3,43 +3,42 @@ import { IconInterface } from "./icons-home.model";
 export const Icons: IconInterface[] = [
   {
     id: 1,
-    src: "assets/images/icons-home/clock.png",
-    alt: "icone de relógio",
+    icone: "schedule",
     rotulo: "Horário"
   },
   {
     id: 2,
-    src: "assets/images/icons-home/financeiro.png", alt: "icone de relógio",
+    icone: "payments",
     rotulo: "Financeiro"
   },
   {
     id: 3,
-    src: "assets/images/icons-home/grade.png", alt: "icone de relógio",
-    rotulo: "Notas"
+    icone: "notifications",
+    rotulo: "Notificações"
   },
   {
     id: 4,
-    src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
-    rotulo: "Avisos"
-  },
-  {
-    id: 5,
-    src: "assets/images/icons-home/library.png", alt: "icone de relógio",
-    rotulo: "Biblioteca"
-  },
-  {
-    id: 6,
-    src: "assets/images/icons-home/calendar.png", alt: "Calendário",
+    icone: "calendar_month",
     rotulo: "Calendário"
   },
   {
+    id: 5,
+    icone: "grade",
+    rotulo: "Notas"
+  },
+  {
+    id: 6,
+    icone: "grade",
+    rotulo: "Notas"
+  },
+  {
     id: 7,
-    src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
-    rotulo: "Avisos"
+    icone: "grade",
+    rotulo: "Notas"
   },
   {
     id: 8,
-    src: "assets/images/icons-home/notification.png", alt: "icone de relógio",
-    rotulo: "Avisos"
+    icone: "grade",
+    rotulo: "Notas"
   },
 ]

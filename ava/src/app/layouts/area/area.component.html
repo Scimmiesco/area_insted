@@ -4,7 +4,7 @@
     [mode]="mobileQuery.matches ? 'push' : 'side'"
     [opened]="mobileQuery.matches ? 'false' : 'true'"
     fixedInViewport="false"
-    class="w-[66vw] tablet:w-[85px] max-h-[100svh] dark:bg-green_insted_dark bg-green_insted border-none h-[100svh] fixed"
+    class="w-[66vw] laptop:w-[85px] max-h-[100svh] dark:bg-green_insted_dark bg-white_transp border-none h-[100svh] fixed"
   >
     <nav *ngIf="!mobileQuery.matches" class="flex flex-col flex-1 my-2">
       <ul class="flex flex-col flex-1 gap-1">
@@ -28,11 +28,10 @@
           <div
             class="w-full rounded-full group-hover:bg-green_insted_transp_dark transition ease-in-out duration-200"
           >
-            <img
-              src="{{ icon.src }}"
-              alt="{{ icon.alt }}"
-              class="bg-contain p-2 m-auto h-12"
-            />
+            <span
+              class="material-symbols-outlined w-full text-3xl text-text_color text-center"
+              >{{ icon.icone }}</span
+            >
           </div>
           <div class="w-full m-auto">
             <p class="text-center">{{ icon.rotulo }}</p>
@@ -45,7 +44,7 @@
         >
           <img
             src="assets/images/perfil-padrao1.png"
-            class="cursor-pointer rounded-full object-cover object-center h-14 w-14 aspect-square border-2 border-green_insted hover:border-white transition ease-in-out duration-200 box-content hover:shadow-green_insted_dark hover:shadow-md"
+            class="cursor-pointer rounded-full object-cover object-center h-14 w-14 aspect-square transition ease-in-out duration-200 box-content"
             alt="teste"
           />
           <p
@@ -54,45 +53,22 @@
             Perfil
           </p>
         </li>
-        <li class="">
-          <button
-            class="flex text-center flex-row items-center m-auto"
-            [matMenuTriggerFor]="menu"
-            expanded="true"
-          >
-            <span class="material-symbols-outlined text-3xl dark:text-white"
-              >light_mode</span
-            >
-            <span class="material-symbols-outlined text-xl dark:text-white"
-              >expand_more</span
-            >
-          </button>
-          <mat-menu #menu="matMenu" class="m-auto dark:bg-green_insted">
-            <li *ngFor="let tema of temas" class="">
-              <div
-                (click)="mudarTema(tema.id)"
-                class="transition ease-in-out duration-200 flex p-1 flex-row items-center text-center justify-start cursor-pointer hover:bg-green_insted_transp_dark group"
-              >
-                <span
-                  class="material-symbols-outlined text-xl p-1 dark:text-white dark:group-hover:text-text_color"
-                  >{{ tema.icon }}</span
-                >
-                <label
-                  class="cursor-pointer dark:text-white dark:group-hover:text-text_color"
-                  >{{ tema.label }}</label
-                >
-              </div>
-            </li></mat-menu
+        <li (click)="mudarTema(localStorageTema)" class="cursor-pointer">
+          <span
+            class="material-symbols-outlined text-3xl dark:text-white text-text_color"
+            >{{
+              localStorageTema === "light" ? "light_mode" : "dark_mode"
+            }}</span
           >
         </li>
       </ul>
     </nav>
   </mat-sidenav>
 
-  <mat-sidenav-content
+  <mat-sidenav-content class="bg-green_insted m-1 rounded-3xl"
     ><app-menu-bottom
       (menuClick)="sidenav.open()"
-      [tamanhoTelaTablet]="mobileQuery.matches"
+      [tamanhoTelalaptop]="mobileQuery.matches"
     ></app-menu-bottom>
     <router-outlet class="dark:bg-text_color bg-white"></router-outlet>
   </mat-sidenav-content>

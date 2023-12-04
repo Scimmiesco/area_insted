@@ -1,6 +1,5 @@
 export interface IconInterface {
   id: number,
-  src: string,
-  alt: string,
+  icone: string,
   rotulo: string
 }
