@@ -12,6 +12,7 @@ import {
 import * as CryptoJS from 'crypto-js';
 import { ForgotPasswordService } from 'app/services/forgot-password.service';
 import { LoginFormService } from 'app/services/login-form.service';
+import { TemaService } from 'app/services/tema.service';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -26,7 +27,7 @@ export class LoginFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private tokenService: TokenService,
-    public loginFormService: LoginFormService
+    public temaService: TemaService
   ) {
   }
 
