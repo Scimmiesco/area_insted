@@ -1,4 +1,3 @@
-import { LoadingComponent } from './../../../components/loading/loading.component';
 import { TokenService } from 'app/services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,8 +9,6 @@ import {
   ResponseInterface,
 } from 'app/Interfaces/login.interface';
 import * as CryptoJS from 'crypto-js';
-import { ForgotPasswordService } from 'app/services/forgot-password.service';
-import { LoginFormService } from 'app/services/login-form.service';
 import { TemaService } from 'app/services/tema.service';
 @Component({
   selector: 'app-login-form',
@@ -74,7 +71,7 @@ export class LoginFormComponent implements OnInit {
             break;
           case 403:
             this.errorMessage =
-              'Tentativas inválidas excedidas. Tente novamente em 3 min.';
+              'Tentativas inválidas excedidas. Tente novamente em 3 minutos.';
             break;
         }
       },

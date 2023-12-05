@@ -5,10 +5,10 @@
   <swiper-container
     class="py-2 px-1 m-auto pb-4 min-h-[25svh] flex laptop:w-2/5"
     [spaceBetween]="10"
-    [slidesPerView]="mobileQuery.matches ? 1.05 : 1"
+    [slidesPerView]=" handleScreenSizeChange() ? 1.05 : 1"
     [speed]="500"
     [loop]="true"
-    [navigation]="!mobileQuery.matches"
+    [navigation]="! handleScreenSizeChange()"
     [pagination]="{ clickable: true }"
     [autoplay]="{ delay: 5000, disableOnInteraction: false }"
   >
@@ -38,7 +38,7 @@
     gutterSize="4"
     rowHeight="3:2"
     class="my-2 mx-2"
-    *ngIf="mobileQuery.matches"
+    *ngIf=" handleScreenSizeChange()"
   >
     <mat-grid-tile
       *ngFor="let icon of icons; let i = index"
@@ -115,7 +115,7 @@
     <swiper-container
       class="w-full laptop:w-full rounded-3xl h-full m-auto py-1"
       pagination="true"
-      [slidesPerView]="mobileQuery.matches ? 1 : 2"
+      [slidesPerView]=" handleScreenSizeChange() ? 1 : 2"
       [spaceBetween]="8"
     >
       <swiper-slide class="flex flex-col gap-1">

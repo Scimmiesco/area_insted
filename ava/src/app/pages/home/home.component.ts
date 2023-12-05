@@ -18,6 +18,7 @@ import {
   SwiperModule,
   SwiperOptions,
 } from 'swiper/types';
+import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 register();
 
 @Component({
@@ -28,31 +29,32 @@ export class HomeComponent {
   icons!: IconInterface[];
   avisos!: PainelInterface[];
   imageLoaded = false;
-  private _mobileQueryListener: () => void;
-  mobileQuery: MediaQueryList;
-  @ViewChild('swiperMaterias') swiperMaterias?: Swiper;
 
   constructor(
     public dialog: MatDialog,
     public materiasService: MateriasService,
     public userService: UserService,
     public store: Store<{ app: IappState }>,
-    changeDetectorRef: ChangeDetectorRef,
-    media: MediaMatcher
+    private tamanhoDaTelaService: TamanhoDaTelaService
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 1024px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addEventListener('change', this._mobileQueryListener);
+    this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
 
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
   }
+  ngOnDestroy() {
+    this.tamanhoDaTelaService.removeListener(() =>
+      this.handleScreenSizeChange()
+    );
+  }
   onImageLoad() {
     this.imageLoaded = true;
   }
-
+  public handleScreenSizeChange(): boolean {
+    return this.tamanhoDaTelaService.isMobile;
+  }
   OpenModais(iconId: number) {
     switch (iconId) {
       case 1:

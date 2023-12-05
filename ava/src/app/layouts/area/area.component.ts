@@ -19,6 +19,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HorarioDialogComponent } from 'app/components/modais/horario/horario.component';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
 import { TemaService } from 'app/services/tema.service';
+import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 
 @Component({
   selector: 'app-area',
@@ -26,10 +27,8 @@ import { TemaService } from 'app/services/tema.service';
 })
 export class AreaComponent {
   tokenSession = localStorage.getItem('token') || '';
-
-  private _mobileQueryListener: () => void;
-  mobileQuery: MediaQueryList;
   icons!: IconInterface[];
+
   constructor(
     store: Store<{ app: IappState }>,
     private tokenService: TokenService,
@@ -37,19 +36,18 @@ export class AreaComponent {
     private userService: UserService,
     private materiasService: MateriasService,
     public temaService: TemaService,
-    changeDetectorRef: ChangeDetectorRef,
-    media: MediaMatcher
+    private tamanhoDaTelaService: TamanhoDaTelaService
   ) {
-    this.mobileQuery = media.matchMedia('(max-width: 1024px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addEventListener('change', this._mobileQueryListener);
-    this.icons = Icons;
+    this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
 
+    this.icons = Icons;
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
     this.getDados();
   }
   ngOnDestroy() {
-    this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
+    this.tamanhoDaTelaService.removeListener(() =>
+      this.handleScreenSizeChange()
+    );
   }
   getDados() {
     this.getUser();
@@ -100,5 +98,9 @@ export class AreaComponent {
     localStorage.setItem('tema', temas[proximoIndice]);
 
     this.temaService.mudarTema(temas[proximoIndice]);
+  }
+
+  public handleScreenSizeChange(): boolean {
+    return this.tamanhoDaTelaService.isMobile;
   }
 }

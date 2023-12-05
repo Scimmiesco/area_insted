@@ -1,5 +1,5 @@
 <section
-  *ngIf="mobileQuery.matches"
+  *ngIf="handleScreenSizeChange()"
   class="mx-auto z-40 fixed bottom-0 left-0 right-0 flex justify-between items-center pt-1 px-1 bg-white dark:bg-text_color rounded-t-3xl"
 >
   <div
@@ -9,7 +9,7 @@
     #sideNavButton
   >
     <img
-      alt="teste"
+      alt="foto de perfil"
       src="assets/images/menu-button3.png"
       class="m-auto p-0 w-fit h-full [aspect-ratio:_1_/_1]"
     />

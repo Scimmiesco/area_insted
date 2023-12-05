@@ -1,3 +1,4 @@
+import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Input } from '@angular/core';
 // menu-bottom.component.ts
@@ -11,16 +12,23 @@ import { MateriasService } from 'app/services/materias.service';
 export class MenuBottomComponent {
   @Output() menuClick = new EventEmitter<boolean>();
 
-  private _mobileQueryListener: () => void;
-  mobileQuery: MediaQueryList;
   aberto = false;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 1024px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addEventListener('change', this._mobileQueryListener);
+  constructor(private tamanhoDaTelaService: TamanhoDaTelaService) {
+    this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
+
+  ngOnDestroy() {
+    this.tamanhoDaTelaService.removeListener(() =>
+      this.handleScreenSizeChange()
+    );
+  }
+
   abrirSideNav(aberto: boolean) {
     this.menuClick.emit(aberto);
+  }
+
+  handleScreenSizeChange(): boolean {
+    return this.tamanhoDaTelaService.isMobile;
   }
 }
