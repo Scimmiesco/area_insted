@@ -29,6 +29,8 @@ import {
 import { CpfCnpjPipe } from './pipes/cpf-format.pipe';
 import { RetornoRequisicaoModalModule } from './components/modais/retornoRequisicao/retornoRequisicao.module';
 import { HorarioModule } from './components/modais/horario/horario.module';
+import { SideNavModule } from './components/side-nav/side-nav.module';
+import { RouterModule } from '@angular/router';
 
 register();
 @NgModule({
@@ -40,7 +42,9 @@ register();
     AppRoutingModule,
     ProfileModule,
     NgxMaskDirective,
+    SideNavModule,
     NgxMaskPipe,
+    RouterModule,
     BrowserAnimationsModule,
     MaterialModule,
     InputMaskModule,

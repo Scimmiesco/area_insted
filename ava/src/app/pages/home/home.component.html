@@ -1,14 +1,14 @@
 <section
-  class="mx-auto dark:from-green_insted dark:via-text_color dark:to-text_color bg-gradient-to-t from-green_insted_transp via-white to-white min-h-[100svh] laptop:w-full pb-16 laptop:pb-0 box-content laptop:from-white"
+  class="mx-auto dark:bg-green_insted_dark bg-green_insted_transp min-h-[100svh] laptop:w-full pb-16 laptop:pb-0 box-content laptop:from-white"
 >
   <!--// Avisos-->
   <swiper-container
     class="py-2 px-1 m-auto pb-4 min-h-[25svh] flex laptop:w-2/5"
     [spaceBetween]="10"
-    [slidesPerView]=" handleScreenSizeChange() ? 1.05 : 1"
+    [slidesPerView]="handleScreenSizeChange() ? 1.05 : 1"
     [speed]="500"
     [loop]="true"
-    [navigation]="! handleScreenSizeChange()"
+    [navigation]="!handleScreenSizeChange()"
     [pagination]="{ clickable: true }"
     [autoplay]="{ delay: 5000, disableOnInteraction: false }"
   >
@@ -38,7 +38,7 @@
     gutterSize="4"
     rowHeight="3:2"
     class="my-2 mx-2"
-    *ngIf=" handleScreenSizeChange()"
+    *ngIf="handleScreenSizeChange()"
   >
     <mat-grid-tile
       *ngFor="let icon of icons; let i = index"
@@ -81,7 +81,7 @@
       </div>
       <swiper-container
         #swiperMaterias
-        *ngIf="this.materiasService.materias$ | async as materias;"
+        *ngIf="this.materiasService.materias$ | async as materias"
         class="m-0 rounded-l-md rounded-r-3xl w-4/5 flex flex-row"
         pagination="true"
         crossFade="true"
@@ -115,7 +115,7 @@
     <swiper-container
       class="w-full laptop:w-full rounded-3xl h-full m-auto py-1"
       pagination="true"
-      [slidesPerView]=" handleScreenSizeChange() ? 1 : 2"
+      [slidesPerView]="handleScreenSizeChange() ? 1 : 2"
       [spaceBetween]="8"
     >
       <swiper-slide class="flex flex-col gap-1">

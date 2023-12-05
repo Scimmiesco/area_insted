@@ -13,10 +13,7 @@ import { TokenService } from 'app/services/token.service';
 export class ResetPasswordAuthGuard {
   constructor(private tokenService: TokenService, private router: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
+  canActivate(route: ActivatedRouteSnapshot): boolean {
     const token = route.queryParamMap.get('token') || '';
 
     if (token !== null && this.tokenService.validaTokenUrl(token)) {

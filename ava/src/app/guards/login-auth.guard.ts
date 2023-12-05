@@ -8,9 +8,7 @@ import { TokenService } from 'app/services/token.service';
 export class LoginAuthGuard {
   isAuthenticated = sessionStorage.getItem('isAuthenticated') as string | null;
 
-  constructor(private tokenService: TokenService, private router: Router) {
-   
-  }
+  constructor(private router: Router) {}
 
   canActivate(): boolean {
     if (this.isAuthenticated !== '1' || null) {

@@ -6,7 +6,7 @@ import { TokenService } from 'app/services/token.service';
   providedIn: 'root',
 })
 export class AreaAuthGuard {
-  constructor(private tokenService: TokenService, private router: Router) {}
+  constructor(private router: Router) {}
 
   canActivate(): boolean {
     if (sessionStorage.getItem('isAuthenticated') === '1') {

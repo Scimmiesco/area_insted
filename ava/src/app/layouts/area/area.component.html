@@ -1,75 +1,18 @@
 <mat-sidenav-container class="mx-auto dark:bg-green_insted_dark bg-white">
   <mat-sidenav
     #sidenav
+    fixedInViewport="false"
     [mode]="handleScreenSizeChange() ? 'push' : 'side'"
     [opened]="handleScreenSizeChange() ? 'false' : 'true'"
-    fixedInViewport="false"
     class="w-[66vw] laptop:w-fit laptop:max-w-[110px] max-h-[100svh] rounded-l-3xl ml-1 my-1 h-full dark:bg-green_insted_dark bg-white_transp border-none laptop:h-[100svh] fixed"
-  >
-    <nav *ngIf="!handleScreenSizeChange()" class="flex flex-col flex-1 my-2">
-      <ul class="flex flex-col flex-1 gap-1">
-        <li
-          class="p-1 cursor-pointer"
-          id="sideNavButton"
-          #sideNavButton
-          [routerLink]="['home']"
-        >
-          <img
-            alt="Logo da insted. Botão para voltar a tela inicial."
-            src="assets/images/menu-button3.png"
-            class="bg-contain p-1 m-auto h-14"
-          />
-        </li>
-        <li
-          *ngFor="let icon of icons; let i = index"
-          class="flex flex-col rounded-3xl min-w-full group cursor-pointer"
-          (click)="OpenModais(icon.id)"
-        >
-          <div
-            class="w-full rounded-full group-hover:bg-green_insted_transp_dark transition ease-in-out duration-200"
-          >
-            <span
-              class="material-symbols-outlined w-full text-3xl text-text_color dark:text-white text-center"
-              >{{ icon.icone }}</span
-            >
-          </div>
-          <div class="w-full m-auto">
-            <p class="text-center dark:text-green_insted text-text_color">{{ icon.rotulo }}</p>
-          </div>
-        </li>
-
-        <li
-          [routerLink]="['perfil']"
-          class="flex flex-col justify-center items-center text-center mt-auto"
-        >
-          <img
-            src="assets/images/perfil-padrao1.png"
-            class="cursor-pointer rounded-full object-cover object-center h-14 w-14 aspect-square transition ease-in-out duration-200 box-content"
-            alt="teste"
-          />
-          <p
-            class="text-sm text-text_color dark:text-white p-0 m-0 text-center font-bold"
-          >
-            Perfil
-          </p>
-        </li>
-      </ul>
-    </nav>
-    <li (click)="mudarTema()" class="cursor-pointer pb-2">
-      <span
-        class="material-symbols-outlined text-3xl w-full dark:text-white text-text_color text-center transition delay-150 ease-in-out"
-        >{{
-          (temaService.tema$ | async) === "light" ? "light_mode" : "dark_mode"
-        }}</span
-      >
-    </li>
-  </mat-sidenav>
-
-  <mat-sidenav-content class=" m-1 rounded-3xl"
-    ><app-menu-bottom
+    ><app-sidenav></app-sidenav
+  ></mat-sidenav>
+  <mat-sidenav-content class="m-1 rounded-3xl">
+    <app-menu-bottom
       (menuClick)="sidenav.open()"
       [tamanhoTelalaptop]="handleScreenSizeChange()"
-    ></app-menu-bottom>
+    >
+    </app-menu-bottom>
     <router-outlet class="dark:bg-text_color bg-white"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
