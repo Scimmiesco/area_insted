@@ -30,6 +30,7 @@ module.exports = {
       green_insted: "#1da9ad",
       green_insted_dark: "#063b3d",
       green_insted_transp_dark: "rgba(35, 111, 114, 0.35)",
+      green_insted_transp_dark_sideNav: "#016366ff",
       green_insted_transp: "rgba(103, 219, 223, 0.5)",
       green_insted_fundo_modal: "rgba(186, 234, 236, 0.384)",
       white: "rgb(226, 240, 237)",

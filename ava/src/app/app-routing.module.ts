@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from 'app/pages/profile/profile.component';
 import { HomeComponent } from 'app/pages/home/home.component';
 import { AreaComponent } from 'app/layouts/area/area.component';
-import { AreaAuthGuard } from 'app/guards/area-auth.guard';
 import { LoginAuthGuard } from './guards/login-auth.guard';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetPasswordAuthGuard } from './guards/reset-password.guard';
@@ -19,7 +18,7 @@ const routes: Routes = [
   {
     path: 'area',
     component: AreaComponent,
-    canActivate: [AreaAuthGuard],
+    // canActivate: [AreaAuthGuard],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeComponent },
