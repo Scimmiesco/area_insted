@@ -1,0 +1,66 @@
+<body class="bg-gray-100 min-h-[50%] flex items-center justify-center">
+  <div class="bg-white p-2 rounded-lg shadow-md w-96">
+    <h1 class="text-2xl font-semibold text-center p-2">Notas do Aluno</h1>
+    <div class="">
+      <label
+        for="select-matricula"
+        class="block text-sm font-medium text-gray-700 p-1"
+        >Selecione a Matrícula:</label
+      >
+      <select
+        id="select-matricula"
+        name="select-matricula"
+        class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+      >
+        <option value="matricula-1">Matrícula 1</option>
+        <option value="matricula-2">Matrícula 2</option>
+        <option value="matricula-3">Matrícula 3</option>
+      </select>
+      <label
+        for="select-materia"
+        class="block text-sm font-medium text-gray-700 p-1"
+        >Selecione a materia:</label
+      >
+      <select
+        id="select-materia"
+        name="select-materia"
+        class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+      >
+        <option value="materia-1">matéria 1</option>
+        <option value="materia-2">matéria 2</option>
+        <option value="materia-3">matéria 3</option>
+      </select>
+    </div>
+    <div class="">
+      <div class="grid grid-cols-2 grid-rows-2 grid-flow-col p-2">
+        <h2 class="text-lg font-semibold col-span-2 row-span-1">
+          Programação e Tecnologias Web
+        </h2>
+        <small class="text-center col-span-1">3º semestre</small>
+        <small class="text-center col-span-1">Aprovado</small>
+      </div>
+      <div class="grid grid-cols-5 gap-2">
+        <div class="col-span-1 text-center">
+          P1
+          <small>10.00</small>
+        </div>
+        <div class="col-span-1 text-center">
+          P2
+          <small>10.00</small>
+        </div>
+        <div class="col-span-1 text-center">
+          Proj
+          <small>10.00</small>
+        </div>
+        <div class="col-span-1 text-center">
+          Exame
+          <small>10.00</small>
+        </div>
+        <div class="col-span-1 text-center">
+          Média
+          <small>10.00</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

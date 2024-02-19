@@ -19,6 +19,7 @@ import {
   SwiperOptions,
 } from 'swiper/types';
 import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
+import { notasDialogComponent } from 'app/components/modais/notas/notas.component';
 register();
 
 @Component({
@@ -65,6 +66,12 @@ export class HomeComponent {
         break;
       case 6:
         this.dialog.open(calendarDialogComponent, {
+          autoFocus: true,
+          closeOnNavigation: true,
+        });
+        break;
+      case 7:
+        this.dialog.open(notasDialogComponent, {
           autoFocus: true,
           closeOnNavigation: true,
         });

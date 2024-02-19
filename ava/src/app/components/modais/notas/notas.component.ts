@@ -4,11 +4,11 @@ import { DialogData } from '../calendar/calendar.component';
 import { MateriasService } from 'app/services/materias.service';
 
 @Component({
-  selector: 'app-horario',
-  templateUrl: './horario.component.html',
+  selector: 'app-notas',
+  templateUrl: './notas.component.html',
+  styleUrls: ['./notas.component.css'],
 })
-export class HorarioDialogComponent {
-  
+export class notasDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public materiasService: MateriasService

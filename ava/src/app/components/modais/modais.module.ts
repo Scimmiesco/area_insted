@@ -4,6 +4,8 @@ import { MaterialModule } from '../material/material.module';
 import { HorarioModule } from './horario/horario.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { RetornoRequisicaoModalModule } from './retornoRequisicao/retornoRequisicao.module';
+import { NotasComponent } from './notas/notas.component';
+import { NotasModule } from './notas/notas.module';
 
 @NgModule({
   declarations: [],
@@ -13,11 +15,13 @@ import { RetornoRequisicaoModalModule } from './retornoRequisicao/retornoRequisi
     HorarioModule,
     CalendarModule,
     RetornoRequisicaoModalModule,
+    NotasModule,
   ],
   exports: [
     HorarioModule,
     CalendarModule,
     RetornoRequisicaoModalModule,
+    NotasModule,
   ],
 })
 export class ModaisModule {}
