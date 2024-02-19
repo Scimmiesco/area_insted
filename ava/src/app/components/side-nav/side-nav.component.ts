@@ -12,6 +12,7 @@ import { TemaService } from 'app/services/tema.service';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './side-nav.component.html',
+  styleUrls: ['./side-nav.component.css'],
 })
 export class SideNavComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
@@ -46,6 +47,7 @@ export class SideNavComponent {
 
     this.temaService.mudarTema(temas[proximoIndice]);
   }
+
   OpenModais(iconId: number) {
     switch (iconId) {
       case 1:
