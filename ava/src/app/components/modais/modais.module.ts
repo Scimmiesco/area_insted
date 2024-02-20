@@ -6,9 +6,12 @@ import { CalendarModule } from './calendar/calendar.module';
 import { RetornoRequisicaoModalModule } from './retornoRequisicao/retornoRequisicao.module';
 import { NotasComponent } from './notas/notas.component';
 import { NotasModule } from './notas/notas.module';
+import { FinanceiroComponent } from './financeiro/financeiro.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    FinanceiroComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
