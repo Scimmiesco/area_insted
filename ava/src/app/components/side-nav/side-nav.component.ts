@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Icons } from 'app/shared/icons-home/mock-icons-home';
 import { IconInterface } from 'app/shared/icons-home/icons-home.model';
 import { TemaService } from 'app/services/tema.service';
+import { notasDialogComponent } from '../modais/notas/notas.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -58,6 +59,12 @@ export class SideNavComponent {
         break;
       case 6:
         this.dialog.open(calendarDialogComponent, {
+          autoFocus: true,
+          closeOnNavigation: true,
+        });
+        break;
+      case 7:
+        this.dialog.open(notasDialogComponent, {
           autoFocus: true,
           closeOnNavigation: true,
         });
