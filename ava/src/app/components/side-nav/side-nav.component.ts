@@ -9,6 +9,7 @@ import { Icons } from 'app/shared/icons-home/mock-icons-home';
 import { IconInterface } from 'app/shared/icons-home/icons-home.model';
 import { TemaService } from 'app/services/tema.service';
 import { notasDialogComponent } from '../modais/notas/notas.component';
+import { FinanceiroDialogComponent } from '../modais/financeiro/financeiro.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -53,6 +54,12 @@ export class SideNavComponent {
     switch (iconId) {
       case 1:
         this.dialog.open(HorarioDialogComponent, {
+          autoFocus: true,
+          closeOnNavigation: true,
+        });
+        break;
+      case 2:
+        this.dialog.open(FinanceiroDialogComponent, {
           autoFocus: true,
           closeOnNavigation: true,
         });

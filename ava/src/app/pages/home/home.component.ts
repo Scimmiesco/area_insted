@@ -20,6 +20,7 @@ import {
 } from 'swiper/types';
 import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { notasDialogComponent } from 'app/components/modais/notas/notas.component';
+import { FinanceiroDialogComponent } from 'app/components/modais/financeiro/financeiro.component';
 register();
 
 @Component({
@@ -60,6 +61,12 @@ export class HomeComponent {
     switch (iconId) {
       case 1:
         this.dialog.open(HorarioDialogComponent, {
+          autoFocus: true,
+          closeOnNavigation: true,
+        });
+        break;
+      case 2:
+        this.dialog.open(FinanceiroDialogComponent, {
           autoFocus: true,
           closeOnNavigation: true,
         });

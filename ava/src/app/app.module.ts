@@ -31,6 +31,7 @@ import { RetornoRequisicaoModalModule } from './components/modais/retornoRequisi
 import { HorarioModule } from './components/modais/horario/horario.module';
 import { SideNavModule } from './components/side-nav/side-nav.module';
 import { RouterModule } from '@angular/router';
+import { FinanceiroModule } from './components/modais/financeiro/financeiro.module';
 
 register();
 @NgModule({
@@ -44,6 +45,7 @@ register();
     NgxMaskDirective,
     SideNavModule,
     NgxMaskPipe,
+    FinanceiroModule,
     RouterModule,
     BrowserAnimationsModule,
     MaterialModule,
