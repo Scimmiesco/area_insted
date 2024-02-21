@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProfileModule } from './pages/profile/profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './components/material/material.module';
 import { LoadingComponent } from './components/loading/loading.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
@@ -32,6 +31,9 @@ import { HorarioModule } from './components/modais/horario/horario.module';
 import { SideNavModule } from './components/side-nav/side-nav.module';
 import { RouterModule } from '@angular/router';
 import { FinanceiroModule } from './components/modais/financeiro/financeiro.module';
+import { MateriaComponent } from './pages/materia/materia/materia.component';
+import { MateriaModule } from './pages/materia/materia/materia.module';
+import { MaterialModule } from './components/material/material.module';
 
 register();
 @NgModule({
@@ -42,15 +44,16 @@ register();
     ResetPasswordModule,
     AppRoutingModule,
     ProfileModule,
+    MateriaModule,
     NgxMaskDirective,
     SideNavModule,
     NgxMaskPipe,
     FinanceiroModule,
     RouterModule,
     BrowserAnimationsModule,
-    MaterialModule,
     InputMaskModule,
     HomeModule,
+    MaterialModule,
     MenuBottomModule,
     FormsModule,
     ReactiveFormsModule,

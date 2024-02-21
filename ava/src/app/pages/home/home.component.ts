@@ -21,6 +21,7 @@ import {
 import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { notasDialogComponent } from 'app/components/modais/notas/notas.component';
 import { FinanceiroDialogComponent } from 'app/components/modais/financeiro/financeiro.component';
+import { Router } from '@angular/router';
 register();
 
 @Component({
@@ -37,7 +38,8 @@ export class HomeComponent {
     public materiasService: MateriasService,
     public userService: UserService,
     public store: Store<{ app: IappState }>,
-    private tamanhoDaTelaService: TamanhoDaTelaService
+    private tamanhoDaTelaService: TamanhoDaTelaService,
+    private router: Router
   ) {
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
@@ -57,6 +59,11 @@ export class HomeComponent {
   public handleScreenSizeChange(): boolean {
     return this.tamanhoDaTelaService.isMobile;
   }
+
+  navegarParaMateria(): void {
+    this.router.navigate(['/materia']);
+  }
+
   OpenModais(iconId: number) {
     switch (iconId) {
       case 1:
