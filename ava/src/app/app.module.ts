@@ -18,49 +18,47 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ResetPasswordModule } from './pages/reset-password/reset-password.module';
 import { InputMaskModule } from 'primeng/inputmask';
-import {
-  IConfig,
-  NgxMaskDirective,
-  NgxMaskPipe,
-  provideEnvironmentNgxMask,
-  provideNgxMask,
-} from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { CpfCnpjPipe } from './pipes/cpf-format.pipe';
 import { RetornoRequisicaoModalModule } from './components/modais/retornoRequisicao/retornoRequisicao.module';
 import { HorarioModule } from './components/modais/horario/horario.module';
 import { SideNavModule } from './components/side-nav/side-nav.module';
 import { RouterModule } from '@angular/router';
 import { FinanceiroModule } from './components/modais/financeiro/financeiro.module';
-import { MateriaComponent } from './pages/materia/materia/materia.component';
-import { MateriaModule } from './pages/materia/materia/materia.module';
+import { MateriaModule } from './pages/materia/materia.module';
 import { MaterialModule } from './components/material/material.module';
 
 register();
+
 @NgModule({
   declarations: [AppComponent, LoadingComponent, AreaComponent],
   imports: [
-    CommonModule,
-    BrowserModule,
     ResetPasswordModule,
-    AppRoutingModule,
     ProfileModule,
     MateriaModule,
-    NgxMaskDirective,
-    SideNavModule,
-    NgxMaskPipe,
-    FinanceiroModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    InputMaskModule,
     HomeModule,
-    MaterialModule,
+
+    SideNavModule,
+    FinanceiroModule,
     MenuBottomModule,
-    FormsModule,
-    ReactiveFormsModule,
     RetornoRequisicaoModalModule,
     HorarioModule,
+
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    RouterModule,
+    BrowserAnimationsModule,
     HttpClientModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    InputMaskModule,
     CpfCnpjPipe,
+
     StoreModule.forRoot({ app: appReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

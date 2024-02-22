@@ -1,0 +1,70 @@
+<body
+  class="flex flex-col justify-start items-center dark:bg-green_insted_dark bg-white min-h-[100svh] p-2"
+>
+  <div class="w-full">
+    <h1 class="text-center font-bold p-2">Desenvolvimento colaborativo</h1>
+    <div
+      class="flex flex-col gap-2 bg-white dark:bg-green_insted my-1 w-full rounded-3xl shadow-md laptop:max-w-[60vw] min-h-[100svh]"
+    >
+      <mat-accordion class="w-full rounded-3xl p-2">
+        <mat-expansion-panel [expanded]="true" class="dark:bg-green_insted">
+          <mat-expansion-panel-header
+            class="flex-row flex justify-between h-fit"
+          >
+            <h1 class="dark:text-white text-2xl font-bold py-1">Geral</h1>
+          </mat-expansion-panel-header>
+          <div class="flex flex-col flex-nowrap gap-1 text-center items-center">
+            <div
+              class="flex flex-row gap-1 p-2 w-full justify-between text-center items-center bg-green_insted_dark rounded-t-3xl rounded-b-md"
+            >
+              <div class="flex flex-row gap-2 text-center items-center">
+                <span class="material-symbols-outlined dark:text-white text-3xl"
+                  >description</span
+                >
+                <div class="flex flex-col w-full gap-1">
+                  <h3
+                    class="text-sm text-green_insted_transp_dark_sideNav dark:text-white_transp"
+                  >
+                    Tipo arquivo
+                  </h3>
+                  <h2
+                    class="text-base text-green_insted dark:text-white font-bold"
+                  >
+                    Título do arquivo
+                  </h2>
+                </div>
+              </div>
+              <div
+                class="flex flex-row flex-nowrap w-1/4 text-center items-center justify-center dark:text-white"
+              >
+                <span class="material-symbols-outlined">check</span>
+                <p>Lido</p>
+              </div>
+            </div>
+
+            <div
+              class="flex flex-col bg-white rounded-t-md rounded-b-3xl p-2 max-h-[50%]"
+            >
+              <p>
+                PROVAS AV 1 – 25/04/2024 REVISÃO DE AV 1 – 02/05/2024 AV 2 –
+                20/06/2024 REVISÃO DE AV 2 – 27/06/2024 EXERCÍCIO DE COMPRESSÃO
+                EX.COM 01 – 07/03/2024 EX.COM 02 – 28/03/2024 EX.COM 03 –
+                11/04/2024 EX.COM 04 – 16/05/2024 EX.COM 05 – 06/06/2024
+              </p>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion class="w-full">
+        <mat-expansion-panel [expanded]="false" class="dark:bg-green_insted">
+          <mat-expansion-panel-header class="flex-col h-auto">
+            <h1 class="dark:text-white text-2xl font-bold py-1">
+              AULA 01 - 08 de Fevereiro
+            </h1>
+          </mat-expansion-panel-header>
+          teste
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</body>

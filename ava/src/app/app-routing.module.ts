@@ -6,7 +6,7 @@ import { AreaComponent } from 'app/layouts/area/area.component';
 import { LoginAuthGuard } from './guards/login-auth.guard';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetPasswordAuthGuard } from './guards/reset-password.guard';
-import { MateriaComponent } from './pages/materia/materia/materia.component';
+import { MateriaComponent } from './pages/materia/materia.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -35,7 +35,6 @@ const routes: Routes = [
       { path: 'trocasenha', component: ResetPasswordComponent },
     ],
   },
-  {},
 ];
 
 @NgModule({

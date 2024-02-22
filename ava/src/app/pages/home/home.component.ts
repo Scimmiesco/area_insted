@@ -11,13 +11,6 @@ import { Avisos } from 'app/shared/info-painel/mock-painel-home';
 import { Store } from '@ngrx/store';
 import { IappState } from 'app/store/app.state';
 import { UserService } from 'app/services/user.service';
-import { MediaMatcher } from '@angular/cdk/layout';
-import {
-  Swiper,
-  SwiperEvents,
-  SwiperModule,
-  SwiperOptions,
-} from 'swiper/types';
 import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { notasDialogComponent } from 'app/components/modais/notas/notas.component';
 import { FinanceiroDialogComponent } from 'app/components/modais/financeiro/financeiro.component';
@@ -61,7 +54,7 @@ export class HomeComponent {
   }
 
   navegarParaMateria(): void {
-    this.router.navigate(['/materia']);
+    this.router.navigate(['area/materia']);
   }
 
   OpenModais(iconId: number) {
