@@ -1,58 +1,60 @@
-<body
-  class="min-h-[50vh]  min-w-[840px] max-w-[75vw] max-h-[75svh] bg-white dark:bg-green_insted_dark p-2 rounded-lg shadow-md"
+<div
+  class="min-h-[50vh] laptop:min-w-[840px] min-w-[75vw] max-w-[75vw] max-h-[75vh] bg-white dark:bg-green_insted_dark p-2 rounded-lg shadow-md overflow-auto"
 >
-  <h1 class="text-2xl font-semibold text-center p-2">Notas do Aluno</h1>
-  <div>
-    <label
-      for="select-matricula"
-      class="dark:text-white block text-sm font-medium text-gray-700 p-1"
-      >Selecione o ano de vencimento:</label
-    >
-    <select
-      id="select-matricula"
-      name="select-matricula"
-      class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
-    >
-      <option value="matricula-1">2024</option>
-      <option value="matricula-2">2023</option>
-      <option value="matricula-3">2022</option>
-    </select>
-    <label
-      for="select-materia"
-      class="dark:text-white block text-sm font-medium text-gray-700 p-1"
-      >Selecione a situação:</label
-    >
-    <select
-      id="select-materia"
-      name="select-materia"
-      class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
-    >
-      <option value="materia-1">Selecione</option>
-      <option value="materia-1">Em aberto</option>
-      <option value="materia-2">Pago</option>
-      <option value="materia-3">Baixada</option>
-      <option value="materia-3">Acordado</option>
-    </select>
+  <div class="w-full min-h-full">
+    <h1 class="text-2xl font-semibold text-center p-2">Notas do Aluno</h1>
+    <div>
+      <label
+        for="select-matricula"
+        class="dark:text-white block text-sm font-medium text-gray-700 p-1"
+        >Selecione o ano de vencimento:</label
+      >
+      <select
+        id="select-matricula"
+        name="select-matricula"
+        class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
+      >
+        <option value="matricula-1">2024</option>
+        <option value="matricula-2">2023</option>
+        <option value="matricula-3">2022</option>
+      </select>
+      <label
+        for="select-materia"
+        class="dark:text-white block text-sm font-medium text-gray-700 p-1"
+        >Selecione a situação:</label
+      >
+      <select
+        id="select-materia"
+        name="select-materia"
+        class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
+      >
+        <option value="materia-1">Selecione</option>
+        <option value="materia-1">Em aberto</option>
+        <option value="materia-2">Pago</option>
+        <option value="materia-3">Baixada</option>
+        <option value="materia-3">Acordado</option>
+      </select>
+    </div>
+    <div class="w-full">
+      <h1 class="text-2xl font-semibold p-2">Transações do aluno</h1>
+      <table class="dark:text-white w-full">
+        <thead>
+          <tr class="text-center">
+            <th>Tipo</th>
+            <th>Vencimento</th>
+            <th>Valor pago</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody class="dark:text-white text-green_insted_dark">
+          <tr *ngFor="let mensalidade of mensalidades" class="text-center">
+            <td>{{ mensalidade.tipo }}</td>
+            <td>{{ mensalidade.vencimento }}</td>
+            <td>{{ mensalidade.valorPago }}</td>
+            <td>{{ mensalidade.situacao }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div class="w-full">
-    <h1 class="text-2xl font-semibold p-2">Transações do aluno</h1>
-    <table class="dark:text-white w-full">
-      <thead>
-        <tr class="text-center">
-          <th>Tipo</th>
-          <th>Vencimento</th>
-          <th>Valor pago</th>
-          <th>Situação</th>
-        </tr>
-      </thead>
-      <tbody class="dark:text-white text-green_insted_dark">
-        <tr *ngFor="let mensalidade of mensalidades" class="text-center">
-          <td>{{ mensalidade.tipo }}</td>
-          <td>{{ mensalidade.vencimento }}</td>
-          <td>{{ mensalidade.valorPago }}</td>
-          <td>{{ mensalidade.situacao }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</body>
+</div>
