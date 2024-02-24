@@ -1,4 +1,6 @@
-<div class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl w-[80vw] tablet:w-[50vw] max-w-[560px]]">
+<div
+  class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl w-[80vw] tablet:w-[50vw] max-w-[560px]]"
+>
   <div
     class="mat-dialog-container min-h-fit max-h-[80vh] w-full rounded-3xl bg-white dark:bg-green_insted_dark p-2"
   >
@@ -6,24 +8,31 @@
       <div
         class="mat-dialog-title flex flex-col text-center justify-center w-full p-1"
       >
-        <h1 class="font-bold dark:text-white">Horário de aulas</h1>
+        <div class="flex justify-center items-center relative">
+          <h1 class="font-bold dark:text-white">Horário de aulas</h1>
+          <span
+            class="absolute text-center right-0 material-symbols-outlined text-green_insted_dark dark:text-green_insted text-2xl px-1"
+          >
+            expand_content
+          </span>
+        </div>
         <div class="py-2">
           <h2
             class="mat-dialog-title-text text-text_color m-auto font-semibold dark:text-white"
           >
             Quarta-feira
           </h2>
-          <p class="m-0 dark:text-white">14/06</p>
+          <small class="dark:text-white_transp">14/06</small>
         </div>
       </div>
 
       <div
-        class="mat-dialog-description h-full flex flex-col justify-between py-2 gap-1"
+        class="mat-dialog-description min-h-full py-1 gap-1 flex flex-row flex-1 justify-around flex-wrap"
         *ngIf="this.materiasService.materias$ | async as materias"
       >
         <div
           *ngFor="let materia of materias"
-          class="rounded-3xl flex flex-col justify-center p-1 gap-1"
+          class="rounded-3xl flex flex-col justify-center p-1 gap-1 flex-1 min-w-[330px]"
         >
           <div
             class="bg-green_insted dark:bg-green_insted rounded-b-md rounded-t-3xl"
