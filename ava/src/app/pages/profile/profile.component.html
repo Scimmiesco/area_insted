@@ -1,8 +1,8 @@
 <main
-  class="flex justify-start flex-col items-center min-h-[100svh] m-auto bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white dark:from-green_insted_dark dark:via-green_insted_dark dark:to-green_insted pb-20 laptop:pb-0"
+  class="flex justify-start flex-col items-center min-h-[100svh] m-auto bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white dark:from-green_insted_dark dark:via-green_insted_dark dark:to-green_insted_dark pb-20 laptop:pb-0"
 >
   <section
-    class="my-1 w-[98%] laptop:max-w-[60vw] py-2 rounded-3xl shadow-md bg-white dark:bg-green_insted"
+    class="my-1 w-[98%] laptop:max-w-[60vw] py-2 rounded-3xl shadow-md bg-white dark:bg-green_insted dark:shadow-md dark:shadow-green_insted_dark_shadow"
   >
     <div class="flex flex-row justify-around">
       <div mdbDropdown class="dropend relative max-w-[1/3] m-1 rounded-full">
@@ -11,7 +11,7 @@
         >
           <img
             src="assets/images/perfil-padrao1.png"
-            class="w-full rounded-full object-cover object-center h-full block"
+            class="w-full rounded-full object-cover object-center h-full block dark:shadow-sm dark:shadow-green_insted_dark_shadow"
             alt="Foto de perfil"
             (load)="onImageLoad()"
             [ngClass]="
@@ -24,7 +24,7 @@
         <div
           mdbDropdownToggle
           expanded="false"
-          class="material-symbols-outlined absolute bottom-0 left-0 w-[48px] h-[48px]  text-white dark:text-text_color bg-green_insted dark:bg-white [aspect-ratio:_1_/_1] flex justify-center items-center text-3xl border-2 border-white dark:border-none cursor-pointer transition-all duration-300 ease-in-out"
+          class="material-symbols-outlined absolute bottom-0 left-0 w-[48px] h-[48px]  text-white dark:text-text_color bg-green_insted dark:bg-white [aspect-ratio:_1_/_1] flex justify-center items-center text-3xl border-2 border-white dark:border-none cursor-pointer transition-all duration-300 ease-in-out dark:shadow-md dark:shadow-green_insted_dark_shadow"
           [ngClass]="
             status
               ? 'rounded-full transition-all duration-300 ease-in-out delay-0'
@@ -70,9 +70,9 @@
     </h3>
   </section>
   <mat-accordion
-    class="bg-white dark:bg-green_insted my-1 w-[98%] py-2 rounded-3xl shadow-md laptop:max-w-[60vw]"
+    class="bg-white dark:bg-green_insted my-1 w-[98%] py-2 rounded-3xl shadow-md laptop:max-w-[60vw] dark:shadow-md dark:shadow-green_insted_dark_shadow"
   >
-    <mat-expansion-panel [expanded]="true" class="dark:bg-green_insted">
+    <mat-expansion-panel [expanded]="true" class="dark:bg-green_insted ">
       <mat-expansion-panel-header class="flex-col h-auto">
         <h1 class="dark:text-white text-2xl font-bold py-1">
           Informações pessoais
@@ -82,7 +82,7 @@
         class="flex flex-col p-2 text-md rounded-2xl leading-7 w-full justify-center animate-aparecer"
       >
         <div class="flex flex-col justify-start">
-          <h3 class="text-xl px-1">Nome completo:</h3>
+          <h3 class="text-xl px-1 text-text_color">Nome completo:</h3>
           <p
             class="flex justify-center items-center text-white font-semibold py-1 px-2 w-full rounded-2xl my-1 bg-green_insted dark:bg-white dark:text-text_color"
           >
@@ -144,7 +144,7 @@
   </mat-accordion>
 
   <mat-accordion
-    class="bg-white dark:bg-green_insted my-1 w-[98%] laptop:max-w-[60vw] py-2 rounded-3xl shadow-md"
+    class="bg-white dark:bg-green_insted my-1 w-[98%] laptop:max-w-[60vw] py-2 rounded-3xl dark:shadow-md dark:shadow-green_insted_dark_shadow"
   >
     <mat-expansion-panel class="dark:bg-green_insted">
       <mat-expansion-panel-header class="flex-col h-auto">
