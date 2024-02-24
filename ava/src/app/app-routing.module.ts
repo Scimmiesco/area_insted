@@ -6,7 +6,8 @@ import { AreaComponent } from 'app/layouts/area/area.component';
 import { LoginAuthGuard } from './guards/login-auth.guard';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetPasswordAuthGuard } from './guards/reset-password.guard';
-import { MateriaComponent } from './pages/materia/materia.component';
+import { MateriaAtividadesComponent } from './pages/materiaAtividades/materiaAtividades.component';
+import { AtividadeComponent } from './pages/materiaAtividades/atividade/atividade.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -24,7 +25,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeComponent },
       { path: 'perfil', component: ProfileComponent },
-      { path: 'materia', component: MateriaComponent },
+      { path: 'materia', component: MateriaAtividadesComponent },
+      {path:'materia/atividade', component: AtividadeComponent}
     ],
   },
   {

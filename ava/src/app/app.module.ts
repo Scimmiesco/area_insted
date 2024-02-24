@@ -25,7 +25,7 @@ import { HorarioModule } from './components/modais/horario/horario.module';
 import { SideNavModule } from './components/side-nav/side-nav.module';
 import { RouterModule } from '@angular/router';
 import { FinanceiroModule } from './components/modais/financeiro/financeiro.module';
-import { MateriaModule } from './pages/materia/materia.module';
+import { MateriaAtividadesModule } from './pages/materiaAtividades/materiaAtividades.module';
 import { MaterialModule } from './components/material/material.module';
 
 register();
@@ -35,7 +35,7 @@ register();
   imports: [
     ResetPasswordModule,
     ProfileModule,
-    MateriaModule,
+    MateriaAtividadesModule,
     HomeModule,
 
     SideNavModule,
