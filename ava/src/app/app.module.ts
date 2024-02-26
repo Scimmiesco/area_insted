@@ -27,11 +27,12 @@ import { RouterModule } from '@angular/router';
 import { FinanceiroModule } from './components/modais/financeiro/financeiro.module';
 import { MateriaAtividadesModule } from './pages/materiaAtividades/materiaAtividades.module';
 import { MaterialModule } from './components/material/material.module';
+import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
 
 register();
 
 @NgModule({
-  declarations: [AppComponent, LoadingComponent, AreaComponent],
+  declarations: [AppComponent, LoadingComponent, AreaComponent, HorarioAulasComponent],
   imports: [
     ResetPasswordModule,
     ProfileModule,

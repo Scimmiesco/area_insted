@@ -61,7 +61,7 @@ export class HomeComponent {
     switch (iconId) {
       case 1:
         this.dialog.open(HorarioDialogComponent, {
-          autoFocus: true,
+          autoFocus: false,
           closeOnNavigation: true,
         });
         break;

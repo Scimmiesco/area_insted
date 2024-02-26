@@ -8,6 +8,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { ResetPasswordAuthGuard } from './guards/reset-password.guard';
 import { MateriaAtividadesComponent } from './pages/materiaAtividades/materiaAtividades.component';
 import { AtividadeComponent } from './pages/materiaAtividades/atividade/atividade.component';
+import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -26,7 +27,8 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'perfil', component: ProfileComponent },
       { path: 'materia', component: MateriaAtividadesComponent },
-      {path:'materia/atividade', component: AtividadeComponent}
+      { path: 'materia/atividade', component: AtividadeComponent },
+      { path: 'horarioAulas', component: HorarioAulasComponent },
     ],
   },
   {
