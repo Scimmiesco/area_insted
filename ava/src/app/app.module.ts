@@ -28,6 +28,7 @@ import { FinanceiroModule } from './components/modais/financeiro/financeiro.modu
 import { MateriaAtividadesModule } from './pages/materiaAtividades/materiaAtividades.module';
 import { MaterialModule } from './components/material/material.module';
 import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
+import { LoginModule } from './pages/login/login.module';
 
 register();
 
@@ -38,6 +39,7 @@ register();
     ProfileModule,
     MateriaAtividadesModule,
     HomeModule,
+    LoginModule,
 
     SideNavModule,
     FinanceiroModule,
