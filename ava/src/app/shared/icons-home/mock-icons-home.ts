@@ -13,32 +13,13 @@ export const Icons: IconInterface[] = [
   },
   {
     id: 3,
-    icone: "notifications",
-    rotulo: "Notificações"
+    icone: "grade",
+    rotulo: "Notas"
   },
   {
     id: 4,
     icone: "calendar_month",
     rotulo: "Calendário"
   },
-  {
-    id: 5,
-    icone: "book_5",
-    rotulo: "Biblioteca"
-  },
-  {
-    id: 6,
-    icone: "grade",
-    rotulo: "Notas"
-  },
-  {
-    id: 7,
-    icone: "grade",
-    rotulo: "Notas"
-  },
-  {
-    id: 8,
-    icone: "grade",
-    rotulo: "Notas"
-  },
+
 ]
