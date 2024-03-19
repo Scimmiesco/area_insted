@@ -33,13 +33,18 @@ import { LoginModule } from './pages/login/login.module';
 register();
 
 @NgModule({
-  declarations: [AppComponent, LoadingComponent, AreaComponent, HorarioAulasComponent],
+  declarations: [
+    AppComponent,
+    LoadingComponent,
+    AreaComponent,
+    HorarioAulasComponent,
+
+  ],
   imports: [
     ResetPasswordModule,
     ProfileModule,
     MateriaAtividadesModule,
     HomeModule,
-    LoginModule,
 
     SideNavModule,
     FinanceiroModule,
