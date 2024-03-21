@@ -25,13 +25,12 @@ export class LoginFormComponent implements OnInit {
     private router: Router,
     private tokenService: TokenService,
     public temaService: TemaService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       ra: ['', [Validators.required, Validators.minLength(10)]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
     });
   }
 
@@ -72,6 +71,8 @@ export class LoginFormComponent implements OnInit {
             this.errorMessage =
               'Tentativas inválidas excedidas. Tente novamente em 3 minutos.';
             break;
+          default:
+            this.errorMessage = 'Erro desconhecido ao entrar. Entre em contato com o suporte.';
         }
       },
     });
