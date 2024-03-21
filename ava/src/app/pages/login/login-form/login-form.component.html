@@ -57,11 +57,6 @@
       >
     </div>
     <div class="flex justify-center flex-col items-center">
-      <re-captcha
-        id="recaptcha"
-        formControlName="recaptcha"
-        [theme]="(this.temaService.tema$ | async) === 'dark' ? 'dark' : 'light'"
-      ></re-captcha>
       <app-message
         *ngIf="
           !loginForm.get('recaptcha')?.value &&
@@ -72,17 +67,17 @@
         message="Necessário validar o captcha."
       />
     </div>
-  <button class="w-1/2" type="submit">Entrar</button>
-  <app-message
-    erro="true"
-    *ngIf="errorMessage != null"
-    message="{{ errorMessage }}"
-  />
-  <a
-    [routerLink]="['/login/recuperarsenha']"
-    class="dark:text-white_transp text-green_insted font-semibold"
-  >
-    Esqueci minha senha
-  </a>
-</div>
+    <button class="w-1/2" type="submit" (onclick)="Login()">Entrar</button>
+    <app-message
+      erro="true"
+      *ngIf="errorMessage != null"
+      message="{{ errorMessage }}"
+    />
+    <a
+      [routerLink]="['/login/recuperarsenha']"
+      class="dark:text-white_transp text-green_insted font-semibold"
+    >
+      Esqueci minha senha
+    </a>
+  </div>
 </form>
