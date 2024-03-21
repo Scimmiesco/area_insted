@@ -56,17 +56,7 @@
         >Manter conectado</label
       >
     </div>
-    <div class="flex justify-center flex-col items-center">
-      <app-message
-        *ngIf="
-          !loginForm.get('recaptcha')?.value &&
-          (loginForm.get('recaptcha')?.touched ||
-            loginForm.get('recaptcha')?.dirty)
-        "
-        erro="true"
-        message="Necessário validar o captcha."
-      />
-    </div>
+ 
     <button class="w-1/2" type="submit" (onclick)="Login()">Entrar</button>
     <app-message
       erro="true"

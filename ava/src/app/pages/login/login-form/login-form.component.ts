@@ -31,13 +31,12 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       ra: ['', [Validators.required, Validators.minLength(10)]],
-      password: ['', [Validators.required]],
-      recaptcha: [null],
+      password: ['', [Validators.required]]
     });
   }
 
   Login() {
-    if (this.loginForm.valid && this.loginForm.get('recaptcha')?.value) {
+    if (this.loginForm.valid) {
       let passwordHashed: string = CryptoJS.SHA512(
         this.loginForm.get('password')?.value
       ).toString();
