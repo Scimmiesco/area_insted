@@ -24,7 +24,8 @@ register();
 export class HomeComponent {
   icons!: IconInterface[];
   avisos!: PainelInterface[];
-  imageLoaded = false;
+  imageLoaded: boolean = false;
+  divMateriaExpandido: boolean =  false
 
   constructor(
     public dialog: MatDialog,
@@ -86,5 +87,8 @@ export class HomeComponent {
       default:
         break;
     }
+  }
+  ExpandirDivMaterias(expandirDivMateria: boolean){
+    this.divMateriaExpandido = !expandirDivMateria;
   }
 }

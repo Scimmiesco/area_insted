@@ -37,7 +37,7 @@
     rows="2"
     gutterSize="4"
     rowHeight="3:2"
-    class="mx-2 pb-[16.6667%]"
+    class="mx-2"
     *ngIf="handleScreenSizeChange()"
   >
     <mat-grid-tile
@@ -69,7 +69,16 @@
   <section
     class="bg-green_insted rounded-2xl flex flex-col justify-start p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow"
   >
-    <h2 class="text-white font-bold py-1">Matérias</h2>
+    <div class="flex justify-between text-white text-center items-center">
+      <h2 class="text-white font-bold py-1">Matérias</h2>
+      <span
+        class="material-symbols-outlined text-center cursor-pointer"
+        (click)="ExpandirDivMaterias(this.divMateriaExpandido)"
+      >
+        expand_more
+      </span>
+    </div>
+
     <div
       class="cursor-pointer w-full flex flex-row flex-1 gap-1"
       (click)="navegarParaMateria()"
@@ -86,6 +95,12 @@
         #swiperMaterias
         *ngIf="this.materiasService.materias$ | async as materias"
         class="m-0 rounded-l-md rounded-r-2xl w-4/5 flex flex-row"
+        effect="fade"
+        grabCursor="true"
+        slidesPerView="3"
+        slidesPerGroupAuto="true"
+        freeMode="true"
+        [ngClass]="divMateriaExpandido ? 'flex-row' : 'flex-col h-min'"
         pagination="true"
         crossFade="true"
       >
