@@ -37,7 +37,7 @@
     rows="2"
     gutterSize="4"
     rowHeight="3:2"
-    class="my-2 mx-2"
+    class="mx-2 pb-[16.6667%]"
     *ngIf="handleScreenSizeChange()"
   >
     <mat-grid-tile
@@ -46,7 +46,7 @@
     >
       <div class="flex flex-col w-full h-full cursor-pointer">
         <div
-          class="flex flex-1 justify-center items-center h-2/3 w-full bg-green_insted rounded-md m-auto aspect-video dark:shadow-sm dark:shadow-green_insted_dark_shadow"
+          class="flex flex-1 justify-center items-center h-2/3 w-full p-4 bg-green_insted rounded-md m-auto aspect-video dark:shadow-sm dark:shadow-green_insted_dark_shadow"
           [ngClass]="{
             'rounded-l-2xl': i === 0 || i === 4,
             'rounded-r-2xl': i === icons.length - 1 || i === 3
