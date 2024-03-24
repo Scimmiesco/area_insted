@@ -58,7 +58,7 @@
           >{{ icon.icone }}</span
         >
       </mat-grid-tile-header>
-      <mat-grid-tile-footer class="h-min" >
+      <mat-grid-tile-footer class="h-min">
         <p class="text-center items-center text-xs p-0 mx-auto dark:text-white">
           {{ icon.rotulo }}
         </p>
@@ -67,22 +67,23 @@
   </mat-grid-list>
   <!--// Matérias-->
   <section
-    class="bg-green_insted rounded-2xl flex flex-col justify-start p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow"
+    class="bg-green_insted rounded-2xl flex flex-col justify-start p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow min-h-min"
   >
     <div class="flex justify-between text-white text-center items-center">
       <h2 class="text-white font-bold py-1">Matérias</h2>
-      <span
-        class="material-symbols-outlined text-center cursor-pointer"
-        (click)="ExpandirDivMaterias(this.divMateriaExpandido)"
+      <div
+        class="h-fit flex justify-center cursor-pointer group hover:bg-white duration-200 ease-in-out active:bg-green_insted_dark rounded-md"
       >
-        expand_more
-      </span>
+        <span
+          class="material-symbols-outlined text-center cursor-pointer group-hover:text-green_insted_dark group-active:text-white duration-200 ease-in-out delay-75"
+          (click)="ExpandirDivMaterias(this.divMateriaExpandido)"
+        >
+          expand_more
+        </span>
+      </div>
     </div>
 
-    <div
-      class="cursor-pointer w-full flex flex-row flex-1 gap-1"
-      (click)="navegarParaMateria()"
-    >
+    <div class="cursor-pointer w-full flex flex-row flex-1 gap-1 min-h-min">
       <div
         class="flex justify-center items-center w-1/5 bg-white rounded-l-2xl rounded-r-md"
       >
@@ -95,14 +96,18 @@
         #swiperMaterias
         *ngIf="this.materiasService.materias$ | async as materias"
         class="m-0 rounded-l-md rounded-r-2xl w-4/5 flex flex-row"
-        effect="fade"
+
         grabCursor="true"
-        slidesPerView="3"
-        slidesPerGroupAuto="true"
-        freeMode="true"
-        [ngClass]="divMateriaExpandido ? 'flex-row' : 'flex-col h-min'"
+        slidesPerView="2"
+        slidesPerGroup="2"
         pagination="true"
         crossFade="true"
+
+        [ngClass]="
+          this.divMateriaExpandido
+            ? 'text-green_insted_dark_shadow'
+            : 'bg-green_insted_fundo_modal'
+        "
       >
         <swiper-slide
           class="w-full h-full flex flex-row justify-start text-center items-center mx-auto dark:bg-green_insted_dark bg-white pb-2 px-3"
