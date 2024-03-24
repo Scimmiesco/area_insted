@@ -72,7 +72,7 @@ export class LoginFormComponent implements OnInit {
               'Tentativas inválidas excedidas. Tente novamente em 3 minutos.';
             break;
           default:
-            this.errorMessage = 'Erro desconhecido ao entrar. Entre em contato com o suporte.';
+            this.errorMessage = 'Erro desconhecido ao entrar. Contate o suporte.';
         }
       },
     });
