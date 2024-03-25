@@ -67,7 +67,8 @@
   </mat-grid-list>
   <!--// Matérias-->
   <section
-    class="bg-green_insted rounded-2xl flex flex-col justify-start p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow min-h-min"
+    class="bg-green_insted rounded-2xl flex flex-col justify-start p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow"
+    [ngClass]="this.divMateriaExpandido ? 'min-h-[50vh]' : 'min-h-min'"
   >
     <div class="flex justify-between text-white text-center items-center">
       <h2 class="text-white font-bold py-1">Matérias</h2>
@@ -82,73 +83,113 @@
         </span>
       </div>
     </div>
-
-    <div class="cursor-pointer w-full flex flex-row flex-1 gap-1 min-h-min">
+    <div class="flex flex-col gap-4">
       <div
-        class="flex justify-center items-center w-1/5 bg-white rounded-l-2xl rounded-r-md"
+        class="cursor-pointer w-full flex flex-row gap-1 min-h-min max-h-fit"
       >
-        <span
-          class="material-symbols-outlined text-5xl text-text_color text-center"
-          >school</span
+        <div
+          class="flex justify-center items-center w-1/5 bg-white rounded-l-2xl rounded-r-md"
         >
-      </div>
-      <swiper-container
-        #swiperMaterias
-        *ngIf="this.materiasService.materias$ | async as materias"
-        class="m-0 rounded-l-md rounded-r-2xl w-4/5 flex flex-row"
-
-        grabCursor="true"
-        slidesPerView="2"
-        slidesPerGroup="2"
-        pagination="true"
-        crossFade="true"
-
-        [ngClass]="
-          this.divMateriaExpandido
-            ? 'text-green_insted_dark_shadow'
-            : 'bg-green_insted_fundo_modal'
-        "
-      >
-        <swiper-slide
-          class="w-full h-full flex flex-row justify-start text-center items-center mx-auto dark:bg-green_insted_dark bg-white pb-2 px-3"
-          *ngFor="let materia of materias"
-        >
-          <div
-            class="m-1 py-1"
-            class="flex justify-center items-center w-full min-h-full p-2 text-center dark:bg-green_insted_dark"
+          <span
+            class="material-symbols-outlined text-5xl text-text_color text-center"
+            >school</span
           >
-            <h3
-              class="h-full p-1 flex justify-center items-center text-text_color dark:text-white"
+        </div>
+        <swiper-container
+          #swiperMaterias
+          *ngIf="this.materiasService.materias$ | async as materias"
+          class="m-0 rounded-l-md rounded-r-2xl w-4/5 flex flex-row"
+          [ngClass]="this.divMateriaExpandido ? '' : ''"
+          grabCursor="true"
+          [slidesPerView]="materias.length"
+          [slidesPerGroup]="materias.length"
+          pagination="true"
+          crossFade="true"
+        >
+          <swiper-slide
+            class="w-full h-full flex flex-row justify-start text-center items-center mx-auto dark:bg-green_insted_dark bg-white pb-2 px-3"
+            *ngFor="let materia of materias"
+          >
+            <div
+              class="m-1 py-1"
+              class="flex justify-center items-center w-full min-h-full p-2 text-center dark:bg-green_insted_dark"
             >
-              {{ materia.NmClass }}
-            </h3>
-          </div>
-        </swiper-slide>
-      </swiper-container>
+              <h3
+                class="h-full p-1 flex justify-center items-center text-text_color dark:text-white"
+              >
+                {{ materia.NmClass }}
+              </h3>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </div>
     </div>
+    <!-- novoSwiper -->
+    <swiper-container
+      #swiperMaterias
+      *ngIf="this.materiasService.materias$ | async as materias"
+      class="w-full rounded-2xl h-full m-auto py-1"
+      [ngClass]="this.divMateriaExpandido ? '' : ''"
+      [slidesPerView]="materias.length"
+      [slidesPerGroup]="materias.length"
+      [spaceBetween]="8"
+      pagination="true"
+    >
+      <swiper-slide
+        class="flex flex-col gap-1"
+        *ngFor="let materia of materias; let i = index"
+      >
+        <div
+          class="flex justify-center items-center w-full rounded-b-md rounded-t-xl"
+          [ngStyle]="{
+            background:
+              'linear-gradient(43deg, ' +
+              getColor(i) +
+              ' 15%, ' +
+              getColor(i + 1) +
+              ' 85%)',
+            'background-color': '#1da9ad'
+          }"
+        >
+          <span
+            class="material-symbols-outlined text-5xl text-center text-green_insted"
+            >school</span
+          >
+        </div>
+        <div
+          class="flex justify-center items-center w-full min-h-full p-2 text-center dark:bg-green_insted_dark rounded-t-md rounded-b-xl"
+        >
+          <h3
+            class="h-full p-1 flex justify-center items-center text-text_color dark:text-white"
+          >
+            {{ materia.NmClass }}
+          </h3>
+        </div>
+      </swiper-slide>
+    </swiper-container>
   </section>
   <!--// Atividades-->
   <section
-    class="bg-green_insted rounded-2xl flex flex-col my-2 mx-1 p-2 h-[26%] laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow"
+    class="bg-green_insted rounded-xl flex flex-col my-2 mx-1 p-2 h-[26%] laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow"
   >
     <div>
       <h2 class="text-white font-bold py-1">Atividades</h2>
     </div>
     <swiper-container
-      class="w-full laptop:w-full rounded-2xl h-full m-auto py-1"
+      class="w-full rounded-xl h-full m-auto py-1"
       pagination="true"
       [slidesPerView]="handleScreenSizeChange() ? 1 : 2"
       [spaceBetween]="8"
     >
       <swiper-slide class="flex flex-col gap-1">
         <div
-          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-2xl text-center p-2"
+          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-xl text-center p-2"
         >
           <p class="m-0 dark:text-text_color">Quinta-feira, 18/08</p>
           <p class="m-0 dark:text-text_color">20:30</p>
         </div>
         <div
-          class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-2xl dark:bg-green_insted_dark bg-white"
+          class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-xl dark:bg-green_insted_dark bg-white"
         >
           <h2 class="text-2xl font-bold dark:text-white">
             Exercício de compreensão
@@ -160,13 +201,13 @@
       </swiper-slide>
       <swiper-slide class="flex flex-col m-auto gap-1">
         <div
-          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-2xl text-center p-2"
+          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-xl text-center p-2"
         >
           <p class="m-0 dark:text-text_color">Quinta-feira, 18/08</p>
           <p class="m-0 dark:text-text_color">20:30</p>
         </div>
         <div
-          class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-2xl dark:bg-green_insted_dark bg-white"
+          class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-xl dark:bg-green_insted_dark bg-white"
         >
           <h2 class="text-2xl font-bold dark:text-white">
             Exercício de compreensão

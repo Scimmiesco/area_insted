@@ -25,7 +25,16 @@ export class HomeComponent {
   icons!: IconInterface[];
   avisos!: PainelInterface[];
   imageLoaded: boolean = false;
-  divMateriaExpandido: boolean =  false
+  divMateriaExpandido: boolean = true;
+  cores: any = [
+    { nome: 'Verde Menta Fresco', codigoTailWind: 'rgb(144, 255, 177)' },
+    { nome: 'Amarelo Sol Radiante', codigoTailWind: 'rgb(235, 235, 145)' },
+    { nome: 'Rosa Lavanda Suave', codigoTailWind: 'rgb(236, 189, 238)' },
+    { nome: 'Laranja Pêssego Acolhedor', codigoTailWind: 'rgb(147, 255, 143)' },
+    { nome: 'Azul Céu Sereno', codigoTailWind: 'rgb(180, 234, 255)' },
+    { nome: 'Laranja Tropical Vibrante', codigoTailWind: 'rgb(255, 192, 141)' },
+    { nome: 'Violeta Primaveril Suave', codigoTailWind: 'rgb(199, 169, 255)' },
+  ];
 
   constructor(
     public dialog: MatDialog,
@@ -88,8 +97,12 @@ export class HomeComponent {
         break;
     }
   }
-  ExpandirDivMaterias(expandirDivMateria: boolean){
+  ExpandirDivMaterias(expandirDivMateria: boolean) {
     this.divMateriaExpandido = !expandirDivMateria;
     console.log(this.divMateriaExpandido);
+  }
+
+  getColor(index: number): string {
+    return this.cores[index].codigoTailWind;
   }
 }
