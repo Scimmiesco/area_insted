@@ -2,7 +2,7 @@
   [formGroup]="loginForm"
   (submit)="Login()"
   id="loginForm"
-  class="laptop:min-h-[40vh] laptop:max-h-[85vh] laptop:min-w-[30vw] laptop:max-w-[33vw] shadow-2xl shadow-white_transp bg-white_transp border-white dark:shadow-green_insted_dark dark:bg-green_insted_dark dark:border-hidden"
+  class="laptop:min-h-[40vh] laptop:max-h-[85vh] laptop:min-w-[30vw] laptop:max-w-[25vw] shadow-2xl shadow-white_transp bg-white_transp border-white dark:shadow-green_insted_dark dark:bg-green_insted_dark dark:border-hidden"
 >
   <div
     class="flex flex-col flex-1 w-full justify-between items-center gap-2 relative"
@@ -62,7 +62,7 @@
     <button class="w-1/2" type="submit" (onclick)="Login()">Entrar</button>
     <app-message
       erro="true"
-      class="text-justify w-2/3"
+      class=" w-2/3"
       *ngIf="errorMessage != null"
       message="{{ errorMessage }}"
     />

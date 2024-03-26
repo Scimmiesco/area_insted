@@ -67,8 +67,8 @@
   </mat-grid-list>
   <!--// Matérias-->
   <section
-    class="bg-green_insted rounded-2xl flex flex-col justify-start p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow"
-    [ngClass]="this.divMateriaExpandido ? 'min-h-[50vh]' : 'min-h-min'"
+    class="bg-green_insted rounded-2xl flex flex-col justify-start overflow-hidden p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow"
+    [ngClass]="this.divMateriaExpandido ? 'min-h-min' : 'h-32'"
   >
     <div class="flex justify-between text-white text-center items-center">
       <h2 class="text-white font-bold py-1">Matérias</h2>
@@ -85,10 +85,19 @@
     </div>
     <div class="flex flex-col gap-4">
       <div
-        class="cursor-pointer w-full flex flex-row gap-1 min-h-min max-h-fit"
+        class="cursor-pointer w-full flex flex-row gap-1 min-h-min max-h-fit mb-2"
       >
         <div
           class="flex justify-center items-center w-1/5 bg-white rounded-l-2xl rounded-r-md"
+          [ngStyle]="{
+            background:
+              'linear-gradient(43deg, ' +
+              getColor(0) +
+              ' 15%, ' +
+              getColor(0 + 1) +
+              ' 85%)',
+            'background-color': '#1da9ad'
+          }"
         >
           <span
             class="material-symbols-outlined text-5xl text-text_color text-center"
@@ -96,14 +105,14 @@
           >
         </div>
         <swiper-container
-          #swiperMaterias
+          #swiperMaterias  
           *ngIf="this.materiasService.materias$ | async as materias"
           class="m-0 rounded-l-md rounded-r-2xl w-4/5 flex flex-row"
           [ngClass]="this.divMateriaExpandido ? '' : ''"
-          grabCursor="true"
-          [slidesPerView]="materias.length"
-          [slidesPerGroup]="materias.length"
+          [slidesPerView]="1"
+          [slidesPerGroup]="1"
           pagination="true"
+          navigation="true"
           crossFade="true"
         >
           <swiper-slide
@@ -125,39 +134,34 @@
       </div>
     </div>
     <!-- novoSwiper -->
-    <swiper-container
-      #swiperMaterias
+    <div
       *ngIf="this.materiasService.materias$ | async as materias"
-      class="w-full rounded-2xl h-full m-auto py-1"
+      class="flex flex-row flex-wrap w-full rounded-2xl h-full m-auto py-1 gap-1"
       [ngClass]="this.divMateriaExpandido ? '' : ''"
-      [slidesPerView]="materias.length"
-      [slidesPerGroup]="materias.length"
-      [spaceBetween]="8"
-      pagination="true"
     >
-      <swiper-slide
-        class="flex flex-col gap-1"
-        *ngFor="let materia of materias; let i = index"
+      <div
+        class="flex flex-col flex-1 gap-1 min-w-[33%] h-full"
+        *ngFor="let materia of materias | slice : 1; let i = index"
       >
         <div
-          class="flex justify-center items-center w-full rounded-b-md rounded-t-xl"
+          class="flex justify-center items-center w-full rounded-b-md rounded-t-xl flex-1 h-1/3"
           [ngStyle]="{
             background:
               'linear-gradient(43deg, ' +
-              getColor(i) +
-              ' 15%, ' +
               getColor(i + 1) +
+              ' 15%, ' +
+              getColor(i) +
               ' 85%)',
             'background-color': '#1da9ad'
           }"
         >
           <span
-            class="material-symbols-outlined text-5xl text-center text-green_insted"
+            class="material-symbols-outlined text-5xl text-center text-green_insted dark:text-green_insted_dark"
             >school</span
           >
         </div>
         <div
-          class="flex justify-center items-center w-full min-h-full p-2 text-center dark:bg-green_insted_dark rounded-t-md rounded-b-xl"
+          class="flex justify-center items-center w-full p-2 text-center dark:bg-green_insted_dark bg-white rounded-t-md rounded-b-xl flex-1 min-h-full overflow-hidden"
         >
           <h3
             class="h-full p-1 flex justify-center items-center text-text_color dark:text-white"
@@ -165,8 +169,8 @@
             {{ materia.NmClass }}
           </h3>
         </div>
-      </swiper-slide>
-    </swiper-container>
+      </div>
+    </div>
   </section>
   <!--// Atividades-->
   <section

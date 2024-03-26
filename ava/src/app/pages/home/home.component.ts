@@ -15,6 +15,7 @@ import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { notasDialogComponent } from 'app/components/modais/notas/notas.component';
 import { FinanceiroDialogComponent } from 'app/components/modais/financeiro/financeiro.component';
 import { Router } from '@angular/router';
+import Swiper from 'swiper';
 register();
 
 @Component({
@@ -25,7 +26,8 @@ export class HomeComponent {
   icons!: IconInterface[];
   avisos!: PainelInterface[];
   imageLoaded: boolean = false;
-  divMateriaExpandido: boolean = true;
+  divMateriaExpandido: boolean = false;
+  swiper!: Swiper;
   cores: any = [
     { nome: 'Verde Menta Fresco', codigoTailWind: 'rgb(144, 255, 177)' },
     { nome: 'Amarelo Sol Radiante', codigoTailWind: 'rgb(235, 235, 145)' },
@@ -35,7 +37,6 @@ export class HomeComponent {
     { nome: 'Laranja Tropical Vibrante', codigoTailWind: 'rgb(255, 192, 141)' },
     { nome: 'Violeta Primaveril Suave', codigoTailWind: 'rgb(199, 169, 255)' },
   ];
-
   constructor(
     public dialog: MatDialog,
     public materiasService: MateriasService,
@@ -50,6 +51,12 @@ export class HomeComponent {
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
+    this.swiper = new Swiper('.swiper', {
+      // Configurações do Swiper
+    });
+    this.swiper.on('activeIndexChange', () => {
+      console.log('slide changed');
+    });
   }
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() =>
