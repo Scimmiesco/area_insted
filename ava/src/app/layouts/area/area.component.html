@@ -4,10 +4,10 @@
     fixedInViewport="false"
     [mode]="handleScreenSizeChange() ? 'push' : 'side'"
     [opened]="handleScreenSizeChange() ? 'false' : 'true'"
-    class="w-[66vw] laptop:w-fit laptop:max-w-[110px] max-h-[100svh] rounded-l-3xl ml-1 my-1 laptop:m-0 laptop:rounded-r-md laptop:rounded-l-none h-full dark:bg-green_insted_transp_dark_sideNav bg-white border-none laptop:h-[100svh] fixed"
+    class="w-[66vw] laptop:w-fit laptop:max-w-[110px] max-h-[100svh] rounded-l-3xl ml-1 my-1 laptop:m-0 laptop:rounded-r-md laptop:rounded-l-none h-full dark:bg-green_insted_transp_dark bg-white border-none laptop:h-[100svh] fixed"
     ><app-sidenav></app-sidenav
   ></mat-sidenav>
-  <mat-sidenav-content class="m-1 rounded-3xl">
+  <mat-sidenav-content class="">
     <app-menu-bottom
       (menuClick)="sidenav.open()"
       [tamanhoTelalaptop]="handleScreenSizeChange()"

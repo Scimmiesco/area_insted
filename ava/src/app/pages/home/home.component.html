@@ -1,5 +1,5 @@
 <section
-  class="mx-auto dark:bg-green_insted_dark bg-green_insted_transp min-h-[100svh] laptop:w-full pb-16 laptop:pb-0 box-content laptop:from-white"
+  class="mx-auto min-h-[100svh] laptop:w-full pb-16 laptop:pb-0 box-content bg-gradient-to-tr from-green_insted_transp via-white_transp to-white bg-green_insted dark:bg-green_insted_dark dark:from-green_insted_transp dark:via-green_insted_dark dark:to-green_insted_dark"
 >
   <!--// Avisos-->
   <swiper-container
@@ -105,7 +105,7 @@
           >
         </div>
         <swiper-container
-          #swiperMaterias  
+          #swiperMaterias
           *ngIf="this.materiasService.materias$ | async as materias"
           class="m-0 rounded-l-md rounded-r-2xl w-4/5 flex flex-row"
           [ngClass]="this.divMateriaExpandido ? '' : ''"
@@ -134,40 +134,42 @@
       </div>
     </div>
     <!-- novoSwiper -->
-    <div
-      *ngIf="this.materiasService.materias$ | async as materias"
-      class="flex flex-row flex-wrap w-full rounded-2xl h-full m-auto py-1 gap-1"
-      [ngClass]="this.divMateriaExpandido ? '' : ''"
-    >
+    <div *ngIf="this.divMateriaExpandido">
       <div
-        class="flex flex-col flex-1 gap-1 min-w-[33%] h-full"
-        *ngFor="let materia of materias | slice : 1; let i = index"
+        *ngIf="this.materiasService.materias$ | async as materias"
+        class="flex flex-row flex-wrap w-full rounded-2xl h-full m-auto py-1 gap-1"
+        [ngClass]="this.divMateriaExpandido ? '' : ''"
       >
         <div
-          class="flex justify-center items-center w-full rounded-b-md rounded-t-xl flex-1 h-1/3"
-          [ngStyle]="{
-            background:
-              'linear-gradient(43deg, ' +
-              getColor(i + 1) +
-              ' 15%, ' +
-              getColor(i) +
-              ' 85%)',
-            'background-color': '#1da9ad'
-          }"
+          class="flex flex-col flex-1 gap-1 min-w-[33%] h-full"
+          *ngFor="let materia of materias | slice : 1; let i = index"
         >
-          <span
-            class="material-symbols-outlined text-5xl text-center text-green_insted dark:text-green_insted_dark"
-            >school</span
+          <div
+            class="flex justify-center items-center w-full rounded-b-md rounded-t-xl flex-1 h-1/3"
+            [ngStyle]="{
+              background:
+                'linear-gradient(43deg, ' +
+                getColor(i + 1) +
+                ' 15%, ' +
+                getColor(i) +
+                ' 85%)',
+              'background-color': '#1da9ad'
+            }"
           >
-        </div>
-        <div
-          class="flex justify-center items-center w-full p-2 text-center dark:bg-green_insted_dark bg-white rounded-t-md rounded-b-xl flex-1 min-h-full overflow-hidden"
-        >
-          <h3
-            class="h-full p-1 flex justify-center items-center text-text_color dark:text-white"
+            <span
+              class="material-symbols-outlined text-5xl text-center text-green_insted dark:text-green_insted_dark"
+              >school</span
+            >
+          </div>
+          <div
+            class="flex justify-center items-center w-full p-2 text-center dark:bg-green_insted_dark bg-white rounded-t-md rounded-b-xl flex-1 min-h-full overflow-hidden"
           >
-            {{ materia.NmClass }}
-          </h3>
+            <h3
+              class="h-full p-1 flex justify-center items-center text-text_color dark:text-white"
+            >
+              {{ materia.NmClass }}
+            </h3>
+          </div>
         </div>
       </div>
     </div>
