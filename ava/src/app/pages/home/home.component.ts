@@ -15,7 +15,11 @@ import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { notasDialogComponent } from 'app/components/modais/notas/notas.component';
 import { FinanceiroDialogComponent } from 'app/components/modais/financeiro/financeiro.component';
 import { Router } from '@angular/router';
-import Swiper from 'swiper';
+import {
+  ResponseMateriasI,
+  materiaPadrao,
+} from 'app/Interfaces/materias.interface';
+
 register();
 
 @Component({
@@ -27,15 +31,23 @@ export class HomeComponent {
   avisos!: PainelInterface[];
   imageLoaded: boolean = false;
   divMateriaExpandido: boolean = false;
-  swiper!: Swiper;
+  materias: ResponseMateriasI['materias'] = [];
+
   cores: any = [
-    { nome: 'Verde Menta Fresco', codigoTailWind: 'rgb(144, 255, 177)' },
-    { nome: 'Amarelo Sol Radiante', codigoTailWind: 'rgb(235, 235, 145)' },
-    { nome: 'Rosa Lavanda Suave', codigoTailWind: 'rgb(236, 189, 238)' },
-    { nome: 'Laranja Pêssego Acolhedor', codigoTailWind: 'rgb(147, 255, 143)' },
-    { nome: 'Azul Céu Sereno', codigoTailWind: 'rgb(180, 234, 255)' },
-    { nome: 'Laranja Tropical Vibrante', codigoTailWind: 'rgb(255, 192, 141)' },
-    { nome: 'Violeta Primaveril Suave', codigoTailWind: 'rgb(199, 169, 255)' },
+    {
+      nome: 'Verde Menta Fresco',
+      codigoTailWind: 'rgba(144, 255, 222, 0.555)',
+    },
+    { nome: 'Rosa Lavanda Suave', codigoTailWind: 'rgba(214, 189, 238, 0.74)' },
+    {
+      nome: 'Laranja Pêssego Acolhedor',
+      codigoTailWind: 'rgba(147, 255, 143, 0.61)',
+    },
+    { nome: 'Azul Céu Sereno', codigoTailWind: 'rgba(180, 234, 255, 0.801)' },
+    {
+      nome: 'Laranja Tropical Vibrante',
+      codigoTailWind: 'rgba(255, 215, 141, 0.801)',
+    },
   ];
   constructor(
     public dialog: MatDialog,
@@ -47,15 +59,20 @@ export class HomeComponent {
   ) {
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
-
+  ngAfterViewInit() {
+    // this.swiperEl = document.querySelector('#swiperMaterias');
+    // this.swiperEl.addEventListener('swiper-slidechange', (event: any) => {
+    //   console.log('slide changed', event);
+    // });
+    // console.log(this.swiperEl);
+    // this.materiasService.materias$.subscribe(() => {});
+  }
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
-    this.swiper = new Swiper('.swiper', {
-      // Configurações do Swiper
-    });
-    this.swiper.on('activeIndexChange', () => {
-      console.log('slide changed');
+
+    this.materiasService.materias$.subscribe((materias) => {
+      this.materias = materias;
     });
   }
   ngOnDestroy() {
@@ -63,6 +80,7 @@ export class HomeComponent {
       this.handleScreenSizeChange()
     );
   }
+
   onImageLoad() {
     this.imageLoaded = true;
   }
@@ -110,6 +128,10 @@ export class HomeComponent {
   }
 
   getColor(index: number): string {
-    return this.cores[index].codigoTailWind;
+    if (index > this.cores.length - 1) {
+      return this.cores[index - this.cores.length].codigoTailWind;
+    } else {
+      return this.cores[index].codigoTailWind;
+    }
   }
 }
