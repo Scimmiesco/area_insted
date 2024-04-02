@@ -69,8 +69,9 @@
   </mat-grid-list>
   <!--// Matérias-->
   <section
-    class="bg-green_insted rounded-2xl flex flex-col justify-start overflow-hidden p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow"
-    [ngClass]="this.divMateriaExpandido ? 'min-h-min' : 'h-32'"
+    class="bg-green_insted rounded-2xl flex flex-col justify-start overflow-hidden p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow transition-all"
+    [ngClass]="this.divMateriaExpandido ? 'max-h-full' : 'max-h-52'"
+    [ngStyle]="{ transition: 'height 0.3s ease-in-out' }"
   >
     <div class="flex justify-between text-white text-center items-center">
       <h2 class="text-white font-bold py-1">Matérias</h2>
@@ -124,7 +125,7 @@
           >
             <div
               class="m-1 py-1"
-              class="flex justify-center items-center w-full min-h-full p-2 text-center dark:bg-green_insted_dark"
+              class="flex justify-center items-center w-full min-h-full p-2 text-center"
             >
               <h3
                 class="h-full p-1 flex justify-center items-center text-text_color dark:text-white"
@@ -137,22 +138,25 @@
       </div>
     </div>
     <!-- novoSwiper -->
-    <section *ngIf="this.divMateriaExpandido" class="flex flex-row justify-start gap-1 flex-grow flex-wrap w-full flex-1">
+    <section
+      *ngIf="this.divMateriaExpandido"
+      class="min-h-full py-1 gap-1 flex flex-row flex-1 justify-around flex-wrap"
+    >
       <div
         *ngFor="let materia of materias; let i = index"
         class="flex flex-col flex-nowrap min-h-full flex-1 m-auto gap-1 max-w-[50%]"
       >
         <div
           class="flex justify-center items-center w-full rounded-b-md rounded-t-xl flex-1 h-1/3"
-            [ngStyle]="{
-              background:
-                'linear-gradient(43deg, ' +
-                getColor(i + 1) +
-                ' 15%, ' +
-                getColor(i) +
-                ' 85%)',
-              'background-color': '#fff'
-            }"
+          [ngStyle]="{
+            background:
+              'linear-gradient(43deg, ' +
+              getColor(i + 1) +
+              ' 15%, ' +
+              getColor(i) +
+              ' 85%)',
+            'background-color': '#fff'
+          }"
         >
           <span
             class="material-symbols-outlined text-5xl text-center text-green_insted_dark"
