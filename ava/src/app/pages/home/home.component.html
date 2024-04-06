@@ -35,6 +35,7 @@
   <mat-grid-list
     cols="4"
     rows="1"
+    class="mx-2 "
     gutterSize="4"
     rowHeight="33"
     *ngIf="handleScreenSizeChange()"
@@ -140,11 +141,11 @@
     <!-- novoSwiper -->
     <section
       *ngIf="this.divMateriaExpandido"
-      class="min-h-full py-1 gap-1 flex flex-row flex-1 justify-around flex-wrap"
+      class="min-h-full py-1 gap-1 grid grid-cols-2 grid-flow-dense justify-around flex-wrap"
     >
       <div
         *ngFor="let materia of materias; let i = index"
-        class="flex flex-col flex-nowrap min-h-full flex-1 m-auto gap-1 max-w-[50%]"
+        class="flex flex-col flex-nowrap min-h-full flex-1 m-auto gap-1 max-w-full"
       >
         <div
           class="flex justify-center items-center w-full rounded-b-md rounded-t-xl flex-1 h-1/3"
