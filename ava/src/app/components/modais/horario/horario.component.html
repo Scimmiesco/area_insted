@@ -12,13 +12,13 @@
           <h1 class="font-bold dark:text-white">Horário de aulas</h1>
           <a
             href="area/horarioAulas"
-            class="absolute text-center right-0 group hover:bg-green_insted rounded-3xl px-2 transition-colors duration-300 ease-in-out"
-            ><span
-              class="text-center material-symbols-outlined text-green_insted_dark dark:text-green_insted text-2xl px-1 group-hover:text-white"
-            >
-              expand_content
-            </span></a
+            class="absolute text-center right-0 h-fit flex justify-center bg-white cursor-pointer group hover:bg-green_insted duration-200 ease-in-out active:bg-green_insted_dark rounded-md"
           >
+            <span
+              class="text-green_insted_dark material-symbols-outlined text-center cursor-pointer group-hover:text-white group-active:text-green_insted duration-200 ease-in-out delay-75" >
+              expand_content
+            </span>
+          </a>
         </div>
         <div class="py-2">
           <h2
@@ -29,14 +29,14 @@
           <small class="dark:text-white_transp">14/06</small>
         </div>
       </div>
-
+<!-- Horários -->
       <div
         class="mat-dialog-description min-h-full py-1 gap-1 flex flex-row flex-1 justify-around flex-wrap"
         *ngIf="this.materiasService.materias$ | async as materias"
       >
         <div
           *ngFor="let materia of materias"
-          class="rounded-3xl flex flex-col justify-center p-1 gap-1 flex-1 min-w-[330px]"
+          class="rounded-3xl flex flex-col justify-center p-1 gap-1 flex-1"
         >
           <div
             class="bg-green_insted dark:bg-green_insted rounded-b-md rounded-t-3xl"
@@ -46,7 +46,7 @@
             >
               {{ materia.NmClass }}
             </h3>
-            <p class="px-2 m-0 text-lg dark:text-white text-white">
+            <p class="px-2 m-0 text-lg dark:text-white text-white whitespace-nowrap">
               {{ materia.NmUser }}
             </p>
           </div>
