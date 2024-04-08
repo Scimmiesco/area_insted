@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { HorarioDialogComponent } from '../modais/horario/horario.component';
 import { calendarDialogComponent } from '../modais/calendar/calendar.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,7 +24,9 @@ export class SideNavComponent {
   constructor(
     private tamanhoDaTelaService: TamanhoDaTelaService,
     public dialog: MatDialog,
-    public temaService: TemaService
+    public temaService: TemaService,
+    public router: Router,
+    private location: Location
   ) {
     this.icons = Icons;
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
@@ -82,5 +85,9 @@ export class SideNavComponent {
   }
   public handleScreenSizeChange(): boolean {
     return this.tamanhoDaTelaService.isMobile;
+  }
+
+  voltarParaURLAnterior(){
+     this.location.back();
   }
 }

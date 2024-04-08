@@ -34,15 +34,25 @@
           </p>
         </div>
       </li>
+      <li class="mt-auto rounded-3xl min-w-full group cursor-pointer transition-opacity delay-100 duration-300ms ease-in-out"
+        [ngClass]="{ 'visible opacity-100 ': router.url !== '/area/home', 'invisible opacity-0': router.url === '/area/home' }"
+        >
+        <span
+        class="material-symbols-outlined w-full text-3xl text-text_color rounded-3xl dark:text-white text-center group-hover:bg-green_insted_transp_dark transition ease-in-out duration-200"
+        (click)="voltarParaURLAnterior()"
+        >
+          reply
+        </span>
 
+      </li>
       <li
         [routerLink]="['perfil']"
-        class="flex flex-col justify-center items-center text-center mt-auto"
-      >
+        class="flex flex-col justify-center items-center text-center"
+>
         <img
           src="assets/images/perfil-padrao1.png"
-          class="cursor-pointer rounded-full object-cover object-center h-14 w-14 aspect-square transition ease-in-out duration-200 box-content"
-          alt="teste"
+          class="text-sm cursor-pointer rounded-full object-cover object-center h-14 w-14 aspect-square transition ease-in-out duration-200 box-content"
+          alt="Imagem do perfil do usuário"
         />
         <p class="text-sm text-text_color dark:text-white p-0 m-0 text-center">
           Perfil
