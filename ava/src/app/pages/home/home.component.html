@@ -30,7 +30,6 @@
 
     <div class="swiper-pagination"></div>
   </swiper-container>
-
   <!--// Ícones-->
   <mat-grid-list
     cols="4"
@@ -143,14 +142,14 @@
     <!-- novoSwiper -->
     <section
       *ngIf="this.divMateriaExpandido"
-      class="min-h-full py-1 gap-1 flex flex-row flex-1 justify-around flex-wrap"
+      class="min-h-full py-1 gap-2 flex flex-row flex-1 justify-around flex-wrap"
     >
       <div
         *ngFor="let materia of materias; let i = index"
-        class="flex flex-col flex-nowrap min-h-full flex-1 m-auto gap-1 max-w-full min-w-[150px]"
+        class="flex flex-col flex-nowrap min-h-full flex-1 flex-grow gap-1 min-w-[39%] min-w-[200px]"
       >
         <div
-          class="flex justify-center items-center w-full rounded-b-md rounded-t-xl flex-1 h-1/3"
+          class="flex justify-center items-center w-full rounded-b-md rounded-t-xl flex-1 max-h-[33%] min-h-fit p-3"
           [ngStyle]="{
             background:
               'linear-gradient(43deg, ' +
@@ -167,10 +166,10 @@
           >
         </div>
         <div
-          class="flex justify-center items-center w-full p-1 text-center dark:bg-green_insted_dark bg-white rounded-t-md rounded-b-xl flex-1 flex-grow min-h-full overflow-hidden"
+          class="flex justify-center items-center w-full min-h-fit p-1 dark:bg-green_insted_dark bg-white rounded-t-md rounded-b-xl flex-grow"
         >
           <h3
-            class="h-full p-1 flex justify-center items-center text-text_color dark:text-white"
+            class="flex justify-center items-center text-center text-text_color dark:text-white w-full p-2 overflow-hidden"
           >
             {{ materia.NmClass }}
           </h3>
