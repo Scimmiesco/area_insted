@@ -8,7 +8,7 @@ $white_transp: rgba(244, 242, 255, 0.85);
 $verde_escuro: #063b3d;
 $green_insted_dark_shadow: #021f20ad;
 $green_insted_transp_dark: rgba(35, 111, 114, 0.35);
-$green_insted: #1da9ad;
+$green_insted: #028489;
 $green_insted_transp: rgba(103, 219, 223, 0.5);
 $green_insted_dark: #063b3d;
 
@@ -23,9 +23,9 @@ input:-webkit-autofill {
 }
 
 :root {
-  --swiper-theme-color: #1da9ad;
+  --swiper-theme-color: #028489;
   --swiper-pagination-bottom: 0px;
-  --mdc-dialog-container-color: #1da9ad;
+  --mdc-dialog-container-color: #028489;
   --swiper-navigation-size: 20px;
 }
 
@@ -45,7 +45,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: rgb(22, 149, 153);
+  color: $green_insted !important;
   margin-block-start: 0px;
   margin-block-end: 0px;
   margin-inline-start: 0px;
@@ -72,7 +72,7 @@ p {
 
 button,
 input {
-  background-color: rgb(29, 169, 173) !important;
+  background-color: $green_insted !important;
   font-size: 1.5rem !important;
   color: rgb(244, 242, 255) !important;
   font-weight: 600 !important;
