@@ -1,18 +1,20 @@
 <section
   *ngIf="handleScreenSizeChange()"
-  class="mx-auto z-40 fixed bottom-0 left-0 right-0 flex justify-between items-center pt-1 px-1 bg-white dark:bg-text_color dark:shadow-2xl dark:shadow-green_insted rounded-t-3xl"
+  class="mx-auto z-40 fixed bottom-0 left-0 right-0 flex justify-between items-center px-1 bg-white dark:bg-text_color dark:shadow-2xl dark:shadow-green_insted rounded-t-3xl"
 >
   <div
-    class="px-2 py-1 rounded-md [aspect-ratio:_16_/_9] w-1/6"
+    class=" w-1/6"
     (click)="abrirSideNav(!aberto)"
     id="sideNavButton"
     #sideNavButton
   >
     <svg-icon 
         src="assets/images/menu-button3.svg"  
-        [svgStyle]="{'fill': (temaService.tema$ | async) !== 'light' ? '#ffffff' : '#028489'}">
+        [stretch]="true"
+        class="w-full justify-center flex h-[48px]"
+        [svgStyle]="{'fill': (temaService.tema$ | async) !== 'light' ? '#ffffff' : '#028489', 'width.px':44}">
       </svg-icon>
-    <p
+   <p
       class="text-sm text-text_color dark:text-white p-0 m-0 text-center font-semibold"
     >
       Menu
@@ -35,7 +37,7 @@
     class="flex flex-col justify-center items-center text-center p-1 w-1/6"
   >
     <span
-      class="material-symbols-outlined text-3xl dark:text-white text-text_color"
+      class="material-symbols-outlined text-4xl dark:text-white text-text_color"
       >person</span
     >
     <p

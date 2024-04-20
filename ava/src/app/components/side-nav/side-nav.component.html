@@ -10,11 +10,9 @@
         [routerLink]="['home']"
       >
       <svg-icon 
-    src="assets/images/menu-button3.svg"  
-    [svgStyle]="{'fill': (temaService.tema$ | async) !== 'light' ? '#ffffff' : '#028489'}">
-</svg-icon>
-
-
+        src="assets/images/menu-button3.svg"  
+        [svgStyle]="{'fill': (temaService.tema$ | async) !== 'light' ? '#ffffff' : '#028489'}">
+      </svg-icon>
       </li>
       <li
         *ngFor="let icon of icons; let i = index"
