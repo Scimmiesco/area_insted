@@ -9,11 +9,12 @@ import { CpfCnpjPipe } from 'app/pipes/cpf-format.pipe';
 import { PhonePipe } from 'app/pipes/telefone.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageModule } from "../../components/message/message.module";
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   declarations: [ProfileComponent],
   imports: [CommonModule, RouterModule, MaterialModule, MenuBottomModule,CpfCnpjPipe,PhonePipe,
-  ReactiveFormsModule,MessageModule],
+  ReactiveFormsModule,MessageModule,AngularSvgIconModule],
   exports: [ProfileComponent],
   providers: [AutenticationService]
 })

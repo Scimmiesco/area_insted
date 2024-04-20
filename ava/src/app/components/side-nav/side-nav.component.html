@@ -4,16 +4,17 @@
   <nav *ngIf="!handleScreenSizeChange()" class="flex flex-col flex-1 my-2 px-1">
     <ul class="flex flex-col flex-1 gap-1">
       <li
-        class="p-1 cursor-pointer"
+        class="cursor-pointer"
         id="homeButton"
         #homeButton
         [routerLink]="['home']"
       >
-        <img
-          alt="Logo da insted. Botão para voltar a tela inicial."
-          src="assets/images/menu-button3.png"
-          class="bg-contain p-1 m-auto h-14"
-        />
+      <svg-icon 
+    src="assets/images/menu-button3.svg"  
+    [svgStyle]="{'fill': (temaService.tema$ | async) !== 'light' ? '#ffffff' : '#028489'}">
+</svg-icon>
+
+
       </li>
       <li
         *ngFor="let icon of icons; let i = index"

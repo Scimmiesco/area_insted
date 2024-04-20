@@ -6,9 +6,10 @@ import { HomeComponent } from './home.component';
 import { MenuBottomModule } from 'app/components/menu-bottom/menu-bottom.module';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
 
+import { AngularSvgIconModule } from 'angular-svg-icon';
 @NgModule({
   declarations: [HomeComponent],
-  imports: [CommonModule, RouterModule, MaterialModule, MenuBottomModule],
+  imports: [CommonModule, RouterModule, MaterialModule, MenuBottomModule,AngularSvgIconModule],
   exports: [HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -29,6 +29,7 @@ import { MateriaAtividadesModule } from './pages/materiaAtividades/materiaAtivid
 import { MaterialModule } from './components/material/material.module';
 import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
 import { LoginModule } from './pages/login/login.module';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 register();
 
@@ -68,6 +69,7 @@ register();
     CpfCnpjPipe,
 
     StoreModule.forRoot({ app: appReducer }),
+    AngularSvgIconModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       trace: true,

@@ -20,6 +20,7 @@ import { FinanceiroDialogComponent } from '../modais/financeiro/financeiro.compo
 export class SideNavComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   icons!: IconInterface[];
+  isDarkMode: boolean = localStorage.getItem('tema') !== 'light';
 
   constructor(
     private tamanhoDaTelaService: TamanhoDaTelaService,

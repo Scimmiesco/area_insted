@@ -2,6 +2,7 @@ import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Input } from '@angular/core';
 // menu-bottom.component.ts
+import { TemaService } from 'app/services/tema.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MateriasService } from 'app/services/materias.service';
 
@@ -14,7 +15,8 @@ export class MenuBottomComponent {
 
   aberto = false;
 
-  constructor(private tamanhoDaTelaService: TamanhoDaTelaService) {
+  constructor(private tamanhoDaTelaService: TamanhoDaTelaService,
+    public temaService: TemaService) {
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
 
