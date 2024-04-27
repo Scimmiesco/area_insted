@@ -11,6 +11,9 @@ import { IconInterface } from 'app/shared/icons-home/icons-home.model';
 import { TemaService } from 'app/services/tema.service';
 import { notasDialogComponent } from '../modais/notas/notas.component';
 import { FinanceiroDialogComponent } from '../modais/financeiro/financeiro.component';
+import { IconsAcessibilidadeInterface } from 'app/shared/icons-acessibilidade/icons-acessibilidade.model';
+import { IconsAcessibilidade } from 'app/shared/icons-acessibilidade/mock-icons-acessibilidade';
+
 
 @Component({
   selector: 'app-sidenav',
@@ -20,7 +23,10 @@ import { FinanceiroDialogComponent } from '../modais/financeiro/financeiro.compo
 export class SideNavComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   icons!: IconInterface[];
+  iconsAcessibilidade! : IconsAcessibilidadeInterface[];
   isDarkMode: boolean = localStorage.getItem('tema') !== 'light';
+  htmlRoot!: HTMLElement;
+  tamanhoFontePadrao = '16px';
 
   constructor(
     private tamanhoDaTelaService: TamanhoDaTelaService,
@@ -30,12 +36,17 @@ export class SideNavComponent {
     private location: Location
   ) {
     this.icons = Icons;
-    this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
+    this.tamanhoDaTelaService.addListener(() => this.telaTamanhoMobile());
+    this.iconsAcessibilidade = IconsAcessibilidade;
   }
   reason = '';
+  ngOnInit(){
+    
+    this.htmlRoot = <HTMLElement> document.getElementsByTagName("html")[0]
+  }
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() =>
-      this.handleScreenSizeChange()
+      this.telaTamanhoMobile()
     );
   }
   close(reason: string) {
@@ -46,7 +57,6 @@ export class SideNavComponent {
     let temas = ['light', 'dark'] as string[];
     let localStorageTema = localStorage.getItem('tema') || 'light';
     let index = temas.indexOf(localStorageTema);
-
     let proximoIndice = (index + 1) % temas.length;
 
     localStorage.setItem('tema', temas[proximoIndice]);
@@ -84,11 +94,50 @@ export class SideNavComponent {
         break;
     }
   }
-  public handleScreenSizeChange(): boolean {
+  public telaTamanhoMobile(): boolean {
     return this.tamanhoDaTelaService.isMobile;
   }
 
   voltarParaURLAnterior(){
      this.location.back();
+  }
+
+  getTamanhoFonte(): string {
+  if (this.htmlRoot != null) {
+    let estiloHtml = window.getComputedStyle(this.htmlRoot);
+    let tamanhoFonteAtual = estiloHtml.getPropertyValue('font-size');
+    return tamanhoFonteAtual
+  }
+
+  return this.tamanhoFontePadrao;
+
+}
+
+botoesAcessibilidade(nomeIcone: string) {
+    let tamanhoFonteAtualInt = parseInt(this.getTamanhoFonte());
+
+    switch(nomeIcone) {
+        case "aumentaTamanhoFonte":
+                tamanhoFonteAtualInt++;
+                this.htmlRoot.style.fontSize =  `${tamanhoFonteAtualInt}px`;
+            break;
+
+        case "tamanhoFontePadrao":
+            this.htmlRoot.style.fontSize = this.tamanhoFontePadrao;
+            break;
+
+        case "diminuiTamanhoFonte":
+            tamanhoFonteAtualInt--;
+            this.htmlRoot.style.fontSize = `${tamanhoFonteAtualInt}px`;
+            break;
+
+        case "mudaContraste":
+            // Implemente o código para mudar o contraste
+            break;
+
+        default:
+            // Caso o nomeIcone não corresponda a nenhum caso, faça algo aqui
+            break;
+    }
   }
 }

@@ -1,7 +1,7 @@
 <section
   class="flex flex-1 flex-grow flex-col justify-between w-full min-h-screen"
 >
-  <nav *ngIf="!handleScreenSizeChange()" class="flex flex-col flex-1 my-2 px-1">
+  <nav *ngIf="!telaTamanhoMobile()" class="flex flex-col flex-1 px-1">
     <ul class="flex flex-col flex-1 gap-1">
       <li
         class="cursor-pointer"
@@ -62,8 +62,9 @@
       </li>
     </ul>
   </nav>
-  <nav>
-    <ul>
+  <nav 
+    class="">
+    <ul class="">
       <li (click)="mudarTema()" class="cursor-pointer pb-2">
         <span
           class="material-symbols-outlined text-3xl w-full dark:text-white text-text_color text-center transition delay-150 ease-in-out"
@@ -77,4 +78,26 @@
       </li>
     </ul>
   </nav>
+  <nav
+    *ngIf="telaTamanhoMobile()">
+    <ul 
+    *ngIf="telaTamanhoMobile()"
+    class="flex flex-row mt-auto">
+      <li 
+      *ngFor="let icon of this.iconsAcessibilidade; let i = index"
+      class="flex-grow text-center" 
+      >
+        <span 
+          class="
+          material-symbols-outlined 
+          cursor-pointer text-3xl
+          dark:text-white text-green_insted_dark"
+          (click)="botoesAcessibilidade(icon.nomeIcone)"
+        >
+          {{icon.codigoSymbols}}
+        </span>
+      </li>
+    </ul>
+  </nav>
+  
 </section>

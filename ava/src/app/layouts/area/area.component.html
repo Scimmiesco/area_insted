@@ -2,15 +2,36 @@
   <mat-sidenav
     #sidenav
     fixedInViewport="false"
-    [mode]="handleScreenSizeChange() ? 'push' : 'side'"
-    [opened]="handleScreenSizeChange() ? 'false' : 'true'"
-    class="w-[66vw] laptop:w-fit laptop:max-w-[110px] max-h-[100svh] rounded-l-3xl ml-1 my-1 laptop:m-0 laptop:rounded-r-md laptop:rounded-l-none h-full dark:bg-green_insted_dark bg-white border-none laptop:h-[100svh] fixed"
-    ><app-sidenav></app-sidenav
-  ></mat-sidenav>
+    [mode]="telaTamanhoMobile() ? 'push' : 'side'"
+    [opened]="telaTamanhoMobile() ? 'false' : 'true'"
+    class="w-[66vw] laptop:w-fit laptop:max-w-[110px] max-h-[100svh] rounded-l-3xl laptop:m-0 laptop:rounded-r-md laptop:rounded-l-none h-full dark:bg-green_insted_dark bg-white border-none laptop:h-[100svh] fixed"
+    >
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
   <mat-sidenav-content class="">
+    <div
+      class="
+      fixed top-0 right-0 max-h-[100svh] z-50  
+      flex flex-col justify-start items-center 
+      gap-4 px-4 py-1"
+      >
+        <ng-template [ngIf]="!telaTamanhoMobile()">
+          <span 
+              *ngFor="let icon of this.iconsAcessibilidade; let i = index"
+              class="
+              material-symbols-outlined 
+              cursor-pointer text-2xl
+              dark:text-white text-green_insted_dark"
+              (click)="botoesAcessibilidade(icon.nomeIcone)"
+            >
+              {{icon.codigoSymbols}}
+            </span>
+      
+        </ng-template>
+    </div>    
     <app-menu-bottom
       (menuClick)="sidenav.open()"
-      [tamanhoTelalaptop]="handleScreenSizeChange()"
+      [tamanhoTelalaptop]="telaTamanhoMobile()"
     >
     </app-menu-bottom>
     <router-outlet class="dark:bg-text_color bg-white"></router-outlet>
