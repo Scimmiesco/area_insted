@@ -1,4 +1,4 @@
-<mat-sidenav-container class="mx-auto dark:bg-green_insted_dark bg-white">
+<mat-sidenav-container class="mx-auto dark:bg-green_insted_dark bg-white ">
   <mat-sidenav
     #sidenav
     fixedInViewport="false"
@@ -11,24 +11,28 @@
   <mat-sidenav-content class="">
     <div
       class="
-      fixed top-0 right-0 max-h-[100svh] z-50  
-      flex flex-col justify-start items-center 
-      gap-4 px-4 py-1"
+      fixed top-0 right-0 max-h-[100svh] z-50
+      flex flex-col justify-start items-center
+      gap-3 px-3 py-2
+      bg-white rounded-bl-xl dark:bg-green_insted_dark_shadow"
       >
         <ng-template [ngIf]="!telaTamanhoMobile()">
-          <span 
+          <span
               *ngFor="let icon of this.iconsAcessibilidade; let i = index"
               class="
-              material-symbols-outlined 
+              material-symbols-outlined
               cursor-pointer text-2xl
-              dark:text-white text-green_insted_dark"
+              p-1 rounded-lg
+              dark:text-white text-green_insted_dark hover:text-white hover:bg-green_insted_dark active:scale-50 dark:hover:bg-white dark:hover:text-green_insted_dark
+              transition-all duration-100
+              "
               (click)="botoesAcessibilidade(icon.nomeIcone)"
             >
               {{icon.codigoSymbols}}
             </span>
-      
+
         </ng-template>
-    </div>    
+    </div>
     <app-menu-bottom
       (menuClick)="sidenav.open()"
       [tamanhoTelalaptop]="telaTamanhoMobile()"

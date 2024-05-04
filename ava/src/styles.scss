@@ -3,14 +3,18 @@
 @import "tailwindcss/utilities";
 @import "mdb-angular-ui-kit/assets/scss/mdb.scss";
 
-$white: rgb(226, 240, 237);
-$white_transp: rgba(244, 242, 255, 0.85);
-$verde_escuro: #063b3d;
+$text_color: #063b3d;
+$okay_button: rgb(22, 129, 193);
+$green_insted: #028489;
+$green_insted_dark: #063b3d;
 $green_insted_dark_shadow: #021f20ad;
 $green_insted_transp_dark: rgba(35, 111, 114, 0.35);
-$green_insted: #028489;
+$green_insted_transp_dark_sideNav: #016366ff;
 $green_insted_transp: rgba(103, 219, 223, 0.5);
-$green_insted_dark: #063b3d;
+$green_insted_fundo_modal: rgba(186, 234, 236, 0.384);
+$white: rgb(255, 255, 255);
+$white_transp: rgba(244, 242, 255, 0.85);
+$invalid_text: rgba(202, 12, 12, 1);
 
 input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-contacts-auto-fill-button {
@@ -54,7 +58,7 @@ h4 {
 
 h3 {
   margin: 0;
-  color: $verde_escuro;
+  color: $green_insted_dark;
 }
 
 html,
@@ -77,7 +81,6 @@ input {
   color: rgb(244, 242, 255) !important;
   font-weight: 600 !important;
   width: 100% !important;
-  box-shadow: -2px 2px 10px $white;
   padding: 0.5rem 0.75rem !important;
 }
 
@@ -183,13 +186,13 @@ li {
   background: rgba(0, 0, 0, 0) !important;
 }
 
-.fundo_vidro{
+.fundo_vidro {
 
-  background: rgba( 255, 255, 255, 0.45 );
-   box-shadow: 0 8px 32px 0 $green_insted_transp;
-   backdrop-filter: blur( 13.5px );
-   -webkit-backdrop-filter: blur( 13.5px );
-   border: 2px solid $white;
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px 0 $green_insted_transp;
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border: 2px solid $white;
 }
 
 .dark {
@@ -199,10 +202,65 @@ li {
     box-shadow: -2px 2px 10px $green_insted_dark_shadow;
   }
 
-  .fundo_vidro{
-   background: $green_insted_dark;
-   box-shadow: 0 8px 32px 0 $green_insted_transp_dark;
-   border: 2px solid $green_insted;
- }
+  .fundo_vidro {
+    background: $green_insted_dark;
+    box-shadow: 0 8px 32px 0 $green_insted_transp_dark;
+    border: 2px solid $green_insted;
+  }
 
+}
+
+html.high_contrast {
+  :is(.dark, .dark *) {
+    color: yellow !important;
+    border-style: inherit !important;
+
+    mat-sidenav * {
+      background-color: rgb(15, 15, 15) !important;
+    }
+
+  }
+
+  * {
+    color: yellow !important;
+
+  }
+
+  span.mat-expansion-indicator::after {
+    color: #fff;
+  }
+
+  input {
+    background-color: black !important;
+    color: rgb(255, 255, 255) !important;
+    outline: solid 2px #fff;
+  }
+
+  button.cancelar {
+    background-color: #fff !important;
+    color: black !important;
+  }
+
+  .bg-green_insted,
+  .bg-green_insted_dark,
+  .bg-green_insted_dark_shadow,
+  .bg-green_insted_transp_dark,
+  .bg-green_insted_transp_dark_sideNav,
+  .bg-green_insted_transp,
+  .bg-green_insted_fundo_modal {
+    background-color: black !important;
+    border: #fff 2px solid;
+    box-sizing: border-box;
+  }
+
+  .bg-white,
+  .bg-white_transp,
+  .mat-expansion-panel {
+    background-color: rgb(15, 15, 15) !important;
+  }
+
+  .hover\:bg-green_insted_dark:hover,
+  .group:hover .group-hover\:bg-green_insted_transp_dark {
+    background-color: rgba(255, 255, 255, 0.363) !important;
+  }
 }

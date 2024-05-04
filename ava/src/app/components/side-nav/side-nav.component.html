@@ -1,5 +1,5 @@
 <section
-  class="flex flex-1 flex-grow flex-col justify-between w-full min-h-screen"
+  class="flex flex-1 flex-grow flex-col justify-between w-full min-h-screen dark:bg-green_insted_transp_dark"
 >
   <nav *ngIf="!telaTamanhoMobile()" class="flex flex-col flex-1 px-1">
     <ul class="flex flex-col flex-1 gap-1">
@@ -9,8 +9,8 @@
         #homeButton
         [routerLink]="['home']"
       >
-      <svg-icon 
-        src="assets/images/menu-button3.svg"  
+      <svg-icon
+        src="assets/images/menu-button3.svg"
         [svgStyle]="{'fill': (temaService.tema$ | async) !== 'light' ? '#ffffff' : '#028489'}">
       </svg-icon>
       </li>
@@ -62,7 +62,7 @@
       </li>
     </ul>
   </nav>
-  <nav 
+  <nav
     class="">
     <ul class="">
       <li (click)="mudarTema()" class="cursor-pointer pb-2">
@@ -80,16 +80,16 @@
   </nav>
   <nav
     *ngIf="telaTamanhoMobile()">
-    <ul 
+    <ul
     *ngIf="telaTamanhoMobile()"
     class="flex flex-row mt-auto">
-      <li 
+      <li
       *ngFor="let icon of this.iconsAcessibilidade; let i = index"
-      class="flex-grow text-center" 
+      class="flex-grow text-center"
       >
-        <span 
+        <span
           class="
-          material-symbols-outlined 
+          material-symbols-outlined
           cursor-pointer text-3xl
           dark:text-white text-green_insted_dark"
           (click)="botoesAcessibilidade(icon.nomeIcone)"
@@ -99,5 +99,5 @@
       </li>
     </ul>
   </nav>
-  
+
 </section>
