@@ -215,7 +215,7 @@ html.high_contrast {
     color: yellow !important;
     border-style: inherit !important;
 
-    mat-sidenav * {
+    mat-sidenav section{
       background-color: rgb(15, 15, 15) !important;
     }
 
@@ -250,7 +250,7 @@ html.high_contrast {
   .bg-green_insted_fundo_modal {
     background-color: black !important;
     border: #fff 2px solid;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
   }
 
   .bg-white,

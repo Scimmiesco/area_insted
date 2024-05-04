@@ -25,8 +25,10 @@ export class SideNavComponent {
   icons!: IconInterface[];
   iconsAcessibilidade! : IconsAcessibilidadeInterface[];
   isDarkMode: boolean = localStorage.getItem('tema') !== 'light';
+  altoContrasteLigado! : boolean;
   htmlRoot!: HTMLElement;
   tamanhoFontePadrao = '16px';
+
 
   constructor(
     private tamanhoDaTelaService: TamanhoDaTelaService,
@@ -41,8 +43,10 @@ export class SideNavComponent {
   }
   reason = '';
   ngOnInit(){
-    
+
     this.htmlRoot = <HTMLElement> document.getElementsByTagName("html")[0]
+
+    this.altoContrasteLigado = this.htmlRoot.classList.contains('high_contrast')
   }
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() =>

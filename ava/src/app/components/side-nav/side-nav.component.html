@@ -9,10 +9,13 @@
         #homeButton
         [routerLink]="['home']"
       >
-      <svg-icon
-        src="assets/images/menu-button3.svg"
-        [svgStyle]="{'fill': (temaService.tema$ | async) !== 'light' ? '#ffffff' : '#028489'}">
-      </svg-icon>
+        <svg-icon
+          src="assets/images/menu-button3.svg"
+          [svgStyle]="{
+            fill: (temaService.tema$ | async) !== 'light' ? '#ffffff' : (altoContrasteLigado ? '#fff' : '#028489')
+          }"
+        >
+        </svg-icon>
       </li>
       <li
         *ngFor="let icon of icons; let i = index"
@@ -62,8 +65,7 @@
       </li>
     </ul>
   </nav>
-  <nav
-    class="">
+  <nav class="">
     <ul class="">
       <li (click)="mudarTema()" class="cursor-pointer pb-2">
         <span
@@ -78,26 +80,19 @@
       </li>
     </ul>
   </nav>
-  <nav
-    *ngIf="telaTamanhoMobile()">
-    <ul
-    *ngIf="telaTamanhoMobile()"
-    class="flex flex-row mt-auto">
+  <nav *ngIf="telaTamanhoMobile()">
+    <ul *ngIf="telaTamanhoMobile()" class="flex flex-row mt-auto">
       <li
-      *ngFor="let icon of this.iconsAcessibilidade; let i = index"
-      class="flex-grow text-center"
+        *ngFor="let icon of this.iconsAcessibilidade; let i = index"
+        class="flex-grow text-center"
       >
         <span
-          class="
-          material-symbols-outlined
-          cursor-pointer text-3xl
-          dark:text-white text-green_insted_dark"
+          class="material-symbols-outlined cursor-pointer text-3xl dark:text-white text-green_insted_dark"
           (click)="botoesAcessibilidade(icon.nomeIcone)"
         >
-          {{icon.codigoSymbols}}
+          {{ icon.codigoSymbols }}
         </span>
       </li>
     </ul>
   </nav>
-
 </section>
