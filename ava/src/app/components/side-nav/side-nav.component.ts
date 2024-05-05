@@ -14,7 +14,6 @@ import { FinanceiroDialogComponent } from '../modais/financeiro/financeiro.compo
 import { IconsAcessibilidadeInterface } from 'app/shared/icons-acessibilidade/icons-acessibilidade.model';
 import { IconsAcessibilidade } from 'app/shared/icons-acessibilidade/mock-icons-acessibilidade';
 
-
 @Component({
   selector: 'app-sidenav',
   templateUrl: './side-nav.component.html',
@@ -23,12 +22,11 @@ import { IconsAcessibilidade } from 'app/shared/icons-acessibilidade/mock-icons-
 export class SideNavComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   icons!: IconInterface[];
-  iconsAcessibilidade! : IconsAcessibilidadeInterface[];
+  iconsAcessibilidade!: IconsAcessibilidadeInterface[];
   isDarkMode: boolean = localStorage.getItem('tema') !== 'light';
-  altoContrasteLigado! : boolean;
+  altoContrasteLigado!: boolean;
   htmlRoot!: HTMLElement;
   tamanhoFontePadrao = '16px';
-
 
   constructor(
     private tamanhoDaTelaService: TamanhoDaTelaService,
@@ -42,16 +40,14 @@ export class SideNavComponent {
     this.iconsAcessibilidade = IconsAcessibilidade;
   }
   reason = '';
-  ngOnInit(){
+  ngOnInit() {
+    this.htmlRoot = <HTMLElement>document.getElementsByTagName('html')[0];
 
-    this.htmlRoot = <HTMLElement> document.getElementsByTagName("html")[0]
-
-    this.altoContrasteLigado = this.htmlRoot.classList.contains('high_contrast')
+    this.altoContrasteLigado =
+      this.htmlRoot.classList.contains('high_contrast');
   }
   ngOnDestroy() {
-    this.tamanhoDaTelaService.removeListener(() =>
-      this.telaTamanhoMobile()
-    );
+    this.tamanhoDaTelaService.removeListener(() => this.telaTamanhoMobile());
   }
   close(reason: string) {
     this.reason = reason;
@@ -102,46 +98,44 @@ export class SideNavComponent {
     return this.tamanhoDaTelaService.isMobile;
   }
 
-  voltarParaURLAnterior(){
-     this.location.back();
+  voltarParaURLAnterior() {
+    this.location.back();
   }
 
   getTamanhoFonte(): string {
-  if (this.htmlRoot != null) {
-    let estiloHtml = window.getComputedStyle(this.htmlRoot);
-    let tamanhoFonteAtual = estiloHtml.getPropertyValue('font-size');
-    return tamanhoFonteAtual
+    if (this.htmlRoot != null) {
+      let estiloHtml = window.getComputedStyle(this.htmlRoot);
+      let tamanhoFonteAtual = estiloHtml.getPropertyValue('font-size');
+      return tamanhoFonteAtual;
+    }
+
+    return this.tamanhoFontePadrao;
   }
 
-  return this.tamanhoFontePadrao;
-
-}
-
-botoesAcessibilidade(nomeIcone: string) {
+  botoesAcessibilidade(nomeIcone: string) {
     let tamanhoFonteAtualInt = parseInt(this.getTamanhoFonte());
 
-    switch(nomeIcone) {
-        case "aumentaTamanhoFonte":
-                tamanhoFonteAtualInt++;
-                this.htmlRoot.style.fontSize =  `${tamanhoFonteAtualInt}px`;
-            break;
+    switch (nomeIcone) {
+      case 'aumentaTamanhoFonte':
+        tamanhoFonteAtualInt++;
+        this.htmlRoot.style.fontSize = `${tamanhoFonteAtualInt}px`;
+        break;
 
-        case "tamanhoFontePadrao":
-            this.htmlRoot.style.fontSize = this.tamanhoFontePadrao;
-            break;
+      case 'tamanhoFontePadrao':
+        this.htmlRoot.style.fontSize = this.tamanhoFontePadrao;
+        break;
 
-        case "diminuiTamanhoFonte":
-            tamanhoFonteAtualInt--;
-            this.htmlRoot.style.fontSize = `${tamanhoFonteAtualInt}px`;
-            break;
+      case 'diminuiTamanhoFonte':
+        tamanhoFonteAtualInt--;
+        this.htmlRoot.style.fontSize = `${tamanhoFonteAtualInt}px`;
+        break;
 
-        case "mudaContraste":
-            // Implemente o código para mudar o contraste
-            break;
+      case 'mudaContraste':
+        this.temaService.mudarTema('alto_contraste');
+        break;
 
-        default:
-            // Caso o nomeIcone não corresponda a nenhum caso, faça algo aqui
-            break;
+      default:
+        break;
     }
   }
 }
