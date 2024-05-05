@@ -101,14 +101,8 @@ export class AreaComponent implements OnInit {
         this.htmlRoot.style.fontSize = `${tamanhoFonteAtualInt}px`;
         break;
 
-        case 'mudaContraste':
-        let contrasteAlto =
-          localStorage.getItem('tema') === 'alto_contraste'
-            ? 'light'
-            : 'alto_contraste';
-
-        this.temaService.mudarTema(contrasteAlto);
-        console.log(contrasteAlto);
+      case 'mudaContraste':
+        this.temaService.mudarTema('alto_contraste');
         break;
 
       default:
