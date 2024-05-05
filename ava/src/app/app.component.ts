@@ -6,6 +6,7 @@ import { TemaService } from './services/tema.service';
 })
 export class AppComponent {
   title = 'Área do aluno - INSTED';
+
   constructor(temaService: TemaService) {
     if (
       localStorage['tema'] === 'dark' ||
@@ -16,14 +17,38 @@ export class AppComponent {
     } else {
       document.documentElement.classList.remove('dark');
     }
+
     temaService.tema$.subscribe((value) => {
       this.modoEscuro(value);
     });
   }
+
   modoEscuro(tema: string) {
-    tema.toString() === 'dark' ? document.documentElement.classList.add('dark') : 
-    document.documentElement.classList.remove('dark');;
-    
-    ;
+    switch (tema) {
+      case 'dark': {
+        if (document.documentElement.classList.contains('dark')) {
+          break;
+        } else {
+          document.documentElement.classList.add('dark');
+          break;
+        }
+      }
+      case 'alto_contraste': {
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark');
+        }
+        document.documentElement.classList.add('alto_contraste');
+        break;
+      }
+      case 'light': {
+        document.documentElement.classList.remove('alto_contraste');
+        document.documentElement.classList.remove('dark');
+        break;
+      }
+      default: {
+        document.documentElement.classList.remove;
+        break;
+      }
+    }
   }
 }

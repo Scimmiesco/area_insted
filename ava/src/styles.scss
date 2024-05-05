@@ -15,6 +15,10 @@ $green_insted_fundo_modal: rgba(186, 234, 236, 0.384);
 $white: rgb(255, 255, 255);
 $white_transp: rgba(244, 242, 255, 0.85);
 $invalid_text: rgba(202, 12, 12, 1);
+$altoContraste_fundo: black;
+$altoContraste_texto: yellow;
+$altoContraste_hover: rgba(255, 255, 0, 0.267);
+
 
 input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-contacts-auto-fill-button {
@@ -210,19 +214,10 @@ li {
 
 }
 
-html.high_contrast {
-  :is(.dark, .dark *) {
-    color: yellow !important;
-    border-style: inherit !important;
-
-    mat-sidenav section{
-      background-color: rgb(15, 15, 15) !important;
-    }
-
-  }
+html.alto_contraste {
 
   * {
-    color: yellow !important;
+    color: $altoContraste_texto !important;
 
   }
 
@@ -230,15 +225,16 @@ html.high_contrast {
     color: #fff;
   }
 
+  button,
   input {
-    background-color: black !important;
-    color: rgb(255, 255, 255) !important;
+    background-color: $altoContraste_fundo !important;
+    color: #fff !important;
     outline: solid 2px #fff;
   }
 
   button.cancelar {
     background-color: #fff !important;
-    color: black !important;
+    color: $altoContraste_fundo !important;
   }
 
   .bg-green_insted,
@@ -248,7 +244,7 @@ html.high_contrast {
   .bg-green_insted_transp_dark_sideNav,
   .bg-green_insted_transp,
   .bg-green_insted_fundo_modal {
-    background-color: black !important;
+    background-color: $altoContraste_fundo !important;
     border: #fff 2px solid;
     box-sizing: border-box !important;
   }
@@ -256,11 +252,12 @@ html.high_contrast {
   .bg-white,
   .bg-white_transp,
   .mat-expansion-panel {
-    background-color: rgb(15, 15, 15) !important;
+    background-color: $altoContraste_fundo !important;
   }
 
   .hover\:bg-green_insted_dark:hover,
+  :is(.dark .dark\:hover\:text-green_insted_dark:hover),
   .group:hover .group-hover\:bg-green_insted_transp_dark {
-    background-color: rgba(255, 255, 255, 0.363) !important;
+    background-color: $altoContraste_hover !important;
   }
 }
