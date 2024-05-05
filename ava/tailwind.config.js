@@ -6,13 +6,8 @@ module.exports = {
   theme: {
     screens: {
       tablet: "750px",
-      // => @media (min-width: 640px) { ... }
-
       laptop: "1024px",
-      // => @media (min-width: 1024px) { ... }
-
       desktop: "1280px",
-      // => @media (min-width: 1280px) { ... }
     },
     extend: {
       backgroundImage: {
@@ -23,6 +18,12 @@ module.exports = {
         closed_eye: "url('/assets/svg-icons/olho-fechado.svg')",
         placeholder_img: "url('/assets/svg-icons/placeholder_view_vector.svg')",
       },
+      colors:{
+        highContrast:{
+          DEFAULT: '#ffffff', // cor de fundo
+          text: '#000000', // cor do texto
+        }
+      }
     },
     colors: {
       text_color: "#063b3d",

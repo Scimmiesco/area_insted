@@ -1,5 +1,5 @@
 <section
-  class="mx-auto min-h-[100svh] laptop:w-full pb-16 laptop:pb-0 box-content bg-gradient-to-tr from-green_insted_transp via-white_transp to-white bg-green_insted dark:bg-green_insted_dark dark:from-green_insted_transp dark:via-green_insted_dark dark:to-green_insted_dark"
+  class="mx-auto min-h-[100svh] laptop:w-full pb-16 laptop:pb-0 box-content bg-green_insted_transp dark:bg-green_insted_dark"
 >
   <!--// Avisos-->
   <swiper-container
@@ -47,20 +47,26 @@
       class="min-h-min cursor-pointer"
     >
       <mat-grid-tile-header
-        class="flex flex-1 justify-center items-center w-full p-4 bg-green_insted rounded-md m-auto dark:shadow-sm dark:shadow-green_insted_dark_shadow"
+        class="dark:bg-white bg-green_insted text-white
+        flex flex-1 justify-center items-center
+        w-full p-4 rounded-md m-auto"
         [ngClass]="{
           'rounded-l-2xl': i === 0 || i === 4,
           'rounded-r-2xl': i === icons.length - 1 || i === 3
         }"
       >
         <span
-          class="material-symbols-outlined text-3xl text-text_color text-center"
+          class="material-symbols-outlined
+          text-3xl text-center
+          text-white dark:text-green_insted_dark"
           >{{ icon.icone }}</span
         >
       </mat-grid-tile-header>
       <mat-grid-tile-footer class="h-min">
         <p
-          class="text-center items-center text-xs p-0 mx-auto text-green_insted_dark dark:text-white"
+          class="text-center items-center
+          p-0 mx-auto  text-sm
+          text-green_insted_dark dark:text-white"
         >
           {{ icon.rotulo }}
         </p>
@@ -69,7 +75,7 @@
   </mat-grid-list>
   <!--// Matérias-->
   <section
-    class="bg-green_insted rounded-2xl flex flex-col justify-start overflow-hidden p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow transition-all"
+    class="bg-green_insted rounded-2xl flex flex-col justify-start overflow-hidden p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto transition-all"
     [ngStyle]="{ transition: 'height 0.3s ease-in-out' }"
   >
     <div class="flex justify-between text-white text-center items-center">
@@ -179,7 +185,7 @@
   </section>
   <!--// Atividades-->
   <section
-    class="bg-green_insted rounded-xl flex flex-col my-2 mx-1 p-2 h-[26%] laptop:w-1/2 laptop:mx-auto dark:shadow-md dark:shadow-green_insted_dark_shadow"
+    class="bg-green_insted rounded-xl flex flex-col my-2 mx-1 p-2 h-[26%] laptop:w-1/2 laptop:mx-auto "
   >
     <div>
       <h2 class="text-white font-bold py-1">Atividades</h2>
@@ -203,7 +209,7 @@
           <h2 class="text-2xl font-bold dark:text-white text-center">
             Exercício de compreensão
           </h2>
-          <h3 class="text-lg dark:text-white text-center">
+          <h3 class="text-lg dark:text-white text-center contrast-more:bg-okay_button">
             Programação Orientada à objetos
           </h3>
         </div>
