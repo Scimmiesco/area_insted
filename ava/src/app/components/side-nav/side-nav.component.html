@@ -1,5 +1,5 @@
 <section
-  class="flex flex-1 flex-grow flex-col justify-between w-full min-h-screen dark:bg-green_insted_transp_dark"
+  class="flex flex-1 flex-grow flex-col justify-between w-full min-h-[100svh] dark:bg-green_insted_transp_dark"
 >
   <nav *ngIf="!telaTamanhoMobile()" class="flex flex-col flex-1 px-1">
     <ul class="flex flex-col flex-1 gap-1">
@@ -12,7 +12,12 @@
         <svg-icon
           src="assets/images/menu-button3.svg"
           [svgStyle]="{
-            fill: (temaService.tema$ | async) !== 'light' ? '#ffffff' : (altoContrasteLigado ? '#fff' : '#028489')
+            fill:
+              (temaService.tema$ | async) !== 'light'
+                ? '#ffffff'
+                : altoContrasteLigado
+                ? '#fff'
+                : '#028489'
           }"
         >
         </svg-icon>

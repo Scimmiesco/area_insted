@@ -36,8 +36,14 @@ export class AppComponent {
       case 'alto_contraste': {
         if (document.documentElement.classList.contains('dark')) {
           document.documentElement.classList.remove('dark');
+        } else if (
+          document.documentElement.classList.contains('alto_contraste')
+        ) {
+          document.documentElement.classList.remove('alto_contraste');
+        } else {
+          document.documentElement.classList.add('alto_contraste');
+          break;
         }
-        document.documentElement.classList.add('alto_contraste');
         break;
       }
       case 'light': {

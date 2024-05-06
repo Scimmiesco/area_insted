@@ -191,7 +191,6 @@ li {
 }
 
 .fundo_vidro {
-
   background: rgba(255, 255, 255, 0.45);
   box-shadow: 0 8px 32px 0 $green_insted_transp;
   backdrop-filter: blur(13.5px);
@@ -200,11 +199,6 @@ li {
 }
 
 .dark {
-
-  button,
-  input {
-    box-shadow: -2px 2px 10px $green_insted_dark_shadow;
-  }
 
   .fundo_vidro {
     background: $green_insted_dark;
