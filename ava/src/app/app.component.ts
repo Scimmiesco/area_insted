@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { TemaService } from './services/tema.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
+
 export class AppComponent {
+
   title = 'Área do aluno - INSTED';
 
-  constructor(temaService: TemaService) {
+  constructor(public temaService: TemaService) {
     if (
       localStorage['tema'] === 'dark' ||
       (!('tema' in localStorage) &&
@@ -18,43 +21,39 @@ export class AppComponent {
       document.documentElement.classList.remove('dark');
     }
 
-    temaService.tema$.subscribe((value) => {
-      this.modoEscuro(value);
+    temaService.tema$.subscribe((temas) => {
+      this.aplicaTemas(temas);
     });
   }
 
-  modoEscuro(tema: string) {
-    switch (tema) {
-      case 'dark': {
-        if (document.documentElement.classList.contains('dark')) {
-          break;
-        } else {
-          document.documentElement.classList.add('dark');
-          break;
-        }
-      }
-      case 'alto_contraste': {
-        if (document.documentElement.classList.contains('dark')) {
-          document.documentElement.classList.remove('dark');
-        } else if (
-          document.documentElement.classList.contains('alto_contraste')
-        ) {
-          document.documentElement.classList.remove('alto_contraste');
-        } else {
-          document.documentElement.classList.add('alto_contraste');
-          break;
-        }
+  aplicaTemas(tema: string) {
+
+    switch(tema){
+    case 'dark':
+      if(document.documentElement.classList.contains('dark')){
         break;
       }
-      case 'light': {
-        document.documentElement.classList.remove('alto_contraste');
-        document.documentElement.classList.remove('dark');
-        break;
+      document.documentElement.classList.add('dark')
+      break;
+
+    case 'light':
+      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove('alto_contraste')
+      break;
+
+    case 'alto_contraste':
+      if(document.documentElement.classList.contains('dark')){
+        document.documentElement.classList.remove('dark')
+        document.documentElement.classList.add('alto_contraste')
+      }else if(document.documentElement.classList.contains('alto_contraste')){
+        document.documentElement.classList.remove('alto_contraste')
+      }else{
+        document.documentElement.classList.add('alto_contraste')  
       }
-      default: {
-        document.documentElement.classList.remove;
-        break;
-      }
-    }
+      break;
+
+    default:
+      break;
   }
+}
 }

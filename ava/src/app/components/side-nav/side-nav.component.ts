@@ -23,7 +23,7 @@ export class SideNavComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   icons!: IconInterface[];
   iconsAcessibilidade!: IconsAcessibilidadeInterface[];
-  isDarkMode: boolean = localStorage.getItem('tema') !== 'light';
+  isDarkMode: boolean = localStorage.getItem('tema') === 'dark';
   altoContrasteLigado!: boolean;
   htmlRoot!: HTMLElement;
   tamanhoFontePadrao = '16px';
@@ -44,7 +44,7 @@ export class SideNavComponent {
     this.htmlRoot = <HTMLElement>document.getElementsByTagName('html')[0];
 
     this.altoContrasteLigado =
-      this.htmlRoot.classList.contains('high_contrast');
+      this.htmlRoot.classList.contains('alto_contraste');
   }
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() => this.telaTamanhoMobile());

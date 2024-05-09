@@ -102,11 +102,16 @@ export class AreaComponent implements OnInit {
         break;
 
       case 'mudaContraste':
-        this.temaService.mudarTema('alto_contraste');
+          if(localStorage.getItem('tema') === 'alto_contraste'){
+            this.temaService.mudarTema('light');
+          }else{
+
+            this.temaService.mudarTema('alto_contraste');
+          }
+        
         break;
 
       default:
-        // Caso o nomeIcone não corresponda a nenhum caso, faça algo aqui
         break;
     }
   }
