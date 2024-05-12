@@ -68,7 +68,7 @@ export class ProfileComponent {
 
   logout() {
     sessionStorage.clear();
-    localStorage.removeItem('token');
+    localStorage.removeItem('tema');
     this.router.navigate(['/login']);
   }
   modalSucessoEnvioEmail(message: string) {

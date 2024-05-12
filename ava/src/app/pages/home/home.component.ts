@@ -36,14 +36,18 @@ export class HomeComponent {
   cores: any = [
     {
       nome: 'Verde Menta Fresco',
-      codigoTailWind: 'rgba(144, 255, 222, 0.555)',
+      codigoTailWind: 'rgba(144, 255, 222, 0.555)'
     },
-    { nome: 'Rosa Lavanda Suave', codigoTailWind: 'rgba(214, 189, 238, 0.74)' },
+    { nome: 'Rosa Lavanda Suave',
+      codigoTailWind: 'rgba(214, 189, 238, 0.74)' 
+    },
     {
       nome: 'Laranja Pêssego Acolhedor',
       codigoTailWind: 'rgba(147, 255, 143, 0.61)',
     },
-    { nome: 'Azul Céu Sereno', codigoTailWind: 'rgba(180, 234, 255, 0.801)' },
+    { nome: 'Azul Céu Sereno',  
+      codigoTailWind: 'rgba(180, 234, 255, 0.801)'
+    },
     {
       nome: 'Laranja Tropical Vibrante',
       codigoTailWind: 'rgba(255, 215, 141, 0.801)',
@@ -56,18 +60,12 @@ export class HomeComponent {
     public store: Store<{ app: IappState }>,
     private tamanhoDaTelaService: TamanhoDaTelaService,
     private router: Router
-  ) {
+    ) 
+  {
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
-  ngAfterViewInit() {
-    // this.swiperEl = document.querySelector('#swiperMaterias');
-    // this.swiperEl.addEventListener('swiper-slidechange', (event: any) => {
-    //   console.log('slide changed', event);
-    // });
-    // console.log(this.swiperEl);
-    // this.materiasService.materias$.subscribe(() => {});
-  }
-  ngOnInit() {
+  ngOnInit()
+   {
     this.avisos = Avisos;
     this.icons = Icons;
 
@@ -84,12 +82,13 @@ export class HomeComponent {
   onImageLoad() {
     this.imageLoaded = true;
   }
+
   public handleScreenSizeChange(): boolean {
     return this.tamanhoDaTelaService.isMobile;
   }
 
-  navegarParaMateria(): void {
-    this.router.navigate(['area/materia']);
+  navegarParaMateria(idMateria: string): void {
+    this.router.navigate([`area/materia/${idMateria}`]);
   }
 
   OpenModais(iconId: number) {

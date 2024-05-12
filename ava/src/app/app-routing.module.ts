@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'home' },
       { path: 'home', component: HomeComponent },
       { path: 'perfil', component: ProfileComponent },
-      { path: 'materia', component: MateriaAtividadesComponent },
+      { path: 'materia/:id', component: MateriaAtividadesComponent },
       { path: 'materia/atividade', component: AtividadeComponent },
       { path: 'horarioAulas', component: HorarioAulasComponent },
     ],
