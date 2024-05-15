@@ -1,15 +1,12 @@
-<body
-  class="flex flex-col justify-start items-center min-h-[100svh] p-2 bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white dark:from-green_insted_dark dark:via-green_insted_dark dark:to-green_insted"
+<main
+  class="pb-16 flex flex-col justify-start items-center min-h-[100svh] bg-green_insted_transp dark:bg-green_insted_dark px-1 gap-2 laptop:mx-auto w-full rounded-2xl laptop:max-w-[60vw] max-h-[calc(100vh-200px)] laptop:min-h-[100svh] laptop:max-h-max overflow-y-auto"
 >
   <div class="w-full">
     <h1 class="text-center dark:text-white font-bold p-2">
-      Direitos Humanos, Ética e Consciência Socioambiental
+      {{ (this.materiasService.materias$ | async)?.[this.idMateria]?.NmClass ?? 'Nenhuma matéria encontrada' }}
     </h1>
-    <div
-      class="flex flex-col gap-2 bg-green_insted my-1 py-2 laptop:mx-auto w-full rounded-3xl shadow-md laptop:max-w-[60vw] max-h-[calc(100vh-200px)] min-h-[calc(100vh-200px)] laptop:min-h-[100svh] laptop:max-h-max overflow-y-auto"
-    >
-      <mat-accordion class="w-full rounded-3xl px-1">
-        <mat-expansion-panel [expanded]="true" class="bg-green_insted">
+      <mat-accordion class="w-full rounded-2xl ">
+        <mat-expansion-panel [expanded]="true" class="bg-green_insted ">
           <mat-expansion-panel-header
             class="flex-row flex justify-between h-fit text-center items-center"
           >
@@ -17,9 +14,12 @@
           </mat-expansion-panel-header>
           <div class="flex flex-col flex-nowrap gap-1 text-center items-center">
             <div
-              class="flex flex-col bg-white rounded-t-md rounded-b-3xl p-3 max-h-[50vh] min-h-[250px] overflow-auto"
+              class="flex flex-col bg-white rounded-t-2xl rounded-b-2xl p-1 max-h-[50vh] min-h-[250px] overflow-auto"
             >
-              <p class="text-justify p-1 whitespace-normal">
+              <p
+                class="p-1 whitespace-normal text-justify"
+                style="text-wrap: pretty"
+              >
                 Prezados(as) acadêmicos(as), recebam todos o nosso cordial
                 cumprimento! É com imensa satisfação que acolhemos todos(as)
                 para a nossa disciplina deste semestre letivo. Nosso EAD conecta
@@ -45,45 +45,56 @@
               </p>
             </div>
           </div>
-        </mat-expansion-panel> </mat-accordion
-      ><mat-accordion class="w-full rounded-3xl px-1">
+        </mat-expansion-panel>
+      </mat-accordion>
+      <mat-accordion class="w-full rounded-2xl p-1">
         <mat-expansion-panel [expanded]="true" class="bg-green_insted">
           <mat-expansion-panel-header
             class="flex-row flex justify-between h-fit text-center items-center"
           >
             <h1 class="text-white text-2xl font-bold py-1">Geral</h1>
           </mat-expansion-panel-header>
-          <div class="flex flex-col flex-nowrap gap-1 text-center items-center">
+          <div
+            class="flex flex-col flex-nowrap gap-1 text-center items-center p-1"
+          >
             <div
-              class="flex flex-row gap-1 p-2 w-full justify-between text-center items-center bg-green_insted_dark rounded-t-3xl rounded-b-md"
+              class="flex flex-row flex-nowrap w-full gap-1 justify-center items-stretch rounded-2xl"
             >
-              <div class="flex flex-row gap-2 text-center items-center">
-                <span class="material-symbols-outlined text-white text-4xl"
+              <div
+                class="flex flex-row justify-center bg-green_insted_dark rounded-tl-2xl rounded-r-md rounded-bl-md p-2"
+              >
+                <span
+                  class="material-symbols-outlined text-white text-4xl self-center"
                   >description</span
                 >
-                <div class="flex flex-col w-full gap-1">
-                  <h3 class="text-sm text-white_transp">Página</h3>
+              </div>
+              <div class="bg-green_insted_dark rounded-md w-full p-2">
+                <div class="flex flex-col w-full gap-2">
+                  <h3 class="text-sm text-white_transp text-center">Página</h3>
                   <a href="area/materia/atividade"
-                    ><h2 class="text-base dark:text-white font-bold">
+                    ><h2
+                      class="text-base dark:text-white font-bold text-center"
+                    >
                       Datas importantes
                     </h2></a
                   >
                 </div>
               </div>
               <div
-                class="flex flex-row flex-nowrap text-center items-center justify-end p-2 text-white"
+                class="p-2 bg-green_insted_dark rounded-tr-2xl rounded-l-md rounded-br-md flex flex-row flex-nowrap text-center items-center justify-end text-white"
               >
-                <span class="material-symbols-outlined text-3xl">circle</span>
+                <span class="hidden material-symbols-outlined text-3xl"
+                  >circle</span
+                >
                 <span class="material-symbols-outlined text-3xl"
                   >check_circle</span
                 >
               </div>
             </div>
-
             <div
-              class="flex flex-col bg-white rounded-t-md rounded-b-3xl p-2 max-h-[50vh] min-h-[250px]"
+              class="flex flex-col bg-white rounded-t-md rounded-b-2xl max-h-[50vh] min-h-[250px]"
             >
-              <p class="">
+              <p class="p-1 whitespace-normal text-justify">
                 PROVAS AV 1 – 25/04/2024 REVISÃO DE AV 1 – 02/05/2024 AV 2 –
                 20/06/2024 REVISÃO DE AV 2 – 27/06/2024 EXERCÍCIO DE COMPRESSÃO
                 EX.COM 01 – 07/03/2024 EX.COM 02 – 28/03/2024 EX.COM 03 –
@@ -93,6 +104,5 @@
           </div>
         </mat-expansion-panel>
       </mat-accordion>
-    </div>
   </div>
-</body>
+</main>
