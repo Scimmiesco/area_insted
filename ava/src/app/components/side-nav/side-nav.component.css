@@ -1,12 +1,7 @@
 .light_mode::before {
   content: 'light_mode';
-  transform: translateX(-10px);
 }
-.light_mode::after {
-  transform: translateX(10px);
-}
+
 .dark_mode::before {
   content: 'dark_mode';
 }
-
-

@@ -1,3 +1,4 @@
+import { TiposAtividades } from './../../Interfaces/atividade.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
@@ -11,6 +12,7 @@ import { MateriasService } from 'app/services/materias.service';
 export class MateriaAtividadesComponent {
   idMateria: number = 0;
   private subscription!: Subscription;
+  EnumTiposAtividades = TiposAtividades;
 
   constructor(
     public router: Router,
@@ -28,7 +30,6 @@ export class MateriaAtividadesComponent {
     );
   }
   ngOnDestroy(): void {
-    
     if (this.subscription) {
       this.subscription.unsubscribe();
     }

@@ -1,0 +1,48 @@
+<div
+  class="flex flex-row flex-nowrap w-full gap-1 justify-center items-stretch rounded-2xl p-1"
+>
+  <a
+    href="{{ atividade.href }}"
+    class="flex flex-row justify-center rounded-l-2xl rounded-r-md p-2 bg-green_insted_dark"
+  >
+    <span
+      class="material-symbols-outlined text-4xl self-center"
+      [ngClass]="{
+        'text-okay_button': atividade.tipo === EnumTiposAtividades.ARQUIVO,
+        'text-green_insted_transp':
+          atividade.tipo !== EnumTiposAtividades.ARQUIVO
+      }"
+    >
+      {{
+        atividade.tipo == EnumTiposAtividades.PAGINA
+          ? "description"
+          : atividade.tipo == EnumTiposAtividades.ARQUIVO
+          ? "file_save"
+          : ""
+      }}
+    </span>
+  </a>
+  <a
+    href="{{ atividade.href }}"
+    class="bg-green_insted_dark rounded-md w-full p-2"
+  >
+    <div class="flex flex-col w-full gap-2">
+      <h3 class="text-sm text-white opacity-50 text-start">
+        {{ atividade.tipo }}
+      </h3>
+      <h2 class="text-lg text-white font-bold text-start p x-2">
+        {{ atividade.titulo }}
+      </h2>
+    </div>
+  </a>
+  <div
+    class="cursor-pointer p-2 bg-green_insted_dark rounded-r-2xl rounded-l-md flex flex-row flex-nowrap text-center items-center justify-end text-white"
+    (click)="marcarVisto()"
+  >
+    <span
+      class="material-symbols-outlined text-3xl w-full text-white text-center"
+      ngClass="{{ this.atividadeVista ? 'check_circle' : 'circle' }}"
+    >
+    </span>
+  </div>
+</div>

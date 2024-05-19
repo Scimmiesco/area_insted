@@ -7,7 +7,6 @@ import { LoginAuthGuard } from './guards/login-auth.guard';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { ResetPasswordAuthGuard } from './guards/reset-password.guard';
 import { MateriaAtividadesComponent } from './pages/materiaAtividades/materiaAtividades.component';
-import { AtividadeComponent } from './pages/materiaAtividades/atividade/atividade.component';
 import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
 
 const routes: Routes = [
@@ -27,7 +26,6 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'perfil', component: ProfileComponent },
       { path: 'materia/:id', component: MateriaAtividadesComponent },
-      { path: 'materia/atividade', component: AtividadeComponent },
       { path: 'horarioAulas', component: HorarioAulasComponent },
     ],
   },
