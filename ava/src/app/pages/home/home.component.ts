@@ -19,6 +19,7 @@ import {
   ResponseMateriasI,
   materiaPadrao,
 } from 'app/Interfaces/materias.interface';
+import { cores } from 'app/Interfaces/cores.interface.ts';
 
 register();
 
@@ -32,27 +33,8 @@ export class HomeComponent {
   imageLoaded: boolean = false;
   divMateriaExpandido: boolean = false;
   materias: ResponseMateriasI['materias'] = [];
+  cores = cores;
 
-  cores: any = [
-    {
-      nome: 'Verde Menta Fresco',
-      codigoTailWind: 'rgba(144, 255, 222, 0.555)'
-    },
-    { nome: 'Rosa Lavanda Suave',
-      codigoTailWind: 'rgba(214, 189, 238, 0.74)' 
-    },
-    {
-      nome: 'Laranja Pêssego Acolhedor',
-      codigoTailWind: 'rgba(147, 255, 143, 0.61)',
-    },
-    { nome: 'Azul Céu Sereno',  
-      codigoTailWind: 'rgba(180, 234, 255, 0.801)'
-    },
-    {
-      nome: 'Laranja Tropical Vibrante',
-      codigoTailWind: 'rgba(255, 215, 141, 0.801)',
-    },
-  ];
   constructor(
     public dialog: MatDialog,
     public materiasService: MateriasService,
@@ -128,9 +110,9 @@ export class HomeComponent {
 
   getColor(index: number): string {
     if (index > this.cores.length - 1) {
-      return this.cores[index - this.cores.length].codigoTailWind;
+      return this.cores[index - this.cores.length].codigoHex;
     } else {
-      return this.cores[index].codigoTailWind;
+      return this.cores[index].codigoHex;
     }
   }
 }
