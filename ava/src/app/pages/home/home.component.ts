@@ -19,7 +19,7 @@ import {
   ResponseMateriasI,
   materiaPadrao,
 } from 'app/Interfaces/materias.interface';
-import { cores } from 'app/Interfaces/cores.interface.ts';
+import { cores } from 'app/Interfaces/cores.interface';
 
 register();
 
@@ -42,7 +42,7 @@ export class HomeComponent {
     public store: Store<{ app: IappState }>,
     private tamanhoDaTelaService: TamanhoDaTelaService,
     private router: Router
-    ) 
+    )
   {
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
