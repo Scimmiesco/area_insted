@@ -32,7 +32,6 @@ export class ForgotPasswordFormComponent implements OnInit {
   ngOnInit(): void {
     this.forgotPasswordForm = this.formBuilder.group({
       recuperaSenhaInput: ['', [Validators.required, Validators.minLength(1)]],
-      recaptcha: [null, [Validators.nullValidator]],
       submit: [false],
     });
   }

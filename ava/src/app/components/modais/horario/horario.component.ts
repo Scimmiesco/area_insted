@@ -8,6 +8,7 @@ import { MateriasService } from 'app/services/materias.service';
   templateUrl: './horario.component.html',
 })
 export class HorarioDialogComponent {
+  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public materiasService: MateriasService

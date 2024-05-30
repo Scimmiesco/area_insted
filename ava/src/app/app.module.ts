@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProfileModule } from './pages/profile/profile.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './components/material/material.module';
 import { LoadingComponent } from './components/loading/loading.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
@@ -19,44 +18,58 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ResetPasswordModule } from './pages/reset-password/reset-password.module';
 import { InputMaskModule } from 'primeng/inputmask';
-import {
-  IConfig,
-  NgxMaskDirective,
-  NgxMaskPipe,
-  provideEnvironmentNgxMask,
-  provideNgxMask,
-} from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { CpfCnpjPipe } from './pipes/cpf-format.pipe';
 import { RetornoRequisicaoModalModule } from './components/modais/retornoRequisicao/retornoRequisicao.module';
 import { HorarioModule } from './components/modais/horario/horario.module';
 import { SideNavModule } from './components/side-nav/side-nav.module';
 import { RouterModule } from '@angular/router';
+import { FinanceiroModule } from './components/modais/financeiro/financeiro.module';
+import { MateriaAtividadesModule } from './pages/materiaAtividades/materiaAtividades.module';
+import { MaterialModule } from './components/material/material.module';
+import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { AtividadesModule } from './components/atividades/atividades.module';
 
 register();
+
 @NgModule({
-  declarations: [AppComponent, LoadingComponent, AreaComponent],
+  declarations: [
+    AppComponent,
+    LoadingComponent,
+    AreaComponent,
+    HorarioAulasComponent,
+
+  ],
   imports: [
+    ResetPasswordModule,
+    ProfileModule,
+    MateriaAtividadesModule,
+    HomeModule,
+    AtividadesModule,
+    SideNavModule,
+    FinanceiroModule,
+    MenuBottomModule,
+    RetornoRequisicaoModalModule,
+    HorarioModule,
+
     CommonModule,
     BrowserModule,
-    ResetPasswordModule,
     AppRoutingModule,
-    ProfileModule,
     NgxMaskDirective,
-    SideNavModule,
     NgxMaskPipe,
     RouterModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModule,
-    InputMaskModule,
-    HomeModule,
-    MenuBottomModule,
     FormsModule,
     ReactiveFormsModule,
-    RetornoRequisicaoModalModule,
-    HorarioModule,
-    HttpClientModule,
+
+    InputMaskModule,
     CpfCnpjPipe,
+
     StoreModule.forRoot({ app: appReducer }),
+    AngularSvgIconModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       trace: true,

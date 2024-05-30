@@ -1,50 +1,63 @@
-<div class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl w-[80vw] tablet:w-[50vw] max-w-[560px]]">
+<div
+  class="mat-mdc-dialog-surface mdc-dialog__surface rounded-3xl w-[80vw] tablet:w-[50vw] max-w-[560px]]"
+>
   <div
-    class="mat-dialog-container min-h-fit max-h-[80vh] w-full rounded-3xl bg-white dark:bg-green_insted_dark "
+    class="mat-dialog-container  w-full rounded-3xl bg-white dark:bg-green_insted_dark p-2"
   >
     <div class="mat-dialog-content h-full w-full flex flex-col justify-start">
       <div
         class="mat-dialog-title flex flex-col text-center justify-center w-full p-1"
       >
-        <h1 class="font-bold dark:text-white">Horário de aulas</h1>
+        <div class="flex justify-center items-center relative">
+          <h1 class="font-bold dark:text-white">Horário de aulas</h1>
+          <a
+            href="area/horarioAulas"
+            class="absolute text-center right-0 h-fit flex justify-center cursor-pointer group hover:bg-green_insted duration-200 ease-in-out active:bg-green_insted_dark rounded-md"
+          >
+            <span
+              class="text-green_insted_dark material-symbols-outlined text-center cursor-pointer group-hover:text-white group-active:text-green_insted duration-200 ease-in-out delay-75" >
+              expand_content
+            </span>
+          </a>
+        </div>
         <div class="py-2">
           <h2
             class="mat-dialog-title-text text-text_color m-auto font-semibold dark:text-white"
           >
             Quarta-feira
           </h2>
-          <p class="m-0 dark:text-white">14/06</p>
+          <small class="dark:text-white_transp">14/06</small>
         </div>
       </div>
-
+<!-- Horários -->
       <div
-        class="mat-dialog-description h-full flex flex-col justify-between py-2 gap-1"
+        class="mat-dialog-description min-h-full py-1 gap-1 flex flex-row flex-1 justify-around flex-wrap"
         *ngIf="this.materiasService.materias$ | async as materias"
       >
         <div
           *ngFor="let materia of materias"
-          class="rounded-3xl flex flex-col justify-center p-1 gap-1"
+          class="rounded-3xl flex flex-col justify-center p-1 gap-1 flex-1"
         >
           <div
-            class="bg-green_insted dark:bg-green_insted rounded-b-md rounded-t-3xl"
+            class="bg-green_insted dark:bg-green_insted rounded-b-md rounded-t-3xl flex-grow"
           >
             <h3
               class="p-2 m-0 text-2xl font-semibold dark:text-white text-white"
             >
               {{ materia.NmClass }}
             </h3>
-            <p class="px-2 m-0 text-lg dark:text-white text-white">
+            <p class="px-2 m-0 text-lg dark:text-white text-white whitespace-nowrap">
               {{ materia.NmUser }}
             </p>
           </div>
 
           <div
-            class="flex flex-row justify-between bg-green_insted dark:bg-white rounded-b-3xl rounded-t-md p-2"
+            class="flex flex-row justify-between bg-green_insted dark:bg-white rounded-b-3xl rounded-t-md p-2 min-h-[33%]"
           >
-            <p class="text-2xl m-0 text-green_insted_dark">
+            <p class="text-2xl m-0 text-green_insted_dark whitespace-nowrap pr-2">
               {{ materia.NmClassroom }}
             </p>
-            <p class="text-2xl m-0 font-semibold text-green_insted_dark">
+            <p class="text-2xl m-0 font-semibold text-green_insted_dark whitespace-nowrap pl-2">
               {{ materia.DtTime.substring(0, 5) }}
             </p>
           </div>

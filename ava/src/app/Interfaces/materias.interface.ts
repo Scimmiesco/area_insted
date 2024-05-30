@@ -26,7 +26,7 @@ export const materiaPadrao: ResponseMateriasI['materias'] = [
     DtTime: '19:00',
   },
   {
-    IdClass: '0',
+    IdClass: '1',
     IdUser: '0',
     NmClass: 'Matéria do aluno',
     NmWeekday: 'Segunda-feira',

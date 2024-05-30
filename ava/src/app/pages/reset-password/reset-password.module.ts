@@ -21,4 +21,4 @@ import { MessageModule } from "../../components/message/message.module";
         MessageModule
     ]
 })
-export class ResetPasswordModule {} // Renomeie o módulo para "ResetPasswordModule"
+export class ResetPasswordModule {}

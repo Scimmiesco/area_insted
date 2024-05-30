@@ -1,9 +1,12 @@
 <form
   [formGroup]="loginForm"
   (submit)="Login()"
-  class="flex justify-between items-center text-center h-[60svh] w-10/12 tablet:min-h-[50vh] tablet:min-w-[50vh] tablet:max-h-[75vh] tablet:max-w-[75vh] flex-col box-content shadow-2xl shadow-white_transp bg-white_transp border-white dark:shadow-green_insted_dark dark:bg-green_insted_dark dark:border-hidden rounded-3xl border-[2px]"
+  id="formularioPadrao"
+  class=" laptop:min-h-[40vh] laptop:max-h-[85vh] laptop:min-w-[30vw] laptop:max-w-[25vw] fundo_vidro"
 >
-  <div class="flex flex-col w-full justify-center h-2/3 items-center gap-4">
+  <div
+    class="flex flex-col flex-1 w-full justify-between items-center gap-2 relative"
+  >
     <div class="flex flex-col justify-center items-center w-11/12">
       <input formControlName="ra" placeholder="Insira seu RA" type="text" />
       <app-message
@@ -19,8 +22,8 @@
         message="O RA deve ter no mínimo 10 números."
       />
     </div>
-    <div class="flex flex-col justify-center items-center relative w-11/12">
-      <div class="flex flex-col w-full justify-center items-center">
+    <div class="flex flex-col justify-center items-center relative w-full">
+      <div class="flex flex-col w-11/12 justify-center items-center">
         <input
           id="password"
           formControlName="password"
@@ -32,7 +35,7 @@
           id="icon"
           (click)="ToggleIcon()"
           [ngClass]="passwordIsVisible ? 'bg-opened_eye' : 'bg-closed_eye'"
-          class="absolute top-50% right-[4%] bg-contain bg-center bg-no-repeat w-7 h-10 cursor-pointer"
+          class="absolute top-50% right-[8%] bg-contain bg-center bg-no-repeat w-8 h-10 cursor-pointer"
         ></svg>
       </div>
       <app-message
@@ -42,12 +45,12 @@
         message="A senha é obrigatória."
       />
     </div>
-    <div class="flex flex-row justify-center items-center">
+    <div class="flex flex-row justify-center items-center gap-2">
       <input
         title="manterConectadoCheckBox"
         type="checkbox"
         id="checkbox1"
-        class="hover:cursor-pointer peer relative appearance-none w-[0.5rem] h-[1rem] box-content border-white border-[2px] rounded-full focus:outline-none mx-2 aspect-square bg-green_insted checked:bg-white_transp checked:border-opacity-0 checked:bg-no-repeat checked:transition-all transition ease-linear delay-0 checked:bg-center checked:bg-contain checked:bg-checkmark"
+        class="p-1 hover:cursor-pointer relative appearance-none w-[1.5rem] h-[1.5rem] box-content border-white border-[2px] rounded-full focus:outline-none aspect-square bg-green_insted checked:bg-white_transp checked:border-opacity-0 checked:bg-no-repeat checked:transition-all transition ease-linear delay-0 checked:bg-center checked:bg-contain checked:bg-checkmark"
       />
       <label
         for="checkbox1"
@@ -55,33 +58,20 @@
         >Manter conectado</label
       >
     </div>
-    <div class="flex justify-center flex-col items-center">
-      <re-captcha
-        id="recaptcha"
-        formControlName="recaptcha"
-        [theme]="(this.temaService.tema$ | async)=== 'dark' ? 'dark' : 'light'"
-      ></re-captcha>
-      <app-message
-        *ngIf="
-          !loginForm.get('recaptcha')?.value &&
-          (loginForm.get('recaptcha')?.touched ||
-            loginForm.get('recaptcha')?.dirty)
-        "
-        erro="true"
-        message="Necessário validar o captcha."
-      />
-    </div>
+
+    <button class="w-1/2" type="submit" (onclick)="Login()">Entrar</button>
+    <app-message
+      erro="true"
+      class=" w-2/3"
+      *ngIf="errorMessage != null"
+      message="{{ errorMessage }}"
+    />
+
+    <a
+      [routerLink]="['/login/recuperarsenha']"
+      class="dark:text-white_transp text-green_insted font-semibold"
+    >
+      Esqueci minha senha
+    </a>
   </div>
-  <button class="w-1/2" type="submit">Entrar</button>
-  <app-message
-    erro="true"
-    *ngIf="errorMessage != null"
-    message="{{ errorMessage }}"
-  />
-  <a
-    [routerLink]="['/login/recuperarsenha']"
-    class="my-2 dark:text-white text-green_insted font-semibold underline underline-offset-1"
-  >
-    Esqueci minha senha
-  </a>
 </form>

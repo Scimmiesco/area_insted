@@ -4,20 +4,28 @@ import { MaterialModule } from '../material/material.module';
 import { HorarioModule } from './horario/horario.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { RetornoRequisicaoModalModule } from './retornoRequisicao/retornoRequisicao.module';
+import { NotasModule } from './notas/notas.module';
+import { FinanceiroModule } from './financeiro/financeiro.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+
+  ],
   imports: [
     CommonModule,
     MaterialModule,
     HorarioModule,
     CalendarModule,
     RetornoRequisicaoModalModule,
+    NotasModule,
+    FinanceiroModule
   ],
   exports: [
     HorarioModule,
     CalendarModule,
     RetornoRequisicaoModalModule,
+    NotasModule,
+    FinanceiroModule
   ],
 })
 export class ModaisModule {}

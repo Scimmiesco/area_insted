@@ -1,5 +1,5 @@
 <section
-  class="mx-auto dark:bg-green_insted_dark bg-green_insted_transp min-h-[100svh] laptop:w-full pb-16 laptop:pb-0 box-content laptop:from-white"
+  class="mx-auto min-h-[100svh] laptop:w-full pb-16 laptop:pb-0 box-content bg-green_insted_transp dark:bg-green_insted_dark"
 >
   <!--// Avisos-->
   <swiper-container
@@ -12,10 +12,10 @@
     [pagination]="{ clickable: true }"
     [autoplay]="{ delay: 5000, disableOnInteraction: false }"
   >
-    <swiper-slide class="min-h-full rounded-3xl" *ngFor="let aviso of avisos"
-      ><div class="bg-placeholder_img bg-cover bg-center rounded-3xl">
+    <swiper-slide class="min-h-full rounded-2xl" *ngFor="let aviso of avisos"
+      ><div class="bg-placeholder_img bg-cover bg-center rounded-2xl">
         <img
-          class="rounded-3xl object-cover object-center"
+          class="rounded-2xl object-cover object-center"
           [ngClass]="
             !imageLoaded ? 'opacity-0' : 'opacity-100 ease-in-out duration-500'
           "
@@ -30,90 +30,169 @@
 
     <div class="swiper-pagination"></div>
   </swiper-container>
-
   <!--// Ícones-->
   <mat-grid-list
     cols="4"
-    rows="2"
+    rows="1"
+    class="mx-2"
     gutterSize="4"
-    rowHeight="3:2"
-    class="my-2 mx-2"
+    rowHeight="33"
     *ngIf="handleScreenSizeChange()"
   >
     <mat-grid-tile
       *ngFor="let icon of icons; let i = index"
       (click)="OpenModais(icon.id)"
+      colspan="1"
+      rowspan="2"
+      class="min-h-min cursor-pointer"
     >
-      <div class="flex flex-col w-full h-full cursor-pointer group">
-        <div
-          class="flex flex-1 justify-center items-center h-2/3 w-full bg-green_insted rounded-md m-auto aspect-video"
-          [ngClass]="{
-            'rounded-l-3xl': i === 0 || i === 4,
-            'rounded-r-3xl': i === icons.length - 1 || i === 3
-          }"
+      <mat-grid-tile-header
+        class="dark:bg-white bg-green_insted text-white
+        flex flex-1 justify-center items-center
+        w-full p-4 rounded-md m-auto"
+        [ngClass]="{
+          'rounded-l-2xl': i === 0 || i === 4,
+          'rounded-r-2xl': i === icons.length - 1 || i === 3
+        }"
+      >
+        <span
+          class="material-symbols-outlined
+          text-3xl text-center
+          text-white dark:text-green_insted_dark"
+          >{{ icon.icone }}</span
         >
-          <span
-            class="material-symbols-outlined text-3xl dark:text-text_color text-white text-center group-hover:text-text_color group-hover:dark:text-white transition"
-            >{{ icon.icone }}</span
-          >
-        </div>
-        <div>
-          <p class="h-1/3 text-center text-sm p-0 m-0 dark:text-white">
-            {{ icon.rotulo }}
-          </p>
-        </div>
-      </div>
+      </mat-grid-tile-header>
+      <mat-grid-tile-footer class="h-min">
+        <p
+          class="text-center items-center
+          p-0 mx-auto  text-sm
+          text-green_insted_dark dark:text-white"
+        >
+          {{ icon.rotulo }}
+        </p>
+      </mat-grid-tile-footer>
     </mat-grid-tile>
   </mat-grid-list>
   <!--// Matérias-->
   <section
-    class="bg-green_insted rounded-3xl flex flex-col justify-start p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto"
+    class="bg-green_insted rounded-2xl flex flex-col justify-start overflow-hidden p-2 my-2 mx-1 laptop:w-1/2 laptop:mx-auto transition-all"
+    [ngStyle]="{ transition: 'height 0.3s ease-in-out' }"
   >
-    <h2 class="text-white font-bold py-1">Matérias</h2>
-    <div class="w-full flex flex-row flex-1 gap-1">
+    <div class="flex justify-between text-white text-center items-center">
+      <h2 class="text-white font-bold py-1">Matérias</h2>
       <div
-        class="flex justify-center items-center w-1/5 bg-white rounded-l-3xl rounded-r-md"
+        class="h-fit flex justify-center cursor-pointer group hover:bg-white duration-200 ease-in-out active:bg-green_insted_dark rounded-md"
       >
         <span
-          class="material-symbols-outlined text-5xl text-text_color text-center"
-          >school</span
+          class="material-symbols-outlined text-center cursor-pointer group-hover:text-green_insted_dark group-active:text-white duration-200 ease-in-out delay-75"
+          (click)="ExpandirDivMaterias(this.divMateriaExpandido)"
         >
+          {{this.divMateriaExpandido ? 'expand_less' : 'expand_more' }}
+        </span>
       </div>
-      <swiper-container
-        #swiperMaterias
-        *ngIf="this.materiasService.materias$ | async as materias"
-        class="m-0 rounded-l-md rounded-r-3xl w-4/5 flex flex-row"
-        pagination="true"
-        crossFade="true"
-        navigation="true"
-      >
-        <swiper-slide
-          class="w-full h-full flex flex-row justify-start text-center items-center mx-auto dark:bg-green_insted_dark bg-white p-3"
-          *ngFor="let materia of materias"
-        >
-          <div
-            class="m-1 py-1"
-            class="flex justify-center items-center w-full min-h-full p-2 text-center dark:bg-green_insted_dark"
-          >
-            <h3
-              class="h-full flex justify-center items-center text-text_color dark:text-white"
-            >
-              {{ materia.NmClass }}
-            </h3>
-          </div>
-        </swiper-slide>
-      </swiper-container>
     </div>
+    <div class="flex flex-col gap-4">
+      <div
+        class="w-full flex flex-row gap-1 min-h-min max-h-fit mb-2"
+      >
+        <ng-container *ngIf="!this.divMateriaExpandido">
+          <div
+            class="flex justify-center items-center w-1/5 bg-white rounded-l-2xl rounded-r-md"
+            [ngStyle]="{
+              background:
+                'linear-gradient(43deg, ' +
+                getColor(0) +
+                ' 15%, ' +
+                getColor(0 + 1) +
+                ' 85%)',
+              'background-color': '#1da9ad'
+            }"
+          >
+            <span
+              class="material-symbols-outlined text-5xl text-text_color text-center"
+              >school</span
+            >
+          </div>
+
+          <swiper-container
+            #swiperMaterias
+            id="swiperMaterias"
+            *ngIf="this.materiasService.materias$ | async as materias"
+            class="m-0 rounded-l-md rounded-r-2xl w-4/5 flex flex-row"
+            [ngClass]="this.divMateriaExpandido ? '' : ''"
+            [slidesPerView]="1"
+            [slidesPerGroup]="1"
+            pagination="true"
+            navigation="true"
+            crossFade="true"
+          >
+            <swiper-slide
+              class="cursor-pointer w-full h-full flex flex-row justify-start text-center items-center mx-auto dark:bg-green_insted_dark bg-white pb-2 px-3"
+              *ngFor="let materia of materias"
+            >
+              <div
+                (click)="navegarParaMateria(materia.IdClass)"
+                class="m-1 py-1"
+                class="flex justify-center items-center w-full min-h-full p-2 text-center"
+              >
+                <h3
+                  class="h-full p-1 flex justify-center items-center text-text_color dark:text-white"
+                >
+                  {{ materia.NmClass }}
+                </h3>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+        </ng-container>
+      </div>
+    </div>
+    <!-- novoSwiper -->
+    <section
+      *ngIf="this.divMateriaExpandido"
+      class="min-h-full py-1 gap-2 flex flex-row flex-1 justify-around flex-wrap"
+    >
+      <div
+        *ngFor="let materia of materias; let i = index"
+        class="flex flex-col flex-nowrap min-h-full flex-1 flex-grow gap-1 min-w-[39%] min-w-[200px]"
+      >
+        <div
+          class="flex justify-center items-center w-full rounded-b-md rounded-t-xl flex-1 max-h-[33%] min-h-fit p-3"
+          [ngStyle]="{
+            background:
+              'linear-gradient(43deg, ' +
+              getColor(i + 1) +
+              ' 15%, ' +
+              getColor(i) +
+              ' 85%)',
+            'background-color': '#fff'
+          }"
+        >
+          <span
+            class="material-symbols-outlined text-5xl text-center text-green_insted_dark"
+            >school</span
+          >
+        </div>
+        <div
+          class="flex justify-center items-center w-full min-h-fit p-1 dark:bg-green_insted_dark bg-white rounded-t-md rounded-b-xl flex-grow"
+        >
+          <h3
+            class="flex justify-center items-center text-center text-text_color dark:text-white w-full p-2 overflow-hidden min-w-fit"
+          >
+            {{ materia.NmClass }}
+          </h3>
+        </div>
+      </div>
+    </section>
   </section>
   <!--// Atividades-->
   <section
-    class="bg-green_insted rounded-3xl flex flex-col my-2 mx-1 p-2 h-[26%] laptop:w-1/2 laptop:mx-auto"
+    class="bg-green_insted rounded-xl flex flex-col my-2 mx-1 p-2 h-[26%] laptop:w-1/2 laptop:mx-auto "
   >
     <div>
       <h2 class="text-white font-bold py-1">Atividades</h2>
     </div>
     <swiper-container
-      class="w-full laptop:w-full rounded-3xl h-full m-auto py-1"
+      class="w-full rounded-xl h-full m-auto gap-2"
       pagination="true"
       navigation="true"
       [slidesPerView]="handleScreenSizeChange() ? 1 : 2"
@@ -121,35 +200,35 @@
     >
       <swiper-slide class="flex flex-col  gap-1 text-center justify-center">
         <div
-          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-3xl text-center p-2"
+          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-xl text-center p-2"
         >
           <p class="m-0 dark:text-text_color">Quinta-feira, 18/08</p>
           <p class="m-0 dark:text-text_color">20:30</p>
         </div>
         <div
-          class="p-2 pb-3 gap-1 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-3xl dark:bg-green_insted_dark bg-white"
+          class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-xl dark:bg-green_insted_dark bg-white"
         >
-          <h2 class="text-xl font-bold dark:text-white">
+          <h2 class="text-2xl font-bold dark:text-white text-center">
             Exercício de compreensão
           </h2>
-          <h3 class="text-lg dark:text-white">
+          <h3 class="text-lg dark:text-white text-center contrast-more:bg-okay_button">
             Programação Orientada à objetos
           </h3>
         </div> </swiper-slide
       ><swiper-slide class="flex flex-col gap-1">
         <div
-          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-3xl text-center p-2"
+          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-xl text-center p-2"
         >
           <p class="m-0 dark:text-text_color">Quinta-feira, 18/08</p>
           <p class="m-0 dark:text-text_color">20:30</p>
         </div>
         <div
-          class="p-2 pb-3 gap-1 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-3xl dark:bg-green_insted_dark bg-white"
+          class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-xl dark:bg-green_insted_dark bg-white"
         >
-          <h2 class="text-xl font-bold dark:text-white">
+          <h2 class="text-2xl text-center font-bold dark:text-white">
             Exercício de compreensão
           </h2>
-          <h3 class="text-lg dark:text-white">
+          <h3 class="text-lg text-center dark:text-white">
             Programação Orientada à objetos
           </h3>
         </div>

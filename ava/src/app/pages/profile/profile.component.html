@@ -1,11 +1,11 @@
 <main
-  class="flex justify-start flex-col items-center min-h-[100svh] m-auto bg-gradient-to-b from-green_insted_transp via-green_insted_transp to-white dark:from-green_insted_dark dark:via-green_insted_dark dark:to-green_insted pb-20 laptop:pb-0"
+  class="flex justify-start flex-col gap-1 items-center min-h-[100svh] m-auto bg-green_insted_transp dark:bg-green_insted_dark pb-20 laptop:pb-0"
 >
   <section
-    class="my-1 w-[98%] laptop:max-w-[60vw] py-2 rounded-3xl shadow-md bg-white dark:bg-green_insted"
+    class="my-1 w-[98%] laptop:max-w-[60vw] laptop:w-1/2 py-2 rounded-3xl bg-white dark:bg-green_insted"
   >
     <div class="flex flex-row justify-around">
-      <div mdbDropdown class="dropend relative w-4/12 m-1 rounded-full">
+      <div mdbDropdown class="dropend relative max-w-[1/3] m-1 rounded-full">
         <div
           class="bg-placeholder_img bg-cover bg-center rounded-full w-[15vh] h-[15vh]"
         >
@@ -24,7 +24,7 @@
         <div
           mdbDropdownToggle
           expanded="false"
-          class="material-symbols-outlined absolute bottom-0 left-0 w-[48px] h-[48px]  text-white dark:text-text_color bg-green_insted dark:bg-white [aspect-ratio:_1_/_1] flex justify-center items-center text-3xl border-2 border-white dark:border-none cursor-pointer transition-all duration-300 ease-in-out"
+          class="material-symbols-outlined absolute bottom-0 left-0 w-[48px] h-[48px] text-white dark:text-text_color bg-green_insted dark:bg-white [aspect-ratio:_1_/_1] flex justify-center items-center text-3xl border-2 border-white dark:border-none cursor-pointer transition-all duration-300 ease-in-out"
           [ngClass]="
             status
               ? 'rounded-full transition-all duration-300 ease-in-out delay-0'
@@ -37,7 +37,7 @@
           <li class="dropdown-item cursor-pointer">Editar</li>
         </ul>
       </div>
-      <div class="flex flex-col justify-center items-center">
+      <div class="flex flex-col justify-center items-center w-1/2">
         <div
           class="text-white bg-green_insted dark:bg-white text-sm text-center py-1 px-2 rounded-2xl w-fit"
         >
@@ -70,19 +70,19 @@
     </h3>
   </section>
   <mat-accordion
-    class="bg-white dark:bg-green_insted my-1 w-[98%] py-2 rounded-3xl shadow-md laptop:max-w-[60vw]"
+    class="bg-white dark:bg-green_insted laptop:w-1/2 w-[98%] rounded-3xl"
   >
     <mat-expansion-panel [expanded]="true" class="dark:bg-green_insted">
       <mat-expansion-panel-header class="flex-col h-auto">
-        <h1 class="dark:text-white text-2xl font-bold py-1">
+        <h2 class="dark:text-white text-3xl font-bold py-1">
           Informações pessoais
-        </h1>
+        </h2>
       </mat-expansion-panel-header>
       <div
         class="flex flex-col p-2 text-md rounded-2xl leading-7 w-full justify-center animate-aparecer"
       >
         <div class="flex flex-col justify-start">
-          <h3 class="text-xl px-1">Nome completo:</h3>
+          <h3 class="text-xl px-1 text-text_color">Nome completo:</h3>
           <p
             class="flex justify-center items-center text-white font-semibold py-1 px-2 w-full rounded-2xl my-1 bg-green_insted dark:bg-white dark:text-text_color"
           >
@@ -90,7 +90,7 @@
           </p>
         </div>
         <div class="flex flex-row justify-start items-center text-center">
-          <h3 class="text-xl px-1 whitespace-nowrap">E-mail:</h3>
+          <h3 class="text-xl px-1 whitespace-nowrap ">E-mail:</h3>
           <p
             class="flex justify-center items-center font-semibold text-white py-1 px-2 w-full rounded-2xl my-1 bg-green_insted dark:bg-white dark:text-text_color"
           >
@@ -144,30 +144,51 @@
   </mat-accordion>
 
   <mat-accordion
-    class="bg-white dark:bg-green_insted my-1 w-[98%] laptop:max-w-[60vw] py-2 rounded-3xl shadow-md"
+    class="bg-white dark:bg-green_insted my-1 w-[98%] laptop:w-1/2 rounded-3xl"
   >
     <mat-expansion-panel class="dark:bg-green_insted">
       <mat-expansion-panel-header class="flex-col h-auto">
-        <h1 class="dark:text-white text-2xl font-bold py-1">Alterar senha</h1>
+        <h2 class="dark:text-white text-3xl font-bold py-1">Alterar senha</h2>
       </mat-expansion-panel-header>
       <form
-        class="flex justify-between items-center gap-3 flex-col box-content py-4"
+        [formGroup]="resetPasswordForm"
+        (ngSubmit)="onSubmit()"
+        class="flex justify-between items-center gap-2 flex-col box-content py-2"
       >
         <div class="flex flex-col w-full justify-center items-center gap-3">
           <div class="flex flex-col justify-center items-center w-11/12">
             <input
-              formControlName="ra"
+              formControlName="senhaAtual"
               class="dark:bg-text_color"
               placeholder="Insira sua senha atual"
               type="password"
+            />
+            <app-message
+              erro="true"
+              *ngIf="resetPasswordForm.get('senhaAtual')?.errors?.['required'] && resetPasswordForm.get('senhaAtual')?.touched"
+              message="Necessário confirmar sua senha atual."
             />
           </div>
           <div class="flex flex-col justify-center items-center w-11/12">
             <input
               class="dark:bg-text_color"
-              formControlName="ra"
+              formControlName="novaSenha"
               placeholder="Insira nova senha"
               type="password"
+            />
+            <app-message
+              erro="true"
+              *ngIf="resetPasswordForm.get('novaSenha')?.errors?.['required'] && resetPasswordForm.get('novaSenha')?.touched && resetPasswordForm.get('senhaAtual')?.touched"
+              message="Necessário informar uma nova senha."
+            />
+            <app-message
+              erro="true"
+              *ngIf="resetPasswordForm.get('novaSenha')?.errors?.['minLength'] && resetPasswordForm.get('novaSenha')?.touched"
+              message="Nova senha deve ter no minímo 8 caracteres."
+            /><app-message
+              erro="true"
+              *ngIf="resetPasswordForm.get('novaSenha')?.errors?.['maxLength'] && resetPasswordForm.get('novaSenha')?.touched"
+              message="Nova senha deve ter no máximo 16 caracteres."
             />
           </div>
           <div
@@ -176,30 +197,30 @@
             <div class="flex flex-col w-full justify-center items-center">
               <input
                 id="password"
-                formControlName="password"
-                type="password"
+                formControlName="confirmeNovaSenha"
+                type="{{ this.passwordIsVisible ? 'text' : 'password' }}"
                 class="dark:bg-text_color"
                 autocomplete="off"
                 placeholder="Confirmar nova senha"
               />
               <svg
                 id="icon"
+                (onclick)="(!passwordIsVisible)"
                 class="bg-opened_eye absolute top-50% right-[4%] bg-contain bg-center bg-no-repeat w-7 h-10 cursor-pointer"
               ></svg>
             </div>
           </div>
         </div>
-        <div class="flex flex-grow gap-1 w-full justify-around px-2">
+        <div class="flex w-full justify-around">
+          <button class="cancelar w-[40%]">Cancelar</button>
           <button
-            class="okay_button w-1/2 dark:bg-white dark:text-green_insted"
+            class="w-[40%] dark:bg-white dark:text-green_insted bg-green_insted text-white"
             type="submit"
           >
             Alterar
           </button>
-          <button class="cancelar w-1/2">Cancelar</button>
         </div>
       </form>
     </mat-expansion-panel>
   </mat-accordion>
 </main>
-

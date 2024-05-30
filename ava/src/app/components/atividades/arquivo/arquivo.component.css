@@ -1,0 +1,7 @@
+.circle::before {
+  content: 'circle';
+}
+
+.check_circle::before {
+  content: 'check_circle';
+}

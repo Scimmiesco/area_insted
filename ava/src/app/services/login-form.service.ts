@@ -12,6 +12,7 @@ export class LoginFormService {
     const temaLocalStorage = localStorage.getItem(
       'theme'
     ) as ReCaptchaTheme | null;
+
     if (temaLocalStorage != null) {
       this.tema = temaLocalStorage;
     }

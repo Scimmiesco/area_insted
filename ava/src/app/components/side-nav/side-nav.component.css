@@ -1,0 +1,7 @@
+.light_mode::before {
+  content: 'light_mode';
+}
+
+.dark_mode::before {
+  content: 'dark_mode';
+}

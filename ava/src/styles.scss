@@ -2,7 +2,23 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import "mdb-angular-ui-kit/assets/scss/mdb.scss";
-@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap");
+
+$text_color: #063b3d;
+$okay_button: rgb(22, 129, 193);
+$green_insted: #028489;
+$green_insted_dark: #063b3d;
+$green_insted_dark_shadow: #021f20ad;
+$green_insted_transp_dark: rgba(35, 111, 114, 0.35);
+$green_insted_transp_dark_sideNav: #016366ff;
+$green_insted_transp: rgba(103, 219, 223, 0.5);
+$green_insted_fundo_modal: rgba(186, 234, 236, 0.384);
+$white: rgb(255, 255, 255);
+$white_transp: rgba(244, 242, 255, 0.85);
+$invalid_text: rgba(202, 12, 12, 1);
+$altoContraste_fundo: black;
+$altoContraste_texto: yellow;
+$altoContraste_hover: rgba(255, 255, 0, 0.267);
+
 
 input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-contacts-auto-fill-button {
@@ -11,15 +27,13 @@ input[type="password"]::-webkit-contacts-auto-fill-button {
 
 input:-webkit-autofill {
   -webkit-text-fill-color: #fff;
-  /* Cor do texto */
   box-shadow: 0 0 0px 1000px rgba(17, 223, 230, 0.651) inset;
-  /* Cor do plano de fundo */
 }
 
 :root {
-  --swiper-theme-color: #1da9ad;
+  --swiper-theme-color: #028489;
   --swiper-pagination-bottom: 0px;
-  --mdc-dialog-container-color: #1da9ad;
+  --mdc-dialog-container-color: #028489;
   --swiper-navigation-size: 20px;
 }
 
@@ -28,13 +42,18 @@ input:-webkit-autofill {
 }
 
 * {
-  font-family: "Lexend Deca", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body * {
+  @apply transition-colors duration-200;
 }
 
 h1,
 h2,
+h3,
 h4 {
-  color: rgb(22, 149, 153);
+  color: $green_insted !important;
   margin-block-start: 0px;
   margin-block-end: 0px;
   margin-inline-start: 0px;
@@ -43,78 +62,57 @@ h4 {
 
 h3 {
   margin: 0;
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  color: $green_insted_dark !important;
 }
 
 html,
 body {
   height: 100%;
 }
-html.dark{
-  transition: all 0.5s ease;
-  transition: 0.5s;
-}
+
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 p {
   margin: 0 !important;
 }
 
+button,
+input {
+  background-color: $green_insted !important;
+  font-size: 1.5rem !important;
+  color: rgb(244, 242, 255) !important;
+  font-weight: 600 !important;
+  width: 100% !important;
+  padding: 0.5rem 0.75rem !important;
+}
+
 button {
-  background-color: rgb(29, 169, 173) !important;
   position: relative;
   overflow: hidden;
   border-style: none !important;
   border-width: 2px !important;
   border-radius: 3em !important;
-  padding: 0.35rem 0.55rem !important;
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
-  color: rgb(244, 242, 255) !important;
-}
-
-button.cancelar {
-  background-color: rgb(212, 88, 115) !important;
-}
-
-button.float {
-  position: inherit;
 }
 
 input {
   color: transparent;
   outline: none;
   align-items: center;
-  font-size: 1.125rem;
-  width: 100%;
-  font-weight: 600;
   border-style: none;
   border-width: 1px;
-  background-color: rgba(29, 169, 173, 1);
-  color: #fff;
   box-sizing: border-box;
-  border-radius: 1rem;
-  padding: 0.25rem 0.5rem;
+  border-radius: 1.5rem;
+}
+
+button.cancelar {
+  background-color: rgb(212, 88, 115) !important;
 }
 
 input::placeholder {
   text-align: center;
   color: rgba(244, 242, 255, 0.85);
-}
-
-app-login-form,
-app-forgot-password-form {
-  width: 100vw;
-  height: fit-content;
-  align-items: center;
-  display: flex;
-  justify-content: center;
 }
 
 #icon.hide {
@@ -133,21 +131,15 @@ app-forgot-password-form {
   flex-direction: column !important;
 }
 
-.okay_button {
-  background-color: rgb(12, 210, 155) !important;
+ol,
+ul {
+  padding: 0;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-
-  ol,
-  ul {
-    padding: 0;
-  }
+li {
+  list-style: none;
 }
+
 
 .mat-mdc-dialog-surface,
 .mdc-dialog__surface {
@@ -180,9 +172,86 @@ body {
   margin: 4px;
 }
 
-.firstRounded:first-child {
-  div {
-    border-radius: 0px !important;
+#formularioPadrao {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  flex-grow: 1;
+  box-sizing: content-box;
+  min-height: 50vh;
+  width: 88vw;
+  padding: 8px;
+  border-radius: 1.5rem;
+}
+
+.mat-grid-tile-footer {
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+.fundo_vidro {
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 32px 0 $green_insted_transp;
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border: 2px solid $white;
+}
+
+.dark {
+
+  .fundo_vidro {
+    background: $green_insted_dark;
+    box-shadow: 0 8px 32px 0 $green_insted_transp_dark;
+    border: 2px solid $green_insted;
   }
 
+}
+
+html.alto_contraste {
+
+  * {
+    color: $altoContraste_texto !important;
+
+  }
+
+  span.mat-expansion-indicator::after {
+    color: #fff;
+  }
+
+  button,
+  input {
+    background-color: $altoContraste_fundo !important;
+    color: #fff !important;
+    outline: solid 2px #fff;
+  }
+
+  button.cancelar {
+    background-color: #fff !important;
+    color: $altoContraste_fundo !important;
+  }
+
+  .bg-green_insted,
+  .bg-green_insted_dark,
+  .bg-green_insted_dark_shadow,
+  .bg-green_insted_transp_dark,
+  .bg-green_insted_transp_dark_sideNav,
+  .bg-green_insted_transp,
+  .bg-green_insted_fundo_modal {
+    background-color: $altoContraste_fundo !important;
+    border: #fff 2px solid;
+    box-sizing: border-box !important;
+  }
+
+  .bg-white,
+  .bg-white_transp,
+  .mat-expansion-panel {
+    background-color: $altoContraste_fundo !important;
+  }
+
+  .hover\:bg-green_insted_dark:hover,
+  :is(.dark .dark\:hover\:text-green_insted_dark:hover),
+  .group:hover .group-hover\:bg-green_insted_transp_dark {
+    background-color: $altoContraste_hover !important;
+  }
 }

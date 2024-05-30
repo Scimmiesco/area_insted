@@ -2,15 +2,30 @@
   <mat-sidenav
     #sidenav
     fixedInViewport="false"
-    [mode]="handleScreenSizeChange() ? 'push' : 'side'"
-    [opened]="handleScreenSizeChange() ? 'false' : 'true'"
-    class="w-[66vw] laptop:w-fit laptop:max-w-[110px] max-h-[100svh] rounded-l-3xl ml-1 my-1 h-full dark:bg-green_insted_dark_sec bg-white_transp border-none laptop:h-[100svh] fixed"
-    ><app-sidenav></app-sidenav
-  ></mat-sidenav>
-  <mat-sidenav-content class="m-1 rounded-3xl">
+    [mode]="telaTamanhoMobile() ? 'push' : 'side'"
+    [opened]="telaTamanhoMobile() ? 'false' : 'true'"
+    class="w-[66vw] laptop:w-fit laptop:max-w-[110px] max-h-[100svh] rounded-r-3xl laptop:m-0 laptop:rounded-r-md laptop:rounded-l-none h-full dark:bg-green_insted_dark bg-white border-none laptop:h-[100svh] fixed"
+  >
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content class="m-0">
+    <ng-template [ngIf]="!telaTamanhoMobile()">
+      <div
+        class="fixed top-0 right-0 max-h-[100svh] z-50 flex flex-col justify-start items-center gap-3 px-3 py-2 bg-white rounded-bl-xl dark:bg-green_insted_dark_shadow"
+      >
+        <span
+          *ngFor="let icon of this.iconsAcessibilidade; let i = index"
+          class="material-symbols-outlined cursor-pointer text-2xl p-1 rounded-lg dark:text-white text-green_insted_dark hover:text-white hover:bg-green_insted_dark active:scale-50 dark:hover:bg-white dark:hover:text-green_insted_dark transition-all duration-100"
+          (click)="botoesAcessibilidade(icon.nomeIcone)"
+        >
+          {{ icon.codigoSymbols }}
+        </span>
+      </div>
+    </ng-template>
+
     <app-menu-bottom
       (menuClick)="sidenav.open()"
-      [tamanhoTelalaptop]="handleScreenSizeChange()"
+      [tamanhoTelalaptop]="telaTamanhoMobile()"
     >
     </app-menu-bottom>
     <router-outlet class="dark:bg-text_color bg-white"></router-outlet>
