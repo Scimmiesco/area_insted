@@ -15,7 +15,7 @@ import { TemaService } from 'app/services/tema.service';
   templateUrl: './login-form.component.html',
 })
 export class LoginFormComponent implements OnInit {
-  loginForm!: FormGroup; //É estânciado no OnInit
+  loginForm!: FormGroup;
   errorMessage = null as string | null;
   passwordIsVisible = false as boolean;
 
