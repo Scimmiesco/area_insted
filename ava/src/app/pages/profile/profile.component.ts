@@ -27,39 +27,38 @@ export class ProfileComponent {
     public dialog: MatDialog,
     public userService: UserService,
     private formBuilder: FormBuilder,
-    private resetPasswordsService: ResetPasswordsService,
+    private resetPasswordsService: ResetPasswordsService
   ) {}
 
   ngOnInit() {
     this.user$ = this.store.select(getUser);
 
-    this.resetPasswordForm = this.formBuilder.group(
-      {
-        senhaAtual: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.maxLength(16),
-          ],
+    this.resetPasswordForm = this.formBuilder.group({
+      senhaAtual: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
         ],
-        novaSenha: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.maxLength(16),
-          ],
-        ],confirmeNovaSenha: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.maxLength(16),
-          ],
+      ],
+      novaSenha: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
         ],
-      },
-    );
+      ],
+      confirmeNovaSenha: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+        ],
+      ],
+    });
   }
 
   onImageLoad() {
@@ -68,7 +67,7 @@ export class ProfileComponent {
 
   logout() {
     sessionStorage.clear();
-    localStorage.removeItem('tema');
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
   modalSucessoEnvioEmail(message: string) {
@@ -81,9 +80,8 @@ export class ProfileComponent {
   }
 
   onSubmit() {
-      this.alteraSenha();
+    this.alteraSenha();
   }
-
 
   alteraSenha() {
     let senhaNova: string = CryptoJS.SHA512(
@@ -95,11 +93,9 @@ export class ProfileComponent {
         this.modalSucessoEnvioEmail(response.Message);
       },
       error: (error) => {
-
-          this.modalSucessoEnvioEmail(error.message);
+        this.modalSucessoEnvioEmail(error.message);
       },
       complete: () => {},
     });
   }
-
 }

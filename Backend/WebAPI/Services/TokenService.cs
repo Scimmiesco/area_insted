@@ -26,7 +26,8 @@ namespace WebAPI.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.NrRegister.ToString()),
-                    new Claim(ClaimTypes.Email, user.NmEmail.ToString())
+                    new Claim(ClaimTypes.Email, user.NmEmail.ToString()),
+                    new Claim(ClaimTypes.Role, !user.SnTeacher ? "aluno" : "professor")
 
                 }),
                 Expires = DateTime.UtcNow.AddHours(3),

@@ -36,13 +36,13 @@ export class LoginFormComponent implements OnInit {
 
   Login() {
     if (this.loginForm.valid) {
-      let passwordHashed: string = CryptoJS.SHA512(
+      let senhaCriptografada: string = CryptoJS.SHA512(
         this.loginForm.get('password')?.value
       ).toString();
 
       const loginRequest: LoginInterface = {
         login: this.loginForm.get('ra')?.value.toString(),
-        passwordHashed,
+        senhaCriptografada,
       };
       this.authentication(loginRequest);
     }

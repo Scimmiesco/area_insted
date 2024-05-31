@@ -1,7 +1,13 @@
 export interface Token {
+  unique_name: string;
   email: string;
+  role: EnumCargos;
+  nbf: number;
   exp: number;
   iat: number;
-  nbf: number;
-  unique_name: string;
+
+}
+export enum EnumCargos {
+  PROFESSOR = 'professor',
+  ALUNO = 'aluno',
 }

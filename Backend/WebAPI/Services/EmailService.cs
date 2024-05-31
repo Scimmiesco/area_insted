@@ -37,7 +37,7 @@ namespace WebAPI.Services
                 try
                 {
                     client.Connect("smtp.gmail.com", 465, true);
-                    client.Authenticate("imscimmiesco@gmail.com", "ebcx lbse qvrl cyuf");
+                    client.Authenticate("imscimmiesco@gmail.com", "spsu oezz vgwk wcsd");
                     client.Send(emailMessage);
                  }
                 catch (Exception ex)
