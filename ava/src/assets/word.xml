@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<office:document xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:config="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:grddl="http://www.w3.org/2003/g/data-view#" xmlns:officeooo="http://openoffice.org/2009/office" xmlns:tableooo="http://openoffice.org/2009/table" xmlns:drawooo="http://openoffice.org/2010/draw" xmlns:calcext="urn:org:documentfoundation:names:experimental:calc:xmlns:calcext:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:formx="urn:openoffice:names:experimental:ooxml-odf-interop:xmlns:form:1.0" xmlns:css3t="http://www.w3.org/TR/css3-text/" office:version="1.2" office:mimetype="application/vnd.oasis.opendocument.text">
+ <office:meta><meta:creation-date>2024-04-16T01:24:04.094233600</meta:creation-date><dc:date>2024-04-16T01:32:05.059352500</dc:date><meta:editing-cycles>1</meta:editing-cycles><meta:editing-duration>PT8M4S</meta:editing-duration><meta:document-statistic meta:table-count="0" meta:image-count="0" meta:object-count="0" meta:page-count="15" meta:paragraph-count="304" meta:word-count="3479" meta:character-count="22293" meta:non-whitespace-character-count="19135"/><meta:generator>LibreOffice/6.1.5.2$Linux_X86_64 LibreOffice_project/10$Build-2</meta:generator></office:meta>
+ <office:settings>
+  <config:config-item-set config:name="ooo:view-settings">
+   <config:config-item config:name="ViewAreaTop" config:type="long">0</config:config-item>
+   <config:config-item config:name="ViewAreaLeft" config:type="long">0</config:config-item>
+   <config:config-item config:name="ViewAreaWidth" config:type="long">0</config:config-item>
+   <config:config-item config:name="ViewAreaHeight" config:type="long">0</config:config-item>
+   <config:config-item config:name="ShowRedlineChanges" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="InBrowseMode" config:type="boolean">false</config:config-item>
+  </config:config-item-set>
+  <config:config-item-set config:name="ooo:configuration-settings">
+   <config:config-item config:name="PrintPaperFromSetup" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintFaxName" config:type="string"/>
+   <config:config-item config:name="PrintSingleJobs" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintProspectRTL" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintProspect" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintReversed" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintTextPlaceholder" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintTables" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintPageBackground" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintLeftPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="DoNotJustifyLinesWithManualBreak" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AlignTabStopPosition" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="IgnoreFirstLineIndentInNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterSetup" config:type="base64Binary"/>
+   <config:config-item config:name="CollapseEmptyCellPara" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="RedlineProtectionKey" config:type="base64Binary"/>
+   <config:config-item config:name="UseOldPrinterMetrics" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UseOldNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="AddExternalLeading" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="TreatSingleColumnBreakAsPageBreak" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="IsLabelDocument" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="RsidRoot" config:type="int">1193785</config:config-item>
+   <config:config-item config:name="ConsiderTextWrapOnObjPos" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="TableRowKeep" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="TabsRelativeToIndent" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UpdateFromTemplate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="SaveVersionOnClose" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="UseFormerTextWrapping" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ChartAutoUpdate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddParaTableSpacingAtStart" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AllowPrintJobCancel" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddParaTableSpacing" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintDrawings" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddParaSpacingToTableCells" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UseFormerLineSpacing" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="OutlineLevelYieldsNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="LinkUpdateMode" config:type="short">1</config:config-item>
+   <config:config-item config:name="ApplyUserData" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="StylesNoDefault" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmbeddedDatabaseName" config:type="string"/>
+   <config:config-item config:name="FloattableNomargins" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="BackgroundParaOverDrawings" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterName" config:type="string"/>
+   <config:config-item config:name="UseFormerObjectPositioning" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabOverMargin" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="SaveGlobalDocumentLinks" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CurrentDatabaseDataSource" config:type="string"/>
+   <config:config-item config:name="IsKernAsianPunctuation" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CurrentDatabaseCommandType" config:type="int">0</config:config-item>
+   <config:config-item config:name="CharacterCompressionType" config:type="short">0</config:config-item>
+   <config:config-item config:name="SmallCapsPercentage66" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="CurrentDatabaseCommand" config:type="string"/>
+   <config:config-item config:name="DoNotResetParaAttrsForNumFont" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="FieldAutoUpdate" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="IgnoreTabsAndBlanksForLineCalculation" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="LoadReadonly" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="DoNotCaptureDrawObjsOnPage" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ClipAsCharacterAnchoredWriterFlyFrames" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintBlackFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="DisableOffPagePositioning" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SurroundTextWrapSmall" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UnxForceZeroExtLeading" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="TabAtLeftIndentForParagraphsInList" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintRightPages" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="Rsid" config:type="int">1193785</config:config-item>
+   <config:config-item config:name="MathBaselineAlignment" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="MsWordCompTrailingBlanks" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="InvertBorderSpacing" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="EmbedFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterPaperFromSetup" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrinterIndependentLayout" config:type="string">high-resolution</config:config-item>
+   <config:config-item config:name="TabOverflow" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintGraphics" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PropLineSpacingShrinksFirstLine" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="UnbreakableNumberings" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddFrameOffsets" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="ClippedPictures" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="EmbedSystemFonts" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ApplyParagraphMarkFormatToNumbering" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="SubtractFlysAnchoredAtFlys" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="EmptyDbFieldHidesPara" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="AddVerticalFrameOffsets" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="ProtectForm" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintEmptyPages" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintControls" config:type="boolean">true</config:config-item>
+   <config:config-item config:name="PrintHiddenText" config:type="boolean">false</config:config-item>
+   <config:config-item config:name="PrintAnnotationMode" config:type="short">0</config:config-item>
+  </config:config-item-set>
+ </office:settings>
+ <office:scripts>
+  <office:script script:language="ooo:Basic">
+   <ooo:libraries xmlns:ooo="http://openoffice.org/2004/office" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <ooo:library-embedded ooo:name="Standard"/>
+   </ooo:libraries>
+  </office:script>
+ </office:scripts>
+ <office:font-face-decls>
+  <style:font-face style:name="OpenSymbol" svg:font-family="OpenSymbol, &apos;Arial Unicode MS&apos;" style:font-charset="x-symbol"/>
+  <style:font-face style:name="Symbol" svg:font-family="Symbol" style:font-charset="x-symbol"/>
+  <style:font-face style:name="Lohit Devanagari" svg:font-family="&apos;Lohit Devanagari&apos;"/>
+  <style:font-face style:name="Lohit Devanagari1" svg:font-family="&apos;Lohit Devanagari&apos;" style:font-pitch="variable"/>
+  <style:font-face style:name="Noto Sans CJK SC" svg:font-family="&apos;Noto Sans CJK SC&apos;" style:font-pitch="variable"/>
+  <style:font-face style:name="Noto Serif CJK SC" svg:font-family="&apos;Noto Serif CJK SC&apos;" style:font-pitch="variable"/>
+  <style:font-face style:name="Liberation Serif" svg:font-family="&apos;Liberation Serif&apos;" style:font-family-generic="roman" style:font-pitch="variable"/>
+  <style:font-face style:name="Liberation Serif1" svg:font-family="&apos;Liberation Serif&apos;, &apos;Times New Roman&apos;" style:font-family-generic="roman" style:font-pitch="variable"/>
+  <style:font-face style:name="Liberation Sans" svg:font-family="&apos;Liberation Sans&apos;, Arial" style:font-family-generic="swiss" style:font-pitch="variable"/>
+  <style:font-face style:name="DejaVu Sans" svg:font-family="&apos;DejaVu Sans&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+  <style:font-face style:name="Noto Sans Devanagari" svg:font-family="&apos;Noto Sans Devanagari&apos;" style:font-family-generic="system" style:font-pitch="variable"/>
+ </office:font-face-decls>
+ <office:styles>
+  <style:default-style style:family="graphic">
+   <style:graphic-properties svg:stroke-color="#3465a4" draw:fill-color="#729fcf" fo:wrap-option="no-wrap" draw:shadow-offset-x="0.1181in" draw:shadow-offset-y="0.1181in" draw:start-line-spacing-horizontal="0.1114in" draw:start-line-spacing-vertical="0.1114in" draw:end-line-spacing-horizontal="0.1114in" draw:end-line-spacing-vertical="0.1114in" style:flow-with-text="false"/>
+   <style:paragraph-properties style:text-autospace="ideograph-alpha" style:line-break="strict" style:font-independent-line-spacing="false">
+    <style:tab-stops/>
+   </style:paragraph-properties>
+   <style:text-properties style:use-window-font-color="true" style:font-name="Liberation Serif" fo:font-size="12pt" fo:language="en" fo:country="US" style:letter-kerning="true" style:font-name-asian="DejaVu Sans" style:font-size-asian="10.5pt" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Noto Sans Devanagari" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN"/>
+  </style:default-style>
+  <style:default-style style:family="paragraph">
+   <style:paragraph-properties fo:hyphenation-ladder-count="no-limit" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:tab-stop-distance="0.4925in" style:writing-mode="page"/>
+   <style:text-properties style:use-window-font-color="true" style:font-name="Liberation Serif" fo:font-size="12pt" fo:language="en" fo:country="US" style:font-name-asian="DejaVu Sans" style:font-size-asian="10.5pt" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Noto Sans Devanagari" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN" fo:hyphenate="false" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2"/>
+  </style:default-style>
+  <style:default-style style:family="table">
+   <style:table-properties table:border-model="collapsing"/>
+  </style:default-style>
+  <style:default-style style:family="table-row">
+   <style:table-row-properties fo:keep-together="auto"/>
+  </style:default-style>
+  <style:style style:name="Standard" style:family="paragraph" style:class="text">
+   <style:paragraph-properties fo:orphans="2" fo:widows="2" fo:hyphenation-ladder-count="no-limit" style:text-autospace="ideograph-alpha" style:punctuation-wrap="hanging" style:line-break="strict" style:writing-mode="lr-tb"/>
+   <style:text-properties style:use-window-font-color="true" style:font-name="Liberation Serif1" fo:font-family="&apos;Liberation Serif&apos;, &apos;Times New Roman&apos;" style:font-family-generic="roman" style:font-pitch="variable" fo:font-size="12pt" fo:language="pt" fo:country="BR" style:letter-kerning="true" style:font-name-asian="Noto Serif CJK SC" style:font-family-asian="&apos;Noto Serif CJK SC&apos;" style:font-pitch-asian="variable" style:font-size-asian="12pt" style:language-asian="zh" style:country-asian="CN" style:font-name-complex="Lohit Devanagari1" style:font-family-complex="&apos;Lohit Devanagari&apos;" style:font-pitch-complex="variable" style:font-size-complex="12pt" style:language-complex="hi" style:country-complex="IN" fo:hyphenate="false" fo:hyphenation-remain-char-count="2" fo:hyphenation-push-char-count="2"/>
+  </style:style>
+  <style:style style:name="Heading" style:family="paragraph" style:parent-style-name="Standard" style:next-style-name="Text_20_body" style:class="text">
+   <style:paragraph-properties fo:margin-top="0.1665in" fo:margin-bottom="0.0835in" loext:contextual-spacing="false" fo:keep-with-next="always"/>
+   <style:text-properties style:font-name="Liberation Sans" fo:font-family="&apos;Liberation Sans&apos;, Arial" style:font-family-generic="swiss" style:font-pitch="variable" fo:font-size="14pt" style:font-name-asian="Noto Sans CJK SC" style:font-family-asian="&apos;Noto Sans CJK SC&apos;" style:font-pitch-asian="variable" style:font-size-asian="14pt" style:font-name-complex="Lohit Devanagari1" style:font-family-complex="&apos;Lohit Devanagari&apos;" style:font-pitch-complex="variable" style:font-size-complex="14pt"/>
+  </style:style>
+  <style:style style:name="Text_20_body" style:display-name="Text body" style:family="paragraph" style:parent-style-name="Standard" style:class="text">
+   <style:paragraph-properties fo:margin-top="0in" fo:margin-bottom="0.0972in" loext:contextual-spacing="false" fo:line-height="115%"/>
+  </style:style>
+  <style:style style:name="List" style:family="paragraph" style:parent-style-name="Text_20_body" style:class="list">
+   <style:text-properties style:font-name-complex="Lohit Devanagari" style:font-family-complex="&apos;Lohit Devanagari&apos;"/>
+  </style:style>
+  <style:style style:name="Caption" style:family="paragraph" style:parent-style-name="Standard" style:class="extra">
+   <style:paragraph-properties fo:margin-top="0.0835in" fo:margin-bottom="0.0835in" loext:contextual-spacing="false" text:number-lines="false" text:line-number="0"/>
+   <style:text-properties fo:font-size="12pt" fo:font-style="italic" style:font-size-asian="12pt" style:font-style-asian="italic" style:font-name-complex="Lohit Devanagari" style:font-family-complex="&apos;Lohit Devanagari&apos;" style:font-size-complex="12pt" style:font-style-complex="italic"/>
+  </style:style>
+  <style:style style:name="Index" style:family="paragraph" style:parent-style-name="Standard" style:class="index">
+   <style:paragraph-properties text:number-lines="false" text:line-number="0"/>
+   <style:text-properties style:font-name-complex="Lohit Devanagari" style:font-family-complex="&apos;Lohit Devanagari&apos;"/>
+  </style:style>
+  <style:style style:name="WW8Num1z0" style:family="text">
+   <style:text-properties style:font-name="Symbol" fo:font-family="Symbol" style:font-charset="x-symbol" style:font-name-complex="OpenSymbol" style:font-family-complex="OpenSymbol, &apos;Arial Unicode MS&apos;" style:font-charset-complex="x-symbol"/>
+  </style:style>
+  <style:style style:name="WW8Num1z1" style:family="text"/>
+  <style:style style:name="WW8Num1z2" style:family="text"/>
+  <style:style style:name="WW8Num1z3" style:family="text"/>
+  <style:style style:name="WW8Num1z4" style:family="text"/>
+  <style:style style:name="WW8Num1z5" style:family="text"/>
+  <style:style style:name="WW8Num1z6" style:family="text"/>
+  <style:style style:name="WW8Num1z7" style:family="text"/>
+  <style:style style:name="WW8Num1z8" style:family="text"/>
+  <style:style style:name="WW8Num2z0" style:family="text">
+   <style:text-properties style:font-name="Symbol" fo:font-family="Symbol" style:font-charset="x-symbol" style:font-name-complex="OpenSymbol" style:font-family-complex="OpenSymbol, &apos;Arial Unicode MS&apos;" style:font-charset-complex="x-symbol"/>
+  </style:style>
+  <style:style style:name="WW8Num2z1" style:family="text"/>
+  <style:style style:name="WW8Num2z2" style:family="text"/>
+  <style:style style:name="WW8Num2z3" style:family="text"/>
+  <style:style style:name="WW8Num2z4" style:family="text"/>
+  <style:style style:name="WW8Num2z5" style:family="text"/>
+  <style:style style:name="WW8Num2z6" style:family="text"/>
+  <style:style style:name="WW8Num2z7" style:family="text"/>
+  <style:style style:name="WW8Num2z8" style:family="text"/>
+  <style:style style:name="WW8Num3z0" style:family="text">
+   <style:text-properties style:font-name="Symbol" fo:font-family="Symbol" style:font-charset="x-symbol" style:font-name-complex="OpenSymbol" style:font-family-complex="OpenSymbol, &apos;Arial Unicode MS&apos;" style:font-charset-complex="x-symbol"/>
+  </style:style>
+  <style:style style:name="WW8Num3z1" style:family="text"/>
+  <style:style style:name="WW8Num3z2" style:family="text"/>
+  <style:style style:name="WW8Num3z3" style:family="text"/>
+  <style:style style:name="WW8Num3z4" style:family="text"/>
+  <style:style style:name="WW8Num3z5" style:family="text"/>
+  <style:style style:name="WW8Num3z6" style:family="text"/>
+  <style:style style:name="WW8Num3z7" style:family="text"/>
+  <style:style style:name="WW8Num3z8" style:family="text"/>
+  <style:style style:name="WW8Num4z0" style:family="text"/>
+  <style:style style:name="WW8Num4z1" style:family="text"/>
+  <style:style style:name="WW8Num4z2" style:family="text"/>
+  <style:style style:name="WW8Num4z3" style:family="text"/>
+  <style:style style:name="WW8Num4z4" style:family="text"/>
+  <style:style style:name="WW8Num4z5" style:family="text"/>
+  <style:style style:name="WW8Num4z6" style:family="text"/>
+  <style:style style:name="WW8Num4z7" style:family="text"/>
+  <style:style style:name="WW8Num4z8" style:family="text"/>
+  <style:style style:name="Strong_20_Emphasis" style:display-name="Strong Emphasis" style:family="text">
+   <style:text-properties fo:font-weight="bold" style:font-weight-asian="bold" style:font-weight-complex="bold"/>
+  </style:style>
+  <style:style style:name="Bullet_20_Symbols" style:display-name="Bullet Symbols" style:family="text">
+   <style:text-properties style:font-name="OpenSymbol" fo:font-family="OpenSymbol, &apos;Arial Unicode MS&apos;" style:font-charset="x-symbol" style:font-name-asian="OpenSymbol" style:font-family-asian="OpenSymbol, &apos;Arial Unicode MS&apos;" style:font-charset-asian="x-symbol" style:font-name-complex="OpenSymbol" style:font-family-complex="OpenSymbol, &apos;Arial Unicode MS&apos;" style:font-charset-complex="x-symbol"/>
+  </style:style>
+  <style:style style:name="Numbering_20_Symbols" style:display-name="Numbering Symbols" style:family="text"/>
+  <style:style style:name="Frame" style:family="graphic">
+   <style:graphic-properties text:anchor-type="paragraph" svg:x="0in" svg:y="0in" style:wrap="parallel" style:number-wrapped-paragraphs="no-limit" style:wrap-contour="false" style:vertical-pos="top" style:vertical-rel="paragraph-content" style:horizontal-pos="center" style:horizontal-rel="paragraph-content"/>
+  </style:style>
+  <style:style style:name="Graphics" style:family="graphic">
+   <style:graphic-properties text:anchor-type="paragraph" svg:x="0in" svg:y="0in" style:wrap="dynamic" style:number-wrapped-paragraphs="no-limit" style:wrap-contour="false" style:vertical-pos="top" style:vertical-rel="paragraph" style:horizontal-pos="center" style:horizontal-rel="paragraph"/>
+  </style:style>
+  <style:style style:name="OLE" style:family="graphic">
+   <style:graphic-properties text:anchor-type="paragraph" svg:x="0in" svg:y="0in" style:wrap="dynamic" style:number-wrapped-paragraphs="no-limit" style:wrap-contour="false" style:vertical-pos="top" style:vertical-rel="paragraph" style:horizontal-pos="center" style:horizontal-rel="paragraph"/>
+  </style:style>
+  <text:outline-style style:name="Outline">
+   <text:outline-level-style text:level="1" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="2" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="3" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="4" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="5" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="6" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="7" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="8" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="9" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+   <text:outline-level-style text:level="10" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab"/>
+    </style:list-level-properties>
+   </text:outline-level-style>
+  </text:outline-style>
+  <text:list-style style:name="WW8Num1">
+   <text:list-level-style-bullet text:level="1" text:style-name="WW8Num1z0" style:num-suffix="." text:bullet-char="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="0.4925in" fo:text-indent="-0.1965in" fo:margin-left="0.4925in"/>
+    </style:list-level-properties>
+    <style:text-properties style:font-name="Symbol"/>
+   </text:list-level-style-bullet>
+   <text:list-level-style-number text:level="2" text:style-name="WW8Num1z1" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="0.9846in" fo:text-indent="-0.1965in" fo:margin-left="0.9846in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="3" text:style-name="WW8Num1z2" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.4772in" fo:text-indent="-0.1965in" fo:margin-left="1.4772in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="4" text:style-name="WW8Num1z3" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.9693in" fo:text-indent="-0.1965in" fo:margin-left="1.9693in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="5" text:style-name="WW8Num1z4" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.4618in" fo:text-indent="-0.1965in" fo:margin-left="2.4618in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="6" text:style-name="WW8Num1z5" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.9543in" fo:text-indent="-0.1965in" fo:margin-left="2.9543in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="7" text:style-name="WW8Num1z6" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.4465in" fo:text-indent="-0.1965in" fo:margin-left="3.4465in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="8" text:style-name="WW8Num1z7" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.939in" fo:text-indent="-0.1965in" fo:margin-left="3.939in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="9" text:style-name="WW8Num1z8" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="4.4311in" fo:text-indent="-0.1965in" fo:margin-left="4.4311in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="10" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.75in" fo:text-indent="-0.25in" fo:margin-left="2.75in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+  </text:list-style>
+  <text:list-style style:name="WW8Num2">
+   <text:list-level-style-bullet text:level="1" text:style-name="WW8Num2z0" style:num-suffix="." text:bullet-char="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="0.4925in" fo:text-indent="-0.1965in" fo:margin-left="0.4925in"/>
+    </style:list-level-properties>
+    <style:text-properties style:font-name="Symbol"/>
+   </text:list-level-style-bullet>
+   <text:list-level-style-number text:level="2" text:style-name="WW8Num2z1" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="0.9846in" fo:text-indent="-0.1965in" fo:margin-left="0.9846in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="3" text:style-name="WW8Num2z2" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.4772in" fo:text-indent="-0.1965in" fo:margin-left="1.4772in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="4" text:style-name="WW8Num2z3" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.9693in" fo:text-indent="-0.1965in" fo:margin-left="1.9693in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="5" text:style-name="WW8Num2z4" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.4618in" fo:text-indent="-0.1965in" fo:margin-left="2.4618in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="6" text:style-name="WW8Num2z5" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.9543in" fo:text-indent="-0.1965in" fo:margin-left="2.9543in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="7" text:style-name="WW8Num2z6" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.4465in" fo:text-indent="-0.1965in" fo:margin-left="3.4465in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="8" text:style-name="WW8Num2z7" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.939in" fo:text-indent="-0.1965in" fo:margin-left="3.939in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="9" text:style-name="WW8Num2z8" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="4.4311in" fo:text-indent="-0.1965in" fo:margin-left="4.4311in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="10" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.75in" fo:text-indent="-0.25in" fo:margin-left="2.75in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+  </text:list-style>
+  <text:list-style style:name="WW8Num3">
+   <text:list-level-style-bullet text:level="1" text:style-name="WW8Num3z0" style:num-suffix="." text:bullet-char="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="0.4925in" fo:text-indent="-0.1965in" fo:margin-left="0.4925in"/>
+    </style:list-level-properties>
+    <style:text-properties style:font-name="Symbol"/>
+   </text:list-level-style-bullet>
+   <text:list-level-style-number text:level="2" text:style-name="WW8Num3z1" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="0.9846in" fo:text-indent="-0.1965in" fo:margin-left="0.9846in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="3" text:style-name="WW8Num3z2" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.4772in" fo:text-indent="-0.1965in" fo:margin-left="1.4772in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="4" text:style-name="WW8Num3z3" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="1.9693in" fo:text-indent="-0.1965in" fo:margin-left="1.9693in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="5" text:style-name="WW8Num3z4" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.4618in" fo:text-indent="-0.1965in" fo:margin-left="2.4618in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="6" text:style-name="WW8Num3z5" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.9543in" fo:text-indent="-0.1965in" fo:margin-left="2.9543in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="7" text:style-name="WW8Num3z6" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.4465in" fo:text-indent="-0.1965in" fo:margin-left="3.4465in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="8" text:style-name="WW8Num3z7" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="3.939in" fo:text-indent="-0.1965in" fo:margin-left="3.939in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="9" text:style-name="WW8Num3z8" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="4.4311in" fo:text-indent="-0.1965in" fo:margin-left="4.4311in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="10" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.75in" fo:text-indent="-0.25in" fo:margin-left="2.75in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+  </text:list-style>
+  <text:list-style style:name="WW8Num4">
+   <text:list-level-style-number text:level="1" text:style-name="WW8Num4z0" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="nothing"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="2" text:style-name="WW8Num4z1" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="nothing"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="3" text:style-name="WW8Num4z2" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="nothing"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="4" text:style-name="WW8Num4z3" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="nothing"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="5" text:style-name="WW8Num4z4" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="nothing"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="6" text:style-name="WW8Num4z5" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="nothing"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="7" text:style-name="WW8Num4z6" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="nothing"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="8" text:style-name="WW8Num4z7" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="nothing"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="9" text:style-name="WW8Num4z8" style:num-format="">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="nothing"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+   <text:list-level-style-number text:level="10" style:num-suffix="." style:num-format="1">
+    <style:list-level-properties text:list-level-position-and-space-mode="label-alignment">
+     <style:list-level-label-alignment text:label-followed-by="listtab" text:list-tab-stop-position="2.75in" fo:text-indent="-0.25in" fo:margin-left="2.75in"/>
+    </style:list-level-properties>
+   </text:list-level-style-number>
+  </text:list-style>
+  <text:notes-configuration text:note-class="footnote" style:num-format="1" text:start-value="0" text:footnotes-position="page" text:start-numbering-at="document"/>
+  <text:notes-configuration text:note-class="endnote" style:num-format="i" text:start-value="0"/>
+  <text:linenumbering-configuration text:number-lines="false" text:offset="0.1965in" style:num-format="1" text:number-position="left" text:increment="5"/>
+  <style:default-page-layout>
+   <style:page-layout-properties style:layout-grid-standard-mode="true"/>
+  </style:default-page-layout>
+ </office:styles>
+ <office:automatic-styles>
+  <style:style style:name="P1" style:family="paragraph" style:parent-style-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="P2" style:family="paragraph" style:parent-style-name="Standard" style:master-page-name="Standard">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false" style:page-number="auto" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="P3" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:margin-top="0in" fo:margin-bottom="0.0972in" loext:contextual-spacing="false" fo:line-height="115%" fo:text-align="start" style:justify-single-word="false" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="P4" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="WW8Num1">
+   <style:paragraph-properties fo:margin-left="0.4925in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0in" loext:contextual-spacing="false" fo:text-align="start" style:justify-single-word="false" fo:text-indent="-0.1965in" style:auto-text-indent="false" style:writing-mode="lr-tb">
+    <style:tab-stops>
+     <style:tab-stop style:position="0.4925in"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="P5" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="WW8Num2">
+   <style:paragraph-properties fo:margin-left="0.4925in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0in" loext:contextual-spacing="false" fo:text-align="start" style:justify-single-word="false" fo:text-indent="-0.1965in" style:auto-text-indent="false" style:writing-mode="lr-tb">
+    <style:tab-stops>
+     <style:tab-stop style:position="0.4925in"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="P6" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="WW8Num3">
+   <style:paragraph-properties fo:margin-left="0.4925in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0in" loext:contextual-spacing="false" fo:text-align="start" style:justify-single-word="false" fo:text-indent="-0.1965in" style:auto-text-indent="false" style:writing-mode="lr-tb">
+    <style:tab-stops>
+     <style:tab-stop style:position="0.4925in"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="P7" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="WW8Num1">
+   <style:paragraph-properties fo:margin-left="0.9846in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0in" loext:contextual-spacing="false" fo:text-align="start" style:justify-single-word="false" fo:text-indent="-0.1965in" style:auto-text-indent="false" style:writing-mode="lr-tb">
+    <style:tab-stops>
+     <style:tab-stop style:position="0.9846in"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="P8" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="WW8Num2">
+   <style:paragraph-properties fo:margin-left="0.9846in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0in" loext:contextual-spacing="false" fo:text-align="start" style:justify-single-word="false" fo:text-indent="-0.1965in" style:auto-text-indent="false" style:writing-mode="lr-tb">
+    <style:tab-stops>
+     <style:tab-stop style:position="0.9846in"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="P9" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="WW8Num3">
+   <style:paragraph-properties fo:margin-left="0.9846in" fo:margin-right="0in" fo:margin-top="0in" fo:margin-bottom="0in" loext:contextual-spacing="false" fo:text-align="start" style:justify-single-word="false" fo:text-indent="-0.1965in" style:auto-text-indent="false" style:writing-mode="lr-tb">
+    <style:tab-stops>
+     <style:tab-stop style:position="0.9846in"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="P10" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="WW8Num1">
+   <style:paragraph-properties fo:margin-left="0.9846in" fo:margin-right="0in" fo:text-align="start" style:justify-single-word="false" fo:text-indent="-0.1965in" style:auto-text-indent="false" style:writing-mode="lr-tb">
+    <style:tab-stops>
+     <style:tab-stop style:position="0.9846in"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="P11" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="WW8Num2">
+   <style:paragraph-properties fo:margin-left="0.9846in" fo:margin-right="0in" fo:text-align="start" style:justify-single-word="false" fo:text-indent="-0.1965in" style:auto-text-indent="false" style:writing-mode="lr-tb">
+    <style:tab-stops>
+     <style:tab-stop style:position="0.9846in"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="P12" style:family="paragraph" style:parent-style-name="Text_20_body" style:list-style-name="WW8Num3">
+   <style:paragraph-properties fo:margin-left="0.9846in" fo:margin-right="0in" fo:text-align="start" style:justify-single-word="false" fo:text-indent="-0.1965in" style:auto-text-indent="false" style:writing-mode="lr-tb">
+    <style:tab-stops>
+     <style:tab-stop style:position="0.9846in"/>
+    </style:tab-stops>
+   </style:paragraph-properties>
+  </style:style>
+  <style:style style:name="P13" style:family="paragraph" style:parent-style-name="Text_20_body">
+   <style:paragraph-properties fo:text-align="start" style:justify-single-word="false" style:writing-mode="lr-tb"/>
+  </style:style>
+  <style:style style:name="T1" style:family="text">
+   <style:text-properties style:font-name-asian="Liberation Serif1" style:font-name-complex="Liberation Serif1"/>
+  </style:style>
+  <style:page-layout style:name="pm1">
+   <style:page-layout-properties fo:page-width="8.2681in" fo:page-height="11.6929in" style:num-format="1" style:print-orientation="portrait" fo:margin-top="0.7874in" fo:margin-bottom="0.7874in" fo:margin-left="0.7874in" fo:margin-right="0.7874in" style:writing-mode="lr-tb" style:layout-grid-color="#c0c0c0" style:layout-grid-lines="24" style:layout-grid-base-height="0.4165in" style:layout-grid-ruby-height="0in" style:layout-grid-mode="none" style:layout-grid-ruby-below="false" style:layout-grid-print="false" style:layout-grid-display="false" style:layout-grid-base-width="0.278in" style:layout-grid-snap-to="true" style:footnote-max-height="0in">
+    <style:footnote-sep style:width="0.0071in" style:distance-before-sep="0.0398in" style:distance-after-sep="0.0398in" style:line-style="solid" style:adjustment="left" style:rel-width="25%" style:color="#000000"/>
+   </style:page-layout-properties>
+   <style:header-style/>
+   <style:footer-style/>
+  </style:page-layout>
+ </office:automatic-styles>
+ <office:master-styles>
+  <style:master-page style:name="Standard" style:page-layout-name="pm1"/>
+ </office:master-styles>
+ <office:body>
+  <office:text text:use-soft-page-breaks="true">
+   <office:forms form:automatic-focus="false" form:apply-design-mode="false"/>
+   <text:sequence-decls>
+    <text:sequence-decl text:display-outline-level="0" text:name="Illustration"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Table"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Text"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
+    <text:sequence-decl text:display-outline-level="0" text:name="Figure"/>
+   </text:sequence-decls>
+   <text:p text:style-name="P2">TADS <text:s/>Inteligencia artificial 5º Semestre</text:p>
+   <text:p text:style-name="P1">Pedro H S Almeida</text:p>
+   <text:p text:style-name="P1"/>
+   <text:p text:style-name="P1">1 <text:s/>Aprendizado de Máquina: É um ramo da inteligência artificial que desenvolve algoritmos para permitir que computadores aprendam padrões e tomem decisões a partir de dados, sem programação explícita. Pode ser aplicado em reconhecimento de padrões, previsão, agrupamento e otimização, automatizando tarefas complexas e fornecendo insights valiosos em diversos domínios.</text:p>
+   <text:p text:style-name="P1"/>
+   <text:p text:style-name="P1">2 <text:s text:c="3"/>Dados Rotulados (Labels): São informações adicionais associadas a cada exemplo de dados em um conjunto, indicando a classe ou categoria à qual pertence. Essenciais em problemas de aprendizado supervisionado, como classificação e regressão, os dados rotulados permitem que modelos aprendam a relação entre entradas e saídas desejadas, possibilitando previsões precisas em novos dados.</text:p>
+   <text:p text:style-name="P1"/>
+   <text:p text:style-name="P3"><text:span text:style-name="Strong_20_Emphasis">3 Aprendizado Supervisionado</text:span>:</text:p>
+   <text:list xml:id="list1436603575" text:style-name="WW8Num1">
+    <text:list-item>
+     <text:p text:style-name="P4"><text:span text:style-name="Strong_20_Emphasis">Definição</text:span>: Algoritmos treinados em dados rotulados, onde entradas estão associadas a saídas conhecidas.</text:p>
+    </text:list-item>
+    <text:list-item>
+     <text:p text:style-name="P4"><text:span text:style-name="Strong_20_Emphasis">Problemas Comuns</text:span>:</text:p>
+     <text:list>
+      <text:list-item>
+       <text:p text:style-name="P7"><text:span text:style-name="Strong_20_Emphasis">Classificação</text:span>: Prever a classe ou categoria de uma instância de dados.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P7"><text:span text:style-name="Strong_20_Emphasis">Regressão</text:span>: Prever valores numéricos com base em variáveis de entrada.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P7"><text:span text:style-name="Strong_20_Emphasis">Detecção de Anomalias</text:span>: Identificar instâncias incomuns nos dados.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P7"><text:span text:style-name="Strong_20_Emphasis">Segmentação</text:span>: Dividir dados em grupos distintos com base em características.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P10"><text:span text:style-name="Strong_20_Emphasis">Tradução Automática</text:span>, <text:span text:style-name="Strong_20_Emphasis">Sistemas de Recomendação</text:span>, <text:span text:style-name="Strong_20_Emphasis">Identificação de Objetos em Imagens</text:span>. Cada problema requer técnicas e algoritmos específicos, escolhidos conforme a natureza dos dados e do problema.</text:p>
+      </text:list-item>
+     </text:list>
+    </text:list-item>
+   </text:list>
+   <text:p text:style-name="P13">4 <text:span text:style-name="Strong_20_Emphasis">Aprendizado Não Supervisionado</text:span>:</text:p>
+   <text:list xml:id="list1059244957" text:style-name="WW8Num2">
+    <text:list-item>
+     <text:p text:style-name="P5"><text:span text:style-name="Strong_20_Emphasis">Definição</text:span>: Algoritmos treinados em dados não rotulados para explorar a estrutura intrínseca dos dados e encontrar padrões sem orientação de rótulos pré-definidos.</text:p>
+    </text:list-item>
+    <text:list-item>
+     <text:p text:style-name="P5"><text:span text:style-name="Strong_20_Emphasis">Problemas Comuns</text:span>:</text:p>
+     <text:list>
+      <text:list-item>
+       <text:p text:style-name="P8"><text:span text:style-name="Strong_20_Emphasis">Agrupamento (Clustering)</text:span>: Dividir dados em grupos similares.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P8"><text:span text:style-name="Strong_20_Emphasis">Redução de Dimensionalidade</text:span>: Reduzir variáveis mantendo informações.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P8"><text:soft-page-break/><text:span text:style-name="Strong_20_Emphasis">Descoberta de Regras de Associação</text:span>.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P8"><text:span text:style-name="Strong_20_Emphasis">Análise de Densidade</text:span>: Identificar regiões de alta densidade em dados.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P11"><text:span text:style-name="Strong_20_Emphasis">Análise de Componentes Independentes (ICA)</text:span>. Cada problema requer técnicas e algoritmos específicos, escolhidos conforme a natureza dos dados e do problema.</text:p>
+      </text:list-item>
+     </text:list>
+    </text:list-item>
+   </text:list>
+   <text:p text:style-name="P13"/>
+   <text:p text:style-name="P1">5</text:p>
+   <text:p text:style-name="P13"><text:span text:style-name="Strong_20_Emphasis">Aprendizado por Reforço</text:span>:</text:p>
+   <text:list xml:id="list1867546520" text:style-name="WW8Num3">
+    <text:list-item>
+     <text:p text:style-name="P6"><text:span text:style-name="Strong_20_Emphasis">Definição</text:span>: Abordagem de aprendizado de máquina onde um agente aprende a tomar decisões sequenciais em um ambiente para maximizar uma recompensa cumulativa, interagindo com o ambiente e recebendo feedback na forma de recompensas ou penalidades.</text:p>
+    </text:list-item>
+    <text:list-item>
+     <text:p text:style-name="P6"><text:span text:style-name="Strong_20_Emphasis">Problemas Comuns</text:span>:</text:p>
+     <text:list>
+      <text:list-item>
+       <text:p text:style-name="P9"><text:span text:style-name="Strong_20_Emphasis">Aprendizado em Jogos</text:span>: Agente aprende a jogar jogos de tabuleiro, videogames, ou jogos de estratégia complexos como Go e xadrez.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P9"><text:span text:style-name="Strong_20_Emphasis">Controle de Processos</text:span>: Agente aprende a controlar sistemas dinâmicos como robôs, veículos autônomos, sistemas de energia, para realizar tarefas específicas.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P9"><text:span text:style-name="Strong_20_Emphasis">Otimização de Recompensa</text:span>: Agente aprende a otimizar uma função de recompensa específica, como maximizar lucros em sistemas financeiros.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P9"><text:span text:style-name="Strong_20_Emphasis">Aprendizado de Política</text:span>: Agente aprende uma política de ação que mapeia estados do ambiente para ações a serem tomadas.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P9"><text:span text:style-name="Strong_20_Emphasis">Exploração e Exploração</text:span>: Equilíbrio entre explorar novas ações e explorar ações conhecidas associadas a recompensas positivas.</text:p>
+      </text:list-item>
+      <text:list-item>
+       <text:p text:style-name="P12"><text:span text:style-name="Strong_20_Emphasis">Aprendizado por Hierarquia</text:span>: Aprender políticas de ação em múltiplos níveis de abstração para tarefas de longo prazo. Cada problema requer técnicas e algoritmos específicos, escolhidos conforme a natureza do problema e do ambiente.</text:p>
+      </text:list-item>
+     </text:list>
+    </text:list-item>
+   </text:list>
+   <text:p text:style-name="P13">6</text:p>
+   <text:p text:style-name="P13">a) Para permitir que um robô ande em diversos tipos de terreno, a abordagem comum seria o uso de algoritmos de Aprendizado por Reforço, especialmente Aprendizado por Reforço Profundo, como DQN ou PPO. Isso permitiria ao robô aprender uma política de ação que otimize sua locomoção explorando diferentes terrenos e recebendo feedback do ambiente na forma de recompensas.</text:p>
+   <text:p text:style-name="P3">b) Para segmentar clientes em múltiplos grupos, uma abordagem comum seria usar algoritmos de agrupamento no contexto de Aprendizado Não Supervisionado, como K-Means ou GMM. Esses algoritmos agrupam os clientes com base em características semelhantes, permitindo identificar diferentes segmentos com base em seus comportamentos ou preferências.</text:p>
+   <text:p text:style-name="P1">7. Que tipo de aprendizado usa medidas de similaridade para fazer predições?</text:p>
+   <text:p text:style-name="P1">O tipo de aprendizado que usa medidas de similaridade para fazer predições é comumente</text:p>
+   <text:p text:style-name="P1">conhecido como &quot;aprendizado baseado em instância&quot; ou &quot;aprendizado baseado em memória&quot;.</text:p>
+   <text:p text:style-name="P1">Nesse tipo de aprendizado, em vez de tentar aprender explicitamente uma função que mapeia</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>entradas para saídas, o algoritmo memoriza os exemplos de treinamento e faz predições com base</text:p>
+   <text:p text:style-name="P1">na similaridade entre os novos exemplos e os exemplos de treinamento armazenados.</text:p>
+   <text:p text:style-name="P1">Um dos algoritmos mais conhecidos que se baseia em medidas de similaridade é o k-vizinhos</text:p>
+   <text:p text:style-name="P1">mais próximos (k-Nearest Neighbors - kNN). Neste algoritmo, para fazer uma previsão para um</text:p>
+   <text:p text:style-name="P1">novo exemplo, o algoritmo encontra os k exemplos mais semelhantes no conjunto de treinamento</text:p>
+   <text:p text:style-name="P1">(com base em alguma medida de distância ou similaridade, como a distância euclidiana) e faz</text:p>
+   <text:p text:style-name="P1">uma previsão com base nas classes desses exemplos.</text:p>
+   <text:p text:style-name="P1">Outros exemplos de aprendizado baseado em instância incluem o aprendizado por</text:p>
+   <text:p text:style-name="P1">similaridade (similarity-based learning), onde a similaridade é usada diretamente para generalizar</text:p>
+   <text:p text:style-name="P1">a partir de exemplos, e métodos de memória associativa, onde os exemplos de treinamento são</text:p>
+   <text:p text:style-name="P1">armazenados na memória e as predições são feitas recuperando exemplos semelhantes. Esses</text:p>
+   <text:p text:style-name="P1">métodos podem ser úteis em problemas onde a estrutura dos dados é complexa e difícil de</text:p>
+   <text:p text:style-name="P1">modelar explicitamente com funções paramétricas. No entanto, eles podem ser</text:p>
+   <text:p text:style-name="P1">computacionalmente caros em conjuntos de dados grandes, já que requerem o armazenamento e</text:p>
+   <text:p text:style-name="P1">a comparação de todos os exemplos de treinamento.</text:p>
+   <text:p text:style-name="P1">8. Em um modelo de ML, qual a diferença entre parâmetros e hiper-parâmetros?</text:p>
+   <text:p text:style-name="P1">Em um modelo de machine learning, parâmetros e hiperparâmetros desempenham papéis</text:p>
+   <text:p text:style-name="P1">distintos:</text:p>
+   <text:p text:style-name="P1">1. Parâmetros: São os valores internos do modelo que são aprendidos a partir dos dados durante o</text:p>
+   <text:p text:style-name="P1">treinamento. Eles são ajustados de forma iterativa pelo algoritmo de treinamento para minimizar a</text:p>
+   <text:p text:style-name="P1">função de custo ou maximizar a função de recompensa. Por exemplo, nos modelos de regressão</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>linear, os parâmetros são os coeficientes da equação linear. Nos modelos de rede neural, os</text:p>
+   <text:p text:style-name="P1">parâmetros são os pesos e os vieses em cada camada da rede.</text:p>
+   <text:p text:style-name="P1">2. Hiperparâmetros: São configurações externas ao modelo que influenciam o processo de</text:p>
+   <text:p text:style-name="P1">treinamento, mas não são aprendidos diretamente a partir dos dados. Eles geralmente são</text:p>
+   <text:p text:style-name="P1">definidos antes do início do treinamento e permanecem constantes ao longo do processo de</text:p>
+   <text:p text:style-name="P1">treinamento. Exemplos comuns de hiperparâmetros incluem a taxa de aprendizado, o número de</text:p>
+   <text:p text:style-name="P1">camadas e neurônios em uma rede neural, o número de árvores em um modelo de floresta</text:p>
+   <text:p text:style-name="P1">aleatória e o valor de k no algoritmo k-vizinhos mais próximos (kNN).</text:p>
+   <text:p text:style-name="P1">Em resumo, os parâmetros são ajustados internamente pelo modelo durante o</text:p>
+   <text:p text:style-name="P1">treinamento para se ajustarem aos dados, enquanto os hiperparâmetros são ajustados</text:p>
+   <text:p text:style-name="P1">externamente ao modelo e afetam o processo de treinamento, como a escolha do algoritmo, a</text:p>
+   <text:p text:style-name="P1">configuração da arquitetura do modelo e os métodos de regularização. A seleção adequada dos</text:p>
+   <text:p text:style-name="P1">hiperparâmetros é crucial para o desempenho e a generalização do modelo de machine learning.</text:p>
+   <text:p text:style-name="P1">9. O que são e qual a diferença entre Underfitting e Overfitting? O que fazer para</text:p>
+   <text:p text:style-name="P1">solucionar cada um desses problemas?</text:p>
+   <text:p text:style-name="P1">Underfitting e overfitting são dois problemas comuns em modelos de machine learning</text:p>
+   <text:p text:style-name="P1">que afetam a capacidade do modelo de generalizar a partir dos dados de treinamento para novos</text:p>
+   <text:p text:style-name="P1">dados não vistos. Aqui está a diferença entre eles e como solucioná-los:</text:p>
+   <text:p text:style-name="P1">1. Underfitting:</text:p>
+   <text:p text:style-name="P1">- Definição: Ocorre quando o modelo é muito simples para capturar a complexidade dos dados.</text:p>
+   <text:p text:style-name="P1">Isso resulta em um desempenho insatisfatório tanto nos dados de treinamento quanto nos dados</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>de teste.</text:p>
+   <text:p text:style-name="P1">- Sintomas: Erros de treinamento e teste altos.</text:p>
+   <text:p text:style-name="P1">- Causas: Modelos muito simples, falta de capacidade para capturar a complexidade dos dados.</text:p>
+   <text:p text:style-name="P1">- Soluções:</text:p>
+   <text:p text:style-name="P1">- Aumentar a complexidade do modelo, adicionando mais camadas em redes neurais,</text:p>
+   <text:p text:style-name="P1">aumentando a ordem de polinômios em modelos de regressão, aumentando o número de árvores</text:p>
+   <text:p text:style-name="P1">em modelos de árvores de decisão, entre outros.</text:p>
+   <text:p text:style-name="P1">- Adicionar mais características relevantes aos dados.</text:p>
+   <text:p text:style-name="P1">- Reduzir a regularização, se estiver sendo aplicada em excesso.</text:p>
+   <text:p text:style-name="P1">2. Overfitting:</text:p>
+   <text:p text:style-name="P1">- Definição: Ocorre quando o modelo é muito complexo e se ajusta demais aos dados de</text:p>
+   <text:p text:style-name="P1">treinamento, capturando o ruído e detalhes irrelevantes dos dados.</text:p>
+   <text:p text:style-name="P1">- Sintomas: Baixo erro de treinamento, mas erro de teste alto ou aumento do erro conforme o</text:p>
+   <text:p text:style-name="P1">modelo é avaliado em dados não vistos.</text:p>
+   <text:p text:style-name="P1">- Causas: Modelos muito complexos, falta de regularização, falta de dados de treinamento</text:p>
+   <text:p text:style-name="P1">suficientes.</text:p>
+   <text:p text:style-name="P1">- Soluções:</text:p>
+   <text:p text:style-name="P1">- Reduzir a complexidade do modelo, por exemplo, diminuindo a profundidade da árvore em</text:p>
+   <text:p text:style-name="P1">modelos de árvores de decisão, diminuindo o número de neurônios ou camadas em redes neurais.</text:p>
+   <text:p text:style-name="P1">- Regularização, que penaliza coeficientes de modelos que são muito grandes, ajudando a</text:p>
+   <text:p text:style-name="P1">simplificar o modelo.</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>- Aumentar o tamanho do conjunto de treinamento, se possível, para fornecer ao modelo mais</text:p>
+   <text:p text:style-name="P1">exemplos para aprender.</text:p>
+   <text:p text:style-name="P1">- Usar validação cruzada para ajustar hiperparâmetros e verificar a generalização do modelo.</text:p>
+   <text:p text:style-name="P1">Em geral, a busca por um equilíbrio entre a capacidade de ajuste do modelo e a</text:p>
+   <text:p text:style-name="P1">capacidade de generalização é essencial para evitar tanto o underfitting quanto o overfitting. Isso</text:p>
+   <text:p text:style-name="P1">pode ser alcançado ajustando a complexidade do modelo, adicionando regularização e</text:p>
+   <text:p text:style-name="P1">aumentando a quantidade de dados de treinamento disponíveis.</text:p>
+   <text:p text:style-name="P1">10. Para que servem: conjunto de treino, conjunto de validação e conjunto de teste?</text:p>
+   <text:p text:style-name="P1">Os conjuntos de treino, validação e teste são componentes essenciais no desenvolvimento de</text:p>
+   <text:p text:style-name="P1">modelos de machine learning e servem a propósitos específicos:</text:p>
+   <text:p text:style-name="P1">1. Conjunto de Treino (Training Set):</text:p>
+   <text:p text:style-name="P1">- Propósito: É usado para treinar o modelo. Os exemplos neste conjunto são usados para ajustar</text:p>
+   <text:p text:style-name="P1">os parâmetros do modelo de modo que ele possa aprender a relação entre as entradas e as saídas</text:p>
+   <text:p text:style-name="P1">esperadas.</text:p>
+   <text:p text:style-name="P1">- Processo: Durante o treinamento, o modelo é exposto aos exemplos do conjunto de treino e</text:p>
+   <text:p text:style-name="P1">ajusta seus parâmetros com base nas diferenças entre as previsões do modelo e as saídas reais</text:p>
+   <text:p text:style-name="P1">conhecidas.</text:p>
+   <text:p text:style-name="P1">- Tamanho: O conjunto de treino geralmente é o maior dos três conjuntos, pois quanto mais</text:p>
+   <text:p text:style-name="P1">dados de treinamento o modelo tiver, melhor será sua capacidade de generalização, desde que os</text:p>
+   <text:p text:style-name="P1">dados sejam representativos do problema em questão.</text:p>
+   <text:p text:style-name="P1">2. Conjunto de Validação (Validation Set):</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>- Propósito: É usado para ajustar os hiperparâmetros do modelo e avaliar seu desempenho</text:p>
+   <text:p text:style-name="P1">durante o desenvolvimento.</text:p>
+   <text:p text:style-name="P1">- Processo: Depois de treinar o modelo com o conjunto de treino, os hiperparâmetros são</text:p>
+   <text:p text:style-name="P1">ajustados usando o conjunto de validação e a performance é avaliada. Isso é feito iterativamente</text:p>
+   <text:p text:style-name="P1">até que os hiperparâmetros ideais sejam encontrados.</text:p>
+   <text:p text:style-name="P1">- Tamanho: O conjunto de validação é menor que o conjunto de treino, pois seu objetivo é avaliar</text:p>
+   <text:p text:style-name="P1">o desempenho do modelo em diferentes configurações de hiperparâmetros, não treiná-lo.</text:p>
+   <text:p text:style-name="P1">3. Conjunto de Teste (Test Set):</text:p>
+   <text:p text:style-name="P1">- Propósito: É usado para avaliar o desempenho final do modelo depois que ele foi treinado e</text:p>
+   <text:p text:style-name="P1">ajustado.</text:p>
+   <text:p text:style-name="P1">- Processo: Uma vez que o modelo tenha sido treinado e ajustado usando o conjunto de treino e</text:p>
+   <text:p text:style-name="P1">validação, ele é avaliado no conjunto de teste para estimar sua capacidade de generalização para</text:p>
+   <text:p text:style-name="P1">novos dados não vistos.</text:p>
+   <text:p text:style-name="P1">- Tamanho: O conjunto de teste também é separado do conjunto de treino e validação, mas seu</text:p>
+   <text:p text:style-name="P1">tamanho deve ser grande o suficiente para fornecer uma avaliação confiável do desempenho do</text:p>
+   <text:p text:style-name="P1">modelo.</text:p>
+   <text:p text:style-name="P1">É importante manter esses conjuntos separados e garantir que os dados não se</text:p>
+   <text:p text:style-name="P1">sobreponham entre eles, para que a avaliação do modelo seja imparcial e realista. Além disso, é</text:p>
+   <text:p text:style-name="P1">crucial garantir que os dados em cada conjunto sejam representativos da distribuição dos dados</text:p>
+   <text:p text:style-name="P1">do mundo real para garantir uma avaliação precisa do desempenho do modelo em situações reais.</text:p>
+   <text:p text:style-name="P1">11. O que é matriz de confusão e como usá-la?</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>Uma matriz de confusão é uma tabela que é usada para descrever o desempenho de um</text:p>
+   <text:p text:style-name="P1">modelo de classificação em um conjunto de dados, mostrando o número de previsões corretas e</text:p>
+   <text:p text:style-name="P1">incorretas feitas pelo modelo em cada classe. Ela é especialmente útil para avaliar o desempenho</text:p>
+   <text:p text:style-name="P1">de algoritmos de classificação em problemas com múltiplas classes.</text:p>
+   <text:p text:style-name="P1">Uma matriz de confusão tem o seguinte formato:</text:p>
+   <text:p text:style-name="P1">```</text:p>
+   <text:p text:style-name="P1">Classe Real: Positiva Classe Real: Negativa</text:p>
+   <text:p text:style-name="P1">Classe Prevista: Positiva Verdadeiro Positivo (TP) Falso Positivo (FP)</text:p>
+   <text:p text:style-name="P1">Classe Prevista: Negativa Falso Negativo (FN) Verdadeiro Negativo (TN)</text:p>
+   <text:p text:style-name="P1">```</text:p>
+   <text:p text:style-name="P1">Onde:</text:p>
+   <text:p text:style-name="P1">- Verdadeiro Positivo (TP): São os casos em que o modelo previu corretamente uma instância</text:p>
+   <text:p text:style-name="P1">como pertencente à classe positiva.</text:p>
+   <text:p text:style-name="P1">- Falso Positivo (FP): São os casos em que o modelo previu incorretamente uma instância como</text:p>
+   <text:p text:style-name="P1">pertencente à classe positiva quando na verdade pertencia à classe negativa (um erro do tipo I).</text:p>
+   <text:p text:style-name="P1">- Falso Negativo (FN): São os casos em que o modelo previu incorretamente uma instância como</text:p>
+   <text:p text:style-name="P1">pertencente à classe negativa quando na verdade pertencia à classe positiva (um erro do tipo II).</text:p>
+   <text:p text:style-name="P1">- Verdadeiro Negativo (TN): São os casos em que o modelo previu corretamente uma instância</text:p>
+   <text:p text:style-name="P1">como pertencente à classe negativa.</text:p>
+   <text:p text:style-name="P1">Para usar a matriz de confusão, você normalmente a obtém comparando as previsões do</text:p>
+   <text:p text:style-name="P1">seu modelo com os rótulos verdadeiros do conjunto de teste. Depois de construir a matriz, você</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>pode calcular várias métricas de desempenho, como precisão, recall, F1-score e taxa de acerto,</text:p>
+   <text:p text:style-name="P1">usando os valores na matriz.</text:p>
+   <text:p text:style-name="P1">A matriz de confusão é uma ferramenta poderosa para entender o desempenho do seu</text:p>
+   <text:p text:style-name="P1">modelo de classificação, especialmente quando há mais de duas classes a serem consideradas.</text:p>
+   <text:p text:style-name="P1">Ela fornece uma visão detalhada de como o modelo está classificando as instâncias e onde estão</text:p>
+   <text:p text:style-name="P1">ocorrendo os erros. Isso pode ajudar na identificação de áreas de melhoria no modelo e no ajuste</text:p>
+   <text:p text:style-name="P1">de estratégias de classificação, se necessário.</text:p>
+   <text:p text:style-name="P1">12. Defina:</text:p>
+   <text:p text:style-name="P1">○<text:span text:style-name="T1"> </text:span>acurácia</text:p>
+   <text:p text:style-name="P1">A acurácia é uma medida geral de desempenho que mede a proporção de exemplos</text:p>
+   <text:p text:style-name="P1">classificados corretamente pelo modelo, ou seja, a quantidade de previsões corretas em relação</text:p>
+   <text:p text:style-name="P1">ao total de previsões.</text:p>
+   <text:p text:style-name="P1">Interpretation: A acurácia indica a capacidade geral do modelo de classificar corretamente</text:p>
+   <text:p text:style-name="P1">os exemplos em todas as classes. No entanto, pode ser enganosa em conjuntos de dados</text:p>
+   <text:p text:style-name="P1">desbalanceados.</text:p>
+   <text:p text:style-name="P1">○<text:span text:style-name="T1"> </text:span>precisão (precision)</text:p>
+   <text:p text:style-name="P1">A precisão é a proporção de exemplos positivos previstos corretamente em relação ao</text:p>
+   <text:p text:style-name="P1">total de exemplos previstos como positivos.</text:p>
+   <text:p text:style-name="P1">Interpretation: A precisão indica a precisão das previsões positivas do modelo. Uma</text:p>
+   <text:p text:style-name="P1">precisão alta significa que poucos exemplos negativos são incorretamente classificados como</text:p>
+   <text:p text:style-name="P1">positivos.</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>○<text:span text:style-name="T1"> </text:span>recuperação (recall)</text:p>
+   <text:p text:style-name="P1">A recuperação é a proporção de exemplos positivos previstos corretamente em relação ao</text:p>
+   <text:p text:style-name="P1">total de exemplos positivos verdadeiros.</text:p>
+   <text:p text:style-name="P1">Interpretation: A recuperação mede a capacidade do modelo de identificar corretamente</text:p>
+   <text:p text:style-name="P1">todos os exemplos positivos. Uma recuperação alta significa que poucos exemplos positivos são</text:p>
+   <text:p text:style-name="P1">incorretamente classificados como negativos.</text:p>
+   <text:p text:style-name="P1">○<text:span text:style-name="T1"> </text:span>f1-score</text:p>
+   <text:p text:style-name="P1">F1-score é uma média harmônica da precisão e da recuperação, fornecendo uma única</text:p>
+   <text:p text:style-name="P1">métrica que combina ambas.</text:p>
+   <text:p text:style-name="P1">Interpretation: O F1-score é útil quando há um desequilíbrio entre as classes devido a sua</text:p>
+   <text:p text:style-name="P1">capacidade de considerar tanto falsos positivos quanto falsos negativos. Ele fornece uma medida</text:p>
+   <text:p text:style-name="P1">de desempenho que equilibra precisão e recuperação.</text:p>
+   <text:p text:style-name="P1">13. Considere a matriz de confusão abaixo de um modelo de classificação:</text:p>
+   <text:p text:style-name="P1">calcule:</text:p>
+   <text:p text:style-name="P1">i. accuracy</text:p>
+   <text:p text:style-name="P1">aproximadamente 0.6842</text:p>
+   <text:p text:style-name="P1">ii. precision</text:p>
+   <text:p text:style-name="P1">aproximadamente 0.7143</text:p>
+   <text:p text:style-name="P1">iii. recall</text:p>
+   <text:p text:style-name="P1">aproximadamente 0.5556</text:p>
+   <text:p text:style-name="P1">iv. f-score(gato)</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>aproximadamente 0.6250</text:p>
+   <text:p text:style-name="P1">14. Explique o funcionamento básico do algoritmo de Árvore de decisão.</text:p>
+   <text:p text:style-name="P1">O algoritmo de Árvore de Decisão é um método de aprendizado supervisionado usado para</text:p>
+   <text:p text:style-name="P1">classificação e regressão. Aqui está um resumo do seu funcionamento básico:</text:p>
+   <text:p text:style-name="P1">1. Divisão do Conjunto de Dados:</text:p>
+   <text:p text:style-name="P1">- O algoritmo começa com o conjunto de dados completo e seleciona a melhor característica</text:p>
+   <text:p text:style-name="P1">para dividir os dados em dois conjuntos. A melhor característica é aquela que maximiza a</text:p>
+   <text:p text:style-name="P1">separação entre as classes ou minimiza a impureza dos subconjuntos resultantes. Isso é feito</text:p>
+   <text:p text:style-name="P1">usando uma métrica como índice de Gini, entropia ou erro de classificação.</text:p>
+   <text:p text:style-name="P1">2. Criação da Árvore:</text:p>
+   <text:p text:style-name="P1">- Uma vez que a melhor característica é selecionada, os dados são divididos em dois</text:p>
+   <text:p text:style-name="P1">subconjuntos com base nos valores dessa característica. Isso cria um nó na árvore de decisão.</text:p>
+   <text:p text:style-name="P1">- Esse processo é então repetido recursivamente para cada nó filho até que uma condição de</text:p>
+   <text:p text:style-name="P1">parada seja atingida. Essas condições podem incluir atingir uma profundidade máxima da árvore,</text:p>
+   <text:p text:style-name="P1">atingir um número mínimo de amostras em um nó ou até que todas as amostras em um nó</text:p>
+   <text:p text:style-name="P1">pertençam à mesma classe.</text:p>
+   <text:p text:style-name="P1">3. Classificação e Predição:</text:p>
+   <text:p text:style-name="P1">- Quando uma nova amostra precisa ser classificada ou prevista, ela percorre a árvore de decisão</text:p>
+   <text:p text:style-name="P1">de acordo com os valores de suas características. Em cada nó, a amostra é comparada com o</text:p>
+   <text:p text:style-name="P1">valor da característica usada para dividir os dados naquele nó. Com base nessa comparação, a</text:p>
+   <text:p text:style-name="P1">amostra é encaminhada para o nó filho apropriado até chegar a uma folha da árvore.</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>- O valor da classe na folha em que a amostra chegou é então atribuído como a previsão do</text:p>
+   <text:p text:style-name="P1">modelo.</text:p>
+   <text:p text:style-name="P1">4. Podas (Pruning):</text:p>
+   <text:p text:style-name="P1">- Depois que a árvore é construída, pode ser excessivamente complexa e propensa a overfitting.</text:p>
+   <text:p text:style-name="P1">Para evitar isso, técnicas de poda podem ser aplicadas para remover ramos da árvore que não</text:p>
+   <text:p text:style-name="P1">contribuem significativamente para a precisão do modelo. Isso ajuda a simplificar a árvore e</text:p>
+   <text:p text:style-name="P1">melhorar sua capacidade de generalização.</text:p>
+   <text:p text:style-name="P1">Em resu<text:tab/>mo, o algoritmo de Árvore de Decisão é uma abordagem intuitiva e fácil de</text:p>
+   <text:p text:style-name="P1">interpretar para problemas de classificação e regressão, onde a estrutura da árvore representa</text:p>
+   <text:p text:style-name="P1">uma sequência de decisões baseadas em características dos dados.</text:p>
+   <text:p text:style-name="P1">15. Explique o funcionamento básico do algoritmo KNN</text:p>
+   <text:p text:style-name="P1">O algoritmo k-Vizinhos Mais Próximos (KNN - k-Nearest Neighbors) é um método de</text:p>
+   <text:p text:style-name="P1">aprendizado supervisionado utilizado para classificação e regressão. Aqui está um resumo do seu</text:p>
+   <text:p text:style-name="P1">funcionamento básico:</text:p>
+   <text:p text:style-name="P1">1. Armazenamento do Conjunto de Treinamento:</text:p>
+   <text:p text:style-name="P1">- O algoritmo começa armazenando todo o conjunto de dados de treinamento. Cada exemplo no</text:p>
+   <text:p text:style-name="P1">conjunto de dados é composto por características (ou atributos) e um rótulo de classe (para</text:p>
+   <text:p text:style-name="P1">problemas de classificação) ou um valor alvo (para problemas de regressão).</text:p>
+   <text:p text:style-name="P1">2. Determinação da Proximidade:</text:p>
+   <text:p text:style-name="P1">- Quando uma nova instância precisa ser classificada ou prevista, o algoritmo calcula a distância</text:p>
+   <text:p text:style-name="P1">entre essa instância e todos os exemplos no conjunto de treinamento. A distância mais</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>comumente usada é a distância euclidiana, embora outras medidas de distância possam ser</text:p>
+   <text:p text:style-name="P1">aplicadas, dependendo do problema.</text:p>
+   <text:p text:style-name="P1">3. Seleção dos Vizinhos Mais Próximos:</text:p>
+   <text:p text:style-name="P1">- Após calcular as distâncias, o algoritmo seleciona os k exemplos mais próximos (vizinhos mais</text:p>
+   <text:p text:style-name="P1">próximos) da nova instância. O valor de k é um hiperparâmetro que deve ser especificado antes do</text:p>
+   <text:p text:style-name="P1">treinamento do modelo. Normalmente, é escolhido um valor ímpar para evitar empates.</text:p>
+   <text:p text:style-name="P1">4. Classificação ou Regressão:</text:p>
+   <text:p text:style-name="P1">- Para problemas de classificação, o algoritmo atribui à nova instância a classe mais frequente</text:p>
+   <text:p text:style-name="P1">entre os k vizinhos mais próximos (ou seja, a classe majoritária). Para problemas de regressão, o</text:p>
+   <text:p text:style-name="P1">algoritmo atribui à nova instância a média ou a mediana dos valores alvo dos k vizinhos mais</text:p>
+   <text:p text:style-name="P1">próximos.</text:p>
+   <text:p text:style-name="P1">5. Retorno do Resultado:</text:p>
+   <text:p text:style-name="P1">- Após a classificação ou previsão, o algoritmo retorna o resultado para a nova instância, ou seja,</text:p>
+   <text:p text:style-name="P1">a classe prevista (para problemas de classificação) ou o valor previsto (para problemas de</text:p>
+   <text:p text:style-name="P1">regressão).</text:p>
+   <text:p text:style-name="P1">O algoritmo KNN é simples de entender e implementar, mas pode ser</text:p>
+   <text:p text:style-name="P1">computacionalmente custoso, pois precisa calcular a distância entre a nova instância e todos os</text:p>
+   <text:p text:style-name="P1">exemplos do conjunto de treinamento durante a fase de teste. Além disso, a escolha do valor de k é</text:p>
+   <text:p text:style-name="P1">crucial, pois afeta o desempenho do modelo. Em geral, valores menores de k podem levar a</text:p>
+   <text:p text:style-name="P1">modelos mais sensíveis a ruídos, enquanto valores maiores de k podem suavizar as fronteiras de</text:p>
+   <text:p text:style-name="P1">decisão.</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>16. Qual a diferença entre os algoritmos de regressão logística e o de regressão linear?</text:p>
+   <text:p text:style-name="P1">A regressão logística e a regressão linear são dois algoritmos de aprendizado supervisionado</text:p>
+   <text:p text:style-name="P1">utilizados para resolver problemas de regressão, mas há diferenças significativas entre eles:</text:p>
+   <text:p text:style-name="P1">1. Modelo de Previsão:</text:p>
+   <text:p text:style-name="P1">- Regressão Linear: O modelo de regressão linear prevê uma variável contínua com base em uma</text:p>
+   <text:p text:style-name="P1">combinação linear das características de entrada. Em outras palavras, ele tenta encontrar a</text:p>
+   <text:p text:style-name="P1">melhor linha reta que se ajusta aos dados, minimizando a soma dos quadrados das diferenças</text:p>
+   <text:p text:style-name="P1">entre as previsões do modelo e os valores reais.</text:p>
+   <text:p text:style-name="P1">- Regressão Logística: Por outro lado, a regressão logística é usada para prever a probabilidade</text:p>
+   <text:p text:style-name="P1">de uma variável categórica binária com base em uma combinação linear das características de</text:p>
+   <text:p text:style-name="P1">entrada. Ele modela a relação entre as características de entrada e a probabilidade de que uma</text:p>
+   <text:p text:style-name="P1">observação pertença a uma determinada classe usando uma função logística (também conhecida</text:p>
+   <text:p text:style-name="P1">como função sigmoide).</text:p>
+   <text:p text:style-name="P1">2. Variável de Saída:</text:p>
+   <text:p text:style-name="P1">- Regressão Linear: A variável de saída na regressão linear é contínua e pode assumir qualquer</text:p>
+   <text:p text:style-name="P1">valor dentro de um intervalo. Por exemplo, previsão de preço de imóveis ou temperatura.</text:p>
+   <text:p text:style-name="P1">- Regressão Logística: Na regressão logística, a variável de saída é categórica e binária, ou seja,</text:p>
+   <text:p text:style-name="P1">pertence a uma de duas categorias mutuamente exclusivas. Por exemplo, previsão se um e-mail é</text:p>
+   <text:p text:style-name="P1">spam ou não, ou se um paciente tem uma doença ou não.</text:p>
+   <text:p text:style-name="P1">3. Função de Ativação:</text:p>
+   <text:p text:style-name="P1">- Regressão Linear: Não há função de ativação em um modelo de regressão linear. A previsão é</text:p>
+   <text:p text:style-name="P1"><text:soft-page-break/>calculada diretamente como uma combinação linear das características de entrada.</text:p>
+   <text:p text:style-name="P1">- Regressão Logística: Um modelo de regressão logística utiliza uma função de ativação,</text:p>
+   <text:p text:style-name="P1">chamada função logística ou função sigmoide, para transformar a saída linear em uma</text:p>
+   <text:p text:style-name="P1">probabilidade entre 0 e 1, o que é interpretado como a probabilidade de pertencer a uma</text:p>
+   <text:p text:style-name="P1">determinada classe.</text:p>
+   <text:p text:style-name="P1">4. Interpretação dos Coeficientes:</text:p>
+   <text:p text:style-name="P1">- Regressão Linear: Os coeficientes na regressão linear representam a mudança média na</text:p>
+   <text:p text:style-name="P1">variável de resposta para uma unidade de mudança na variável independente, mantendo todas as</text:p>
+   <text:p text:style-name="P1">outras variáveis constantes.</text:p>
+   <text:p text:style-name="P1">- Regressão Logística: Os coeficientes na regressão logística representam o impacto logarítmico</text:p>
+   <text:p text:style-name="P1">na chance de pertencer à classe de interesse para uma unidade de mudança na variável</text:p>
+   <text:p text:style-name="P1">independente, mantendo todas as outras variáveis constantes.</text:p>
+   <text:p text:style-name="P1">Em resumo, a regressão linear é usada para prever valores contínuos, enquanto a</text:p>
+   <text:p text:style-name="P1">regressão logística é usada para prever a probabilidade de pertencer a uma classe específica em</text:p>
+   <text:p text:style-name="P1">problemas de classificação binária.</text:p>
+  </office:text>
+ </office:body>
+</office:document>

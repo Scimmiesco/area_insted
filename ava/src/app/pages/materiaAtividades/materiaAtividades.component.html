@@ -52,52 +52,14 @@
           >
             <h1 class="text-white text-2xl font-bold py-1">Geral</h1>
           </mat-expansion-panel-header>
-          <div
-            class="flex flex-col flex-nowrap gap-1 text-center items-center p-1"
+          <app-pagina
+            [atividade]="{
+              tipo: EnumTiposAtividades.PAGINA,
+              titulo: 'Atividade 01',
+              href: 'assets/pdf/teste.xls'
+            }"
           >
-            <div
-              class="flex flex-row flex-nowrap w-full gap-1 justify-center items-stretch rounded-2xl"
-            >
-              <div
-                class="flex flex-row justify-center bg-green_insted_dark rounded-tl-2xl rounded-r-md rounded-bl-md p-2"
-              >
-                <span
-                  class="material-symbols-outlined text-white text-4xl self-center"
-                  >description</span
-                >
-              </div>
-              <div class="bg-green_insted_dark rounded-md w-full p-2">
-                <div class="flex flex-col w-full gap-2">
-                  <h3 class="text-sm text-white_transp text-start">Página</h3>
-                  <a href="area/materia/atividade"
-                    ><h2 class="text-base dark:text-white font-bold text-start">
-                      Datas importantes
-                    </h2></a
-                  >
-                </div>
-              </div>
-              <div
-                class="p-2 bg-green_insted_dark rounded-tr-2xl rounded-l-md rounded-br-md flex flex-row flex-nowrap text-center items-center justify-end text-white"
-              >
-                <span class="hidden material-symbols-outlined text-3xl"
-                  >circle</span
-                >
-                <span class="material-symbols-outlined text-3xl"
-                  >check_circle</span
-                >
-              </div>
-            </div>
-            <div
-              class="flex flex-col bg-white rounded-t-md rounded-b-2xl max-h-[50vh] min-h-[250px]"
-            >
-              <p class="p-1 whitespace-normal text-justify">
-                PROVAS AV 1 – 25/04/2024 REVISÃO DE AV 1 – 02/05/2024 AV 2 –
-                20/06/2024 REVISÃO DE AV 2 – 27/06/2024 EXERCÍCIO DE COMPRESSÃO
-                EX.COM 01 – 07/03/2024 EX.COM 02 – 28/03/2024 EX.COM 03 –
-                11/04/2024 EX.COM 04 – 16/05/2024 EX.COM 05 – 06/06/2024
-              </p>
-            </div>
-          </div>
+          </app-pagina>
         </mat-expansion-panel>
       </mat-accordion>
       <mat-accordion class="w-full rounded-2xl">
