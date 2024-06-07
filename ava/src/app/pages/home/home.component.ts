@@ -1,3 +1,4 @@
+import { TokenService } from 'app/services/token.service';
 import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,6 +18,7 @@ import { FinanceiroDialogComponent } from 'app/components/modais/financeiro/fina
 import { Router } from '@angular/router';
 import { ResponseMateriasI } from 'app/Interfaces/materias.interface';
 import { cores } from 'app/Interfaces/cores.interface';
+import { EnumCargos } from 'app/Interfaces/token.interface';
 
 register();
 
@@ -36,12 +38,14 @@ export class HomeComponent {
     public dialog: MatDialog,
     public materiasService: MateriasService,
     public userService: UserService,
+    public tokenService: TokenService,
     public store: Store<{ app: IappState }>,
     private tamanhoDaTelaService: TamanhoDaTelaService,
     private router: Router
   ) {
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
+
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
@@ -49,7 +53,10 @@ export class HomeComponent {
     this.materiasService.materias$.subscribe((materias) => {
       this.materias = materias;
     });
+
+    // this.tokenService.getDataFromToken(localStorage.getItem('token')|| '').role
   }
+
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() =>
       this.handleScreenSizeChange()

@@ -1,7 +1,7 @@
 import { UserService } from 'app/services/user.service';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IappState, browseReloadToken } from 'app/store/app.state';
+import { IappState, browseReloadToken, getUser } from 'app/store/app.state';
 import { TokenService } from 'app/services/token.service';
 import { MateriasService } from 'app/services/materias.service';
 import { materiaPadrao } from 'app/Interfaces/materias.interface';
@@ -12,6 +12,7 @@ import { TemaService } from 'app/services/tema.service';
 import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { IconsAcessibilidadeInterface } from 'app/shared/icons-acessibilidade/icons-acessibilidade.model';
 import { IconsAcessibilidade } from 'app/shared/icons-acessibilidade/mock-icons-acessibilidade';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-area',
@@ -24,9 +25,10 @@ export class AreaComponent implements OnInit {
   iconsAcessibilidade!: IconsAcessibilidadeInterface[];
   htmlRoot!: HTMLElement;
   tamanhoFontePadrao = '16px';
+  private materiasSubscription!: Subscription;
 
   constructor(
-    store: Store<{ app: IappState }>,
+    private store: Store<{ app: IappState }>,
     private tokenService: TokenService,
     public dialog: MatDialog,
     private userService: UserService,
@@ -45,14 +47,21 @@ export class AreaComponent implements OnInit {
   }
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() => this.telaTamanhoMobile());
+    if (this.materiasSubscription) {
+      this.materiasSubscription.unsubscribe();
+    }
   }
   getDados() {
-    this.getUser();
+    this.userService.getUser();
     this.getMaterias();
   }
 
   getMaterias() {
-    let ra = this.tokenService.getDataFromToken().unique_name;
+    let usuarioID: number;
+
+    this.store.select(getUser).subscribe((user) => {
+      usuarioID = user.IdUser;
+    });
 
     this.materiasService.materias$.subscribe((materias) => {
       if (
@@ -60,13 +69,9 @@ export class AreaComponent implements OnInit {
         materias.length === 0 ||
         materias === materiaPadrao
       ) {
-        this.materiasService.getHttpMaterias(ra);
+        this.materiasService.ObterMaterias(usuarioID);
       }
     });
-  }
-
-  getUser() {
-    this.userService.getUser();
   }
 
   public telaTamanhoMobile(): boolean {
@@ -102,13 +107,12 @@ export class AreaComponent implements OnInit {
         break;
 
       case 'mudaContraste':
-          if(localStorage.getItem('tema') === 'alto_contraste'){
-            this.temaService.mudarTema('light');
-          }else{
+        if (localStorage.getItem('tema') === 'alto_contraste') {
+          this.temaService.mudarTema('light');
+        } else {
+          this.temaService.mudarTema('alto_contraste');
+        }
 
-            this.temaService.mudarTema('alto_contraste');
-          }
-        
         break;
 
       default:

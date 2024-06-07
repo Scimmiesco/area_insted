@@ -6,7 +6,9 @@ import { IappState, getUser, setUser } from 'app/store/app.state';
 import { Store } from '@ngrx/store';
 import { userResponse } from 'app/Interfaces/user.Interface';
 import { environment } from 'environments/environment';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
+import { EnumCargos } from 'app/Interfaces/token.interface';
+import { Observable } from 'rxjs';
 ('');
 @Injectable({
   providedIn: 'root',
@@ -18,8 +20,7 @@ export class UserService {
     private http: HttpClient,
     private store: Store<{ app: IappState }>,
     private tokenService: TokenService
-  ) {
-  }
+  ) {}
 
   getUser() {
     let ra = this.tokenService.getDataFromToken().unique_name;
@@ -44,5 +45,19 @@ export class UserService {
 
   setUserInStore(user: Pessoa['user']) {
     this.store.dispatch(setUser({ payload: user }));
+  }
+
+  obterCargoUsuario(): Observable<EnumCargos> {
+    return this.store
+      .select(getUser)
+      .pipe(
+        map((user) =>
+          user.SnTeacher.valueOf() != null
+            ? user.SnTeacher.valueOf() === false
+              ? EnumCargos.ALUNO
+              : EnumCargos.PROFESSOR
+            : EnumCargos.ALUNO
+        )
+      );
   }
 }

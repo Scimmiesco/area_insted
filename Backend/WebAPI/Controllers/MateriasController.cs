@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using WebAPI.Data;
 using WebAPI.Models;
+using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
@@ -12,22 +14,27 @@ namespace WebAPI.Controllers
 
     {
         private AreaInstedContext _context;
-        public MateriasController(AreaInstedContext context)
+        private TokenService _tokenService;
+        private readonly IConfiguration _configuration;
+        public MateriasController(AreaInstedContext context, TokenService tokenService, IConfiguration configuration)
 
         {
             _context = context;
+            _configuration = configuration;
+            _tokenService = tokenService;
+
         }
         [HttpGet("getmaterias")]
-        public async Task<IActionResult> GetMaterias(string ra)
+        public IActionResult GetMaterias(int usuarioID)
         {
             try
             {
-                if (ra.IsNullOrEmpty())
+                if (usuarioID == 0)
                 {
-                    return BadRequest(new { message = "RA informado está nulo ou vazio." });
+                    return BadRequest(new { message = "ID informado é inválido." });
                 }
 
-                var user = await _context.TbUsers.FirstOrDefaultAsync(u => u.NrRegister == ra);
+                var user = _context.TbUsers.FirstOrDefault(u => u.IdUser == usuarioID);
 
                 if (user == null)
                 {
@@ -35,12 +42,12 @@ namespace WebAPI.Controllers
                 }
 
                 var userId = user.IdUser;
-                var IdsUserClass = await _context.TbUserClasses
-                     .Where(u => u.IdUser == userId)
-                     .Select(a => a.IdClass)
-                .ToListAsync();
+                var IdsUserClass = _context.TbUserClasses
+                    .Where(u => u.IdUser == userId)
+                    .Select(a => a.IdClass)
+                    .ToList();
 
-                var materias = await _context.TbClasses
+                var materias = _context.TbClasses
                     .Where(u => IdsUserClass.Contains(u.IdClass))
                     .Select(c => new MateriaDto
                     {
@@ -53,7 +60,7 @@ namespace WebAPI.Controllers
                         NmUser = c.NmUser,
                         DtTime = c.DtTime
                     })
-                    .ToListAsync();
+                    .ToList();
 
                 return Ok(new
                 {
@@ -62,6 +69,62 @@ namespace WebAPI.Controllers
                     materias = materias
                 });
             }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet("getmateriasdocente")]
+        public IActionResult GetMateriasDocente([FromHeader(Name = "Authorization")] string token, [FromQuery] int usuarioID)
+        {
+            try
+            {
+                if (_tokenService.ValidateToken(token))
+                {
+                    if (usuarioID == 0)
+                    {
+                        return BadRequest(new { message = "ID informado é inválido." });
+                    }
+
+                    var tbUser = _context.TbUsers.FirstOrDefault(u => u.IdUser == usuarioID);
+
+                    if (tbUser == null)
+                    {
+                        return NotFound(new { message = "Usuário não encontrado." });
+                    }
+                    if (tbUser.SnTeacher == true)
+                    {
+
+                        var userId = tbUser.IdUser;
+
+                        var materias = _context.TbClasses
+                            .Where(u => u.IdUser == tbUser.IdUser)
+                            .Select(c => new MateriaDto
+                            {
+                                IdClass = c.IdClass,
+                                IdUser = c.IdUser,
+                                NmClass = c.NmClass,
+                                NmWeekday = c.NmWeekday,
+                                NmClassroom = c.NmClassroom,
+                                NrTotal = c.NrTotal,
+                                NmUser = c.NmUser,
+                                DtTime = c.DtTime
+                            })
+                            .ToList();
+
+                        return Ok(new
+                        {
+                            success = true,
+                            message = "matérias retornadas com sucesso!",
+                            materias = materias
+                        });
+                    }
+                    else return StatusCode(StatusCodes.Status401Unauthorized, "Usuário não possui permissão como docente.");
+                }
+                else return StatusCode(StatusCodes.Status401Unauthorized, "Token inválido.");
+            }
+
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);

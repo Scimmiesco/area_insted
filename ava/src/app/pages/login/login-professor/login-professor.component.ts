@@ -13,7 +13,6 @@ import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-login-professor',
   templateUrl: './login-professor.component.html',
-  styleUrls: ['./login-professor.component.css'],
 })
 export class LoginProfessorComponent implements OnInit {
   loginProfessorForm!: FormGroup;

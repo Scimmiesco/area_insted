@@ -57,7 +57,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddCors(options => options.AddPolicy(name: "AreaInstedOrigins",
     Policy =>
     {
-        Policy.WithOrigins("https://localhost:4200", "https://areainsted.vercel.app", "https://desareainsted.vercel.app", "https://localhost:7003", "https://localhost").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+        Policy.WithOrigins("https://localhost:4200", "https://areainsted.vercel.app", "https://desareainsted.vercel.app", "https://localhost:7003", "https://localhost", "http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
     }
 ));
 builder.Services.AddMvc().AddJsonOptions(options =>

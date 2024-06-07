@@ -49,18 +49,23 @@ export const browseReload = createAction(
   '[AppUser] browseReload',
   props<{ payload: Pessoa['user'] }>()
 );
+
 export const selectUser = createFeatureSelector<IappState>('app');
+
 export const getUser = createSelector(selectUser, (state: IappState) => {
   return state.user;
 });
+
 export const setToken = createAction(
   '[AppUser] setToken',
   props<{ payload: string }>()
 );
+
 export const browseReloadToken = createAction(
   '[AppUser] setToken',
   props<{ payload: string }>()
 );
+
 export const appReducer = createReducer(
   appInitialState,
   on(setUser, browseReload, (state, { payload }) => ({

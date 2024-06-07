@@ -1,3 +1,4 @@
+import { MateriasService } from 'app/services/materias.service';
 import { IappState, getUser } from 'app/store/app.state';
 import { Component } from '@angular/core';
 import { Pessoa } from 'app/Interfaces/Pessoa.interface';
@@ -10,6 +11,7 @@ import { UserService } from 'app/services/user.service';
 import { ResetPasswordsService } from 'app/services/reset-password.service';
 import { RetornoRequisicaoModalComponent } from 'app/components/modais/retornoRequisicao/retornoRequisicao.component';
 import * as CryptoJS from 'crypto-js';
+import { materiaPadrao } from 'app/Interfaces/materias.interface';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -27,7 +29,8 @@ export class ProfileComponent {
     public dialog: MatDialog,
     public userService: UserService,
     private formBuilder: FormBuilder,
-    private resetPasswordsService: ResetPasswordsService
+    private resetPasswordsService: ResetPasswordsService,
+    private materiasService: MateriasService
   ) {}
 
   ngOnInit() {
@@ -68,7 +71,7 @@ export class ProfileComponent {
   logout() {
     sessionStorage.clear();
     localStorage.clear();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
   modalSucessoEnvioEmail(message: string) {
     this.dialog.open(RetornoRequisicaoModalComponent, {
