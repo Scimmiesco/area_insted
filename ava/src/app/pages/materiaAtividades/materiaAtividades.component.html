@@ -3,7 +3,10 @@
 >
   <div class="w-full laptop:max-w-[50%]">
     <h1 class="text-center dark:text-white font-bold p-2">
-      {{ (this.materiasService.materias$ | async)?.[this.idMateria]?.NmClass ?? 'Nenhuma matéria encontrada' }}
+      {{
+        (getMateriaSelecionada() | async)?.NmClass ??
+          "Nenhuma matéria encontrada"
+      }}
     </h1>
     <div class="flex flex-col flex-nowrap gap-2">
       <mat-accordion class="w-full rounded-2xl">

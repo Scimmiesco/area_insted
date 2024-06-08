@@ -9,7 +9,7 @@ namespace WebAPI.Services
 {
     public class TokenService : ITokenService
     {
-        private readonly IConfiguration _configuration;
+        private IConfiguration _configuration;
 
         public TokenService(IConfiguration configuration)
         {

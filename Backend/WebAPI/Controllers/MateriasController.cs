@@ -14,14 +14,14 @@ namespace WebAPI.Controllers
 
     {
         private AreaInstedContext _context;
+        private IConfiguration _configuration;
         private TokenService _tokenService;
-        private readonly IConfiguration _configuration;
-        public MateriasController(AreaInstedContext context, TokenService tokenService, IConfiguration configuration)
+        public MateriasController(AreaInstedContext context, IConfiguration configuration)
 
         {
             _context = context;
             _configuration = configuration;
-            _tokenService = tokenService;
+            _tokenService = new TokenService(_configuration);
 
         }
         [HttpGet("getmaterias")]

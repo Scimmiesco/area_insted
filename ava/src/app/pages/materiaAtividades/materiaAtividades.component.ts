@@ -4,13 +4,17 @@ import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MateriasService } from 'app/services/materias.service';
+import {
+  materiaPadrao,
+  ResponseMateriasI,
+} from 'app/Interfaces/materias.interface';
 
 @Component({
   selector: 'app-materia',
   templateUrl: './materiaAtividades.component.html',
 })
 export class MateriaAtividadesComponent {
-  idMateria: number = 0;
+  idMateria: string = '';
   private subscription!: Subscription;
   EnumTiposAtividades = TiposAtividades;
 
@@ -20,8 +24,9 @@ export class MateriaAtividadesComponent {
     public materiasService: MateriasService
   ) {
     this.subscription = this.getIDMateria().subscribe((value) => {
-      this.idMateria = value;
+      this.idMateria = value.toString();
     });
+    console.log(this.getMateriaSelecionada());
   }
 
   getIDMateria(): Observable<number> {
@@ -33,5 +38,15 @@ export class MateriaAtividadesComponent {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  getMateriaSelecionada(): Observable<any> {
+    return this.materiasService.materias$.pipe(
+      map(
+        (materias) =>
+          materias.find((materia) => materia.IdClass === this.idMateria) ??
+          materiaPadrao
+      )
+    );
   }
 }

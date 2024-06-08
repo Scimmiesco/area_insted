@@ -1,6 +1,6 @@
 import { UserService } from 'app/services/user.service';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { IappState, browseReloadToken, getUser } from 'app/store/app.state';
 import { TokenService } from 'app/services/token.service';
 import { MateriasService } from 'app/services/materias.service';
@@ -12,7 +12,16 @@ import { TemaService } from 'app/services/tema.service';
 import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { IconsAcessibilidadeInterface } from 'app/shared/icons-acessibilidade/icons-acessibilidade.model';
 import { IconsAcessibilidade } from 'app/shared/icons-acessibilidade/mock-icons-acessibilidade';
-import { Subscription } from 'rxjs';
+import {
+  catchError,
+  distinctUntilChanged,
+  of,
+  Subject,
+  Subscription,
+  switchMap,
+  takeUntil,
+  tap,
+} from 'rxjs';
 
 @Component({
   selector: 'app-area',
@@ -26,6 +35,7 @@ export class AreaComponent implements OnInit {
   htmlRoot!: HTMLElement;
   tamanhoFontePadrao = '16px';
   private materiasSubscription!: Subscription;
+  private unsubscribe$: Subject<void> = new Subject<void>();
 
   constructor(
     private store: Store<{ app: IappState }>,
@@ -40,10 +50,11 @@ export class AreaComponent implements OnInit {
     this.icons = Icons;
     this.iconsAcessibilidade = IconsAcessibilidade;
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
-    this.getDados();
+    this.userService.getUser();
   }
   ngOnInit() {
     this.htmlRoot = <HTMLElement>document.getElementsByTagName('html')[0];
+    this.getMaterias();
   }
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() => this.telaTamanhoMobile());
@@ -51,27 +62,27 @@ export class AreaComponent implements OnInit {
       this.materiasSubscription.unsubscribe();
     }
   }
-  getDados() {
-    this.userService.getUser();
-    this.getMaterias();
-  }
 
   getMaterias() {
-    let usuarioID: number;
-
-    this.store.select(getUser).subscribe((user) => {
-      usuarioID = user.IdUser;
-    });
-
-    this.materiasService.materias$.subscribe((materias) => {
-      if (
-        materias === null ||
-        materias.length === 0 ||
-        materias === materiaPadrao
-      ) {
-        this.materiasService.ObterMaterias(usuarioID);
-      }
-    });
+    this.store
+      .pipe(
+        select(getUser),
+        tap((user) => {
+          const usuarioID = user.IdUser;
+          if (usuarioID !== 0) {
+            this.materiasService.materias$.subscribe((materias) => {
+              if (
+                materias === null ||
+                materias.length === 0 ||
+                materias === materiaPadrao
+              ) {
+                this.materiasService.ObterMaterias(usuarioID);
+              }
+            });
+          }
+        })
+      )
+      .subscribe();
   }
 
   public telaTamanhoMobile(): boolean {

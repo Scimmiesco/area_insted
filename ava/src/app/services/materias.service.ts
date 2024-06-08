@@ -55,11 +55,11 @@ export class MateriasService {
 
   getHttpMateriasDocente(usuarioID: number) {
     let token = this.tokenService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const headers = new HttpHeaders().set('Authorization', `${token}`);
 
     return this.http
       .get<ResponseMateriasI>(
-        `${this.APIURL}materias/getmateriasdocente?param=${usuarioID}`,
+        `${this.APIURL}materias/getmateriasdocente?usuarioID=${usuarioID}`,
         { headers }
       )
       .subscribe({
