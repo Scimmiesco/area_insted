@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
 
 const MODULES = [
   MatProgressSpinnerModule,
@@ -19,6 +20,7 @@ const MODULES = [
   MatButtonModule,
   MatMenuModule,
   MatTooltipModule,
+  MatSelectModule,
 ];
 
 @NgModule({

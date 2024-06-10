@@ -1,3 +1,4 @@
+import { AdicionarAtividadeModule } from './adicionar-atividade/adicionar-atividade.module';
 import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
@@ -6,11 +7,11 @@ import { CalendarModule } from './calendar/calendar.module';
 import { RetornoRequisicaoModalModule } from './retornoRequisicao/retornoRequisicao.module';
 import { NotasModule } from './notas/notas.module';
 import { FinanceiroModule } from './financeiro/financeiro.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     MaterialModule,
@@ -18,14 +19,18 @@ import { FinanceiroModule } from './financeiro/financeiro.module';
     CalendarModule,
     RetornoRequisicaoModalModule,
     NotasModule,
-    FinanceiroModule
+    FinanceiroModule,
+    AdicionarAtividadeModule,
+    BrowserModule,
+    FormsModule,
   ],
   exports: [
     HorarioModule,
     CalendarModule,
     RetornoRequisicaoModalModule,
     NotasModule,
-    FinanceiroModule
+    FinanceiroModule,
+    AdicionarAtividadeModule,
   ],
 })
 export class ModaisModule {}

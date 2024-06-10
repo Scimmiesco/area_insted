@@ -8,7 +8,7 @@
       </h1>
       <span
         matTooltip="Adicionar nova atividade"
-        matTooltipHideDelay="100000"
+        (click)="adicionarAtividade()"
         *ngIf="this.acessoDocente"
         class="material-symbols-outlined text-4xl self-center text-green_insted_dark dark:text-white px-2 cursor-pointer"
         >add</span

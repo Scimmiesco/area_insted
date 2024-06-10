@@ -15,6 +15,8 @@ import {
 } from 'app/Interfaces/materias.interface';
 import { EnumCargos } from 'app/Interfaces/token.interface';
 import { AtividadesService } from 'app/services/atividades.service';
+import { AdicionarAtividadeComponent } from 'app/components/modais/adicionar-atividade/adicionar-atividade.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-materia',
@@ -31,7 +33,8 @@ export class MateriaAtividadesComponent {
     public activatedRoute: ActivatedRoute,
     public materiasService: MateriasService,
     public userService: UserService,
-    public atividadesService: AtividadesService
+    public atividadesService: AtividadesService,
+    public dialog: MatDialog
   ) {
     this.subscription = this.getIDMateria().subscribe((value) => {
       this.idMateria = value.toString();
@@ -66,5 +69,12 @@ export class MateriaAtividadesComponent {
     });
 
     return materiaSelecionadoPeloID;
+  }
+  
+  adicionarAtividade() {
+    this.dialog.open(AdicionarAtividadeComponent, {
+      autoFocus: true,
+      closeOnNavigation: true,
+    });
   }
 }
