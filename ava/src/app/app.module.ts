@@ -30,6 +30,7 @@ import { MaterialModule } from './components/material/material.module';
 import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AtividadesModule } from './components/atividades/atividades.module';
+import { AdicionarAtividadeModule } from './components/modais/adicionar-atividade/adicionar-atividade.module';
 
 register();
 
@@ -51,6 +52,7 @@ register();
     FinanceiroModule,
     MenuBottomModule,
     RetornoRequisicaoModalModule,
+    AdicionarAtividadeModule,
     HorarioModule,
 
     CommonModule,

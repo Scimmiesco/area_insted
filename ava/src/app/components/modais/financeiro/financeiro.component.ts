@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TipoAtividade } from '../adicionar-atividade/adicionar-atividade.component';
 
 @Component({
   selector: 'app-financeiro',
@@ -6,12 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./financeiro.component.css'],
 })
 export class FinanceiroDialogComponent {
-  mensalidades: any[] = [{
-    tipo: 'Mensalidade',
-    vencimento: '10/01/2022',
-    valorPago: '544,00',
-    situacao: 'Baixada',
-  }];
+  mensalidades: any[] = [
+    {
+      tipo: 'Mensalidade',
+      vencimento: '10/01/2022',
+      valorPago: '544,00',
+      situacao: 'Baixada',
+    },
+  ];
 
   constructor() {
     this.mensalidades = [
@@ -50,37 +53,44 @@ export class FinanceiroDialogComponent {
         vencimento: '10/01/2022',
         valorPago: '544,00',
         situacao: 'Baixada',
-      },{
+      },
+      {
         tipo: 'Mensalidade',
         vencimento: '10/01/2022',
         valorPago: '544,00',
         situacao: 'Baixada',
-      },{
+      },
+      {
         tipo: 'Mensalidade',
         vencimento: '10/01/2022',
         valorPago: '544,00',
         situacao: 'Baixada',
-      },{
+      },
+      {
         tipo: 'Mensalidade',
         vencimento: '10/01/2022',
         valorPago: '544,00',
         situacao: 'Baixada',
-      },{
+      },
+      {
         tipo: 'Mensalidade',
         vencimento: '10/01/2022',
         valorPago: '544,00',
         situacao: 'Baixada',
-      },{
+      },
+      {
         tipo: 'Mensalidade',
         vencimento: '10/01/2022',
         valorPago: '544,00',
         situacao: 'Baixada',
-      },{
+      },
+      {
         tipo: 'Mensalidade',
         vencimento: '10/01/2022',
         valorPago: '544,00',
         situacao: 'Baixada',
-      },{
+      },
+      {
         tipo: 'Mensalidade',
         vencimento: '10/01/2022',
         valorPago: '544,00',
@@ -88,4 +98,18 @@ export class FinanceiroDialogComponent {
       },
     ];
   }
+  selectTipoAtividade: TipoAtividade[] = [
+    {
+      TipoID: 1,
+      nomeTipo: 'Texto',
+    },
+    {
+      TipoID: 2,
+      nomeTipo: 'Página',
+    },
+    {
+      TipoID: 3,
+      nomeTipo: 'Arquivo',
+    },
+  ];
 }
