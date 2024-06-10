@@ -107,7 +107,6 @@ export class HomeComponent {
   }
   ExpandirDivMaterias(expandirDivMateria: boolean) {
     this.divMateriaExpandido = !expandirDivMateria;
-    console.log(this.divMateriaExpandido);
   }
 
   getColor(index: number): string {

@@ -7,6 +7,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 const MODULES = [
   MatProgressSpinnerModule,
   MatExpansionModule,
@@ -16,6 +18,7 @@ const MODULES = [
   MatDialogModule,
   MatButtonModule,
   MatMenuModule,
+  MatTooltipModule,
 ];
 
 @NgModule({

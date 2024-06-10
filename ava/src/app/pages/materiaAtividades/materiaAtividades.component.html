@@ -2,53 +2,55 @@
   class="pb-28 px-1 gap-2 flex flex-col justify-start items-center min-h-[100svh] w-full max-h-[calc(100vh-200px)] laptop:min-h-[100svh] laptop:max-h-max overflow-y-auto bg-green_insted_transp dark:bg-green_insted_dark"
 >
   <div class="w-full laptop:max-w-[50%]">
-    <h1 class="text-center dark:text-white font-bold p-2">
-      {{
-        (getMateriaSelecionada() | async)?.NmClass ??
-          "Nenhuma matéria encontrada"
-      }}
-    </h1>
+    <div class="flex text-center flex-nowrap gap-2 justify-center items-center">
+      <h1 class="text-center dark:text-white font-bold p-2">
+        {{ getMateriaSelecionada()[0].NmClass }}
+      </h1>
+      <span
+        matTooltip="Adicionar nova atividade"
+        matTooltipHideDelay="100000"
+        *ngIf="this.acessoDocente"
+        class="material-symbols-outlined text-4xl self-center text-green_insted_dark dark:text-white px-2 cursor-pointer"
+        >add</span
+      >
+    </div>
     <div class="flex flex-col flex-nowrap gap-2">
-      <mat-accordion class="w-full rounded-2xl">
-        <mat-expansion-panel [expanded]="true" class="bg-green_insted">
-          <mat-expansion-panel-header
-            class="flex-row flex justify-between h-fit text-center items-center"
+      <ng-container
+        *ngFor="
+          let atividade of this.atividadesService.atividade$ | async;
+          let i = index
+        "
+      >
+        <mat-accordion
+          *ngIf="atividade.Situacao === 'A'"
+          class="w-full rounded-2xl"
+        >
+          <mat-expansion-panel
+            [expanded]="i === 0 ? true : false"
+            class="bg-green_insted"
           >
-            <h1 class="text-white text-2xl font-bold py-1">Boas vindas</h1>
-          </mat-expansion-panel-header>
-          <div
-            class="flex flex-col bg-white rounded-t-2xl rounded-b-2xl p-1 max-h-[60vh] min-h-[250px] overflow-auto m-1"
-          >
-            <p
-              class="p-1 whitespace-normal text-justify"
-              style="text-wrap: pretty"
-            >
-              Prezados(as) acadêmicos(as), recebam todos o nosso cordial
-              cumprimento! É com imensa satisfação que acolhemos todos(as) para
-              a nossa disciplina deste semestre letivo. Nosso EAD conecta para
-              aproximar e transformar. Vamos dar um PLAY nesta nossa nova
-              disciplina? Lembrem-se: as unidades da SAGAH devem ter todos os
-              seus exercícios realizados até o desfecho do mês de março
-              anteriormente à prova on-line via AVA. Nossa prova avaliativa
-              (AV1) será via portal e terá 10 questões e ficará disponível de
-              __/__ a __/__ (pelo prazo estendido, não haverá segunda chamada da
-              avaliação on-line). A avaliação presencial (AV2) ao final do
-              semestre será no dia __/__ (1ª chamada). A aplicação da segunda
-              chamada presencial das disciplinas EAD será __ e __/__ (somente
-              mediante à justificativa, atestado, laudo médio ou serviços de
-              segurança, municipal, estadual e federal bem como as forças
-              armadas: marinha, exército e aeronáutica. Convocações judiciais e
-              afins). A média final será composta da seguinte maneira: Média
-              final das ATIVIDADES SAGAH + Prova on-line + Prova Presencial Os 3
-              campos divididos por 3 deverão compor a média igual ou superior a
-              7,0. ATENÇÃO! Todas as atividades disponibilizadas são
-              obrigatórias e compõe a nota final. Seja você muito bem-vindo(a) à
-              nossa disciplina e à nossa Faculdade sempre. Abraço fraterno.
-            </p>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <mat-accordion class="w-full rounded-2xl">
+            <mat-expansion-panel-header
+              class="flex-row flex justify-between h-fit text-center items-center"
+              ><span
+                *ngIf="this.acessoDocente"
+                class="material-symbols-outlined text-2xl self-center text-white px-2"
+                >edit</span
+              >
+              <h1 class="text-white text-2xl font-bold py-1">
+                {{ atividade.Nome }}
+              </h1>
+            </mat-expansion-panel-header>
+            <app-atividade
+              [infosAtividades]="{
+                tipo: atividade.TipoAtividadeID,
+                titulo: atividade.Nome,
+                href: atividade.Situacao,
+                conteudo: atividade.Conteudo
+              }"
+            ></app-atividade>
+          </mat-expansion-panel> </mat-accordion
+      ></ng-container>
+      <!-- <mat-accordion class="w-full rounded-2xl">
         <mat-expansion-panel [expanded]="false" class="bg-green_insted">
           <mat-expansion-panel-header
             class="flex-row flex justify-between h-fit text-center items-center"
@@ -81,7 +83,7 @@
           >
           </app-arquivo>
         </mat-expansion-panel>
-      </mat-accordion>
+      </mat-accordion> -->
     </div>
   </div>
 </main>

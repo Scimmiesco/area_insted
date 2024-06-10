@@ -15,50 +15,42 @@ namespace WebAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("GetAtividades")]
-        public async Task<IActionResult> GetAtividades(string ra)
+        [HttpGet("GetAtividadesPorMateria")]
+        public async Task<IActionResult> GetAtividadesPorMateria(string materiaID)
         {
             try
             {
-                if (ra.IsNullOrEmpty())
+                if (string.IsNullOrEmpty(materiaID))
                 {
-                    return BadRequest(new { message = "RA informado está nulo ou vazio." });
+                    return BadRequest(new { message = "ID da matéria informado é inválido." });
                 }
 
-                var user = await _context.TbUsers.FirstOrDefaultAsync(u => u.NrRegister == ra);
-                if (user == null)
+                if (!int.TryParse(materiaID, out int materiaIdInt))
                 {
-                    return NotFound(new { message = "Usuário não encontrado." });
+                    return BadRequest(new { message = "ID da matéria deve ser um número válido." });
                 }
 
-                var userId = user.IdUser;
-                var IdsUserClass = await _context.TbUserClasses
-                    .Where(u => u.IdUser == userId)
-                    .Select(a => a.IdClass)
-                    .ToListAsync();
+                var materia = await _context.TbClasses.FirstOrDefaultAsync(u => u.IdClass == materiaIdInt);
 
-                var atividades = await _context.TbAcadActivities
-                    .Where(u => IdsUserClass.Contains(u.IdUserClass))
-                    .Select(a => new AcadActivityDto
-                    {
-                        IdAcadActivity = a.IdAcadActivity,
-                        IdUserClass = a.IdUserClass,
-                        NmAcadActivity = a.NmAcadActivity,
-                        DtDeadline = a.DtDeadline
-                    })
-                    .ToListAsync();
+                if (materia == null)
+                {
+                    return NotFound(new { message = "Matéria não encontrada." });
+                }
 
+                var atividades = await _context.AtividadesMaterias
+                    .Where(u => u.MateriaID == materiaIdInt)
+                    .ToListAsync();
 
                 return Ok(new
                 {
                     success = true,
                     message = "Atividades retornadas com sucesso!",
-                    atividade = atividades
+                    atividades = atividades
                 });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
             }
         }
 

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {
-  IAtividadesComponent,
+  IAtividadePagina,
   TiposAtividades,
 } from 'app/Interfaces/atividade.interface';
 
@@ -9,7 +9,7 @@ import {
   templateUrl: './pagina.component.html',
 })
 export class PaginaComponent {
-  @Input() atividade!: IAtividadesComponent;
+  @Input() atividadePagina!: IAtividadePagina;
 
   atividadeVista!: boolean;
   EnumTiposAtividades = TiposAtividades;
@@ -18,9 +18,7 @@ export class PaginaComponent {
     this.atividadeVista = false;
   }
 
-  ngOnInit(): void {
-    console.log(this.atividade);
-  }
+  ngOnInit(): void {}
   marcarVisto() {
     this.atividadeVista = !this.atividadeVista;
   }

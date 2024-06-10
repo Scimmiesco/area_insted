@@ -1,5 +1,6 @@
 ﻿using WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using WebApi.models;
 
 namespace WebAPI.Data;
 
@@ -24,5 +25,6 @@ public partial class AreaInstedContext : DbContext
     public DbSet<TbGrade> TbGrades { get; set; }
 
     public DbSet<TbUserClass> TbUserClasses { get; set; }
+    public DbSet<AtividadesMaterias> AtividadesMaterias { get; set; }
 
 }
