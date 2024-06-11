@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
 
 const MODULES = [
   MatProgressSpinnerModule,
@@ -22,7 +23,8 @@ const MODULES = [
   MatMenuModule,
   MatTooltipModule,
   MatSelectModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatInputModule
 ];
 
 @NgModule({

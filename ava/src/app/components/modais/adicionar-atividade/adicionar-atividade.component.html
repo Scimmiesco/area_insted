@@ -13,7 +13,7 @@
         <select
           id="select-TipoAtividade"
           name="select-TipoAtividade"
-          title="teste"
+          title="select-TipoAtividade"
           class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
         >
           <option
@@ -39,10 +39,38 @@
           <option value="materia-1">Inativo</option>
         </select>
       </div>
-      <div class="col-span-6">
-      
-
+      <div class="grid col-span-6 grid-cols-3 grid-flow-row gap-2">
+        <div class="col-span-2" >
+          <label>Data início da atividade</label>
+          <input type="date"/>
+        </div>
+        <div class="col-span-1 content-end">
+          <input class="" type="time"/>
+        </div>  
       </div>
+      <div class="grid col-span-6 grid-cols-3 grid-flow-row gap-2">
+        <div class="col-span-2" >
+          <label>Data fim da atividade</label>
+          <input type="date"/>
+        </div>
+        <div class="col-span-1 content-end">
+          <input class="" type="time"/>
+        </div>  
+      </div>
+      <ng-template #addAtividadeTexto>
+        <div class="col-span-12">
+          <input type="text">
+        </div>
+      </ng-template>
+      
+      <div *ngIf="select-TipoAtividade.selected == 1; else noAtividadeTexto">
+        <ng-container *ngTemplateOutlet="addAtividadeTexto"></ng-container>
+      </div>
+      
+      <ng-template #noAtividadeTexto>
+        <!-- Optionally, you can put a placeholder or some other content here if needed -->
+      </ng-template>
+      
     </div>
   </div>
 </div>

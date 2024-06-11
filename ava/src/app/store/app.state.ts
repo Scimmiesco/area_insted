@@ -30,7 +30,7 @@ export const appInitialState: IappState = {
     NmPhone2: '67999999999',
     NmEmail: 'email@email.com',
     ImgFile: null,
-    SnTeacher: false,
+    SnTeacher: true,
   },
   token: '',
 };
