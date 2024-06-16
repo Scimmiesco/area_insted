@@ -26,6 +26,7 @@
     "@capacitor/ios": "^5.7.3",
     "@ngrx/store": "^15.4.0",
     "@ngrx/store-devtools": "^15.4.0",
+    "@tinymce/tinymce-angular": "^6.0.0",
     "angular-svg-icon": "^15.0.0",
     "crypto-js": "^4.1.1",
     "jwt-decode": "^3.1.2",
@@ -37,6 +38,7 @@
     "rxjs": "~7.8.0",
     "save": "^2.9.0",
     "swiper": "^9.3.2",
+    "tinymce": "^7.1.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

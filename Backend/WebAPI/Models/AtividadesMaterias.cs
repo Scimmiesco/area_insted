@@ -24,6 +24,7 @@ namespace WebApi.models
         [StringLength(100)]
         public string Nome { get; set; }
 
+        public DateTime? PrazoInicial { get; set; }
         public DateTime? PrazoFinal { get; set; }
 
         [StringLength(2000)]

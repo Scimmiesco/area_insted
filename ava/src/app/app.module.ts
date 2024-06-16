@@ -31,7 +31,7 @@ import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.compo
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AtividadesModule } from './components/atividades/atividades.module';
 import { AdicionarAtividadeModule } from './components/modais/adicionar-atividade/adicionar-atividade.module';
-
+import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 register();
 
 @NgModule({
@@ -40,7 +40,6 @@ register();
     LoadingComponent,
     AreaComponent,
     HorarioAulasComponent,
-
   ],
   imports: [
     ResetPasswordModule,
@@ -66,6 +65,7 @@ register();
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    EditorModule,
 
     InputMaskModule,
     CpfCnpjPipe,
@@ -84,6 +84,7 @@ register();
       multi: true,
     },
     provideNgxMask(),
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' },
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

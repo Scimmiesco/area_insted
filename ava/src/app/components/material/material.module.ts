@@ -24,7 +24,8 @@ const MODULES = [
   MatTooltipModule,
   MatSelectModule,
   MatDatepickerModule,
-  MatInputModule
+  MatInputModule,
+
 ];
 
 @NgModule({

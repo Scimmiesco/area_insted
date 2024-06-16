@@ -54,3 +54,13 @@ export const AtividadePadrao: IAtividade[] = [
     Situacao: '',
   },
 ];
+export interface IAtividadeFormulario {
+  UsuarioID: number;
+  MateriaID: number;
+  TipoAtividadeID: number;
+  Nome: string;
+  PrazoFinal: Date;
+  Conteudo: string;
+  Situacao: string;
+  PrazoInicial: Date;
+}

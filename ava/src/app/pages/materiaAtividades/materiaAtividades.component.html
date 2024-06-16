@@ -8,7 +8,7 @@
       </h1>
       <span
         matTooltip="Adicionar nova atividade"
-        (click)="adicionarAtividade()"
+        (click)="AbrirModalAdicionarAtividade()"
         *ngIf="this.acessoDocente"
         class="material-symbols-outlined text-4xl self-center text-green_insted_dark dark:text-white px-2 cursor-pointer"
         >add</span
@@ -48,42 +48,8 @@
                 conteudo: atividade.Conteudo
               }"
             ></app-atividade>
-          </mat-expansion-panel> </mat-accordion
-      ></ng-container>
-      <!-- <mat-accordion class="w-full rounded-2xl">
-        <mat-expansion-panel [expanded]="false" class="bg-green_insted">
-          <mat-expansion-panel-header
-            class="flex-row flex justify-between h-fit text-center items-center"
-          >
-            <h1 class="text-white text-2xl font-bold py-1">Geral</h1>
-          </mat-expansion-panel-header>
-          <app-pagina
-            [atividade]="{
-              tipo: EnumTiposAtividades.PAGINA,
-              titulo: 'Atividade 01',
-              href: 'assets/pdf/teste.xls'
-            }"
-          >
-          </app-pagina>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <mat-accordion class="w-full rounded-2xl">
-        <mat-expansion-panel [expanded]="false" class="bg-green_insted">
-          <mat-expansion-panel-header
-            class="flex-row flex justify-between h-fit text-center items-center"
-          >
-            <h1 class="text-white text-2xl font-bold py-1">Aula 1</h1>
-          </mat-expansion-panel-header>
-          <app-arquivo
-            [atividade]="{
-              tipo: EnumTiposAtividades.ARQUIVO,
-              titulo: 'Relatório Anual',
-              href: 'assets/pdf/teste.xls'
-            }"
-          >
-          </app-arquivo>
-        </mat-expansion-panel>
-      </mat-accordion> -->
+          </mat-expansion-panel> </mat-accordion>
+    </ng-container>
     </div>
   </div>
 </main>

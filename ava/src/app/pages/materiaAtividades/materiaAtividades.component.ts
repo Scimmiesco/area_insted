@@ -17,6 +17,8 @@ import { EnumCargos } from 'app/Interfaces/token.interface';
 import { AtividadesService } from 'app/services/atividades.service';
 import { AdicionarAtividadeComponent } from 'app/components/modais/adicionar-atividade/adicionar-atividade.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { getUser, IappState } from 'app/store/app.state';
 
 @Component({
   selector: 'app-materia',
@@ -24,6 +26,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class MateriaAtividadesComponent {
   idMateria: string = '';
+  idUsuario!: number;
   private subscription!: Subscription;
   EnumTiposAtividades = TiposAtividades;
   acessoDocente = false as boolean;
@@ -32,6 +35,7 @@ export class MateriaAtividadesComponent {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     public materiasService: MateriasService,
+    private store: Store<{ app: IappState }>,
     public userService: UserService,
     public atividadesService: AtividadesService,
     public dialog: MatDialog
@@ -43,6 +47,9 @@ export class MateriaAtividadesComponent {
       if (cargo == EnumCargos.PROFESSOR) {
         this.acessoDocente = true;
       }
+    });
+    this.store.select(getUser).subscribe((user) => {
+      this.idUsuario = user.IdUser;
     });
     atividadesService.ObterAtividadesPorMateria(this.idMateria);
   }
@@ -70,11 +77,12 @@ export class MateriaAtividadesComponent {
 
     return materiaSelecionadoPeloID;
   }
-  
-  adicionarAtividade() {
+
+  AbrirModalAdicionarAtividade() {
     this.dialog.open(AdicionarAtividadeComponent, {
       autoFocus: true,
       closeOnNavigation: true,
+      data: { MateriaID: parseInt(this.idMateria), UsuarioID: this.idUsuario },
     });
   }
 }
