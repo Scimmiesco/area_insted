@@ -16,12 +16,18 @@
           type="text"
           name="TituloAtividade"
         />
+        <app-message
+          erro="true"
+          *ngIf="AdicionarAtividadeForm.get('TituloAtividade')?.errors?.['required']
+      && AdicionarAtividadeForm.get('TituloAtividade')?.touched"
+          message="O titulo da atividade é obrigatório."
+        />
       </div>
       <div class="col-span-6">
         <label
           for="select-TipoAtividade"
           class="dark:text-white block text-sm font-medium text-gray-700 p-1"
-          >Selecione o tipo da atividade:</label
+          >Tipo da atividade:</label
         >
         <select
           id="select-TipoAtividade"
@@ -36,12 +42,18 @@
             {{ tipo.TipoID + " - " + tipo.nomeTipo }}
           </option>
         </select>
+        <app-message
+          erro="true"
+          *ngIf="AdicionarAtividadeForm.get('TipoAtividade')?.errors?.['required']
+    && AdicionarAtividadeForm.get('TipoAtividade')?.touched"
+          message="O Tipo da Atividade é obrigatório."
+        />
       </div>
       <div class="col-span-6">
         <label
           for="select-materia"
           class="dark:text-white block text-sm font-medium text-gray-700 p-1"
-          >Selecione a situação:</label
+          >Situação:</label
         >
         <select
           id="select-materia"
@@ -49,13 +61,19 @@
           name="select-materia"
           class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
         >
-          <option value="ativo">Ativo</option>
-          <option value="inativo">Inativo</option>
+          <option value="A">Ativo</option>
+          <option value="I">Inativo</option>
         </select>
+        <app-message
+          erro="true"
+          *ngIf="AdicionarAtividadeForm.get('Situacao')?.errors?.['required']
+    && AdicionarAtividadeForm.get('Situacao')?.touched"
+          message="A situação é obrigatória."
+        />
       </div>
       <div class="grid col-span-6 grid-cols-3 grid-flow-row gap-2 InputData">
         <div class="col-span-2">
-          <label for="DataInicioData">Data início da atividade</label>
+          <label for="DataInicioData">Data início</label>
           <input
             id="DataInicioData"
             formControlName="DataInicioData"
@@ -69,29 +87,70 @@
             type="time"
           />
         </div>
+        <app-message
+          erro="true"
+          *ngIf="AdicionarAtividadeForm.get('DataInicioData')?.errors?.['required']
+            && AdicionarAtividadeForm.get('DataInicioData')?.touched
+            || AdicionarAtividadeForm.get('DataInicioHora')?.errors?.['required']
+            && AdicionarAtividadeForm.get('DataInicioHora')?.touched"
+          message="Preencha a data e hora de inicio."
+          class="col-span-3"
+        />
       </div>
       <div class="grid col-span-6 grid-cols-3 grid-flow-row gap-2 InputData">
         <div class="col-span-2">
-          <label for="DataFimData">Data fim da atividade</label>
+          <label for="DataFimData">Data fim</label>
           <input id="DataFimData" formControlName="DataFimData" type="date" />
         </div>
         <div class="col-span-1 content-end">
           <input id="DataFimHora" formControlName="DataFimHora" type="time" />
         </div>
+        <app-message
+          erro="true"
+          *ngIf="AdicionarAtividadeForm.get('DataFimData')?.errors?.['required']
+            && AdicionarAtividadeForm.get('DataFimData')?.touched
+            || AdicionarAtividadeForm.get('DataFimHora')?.errors?.['required']
+            && AdicionarAtividadeForm.get('DataFimHora')?.touched"
+          message="Preencha a data e hora de inicio."
+          class="col-span-3"
+        />
       </div>
-      <div class="col-span-12 InputTexto row-span-3">
-        <label for="ConteudoAtividade">Conteúdo:</label>
-        <editor formControlName="ConteudoAtividade" [init]="editorConfig">
-          <button
-            title="submit"
-            type="submit"
-            name="submitbtn"
-            class="bg-green-500 text-white py-2 px-4 rounded-lg"
-          >
-            Submit
-          </button></editor
-        >
-      </div>
+      <ng-container
+        [ngSwitch]="AdicionarAtividadeForm.get('TipoAtividade')?.value"
+      >
+        <ng-container *ngSwitchCase="1">
+          <ng-template #textoTemplate>
+            <div class="col-span-12 InputTexto row-span-3">
+              <label for="ConteudoAtividade">Conteúdo:</label>
+              <editor formControlName="ConteudoAtividade" [init]="editorConfig">
+              </editor>
+            </div>
+          </ng-template>
+          <ng-container *ngTemplateOutlet="textoTemplate"></ng-container>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="2">
+          <ng-template #paginaTemplate>
+            <div>pagina</div>
+          </ng-template>
+          <ng-container *ngTemplateOutlet="paginaTemplate"></ng-container>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="3">
+          <ng-template #arquivoTemplate>teste</ng-template>
+          <ng-container *ngTemplateOutlet="arquivoTemplate"></ng-container>
+        </ng-container>
+      </ng-container>
+
+      <button
+        title="submit"
+        (submit)="onSubmit()"
+        type="submit"
+        name="submit"
+        class="col-start-4 col-span-6 content-center m-auto"
+      >
+        Adicionar atividade
+      </button>
     </div>
   </form>
 </div>

@@ -7,16 +7,21 @@ import {
   IAtividadeFormulario,
   IResponseAtividades,
 } from 'app/Interfaces/atividade.interface';
-import { BehaviorSubject, catchError, map, Observable } from 'rxjs';
-
+import { BehaviorSubject, catchError, map, Observable, tap } from 'rxjs';
+import { RetornoRequisicaoModalComponent } from 'app/components/modais/retornoRequisicao/retornoRequisicao.component';
+import { MatDialog } from '@angular/material/dialog';
+interface IResponseAdicionarAtividade {
+  sucesso: boolean;
+  mensagem: string;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class AtividadesService {
   private sessionStorageKey = 'isAuthenticated';
   private APIURL = environment.URLAPI;
-
-  constructor(private http: HttpClient) {}
+  qtdAtividadesCriadas = 0 as number;
+  constructor(private http: HttpClient, public dialog: MatDialog) {}
 
   private AtividadesSubject: BehaviorSubject<IAtividade[]> =
     new BehaviorSubject<IAtividade[]>(AtividadePadrao);
@@ -40,34 +45,36 @@ export class AtividadesService {
     });
   }
 
-  AdicionarAtividade(formData: IAtividadeFormulario) {
-
-    this.http.post(`${this.APIURL}AdicionarAtividade`, formData).subscribe({
-      next: (response: any) => {
-        console.log('Activity added successfully!', response);
-        // Handle successful response (e.g., clear form, redirect)
-        // You can access the response data here, for example:
-        // const activityId = response.id; // Assuming the response contains an ID
-      },
-      error: (error) => {
-        console.error('Error adding activity:', error);
-        // Handle errors gracefully (e.g., display error message to user)
-        // You can check for specific errors and provide informative messages:
-        if (error.status === 400) {
-          console.error('Bad request: Check form data for validation errors.');
-          // Display a message to the user indicating validation issues
-        } else if (error.status === 500) {
-          console.error('Internal server error: Contact administrator.');
-          // Display a generic error message to the user
-        } else {
-          console.error('Unexpected error:', error);
-          // Handle other unexpected errors
-        }
-      },
-      complete: () => {
-        console.log('HTTP request completed.');
-        // Perform any actions after the request finishes, regardless of success or failure
-      },
-    });
+  AdicionarAtividade(
+    formData: IAtividadeFormulario
+  ): Observable<IResponseAdicionarAtividade> {
+    return this.http.post(`${this.APIURL}AdicionarAtividade`, formData).pipe(
+      tap({
+        next: (response: any) => {
+          this.qtdAtividadesCriadas ++;
+          return { sucesso: true, mensagem: 'Matéria adicionada com sucesso' };
+        },
+        error: (error) => {
+          if (error.status === 400) {
+            return {
+              sucesso: false,
+              mensagem:
+                'Solicitação inválida: Verifique os dados do formulário para erros de validação.',
+            };
+          } else if (error.status === 500) {
+            return {
+              sucesso: false,
+              mensagem:
+                'Erro no servidor: Por favor, tente novamente mais tarde.',
+            };
+          }
+          return {
+            sucesso: false,
+            mensagem:
+              'Erro desconhecido. Por favor, tente novamente mais tarde.',
+          };
+        },
+      })
+    );
   }
 }

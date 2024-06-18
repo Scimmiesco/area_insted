@@ -59,8 +59,8 @@ export interface IAtividadeFormulario {
   MateriaID: number;
   TipoAtividadeID: number;
   Nome: string;
-  PrazoFinal: Date;
+  PrazoFinal: string;
   Conteudo: string;
   Situacao: string;
-  PrazoInicial: Date;
+  PrazoInicial: string;
 }

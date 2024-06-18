@@ -13,6 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { IAtividadeFormulario } from 'app/Interfaces/atividade.interface';
 import { AtividadesService } from 'app/services/atividades.service';
+import { RetornoRequisicaoModalComponent } from '../retornoRequisicao/retornoRequisicao.component';
 export interface TipoAtividade {
   TipoID: number;
   nomeTipo: string;
@@ -31,7 +32,6 @@ export class AdicionarAtividadeComponent implements OnInit {
   editorConfig = {
     base_url: '/tinymce',
     suffix: '.min',
-    plugins: 'save',
     menubar: false,
     hidden_input: false,
     statusbar: false,
@@ -47,9 +47,6 @@ export class AdicionarAtividadeComponent implements OnInit {
       { name: 'indentation', items: ['outdent', 'indent'] },
       { name: 'save', items: ['save'] },
     ],
-    save_onsavecallback: () => {
-      this.onSubmit();
-    },
   };
 
   selectTipoAtividade: TipoAtividade[] = [
@@ -71,7 +68,8 @@ export class AdicionarAtividadeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: InfoModalAddAtividade,
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private atividadeServive: AtividadesService
+    private atividadeServive: AtividadesService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -89,7 +87,7 @@ export class AdicionarAtividadeComponent implements OnInit {
 
   onSubmit() {
     if (this.AdicionarAtividadeForm.invalid) {
-      console.error('Form is invalid!');
+      return;
     }
     const formData: IAtividadeFormulario = {
       Nome: this.AdicionarAtividadeForm.value.TituloAtividade,
@@ -97,11 +95,11 @@ export class AdicionarAtividadeComponent implements OnInit {
         this.AdicionarAtividadeForm.value.TipoAtividade
       ),
       Situacao: this.AdicionarAtividadeForm.value.Situacao,
-      PrazoInicial: this.formatDate(
+      PrazoInicial: this.FormatarData(
         this.AdicionarAtividadeForm.value.DataInicioData,
         this.AdicionarAtividadeForm.value.DataInicioHora
       ),
-      PrazoFinal: this.formatDate(
+      PrazoFinal: this.FormatarData(
         this.AdicionarAtividadeForm.value.DataFimData,
         this.AdicionarAtividadeForm.value.DataFimHora
       ),
@@ -109,28 +107,57 @@ export class AdicionarAtividadeComponent implements OnInit {
       MateriaID: this.data.MateriaID,
       UsuarioID: this.data.UsuarioID,
     };
-console.log(formData)
-    this.atividadeServive.AdicionarAtividade(formData);
+
+    this.atividadeServive.AdicionarAtividade(formData).subscribe({
+      next: (response) => {
+        this.modalSucesso('Sucesso ao criar atividade');
+        this.AdicionarAtividadeForm.reset();
+      },
+      error: (error) => {
+        console.error('Unexpected error:', error);
+        this.modalErro(
+          'Erro desconhecido. Por favor, tente novamente mais tarde.'
+        );
+      },
+    });
   }
 
-  formatDate(dateString: string, timeString: string): dateString {
-    // 1. Parse date and time strings (assuming ISO 8601 format)
+  FormatarData(dateString: string, timeString: string): string {
     const date = new Date(dateString);
-    const [hours, minutes] = timeString.split(':').map(Number); // Parse hours and minutes using map and Number
+    const [hours, minutes] = timeString.split(':').map(Number);
 
-    // 2. Handle potential parsing errors (concisely)
     if (isNaN(date.getTime()) || isNaN(hours) || isNaN(minutes)) {
-      console.error('Invalid date or time format:', dateString, timeString);
       return '';
     }
 
-    // 3. Set time components and format (concise string template)
     date.setHours(hours);
     date.setMinutes(minutes);
-    return `${date.getFullYear()}-${(date.getMonth() + 1)
-      .toString()
-      .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${hours
-      .toString()
-      .padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const formattedHours = hours.toString().padStart(2, '0');
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day}T${formattedHours}:${formattedMinutes}:${seconds}`;
+  }
+
+  modalSucesso(message: string) {
+    this.dialog.open(RetornoRequisicaoModalComponent, {
+      data: { message: message, tipoModal: 'sucesso' },
+      autoFocus: true,
+      closeOnNavigation: true,
+      panelClass: 'sucesso',
+    });
+  }
+
+  modalErro(message: string) {
+    this.dialog.open(RetornoRequisicaoModalComponent, {
+      data: { message: message, tipoModal: 'sucesso' },
+      autoFocus: true,
+      closeOnNavigation: true,
+      panelClass: 'sucesso',
+    });
   }
 }

@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { AdicionarAtividadeComponent } from './adicionar-atividade.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MessageModule } from 'app/components/message/message.module';
 
 @NgModule({
   declarations: [AdicionarAtividadeComponent],
-  imports: [CommonModule, BrowserModule, EditorModule, ReactiveFormsModule],
+  imports: [CommonModule, BrowserModule, EditorModule, ReactiveFormsModule, MessageModule],
   exports: [AdicionarAtividadeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

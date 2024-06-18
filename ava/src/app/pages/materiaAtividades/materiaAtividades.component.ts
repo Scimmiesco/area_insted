@@ -79,10 +79,16 @@ export class MateriaAtividadesComponent {
   }
 
   AbrirModalAdicionarAtividade() {
-    this.dialog.open(AdicionarAtividadeComponent, {
+    var dialogRef = this.dialog.open(AdicionarAtividadeComponent, {
       autoFocus: true,
       closeOnNavigation: true,
       data: { MateriaID: parseInt(this.idMateria), UsuarioID: this.idUsuario },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(this.atividadesService.qtdAtividadesCriadas, 'te');
+      if (this.atividadesService.qtdAtividadesCriadas != 0)
+        window.location.reload();
     });
   }
 }
