@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import {
   AtividadePadrao,
@@ -51,7 +51,7 @@ export class AtividadesService {
     return this.http.post(`${this.APIURL}AdicionarAtividade`, formData).pipe(
       tap({
         next: (response: any) => {
-          this.qtdAtividadesCriadas ++;
+          this.qtdAtividadesCriadas++;
           return { sucesso: true, mensagem: 'Matéria adicionada com sucesso' };
         },
         error: (error) => {
@@ -76,5 +76,16 @@ export class AtividadesService {
         },
       })
     );
+  }
+
+  upload(file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+
+    return this.http.post(`${this.APIURL}uploadArquivo`, formData, {
+      headers: new HttpHeaders({
+        enctype: 'multipart/form-data',
+      }),
+    });
   }
 }

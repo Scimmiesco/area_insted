@@ -290,3 +290,33 @@ html.alto_contraste {
     font-size: 1rem !important;
   }
 }
+
+.uploadArquivo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  input[type="file"] {
+    display: none; // Esconde o input padrão
+  }
+
+  label {
+    background-color: $green_insted !important;
+    font-size: 1rem !important;
+    color: rgb(244, 242, 255) !important;
+    padding: 0.5rem 0.75rem !important;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 3em !important;
+
+    &:hover {
+      background-color: $green_insted_dark !important; // Cor de fundo do botão ao passar o mouse
+    }
+  }
+
+  #file-name {
+    font-size: 14px;
+    color: #666; // Cor do texto do nome do arquivo
+  }
+}

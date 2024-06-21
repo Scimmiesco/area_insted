@@ -131,7 +131,31 @@
 
         <ng-container *ngSwitchCase="2">
           <ng-template #paginaTemplate>
-            <div>pagina</div>
+            <section class="col-span-12">
+              <div class="col-span-12 InputTexto row-span-3">
+                <label for="ConteudoAtividade">Conteúdo:</label>
+                <editor
+                  formControlName="ConteudoAtividade"
+                  [init]="editorConfig"
+                >
+                </editor>
+                <div class="uploadArquivo">
+                  <input
+                    id="inputArquivo"
+                    type="file"
+                    (change)="anexarArquivo($event)"
+                  />
+                  <label for="inputArquivo">{{
+                    this.fileName == null
+                      ? "Anexe um arquivo"
+                      : "Arquivo anexado"
+                  }}</label>
+                  <span id="file-name">{{
+                    this.fileName ?? "Nenhum arquivo anexado"
+                  }}</span>
+                </div>
+              </div>
+            </section>
           </ng-template>
           <ng-container *ngTemplateOutlet="paginaTemplate"></ng-container>
         </ng-container>

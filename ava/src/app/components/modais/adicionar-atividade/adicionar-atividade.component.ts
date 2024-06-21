@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, EventEmitter, Input } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../calendar/calendar.component';
 import {
@@ -14,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 import { IAtividadeFormulario } from 'app/Interfaces/atividade.interface';
 import { AtividadesService } from 'app/services/atividades.service';
 import { RetornoRequisicaoModalComponent } from '../retornoRequisicao/retornoRequisicao.component';
+
 export interface TipoAtividade {
   TipoID: number;
   nomeTipo: string;
@@ -28,6 +29,8 @@ interface InfoModalAddAtividade {
 })
 export class AdicionarAtividadeComponent implements OnInit {
   AdicionarAtividadeForm!: FormGroup;
+  fileName!: string;
+  caminhoArquivo!: string;
 
   editorConfig = {
     base_url: '/tinymce',
@@ -106,8 +109,13 @@ export class AdicionarAtividadeComponent implements OnInit {
       Conteudo: this.AdicionarAtividadeForm.value.ConteudoAtividade,
       MateriaID: this.data.MateriaID,
       UsuarioID: this.data.UsuarioID,
+      CaminhoArquivo: this.caminhoArquivo,
+      UsuarioInclusao: this.data.UsuarioID.toString(),
+      DataInclusao: null,
+      UsuarioAlteracao: null,
+      DataAlteracao: null,
     };
-
+console.log(formData)
     this.atividadeServive.AdicionarAtividade(formData).subscribe({
       next: (response) => {
         this.modalSucesso('Sucesso ao criar atividade');
@@ -159,5 +167,28 @@ export class AdicionarAtividadeComponent implements OnInit {
       closeOnNavigation: true,
       panelClass: 'sucesso',
     });
+  }
+  anexarArquivo(e: Event) {
+    const input = e.target as HTMLInputElement;
+    input?.files != null
+      ? (this.fileName = input?.files[0].name)
+      : (this.fileName = 'Nenhum arquivo adicionado');
+    if (input?.files && input.files.length > 0) {
+      const file = input.files[0];
+      this.fileName = file.name;
+      this.atividadeServive.upload(file).subscribe(
+        (response) => {
+          console.log('Upload bem-sucedido', response);
+          this.caminhoArquivo = response.toString();
+          this.fileName = 'Arquivo carregado com sucesso!';
+        },
+        (error) => {
+          console.error('Erro no upload', error);
+          this.fileName = 'Erro ao carregar o arquivo.';
+        }
+      );
+    } else {
+      this.fileName = 'Nenhum arquivo adicionado';
+    }
   }
 }

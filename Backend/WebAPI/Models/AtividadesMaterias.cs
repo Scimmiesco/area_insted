@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.models
 {
-
     [Table("AtividadesMaterias")]
     public partial class AtividadesMaterias
     {
@@ -25,6 +24,7 @@ namespace WebApi.models
         public string Nome { get; set; }
 
         public DateTime? PrazoInicial { get; set; }
+
         public DateTime? PrazoFinal { get; set; }
 
         [StringLength(2000)]
@@ -33,5 +33,18 @@ namespace WebApi.models
         [Required]
         [StringLength(1)]
         public string Situacao { get; set; }
+
+        [StringLength(500)] // Ajuste o tamanho conforme definido na tabela
+        public string? CaminhoArquivo { get; set; }
+
+        [StringLength(100)] // Ajuste o tamanho conforme definido na tabela
+        public string? UsuarioInclusao { get; set; }
+
+        public DateTime? DataInclusao { get; set; }
+
+        [StringLength(100)] // Ajuste o tamanho conforme definido na tabela
+        public string? UsuarioAlteracao { get; set; }
+
+        public DateTime? DataAlteracao { get; set; }
     }
 }

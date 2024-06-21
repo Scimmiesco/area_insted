@@ -10,6 +10,7 @@ namespace WebAPI.Controllers
     public class AtividadesController : ControllerBase
     {
         AreaInstedContext _context;
+        private readonly string _uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
         public AtividadesController(AreaInstedContext context)
 
         {
@@ -74,7 +75,12 @@ namespace WebAPI.Controllers
                     PrazoFinal = atividadeNova.PrazoFinal,
                     Conteudo = atividadeNova.Conteudo,
                     Situacao = atividadeNova.Situacao,
-                    PrazoInicial = atividadeNova.PrazoInicial
+                    PrazoInicial = atividadeNova.PrazoInicial,
+                    CaminhoArquivo = atividadeNova.CaminhoArquivo,
+                    UsuarioInclusao = atividadeNova.UsuarioInclusao,
+                    DataInclusao = atividadeNova.DataInclusao,
+                    UsuarioAlteracao = atividadeNova.UsuarioAlteracao,
+                    DataAlteracao = atividadeNova.DataAlteracao
                 };
 
                 _context.AtividadesMaterias.Add(atividade);
@@ -87,6 +93,31 @@ namespace WebAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
             }
+        }
+
+        [HttpPost("uploadArquivo")]
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest("No file uploaded.");
+            }
+
+            var filePath = Path.Combine(_uploadFolder, file.FileName);
+
+            // Create directory if it doesn't exist
+            if (!Directory.Exists(_uploadFolder))
+            {
+                Directory.CreateDirectory(_uploadFolder);
+            }
+
+            // Save the file
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            return Ok(new { filePath });
         }
 
 

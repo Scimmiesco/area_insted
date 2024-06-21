@@ -1,3 +1,5 @@
+import { getLocaleDateTimeFormat } from '@angular/common';
+
 export enum TiposAtividades {
   ARQUIVO = 3,
   PAGINA = 2,
@@ -40,6 +42,11 @@ export interface IAtividade {
   PrazoFinal: Date;
   Conteudo: string;
   Situacao: string;
+  CaminhoArquivo: string | null;
+  UsuarioInclusao: string | null;
+  DataInclusao: string | null;
+  UsuarioAlteracao: string | null;
+  DataAlteracao: Date | null;
 }
 
 export const AtividadePadrao: IAtividade[] = [
@@ -52,6 +59,11 @@ export const AtividadePadrao: IAtividade[] = [
     PrazoFinal: new Date(),
     Conteudo: '',
     Situacao: '',
+    CaminhoArquivo: null,
+    UsuarioInclusao: 'Sistema',
+    DataInclusao: new Date().toLocaleDateString(),
+    UsuarioAlteracao: null,
+    DataAlteracao: null,
   },
 ];
 export interface IAtividadeFormulario {
@@ -63,4 +75,9 @@ export interface IAtividadeFormulario {
   Conteudo: string;
   Situacao: string;
   PrazoInicial: string;
+  CaminhoArquivo: string | null;
+  UsuarioInclusao: string | null;
+  DataInclusao: string | null;
+  UsuarioAlteracao: string | null;
+  DataAlteracao: Date | null;
 }
