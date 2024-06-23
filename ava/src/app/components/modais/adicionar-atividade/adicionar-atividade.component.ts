@@ -84,7 +84,7 @@ export class AdicionarAtividadeComponent implements OnInit {
       DataInicioHora: ['', Validators.required],
       DataFimData: ['', Validators.required],
       DataFimHora: ['', Validators.required],
-      ConteudoAtividade: ['', Validators.required],
+      ConteudoAtividade: [null],
     });
   }
 
@@ -115,7 +115,7 @@ export class AdicionarAtividadeComponent implements OnInit {
       UsuarioAlteracao: null,
       DataAlteracao: null,
     };
-console.log(formData)
+    console.log(formData)
     this.atividadeServive.AdicionarAtividade(formData).subscribe({
       next: (response) => {
         this.modalSucesso('Sucesso ao criar atividade');
@@ -179,7 +179,7 @@ console.log(formData)
       this.atividadeServive.upload(file).subscribe(
         (response) => {
           console.log('Upload bem-sucedido', response);
-          this.caminhoArquivo = response.toString();
+          this.caminhoArquivo = response.filePath;
           this.fileName = 'Arquivo carregado com sucesso!';
         },
         (error) => {

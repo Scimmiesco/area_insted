@@ -78,7 +78,7 @@ namespace WebAPI.Controllers
                     PrazoInicial = atividadeNova.PrazoInicial,
                     CaminhoArquivo = atividadeNova.CaminhoArquivo,
                     UsuarioInclusao = atividadeNova.UsuarioInclusao,
-                    DataInclusao = atividadeNova.DataInclusao,
+                    DataInclusao = DateTime.Now,
                     UsuarioAlteracao = atividadeNova.UsuarioAlteracao,
                     DataAlteracao = atividadeNova.DataAlteracao
                 };
@@ -117,7 +117,7 @@ namespace WebAPI.Controllers
                 await file.CopyToAsync(stream);
             }
 
-            return Ok(new { filePath });
+            return Ok(new {  filePath });;
         }
 
 

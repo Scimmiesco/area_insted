@@ -27,7 +27,6 @@ namespace WebApi.models
 
         public DateTime? PrazoFinal { get; set; }
 
-        [StringLength(2000)]
         public string? Conteudo { get; set; }
 
         [Required]

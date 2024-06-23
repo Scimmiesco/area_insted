@@ -22,7 +22,7 @@
         "
       >
         <mat-accordion
-          *ngIf="atividade.Situacao === 'A'"
+          *ngIf="!this.acessoDocente ? atividade.Situacao === 'A' : true"
           class="w-full rounded-2xl"
         >
           <mat-expansion-panel
@@ -39,6 +39,12 @@
               <h1 class="text-white text-2xl font-bold py-1">
                 {{ atividade.Nome }}
               </h1>
+              <span
+                class="self-center font-bold opacity-70"
+                *ngIf="atividade.Situacao === 'I'"
+              >
+              &nbsp;Inativa</span
+              >
             </mat-expansion-panel-header>
             <app-atividade
               [infosAtividades]="{
@@ -48,8 +54,9 @@
                 conteudo: atividade.Conteudo
               }"
             ></app-atividade>
-          </mat-expansion-panel> </mat-accordion>
-    </ng-container>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ng-container>
     </div>
   </div>
 </main>
