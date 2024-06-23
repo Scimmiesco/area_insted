@@ -10,7 +10,7 @@
         matTooltip="Adicionar nova atividade"
         (click)="AbrirModalAdicionarAtividade()"
         *ngIf="this.acessoDocente"
-        class="material-symbols-outlined text-4xl self-center text-green_insted_dark dark:text-white px-2 cursor-pointer"
+        class="material-symbols-outlined text-4xl self-center text-green_insted_dark dark:text-white px-2 cursor-pointer hover:text-green_insted"
         >add</span
       >
     </div>
@@ -31,7 +31,7 @@
           >
             <mat-expansion-panel-header class="h-fit text-center items-center">
               <span
-              (click)="AbrirModalEditarAtividade(atividade)"
+                (click)="AbrirModalEditarAtividade(atividade)"
                 matTooltip="Editar atividade"
                 *ngIf="this.acessoDocente"
                 class="material-symbols-outlined text-2xl self-center text-white px-2 hover:text-green_insted_dark"

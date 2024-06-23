@@ -67,15 +67,31 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
         this.atividadeParaEditar.atividade?.Situacao ?? '',
         Validators.required,
       ],
-      DataInicioData: ['', Validators.required],
-      DataInicioHora: ['', Validators.required],
-      DataFimData: ['', Validators.required],
-      DataFimHora: ['', Validators.required],
+      DataInicioData: [
+        this.DividirDatahora(
+          this.atividadeParaEditar.atividade?.PrazoInicial.toString()
+        )[0],
+        Validators.required,
+      ],
+      DataInicioHora: [
+        this.DividirDatahora(
+          this.atividadeParaEditar.atividade?.PrazoInicial.toString()
+        )[1],
+        Validators.required,
+      ],
+      DataFimData: [
+        this.DividirDatahora(
+          this.atividadeParaEditar.atividade?.PrazoFinal.toString()
+        )[0],
+        Validators.required,
+      ],
+      DataFimHora: [
+        this.DividirDatahora(
+          this.atividadeParaEditar.atividade?.PrazoFinal.toString()
+        )[1],
+        Validators.required,
+      ],
       ConteudoAtividade: [this.atividadeParaEditar.atividade?.Conteudo ?? null],
-    });
-
-    this.CriarOuEditarForm.patchValue({
-      DataInicioData: '',
     });
   }
 
@@ -181,5 +197,8 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
       closeOnNavigation: true,
       panelClass: 'sucesso',
     });
+  }
+  DividirDatahora(dataHora: string | undefined) {
+    return dataHora?.split('T') ?? '';
   }
 }
