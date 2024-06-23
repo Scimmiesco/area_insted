@@ -7,7 +7,7 @@ import {
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { defaultIfEmpty, filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { MateriasService } from 'app/services/materias.service';
 import {
   materiaPadrao,
@@ -15,10 +15,11 @@ import {
 } from 'app/Interfaces/materias.interface';
 import { EnumCargos } from 'app/Interfaces/token.interface';
 import { AtividadesService } from 'app/services/atividades.service';
-import { AdicionarAtividadeComponent } from 'app/components/modais/adicionar-atividade/adicionar-atividade.component';
+import { AdicionarAtividadeComponent } from 'app/components/modais/atividade/adicionar-atividade/adicionar-atividade.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { getUser, IappState } from 'app/store/app.state';
+import { EditarAtividadeComponent } from 'app/components/modais/atividade/editar-atividade/editar-atividade.component';
 
 @Component({
   selector: 'app-materia',
@@ -59,6 +60,7 @@ export class MateriaAtividadesComponent {
       map((params) => Number(params['id']))
     );
   }
+
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
@@ -86,7 +88,21 @@ export class MateriaAtividadesComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(this.atividadesService.qtdAtividadesCriadas, 'te');
+      if (this.atividadesService.qtdAtividadesCriadas != 0)
+        window.location.reload();
+    });
+  }
+
+  AbrirModalEditarAtividade(atividade: IAtividade) {
+    console.log(atividade, 'ativida dentro do abrir modal')
+    var dialogRef = this.dialog.open(EditarAtividadeComponent, {
+      autoFocus: true,
+      closeOnNavigation: true,
+      data: {
+        atividade: atividade,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
       if (this.atividadesService.qtdAtividadesCriadas != 0)
         window.location.reload();
     });

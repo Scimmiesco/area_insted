@@ -1,11 +1,12 @@
-import { getLocaleDateTimeFormat } from '@angular/common';
-
 export enum TiposAtividades {
   ARQUIVO = 3,
   PAGINA = 2,
   TEXTO = 1,
 }
-
+export interface TipoAtividade {
+  tipoID: number;
+  nomeTipo: string;
+}
 export interface IAtividadesComponent {
   tipo: TiposAtividades;
   titulo?: string;
@@ -34,19 +35,20 @@ export interface IResponseAtividades {
   atividades: IAtividade[];
 }
 export interface IAtividade {
-  AtividadesMateriasID: number;
+  AtividadesMateriasID?: number;
   UsuarioID: number;
   MateriaID: number;
   TipoAtividadeID: number;
   Nome: string;
   PrazoFinal: Date;
-  Conteudo: string;
+  PrazoInicial: Date;
+  Conteudo?: string;
   Situacao: string;
-  CaminhoArquivo: string | null;
-  UsuarioInclusao: string | null;
-  DataInclusao: string | null;
-  UsuarioAlteracao: string | null;
-  DataAlteracao: Date | null;
+  CaminhoArquivo?: string;
+  UsuarioInclusao?: string;
+  DataInclusao?: string;
+  UsuarioAlteracao?: string;
+  DataAlteracao?: Date;
 }
 
 export const AtividadePadrao: IAtividade[] = [
@@ -57,16 +59,18 @@ export const AtividadePadrao: IAtividade[] = [
     TipoAtividadeID: 0,
     Nome: '',
     PrazoFinal: new Date(),
+    PrazoInicial: new Date(),
     Conteudo: '',
     Situacao: '',
-    CaminhoArquivo: null,
+    CaminhoArquivo: undefined,
     UsuarioInclusao: 'Sistema',
     DataInclusao: new Date().toLocaleDateString(),
-    UsuarioAlteracao: null,
-    DataAlteracao: null,
+    UsuarioAlteracao: undefined,
+    DataAlteracao: undefined,
   },
 ];
 export interface IAtividadeFormulario {
+  AtividadesMateriasID?: number;
   UsuarioID: number;
   MateriaID: number;
   TipoAtividadeID: number;
@@ -81,3 +85,14 @@ export interface IAtividadeFormulario {
   UsuarioAlteracao: string | null;
   DataAlteracao: Date | null;
 }
+export interface InfoModalAddAtividade {
+  MateriaID?: number;
+  UsuarioID?: number;
+  atividade?: IAtividade;
+}
+
+export const selectTiposAtividades: TipoAtividade[] = [
+  { tipoID: TiposAtividades.TEXTO, nomeTipo: 'Texto' },
+  { tipoID: TiposAtividades.PAGINA, nomeTipo: 'Pagina' },
+  { tipoID: TiposAtividades.ARQUIVO, nomeTipo: 'Arquivo' },
+];

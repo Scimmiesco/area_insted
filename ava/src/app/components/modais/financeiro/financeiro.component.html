@@ -58,20 +58,9 @@
     </div>
   </div>
   <select
-  id="select-TipoAtividade"
-  name="select-TipoAtividade"
-  title="teste"
-  class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
->
-  <ng-container *ngIf="selectTipoAtividade.length > 0">
-    PQQPPQPQPQP
-  </ng-container>
-
-  <option
-    *ngFor="let tipo of this.selectTipoAtividade"
-    [value]="tipo.TipoID"
-  >
-    {{ tipo.TipoID + " - " + tipo.nomeTipo }}
-  </option>
-</select>
+    id="select-TipoAtividade"
+    name="select-TipoAtividade"
+    title="teste"
+    class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
+  ></select>
 </div>

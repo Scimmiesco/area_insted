@@ -29,28 +29,35 @@
             [expanded]="i === 0 ? true : false"
             class="bg-green_insted"
           >
-            <mat-expansion-panel-header
-              class="flex-row flex justify-between h-fit text-center items-center"
-              ><span
+            <mat-expansion-panel-header class="h-fit text-center items-center">
+              <span
+              (click)="AbrirModalEditarAtividade(atividade)"
+                matTooltip="Editar atividade"
                 *ngIf="this.acessoDocente"
-                class="material-symbols-outlined text-2xl self-center text-white px-2"
+                class="material-symbols-outlined text-2xl self-center text-white px-2 hover:text-green_insted_dark"
                 >edit</span
               >
-              <h1 class="text-white text-2xl font-bold py-1">
+              <h1
+                class="text-white text-2xl font-bold py-1"
+                [ngClass]="
+                  atividade.Situacao === 'I' ? 'opacity-70' : 'opacity-100'
+                "
+              >
                 {{ atividade.Nome }}
               </h1>
               <span
-                class="self-center font-bold opacity-70"
-                *ngIf="atividade.Situacao === 'I'"
+                matTooltip="Atividade inativa"
+                *ngIf="atividade.Situacao === 'I' && this.acessoDocente"
+                class="material-symbols-outlined self-center mx-2 opacity-70 text-green_insted_dark"
               >
-              &nbsp;Inativa</span
-              >
+                link_off
+              </span>
             </mat-expansion-panel-header>
             <app-atividade
               [infosAtividades]="{
                 tipo: atividade.TipoAtividadeID,
                 titulo: atividade.Nome,
-                href: atividade.Situacao,
+                href: atividade.CaminhoArquivo,
                 conteudo: atividade.Conteudo
               }"
             ></app-atividade>

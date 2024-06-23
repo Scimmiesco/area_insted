@@ -30,8 +30,10 @@ import { MaterialModule } from './components/material/material.module';
 import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AtividadesModule } from './components/atividades/atividades.module';
-import { AdicionarAtividadeModule } from './components/modais/adicionar-atividade/adicionar-atividade.module';
+import { AtividadeModule } from './components/modais/atividade/atividade.module';
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
+import { CriarOuEditarAtividadeModule } from './shared/Atividade/CriarOuEditar.module';
+
 register();
 
 @NgModule({
@@ -51,8 +53,9 @@ register();
     FinanceiroModule,
     MenuBottomModule,
     RetornoRequisicaoModalModule,
-    AdicionarAtividadeModule,
+    AtividadeModule,
     HorarioModule,
+    CriarOuEditarAtividadeModule,
 
     CommonModule,
     BrowserModule,

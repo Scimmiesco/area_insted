@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { TipoAtividade } from '../adicionar-atividade/adicionar-atividade.component';
-
 @Component({
   selector: 'app-financeiro',
   templateUrl: './financeiro.component.html',
@@ -98,18 +96,4 @@ export class FinanceiroDialogComponent {
       },
     ];
   }
-  selectTipoAtividade: TipoAtividade[] = [
-    {
-      TipoID: 1,
-      nomeTipo: 'Texto',
-    },
-    {
-      TipoID: 2,
-      nomeTipo: 'Página',
-    },
-    {
-      TipoID: 3,
-      nomeTipo: 'Arquivo',
-    },
-  ];
 }

@@ -48,13 +48,7 @@
     </div>
   </div>
   <div
-    class="flex flex-col bg-white rounded-t-md rounded-b-2xl max-h-[50vh] min-h-[250px] dark:bg-green_insted_dark"
-  >
-    <!-- <p class="p-3 whitespace-normal text-justify dark:text-white">
-                PROVAS AV 1 – 25/04/2024 REVISÃO DE AV 1 – 02/05/2024 AV 2 –
-                20/06/2024 REVISÃO DE AV 2 – 27/06/2024 EXERCÍCIO DE COMPRESSÃO
-                EX.COM 01 – 07/03/2024 EX.COM 02 – 28/03/2024 EX.COM 03 –
-                11/04/2024 EX.COM 04 – 16/05/2024 EX.COM 05 – 06/06/2024
-              </p> -->
-  </div>
+    class="bg-white rounded-t-md rounded-b-2xl max-h-[50vh] min-h-[250px] p-1"
+    [innerHTML]="this.atividadePagina.conteudo"
+  ></div>
 </div>
