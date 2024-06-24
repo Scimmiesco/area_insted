@@ -3,12 +3,12 @@
 >
   <!--// Avisos-->
   <swiper-container
-    class="py-2 px-1 m-auto pb-4 min-h-[25svh] flex laptop:w-1/2"
-    [slidesPerView]="handleScreenSizeChange() ? 1.15 : 1"
+    class="py-2 px-1 m-auto pb-4 tablet:min-h-[25svh] flex laptop:w-1/2"
+    [slidesPerView]="handleScreenSizeChange() ? 1.05 : 1"
     [speed]="500"
     [loop]="true"
     [navigation]="!handleScreenSizeChange()"
-    [spaceBetween]="150"
+    [spaceBetween]="handleScreenSizeChange() ? 4: 150"
     [pagination]="{ clickable: true }"
     [autoplay]="{ delay: 5000, disableOnInteraction: false }"
   >
