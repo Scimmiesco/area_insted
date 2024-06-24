@@ -17,7 +17,7 @@ import { EnumCargos } from 'app/Interfaces/token.interface';
 import { AtividadesService } from 'app/services/atividades.service';
 import { AdicionarAtividadeComponent } from 'app/components/modais/atividade/adicionar-atividade/adicionar-atividade.component';
 import { MatDialog } from '@angular/material/dialog';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { getUser, IappState } from 'app/store/app.state';
 import { EditarAtividadeComponent } from 'app/components/modais/atividade/editar-atividade/editar-atividade.component';
 
@@ -87,12 +87,7 @@ export class MateriaAtividadesComponent {
       closeOnNavigation: true,
       data: { MateriaID: parseInt(this.idMateria), UsuarioID: this.idUsuario },
     });
-    console.log(
-      parseInt(this.idMateria),
-      'idMateria',
-      'UsuarioID',
-      this.idUsuario
-    );
+
     dialogRef.afterClosed().subscribe((result) => {
       if (this.atividadesService.qtdAtividadesCriadas != 0)
         window.location.reload();
@@ -104,7 +99,7 @@ export class MateriaAtividadesComponent {
       autoFocus: true,
       closeOnNavigation: true,
       data: {
-        atividade: atividade,
+        Atividade: atividade,
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
