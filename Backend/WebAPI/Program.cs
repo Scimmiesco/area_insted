@@ -49,6 +49,7 @@ builder.Services.AddAuthentication(x =>
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IClienteIpService, ClienteIpService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IMateriasService, MateriasService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

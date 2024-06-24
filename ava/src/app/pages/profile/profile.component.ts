@@ -1,5 +1,5 @@
 import { MateriasService } from 'app/services/materias.service';
-import { IappState, getUser } from 'app/store/app.state';
+import { IappState, getUser, resetState } from 'app/store/app.state';
 import { Component } from '@angular/core';
 import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -72,6 +72,7 @@ export class ProfileComponent {
     sessionStorage.clear();
     localStorage.clear();
     this.router.navigate(['/']);
+    this.store.dispatch(resetState());
   }
   modalSucessoEnvioEmail(message: string) {
     this.dialog.open(RetornoRequisicaoModalComponent, {

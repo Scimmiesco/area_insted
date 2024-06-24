@@ -5,20 +5,17 @@ import {
   AtividadePadrao,
   IAtividade,
   IAtividadeFormulario,
+  IResponseAdicionarAtividade,
   IResponseAtividades,
 } from 'app/Interfaces/atividade.interface';
-import { BehaviorSubject, catchError, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { RetornoRequisicaoModalComponent } from 'app/components/modais/retornoRequisicao/retornoRequisicao.component';
 import { MatDialog } from '@angular/material/dialog';
-interface IResponseAdicionarAtividade {
-  sucesso: boolean;
-  mensagem: string;
-}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AtividadesService {
-  private sessionStorageKey = 'isAuthenticated';
   private APIURL = environment.URLAPI;
   qtdAtividadesCriadas = 0 as number;
   constructor(private http: HttpClient, public dialog: MatDialog) {}
@@ -31,13 +28,37 @@ export class AtividadesService {
   setAtividades(atividades: IAtividade[]): void {
     this.AtividadesSubject.next(atividades);
   }
-  ObterAtividadesPorMateria(idMateria: string) {
-    const loginUrl = `${this.APIURL}GetAtividadesPorMateria?materiaID=${idMateria}`;
+
+  setAtividadesPorUsuario(atividades: IAtividade[]): void {
+    this.AtividadesPorUsuarioSubject.next(atividades);
+  }
+
+  private AtividadesPorUsuarioSubject: BehaviorSubject<IAtividade[]> =
+    new BehaviorSubject<IAtividade[]>(AtividadePadrao);
+
+  AtividadesPorUsuario$: Observable<IAtividade[]> =
+    this.AtividadesPorUsuarioSubject.asObservable();
+
+  ObterAtividadesPorMateria(materiaID: string, usuarioID: string) {
+    console.log(usuarioID, 'user ObterAtividadesPorMateria');
+
+    const loginUrl = `${this.APIURL}GetAtividadesPorMateria?materiaID=${materiaID}&usuarioID=${usuarioID}`;
+    console.log(loginUrl, 'loginUrl');
+    this.http.get<IResponseAtividades>(loginUrl).subscribe({
+      next: (response) => {
+        console.log(response.atividades);
+        this.setAtividades(response.atividades);
+      },
+      error: (error) => {},
+    });
+  }
+
+  ObterAtividadesPorUsuario(usuarioID: string) {
+    const loginUrl = `${this.APIURL}ObterAtividadesPorUsuario?usuarioID=${usuarioID}`;
 
     return this.http.get<IResponseAtividades>(loginUrl).subscribe({
       next: (response) => {
-        this.setAtividades(response.atividades);
-        console.log(response);
+        this.setAtividadesPorUsuario(response.atividades);
       },
       error: (err) => {
         console.error('Error fetching materias:', err);
@@ -48,34 +69,36 @@ export class AtividadesService {
   AdicionarAtividade(
     formData: IAtividadeFormulario
   ): Observable<IResponseAdicionarAtividade> {
-    return this.http.post(`${this.APIURL}AdicionarAtividade`, formData).pipe(
-      tap({
-        next: (response: any) => {
+    return this.http
+      .post<any>(`${this.APIURL}CriarOuAdicionarAtividade`, formData)
+      .pipe(
+        map((response: any) => {
           this.qtdAtividadesCriadas++;
-          return { sucesso: true, mensagem: 'Matéria adicionada com sucesso' };
-        },
-        error: (error) => {
-          if (error.status === 400) {
-            return {
-              sucesso: false,
-              mensagem:
-                'Solicitação inválida: Verifique os dados do formulário para erros de validação.',
-            };
-          } else if (error.status === 500) {
-            return {
-              sucesso: false,
-              mensagem:
-                'Erro no servidor: Por favor, tente novamente mais tarde.',
-            };
-          }
           return {
-            sucesso: false,
-            mensagem:
-              'Erro desconhecido. Por favor, tente novamente mais tarde.',
-          };
-        },
-      })
-    );
+            success: response.success,
+            message: response.message,
+          } as IResponseAdicionarAtividade;
+        }),
+        catchError((error) => {
+          let mensagem: string;
+
+          if (error.status === 400) {
+            mensagem =
+              'Solicitação inválida: Verifique os dados do formulário para erros de validação.';
+          } else if (error.status === 500) {
+            mensagem =
+              'Erro no servidor: Por favor, tente novamente mais tarde.';
+          } else {
+            mensagem =
+              'Erro desconhecido. Por favor, tente novamente mais tarde.';
+          }
+
+          return of({
+            success: false,
+            message: mensagem,
+          } as IResponseAdicionarAtividade);
+        })
+      );
   }
 
   upload(file: File): Observable<any> {

@@ -12,7 +12,5 @@ export class EditarAtividadeComponent {
     @Inject(MAT_DIALOG_DATA) public data: InfoModalAddAtividade,
     public dialog: MatDialog
   ) {
-
-    console.log('dataDaTela', data);
   }
 }

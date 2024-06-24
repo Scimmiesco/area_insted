@@ -35,6 +35,8 @@ export const appInitialState: IappState = {
   token: '',
 };
 
+export const resetState = createAction('[AppUser] Reset State');
+
 export const setUser = createAction(
   '[AppUser] SetUser',
   props<{ payload: Pessoa['user'] }>()
@@ -80,5 +82,6 @@ export const appReducer = createReducer(
   on(setToken, browseReloadToken, (state, { payload }) => ({
     ...state,
     token: payload,
-  }))
+  })),
+  on(resetState, () => appInitialState) // Resetar o estado para o inicial
 );

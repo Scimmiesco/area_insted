@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 import { ResponseMateriasI } from 'app/Interfaces/materias.interface';
 import { cores } from 'app/Interfaces/cores.interface';
 import { EnumCargos } from 'app/Interfaces/token.interface';
+import { AtividadesService } from 'app/services/atividades.service';
 
 register();
 
@@ -41,7 +42,8 @@ export class HomeComponent {
     public tokenService: TokenService,
     public store: Store<{ app: IappState }>,
     private tamanhoDaTelaService: TamanhoDaTelaService,
-    private router: Router
+    private router: Router,
+    public atividadesService: AtividadesService
   ) {
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
@@ -54,7 +56,6 @@ export class HomeComponent {
       this.materias = materias;
     });
 
-    // this.tokenService.getDataFromToken(localStorage.getItem('token')|| '').role
   }
 
   ngOnDestroy() {

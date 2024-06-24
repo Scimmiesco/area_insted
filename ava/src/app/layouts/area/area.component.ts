@@ -22,6 +22,8 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
+import { AtividadesService } from 'app/services/atividades.service';
+import { EnumCargos } from 'app/Interfaces/token.interface';
 
 @Component({
   selector: 'app-area',
@@ -30,12 +32,13 @@ import {
 export class AreaComponent implements OnInit {
   tokenSession = localStorage.getItem('token') || '';
   icons!: IconInterface[];
-
   iconsAcessibilidade!: IconsAcessibilidadeInterface[];
   htmlRoot!: HTMLElement;
   tamanhoFontePadrao = '16px';
   private materiasSubscription!: Subscription;
   private unsubscribe$: Subject<void> = new Subject<void>();
+  cargoUsuario!: EnumCargos;
+  userID = 0 as number;
 
   constructor(
     private store: Store<{ app: IappState }>,
@@ -44,18 +47,27 @@ export class AreaComponent implements OnInit {
     private userService: UserService,
     private materiasService: MateriasService,
     public temaService: TemaService,
-    private tamanhoDaTelaService: TamanhoDaTelaService
+    private tamanhoDaTelaService: TamanhoDaTelaService,
+    private atividadesService: AtividadesService
   ) {
     this.tamanhoDaTelaService.addListener(() => this.telaTamanhoMobile());
     this.icons = Icons;
     this.iconsAcessibilidade = IconsAcessibilidade;
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
-    this.userService.getUser();
   }
   ngOnInit() {
     this.htmlRoot = <HTMLElement>document.getElementsByTagName('html')[0];
+    this.userService.getUserAndFetchActivities();
+
+    this.userService.obterCargoUsuario().subscribe((cargo) => {
+      this.cargoUsuario = cargo;
+    });
+    this.store.select(getUser).subscribe((user) => {
+      this.userID = user.IdUser;
+    });
     this.getMaterias();
   }
+
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() => this.telaTamanhoMobile());
     if (this.materiasSubscription) {
@@ -64,22 +76,18 @@ export class AreaComponent implements OnInit {
   }
 
   getMaterias() {
+
+  }
+  ObterAtividadesPorUsuario() {
     this.store
       .pipe(
         select(getUser),
         tap((user) => {
           const usuarioID = user.IdUser;
-          if (usuarioID !== 0) {
-            this.materiasService.materias$.subscribe((materias) => {
-              if (
-                materias === null ||
-                materias.length === 0 ||
-                materias === materiaPadrao
-              ) {
-                this.materiasService.ObterMaterias(usuarioID);
-              }
-            });
-          }
+          this.atividadesService.ObterAtividadesPorUsuario(
+            usuarioID.toString()
+          );
+          console.log(usuarioID, 'usuarioID ObterAtividadesPorUsuario');
         })
       )
       .subscribe();

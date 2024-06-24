@@ -7,7 +7,7 @@ import {
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { MateriasService } from 'app/services/materias.service';
 import {
   materiaPadrao,
@@ -17,7 +17,7 @@ import { EnumCargos } from 'app/Interfaces/token.interface';
 import { AtividadesService } from 'app/services/atividades.service';
 import { AdicionarAtividadeComponent } from 'app/components/modais/atividade/adicionar-atividade/adicionar-atividade.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { getUser, IappState } from 'app/store/app.state';
 import { EditarAtividadeComponent } from 'app/components/modais/atividade/editar-atividade/editar-atividade.component';
 
@@ -52,9 +52,10 @@ export class MateriaAtividadesComponent {
     this.store.select(getUser).subscribe((user) => {
       this.idUsuario = user.IdUser;
     });
-    atividadesService.ObterAtividadesPorMateria(this.idMateria);
   }
-
+  ngOnInit(): void {
+    this.ObterAtividadesPorMateria();
+  }
   getIDMateria(): Observable<number> {
     return this.activatedRoute.params.pipe(
       map((params) => Number(params['id']))
@@ -86,7 +87,12 @@ export class MateriaAtividadesComponent {
       closeOnNavigation: true,
       data: { MateriaID: parseInt(this.idMateria), UsuarioID: this.idUsuario },
     });
-
+    console.log(
+      parseInt(this.idMateria),
+      'idMateria',
+      'UsuarioID',
+      this.idUsuario
+    );
     dialogRef.afterClosed().subscribe((result) => {
       if (this.atividadesService.qtdAtividadesCriadas != 0)
         window.location.reload();
@@ -94,7 +100,6 @@ export class MateriaAtividadesComponent {
   }
 
   AbrirModalEditarAtividade(atividade: IAtividade) {
-    console.log(atividade, 'ativida dentro do abrir modal')
     var dialogRef = this.dialog.open(EditarAtividadeComponent, {
       autoFocus: true,
       closeOnNavigation: true,
@@ -105,6 +110,15 @@ export class MateriaAtividadesComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (this.atividadesService.qtdAtividadesCriadas != 0)
         window.location.reload();
+    });
+  }
+  ObterAtividadesPorMateria() {
+    this.store.select(getUser).subscribe((user) => {
+      console.log(user.IdUser, 'user');
+      this.atividadesService.ObterAtividadesPorMateria(
+        this.idMateria,
+        user.IdUser.toString()
+      );
     });
   }
 }

@@ -46,4 +46,27 @@ namespace WebApi.models
 
         public DateTime? DataAlteracao { get; set; }
     }
+    public class dtoAtividadePorUsuario
+    {
+        public int AtividadesMateriasID { get; set; }
+        public int? UsuarioID { get; set; }
+        public int MateriaID { get; set; }
+        public int TipoAtividadeID { get; set; }
+        public string Nome { get; set; }
+        public DateTime? PrazoInicial { get; set; }
+        public DateTime? PrazoFinal { get; set; }
+        public string? Conteudo { get; set; }
+        public string Situacao { get; set; }
+        public string? CaminhoArquivo { get; set; }
+        public string? UsuarioInclusao { get; set; }
+        public DateTime? DataInclusao { get; set; }
+        public string? UsuarioAlteracao { get; set; }
+        public DateTime? DataAlteracao { get; set; }
+
+        public string NmClass { get; set; } 
+
+        public dtoAtividadePorUsuario()
+        {
+        }
+    }
 }

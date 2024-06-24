@@ -1,10 +1,14 @@
 import {
-  AtividadePadrao,
   IAtividade,
-  TiposAtividades,
+  IResponseAdicionarAtividade,
 } from './../../Interfaces/atividade.interface';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { RetornoRequisicaoModalComponent } from 'app/components/modais/retornoRequisicao/retornoRequisicao.component';
 import {
@@ -20,7 +24,7 @@ import { AtividadesService } from 'app/services/atividades.service';
   templateUrl: './CriarOuEditar.component.html',
 })
 export class CriarOuEditarAtividadeComponent implements OnInit {
-  @Input() atividadeParaEditar!: InfoModalAddAtividade;
+  @Input() atividadeParaEditar: InfoModalAddAtividade | null = null;
 
   selectTiposAtividades: TipoAtividade[] = selectTiposAtividades;
   CriarOuEditarForm!: FormGroup;
@@ -55,44 +59,36 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
 
   ngOnInit(): void {
     this.CriarOuEditarForm = this.formBuilder.group({
-      TituloAtividade: [
-        this.atividadeParaEditar.atividade?.Nome ?? '',
-        Validators.required,
-      ],
-      TipoAtividade: [
-        this.atividadeParaEditar.atividade?.TipoAtividadeID ?? '',
-        Validators.required,
-      ],
-      Situacao: [
-        this.atividadeParaEditar.atividade?.Situacao ?? '',
-        Validators.required,
-      ],
-      DataInicioData: [
-        this.DividirDatahora(
-          this.atividadeParaEditar.atividade?.PrazoInicial.toString()
-        )[0],
-        Validators.required,
-      ],
-      DataInicioHora: [
-        this.DividirDatahora(
-          this.atividadeParaEditar.atividade?.PrazoInicial.toString()
-        )[1],
-        Validators.required,
-      ],
-      DataFimData: [
-        this.DividirDatahora(
-          this.atividadeParaEditar.atividade?.PrazoFinal.toString()
-        )[0],
-        Validators.required,
-      ],
-      DataFimHora: [
-        this.DividirDatahora(
-          this.atividadeParaEditar.atividade?.PrazoFinal.toString()
-        )[1],
-        Validators.required,
-      ],
-      ConteudoAtividade: [this.atividadeParaEditar.atividade?.Conteudo ?? null],
+      TituloAtividade: ['', Validators.required],
+      TipoAtividade: ['', Validators.required],
+      Situacao: ['', Validators.required],
+      DataInicioData: ['', Validators.required],
+      DataInicioHora: ['', Validators.required],
+      DataFimData: ['', Validators.required],
+      DataFimHora: ['', Validators.required],
+      ConteudoAtividade: [null],
     });
+
+    if (this.atividadeParaEditar?.Atividade) {
+      this.CriarOuEditarForm.patchValue({
+        TituloAtividade: this.atividadeParaEditar.Atividade.Nome ?? '',
+        TipoAtividade: this.atividadeParaEditar.Atividade.TipoAtividadeID ?? '',
+        Situacao: this.atividadeParaEditar.Atividade.Situacao ?? '',
+        DataInicioData: this.DividirDatahora(
+          this.atividadeParaEditar.Atividade.PrazoInicial.toString()
+        )[0],
+        DataInicioHora: this.DividirDatahora(
+          this.atividadeParaEditar.Atividade.PrazoInicial.toString()
+        )[1],
+        DataFimData: this.DividirDatahora(
+          this.atividadeParaEditar.Atividade.PrazoFinal.toString()
+        )[0],
+        DataFimHora: this.DividirDatahora(
+          this.atividadeParaEditar.Atividade.PrazoFinal.toString()
+        )[1],
+        ConteudoAtividade: this.atividadeParaEditar.Atividade.Conteudo ?? null,
+      });
+    }
   }
 
   anexarArquivo(e: Event) {
@@ -105,12 +101,10 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
       this.fileName = file.name;
       this.atividadeService.upload(file).subscribe(
         (response) => {
-          console.log('Upload bem-sucedido', response);
           this.caminhoArquivo = response.filePath;
           this.fileName = 'Arquivo carregado com sucesso!';
         },
         (error) => {
-          console.error('Erro no upload', error);
           this.fileName = 'Erro ao carregar o arquivo.';
         }
       );
@@ -121,9 +115,10 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
 
   onSubmit() {
     if (this.CriarOuEditarForm.valid) {
-      const formData: IAtividadeFormulario = {
+      console.log(this.atividadeParaEditar?.MateriaID);
+      let formData: IAtividadeFormulario = {
         AtividadesMateriasID:
-          this.atividadeParaEditar?.atividade?.AtividadesMateriasID,
+          this.atividadeParaEditar?.Atividade?.AtividadesMateriasID,
         Nome: this.CriarOuEditarForm.value.TituloAtividade,
         TipoAtividadeID: parseInt(this.CriarOuEditarForm.value.TipoAtividade),
         Situacao: this.CriarOuEditarForm.value.Situacao,
@@ -136,25 +131,49 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
           this.CriarOuEditarForm.value.DataFimHora
         ),
         Conteudo: this.CriarOuEditarForm.value.ConteudoAtividade,
-        MateriaID: this.atividadeParaEditar?.MateriaID ?? 0,
-        UsuarioID: this.atividadeParaEditar?.UsuarioID ?? 0,
+        MateriaID:
+          this.atividadeParaEditar?.MateriaID ??
+          this.atividadeParaEditar?.Atividade?.MateriaID ??
+          0,
+        UsuarioID:
+          this.atividadeParaEditar?.UsuarioID ??
+          this.atividadeParaEditar?.Atividade?.UsuarioID ??
+          0,
         CaminhoArquivo: this.caminhoArquivo,
         UsuarioInclusao: this.atividadeParaEditar?.UsuarioID?.toString() ?? '',
-        DataInclusao: null,
-        UsuarioAlteracao: null,
-        DataAlteracao: null,
+        DataInclusao: undefined,
+        UsuarioAlteracao:
+          this.atividadeParaEditar?.UsuarioID?.toString() ??
+          this.atividadeParaEditar?.Atividade?.UsuarioID.toString() ??
+          '',
+        DataAlteracao: undefined,
       };
-
+      console.log(formData);
       this.atividadeService.AdicionarAtividade(formData).subscribe({
-        next: (response) => {
-          this.modalSucesso('Sucesso ao criar atividade');
+        next: (response: IResponseAdicionarAtividade) => {
+          this.modalSucesso(response.message);
           this.CriarOuEditarForm.reset();
+          setTimeout(() => this.dialog.closeAll(), 1500);
         },
         error: (error) => {
-          console.error('Unexpected error:', error);
-          this.modalErro(
-            'Erro desconhecido. Por favor, tente novamente mais tarde.'
-          );
+          switch (error.status) {
+            case 500:
+              this.modalErro('Erro de conexão com o servidor.');
+              break;
+            case 404:
+              this.modalErro('Usuário Inválido.');
+              break;
+            case 401:
+              this.modalErro('Senha inválida.');
+              break;
+            case 403:
+              this.modalErro(
+                'Tentativas inválidas excedidas. Tente novamente em 3 minutos.'
+              );
+              break;
+            default:
+              this.modalErro('Erro desconhecido ao entrar. Contate o suporte.');
+          }
         },
       });
     }
@@ -183,19 +202,17 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
 
   modalSucesso(message: string) {
     this.dialog.open(RetornoRequisicaoModalComponent, {
-      data: { message: message, tipoModal: 'sucesso' },
+      data: { message: message, tipoRetorno: 'sucesso' },
       autoFocus: true,
       closeOnNavigation: true,
-      panelClass: 'sucesso',
     });
   }
 
   modalErro(message: string) {
     this.dialog.open(RetornoRequisicaoModalComponent, {
-      data: { message: message, tipoModal: 'sucesso' },
+      data: { message: message, tipoRetorno: 'erro' },
       autoFocus: true,
       closeOnNavigation: true,
-      panelClass: 'sucesso',
     });
   }
   DividirDatahora(dataHora: string | undefined) {

@@ -30,15 +30,14 @@ export class MateriasService {
   constructor(
     private http: HttpClient,
     private tokenService: TokenService,
-    private userService: UserService
   ) {}
 
-  ObterMaterias(usuarioID: number) {
-    this.userService.obterCargoUsuario().subscribe((cargo) => {
-      cargo == EnumCargos.ALUNO
-        ? this.getHttpMaterias(usuarioID)
-        : this.getHttpMateriasDocente(usuarioID);
-    });
+  getMateriasPorUsuario(acessoDocente: boolean, usuarioID: number) {
+    if (acessoDocente) {
+      this.getHttpMateriasDocente(usuarioID);
+    } else {
+      this.getHttpMaterias(usuarioID);
+    }
   }
 
   getHttpMaterias(usuarioID: number) {

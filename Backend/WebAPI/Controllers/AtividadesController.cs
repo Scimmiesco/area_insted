@@ -3,22 +3,27 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using WebApi.models;
 using WebAPI.Data;
+using WebAPI.Interfaces;
 using WebAPI.Models;
+using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
     public class AtividadesController : ControllerBase
     {
-        AreaInstedContext _context;
-        private readonly string _uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
-        public AtividadesController(AreaInstedContext context)
+        private readonly AreaInstedContext _context;
+        private readonly string _uploadFolder;
+        private readonly IMateriasService _materiasService;
 
+        public AtividadesController(AreaInstedContext context, IMateriasService materiasService)
         {
+            _materiasService = materiasService;
             _context = context;
+            _uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
         }
 
         [HttpGet("GetAtividadesPorMateria")]
-        public async Task<IActionResult> GetAtividadesPorMateria(string materiaID)
+        public async Task<IActionResult> GetAtividadesPorMateria(string materiaID, string usuarioID)
         {
             try
             {
@@ -39,15 +44,56 @@ namespace WebAPI.Controllers
                     return NotFound(new { message = "Matéria não encontrada." });
                 }
 
+                if (string.IsNullOrEmpty(usuarioID))
+                {
+                    return BadRequest(new { message = "ID do usuário informado é inválido." });
+                }
+
+                if (!int.TryParse(usuarioID, out int usuarioIDInt))
+                {
+                    return BadRequest(new { message = "ID do usuário deve ser um número válido." });
+                }
+
+                var usuario = await _context.TbUsers.FirstOrDefaultAsync(u => u.IdUser == usuarioIDInt);
+
+                if (usuario == null)
+                {
+                    return NotFound(new { message = "Usuário não encontrado." });
+                }
+
                 var atividades = await _context.AtividadesMaterias
                     .Where(u => u.MateriaID == materiaIdInt)
                     .ToListAsync();
+
+                var materias = _materiasService.GetMaterias(usuarioIDInt);
+
+                List<int> idClasses = materias.Select(m => m.IdClass).ToList();
+                List<string> nmClasses = materias.Select(m => m.NmClass).ToList();
+
+                List<dtoAtividadePorUsuario> dtoAtividades = atividades.Select(a => new dtoAtividadePorUsuario
+                {
+                    AtividadesMateriasID = a.AtividadesMateriasID,
+                    UsuarioID = a.UsuarioID,
+                    MateriaID = a.MateriaID,
+                    TipoAtividadeID = a.TipoAtividadeID,
+                    Nome = a.Nome,
+                    PrazoInicial = a.PrazoInicial,
+                    PrazoFinal = a.PrazoFinal,
+                    Conteudo = a.Conteudo,
+                    Situacao = a.Situacao,
+                    CaminhoArquivo = a.CaminhoArquivo,
+                    UsuarioInclusao = a.UsuarioInclusao,
+                    DataInclusao = a.DataInclusao,
+                    UsuarioAlteracao = a.UsuarioAlteracao,
+                    DataAlteracao = a.DataAlteracao,
+                    NmClass = nmClasses[idClasses.IndexOf(a.MateriaID)]
+                }).ToList();
 
                 return Ok(new
                 {
                     success = true,
                     message = "Atividades retornadas com sucesso!",
-                    atividades = atividades
+                    atividades = dtoAtividades
                 });
             }
             catch (Exception ex)
@@ -55,15 +101,105 @@ namespace WebAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { message = ex.Message });
             }
         }
+        [HttpGet("ObterAtividadesPorUsuario")]
+        public async Task<IActionResult> ObterAtividadesPorUsuario(string usuarioID)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(usuarioID))
+                {
+                    return BadRequest(new { message = "ID do usuário informado é inválido." });
+                }
 
-        [HttpPost("AdicionarAtividade")]
-        public async Task<IActionResult> AdicionarAtividade([FromBody] AtividadesMaterias atividadeNova)
+                if (!int.TryParse(usuarioID, out int usuarioIDInt))
+                {
+                    return BadRequest(new { message = "ID do usuário deve ser um número válido." });
+                }
+
+                var usuario = await _context.TbUsers.FirstOrDefaultAsync(u => u.IdUser == usuarioIDInt);
+
+                if (usuario == null)
+                {
+                    return NotFound(new { message = "Usuário não encontrado." });
+                }
+
+                var materias = _materiasService.GetMaterias(usuarioIDInt);
+                List<int> idClasses = materias.Select(m => m.IdClass).ToList();
+                List<string> nmClasses = materias.Select(m => m.NmClass).ToList();
+
+                var atividades = await _context.AtividadesMaterias
+                .Where(x => idClasses.Contains(x.MateriaID)).ToListAsync();
+
+                List<dtoAtividadePorUsuario> dtoAtividades = atividades.Select(a => new dtoAtividadePorUsuario
+                {
+                    AtividadesMateriasID = a.AtividadesMateriasID,
+                    UsuarioID = a.UsuarioID,
+                    MateriaID = a.MateriaID,
+                    TipoAtividadeID = a.TipoAtividadeID,
+                    Nome = a.Nome,
+                    PrazoInicial = a.PrazoInicial,
+                    PrazoFinal = a.PrazoFinal,
+                    Conteudo = a.Conteudo,
+                    Situacao = a.Situacao,
+                    CaminhoArquivo = a.CaminhoArquivo,
+                    UsuarioInclusao = a.UsuarioInclusao,
+                    DataInclusao = a.DataInclusao,
+                    UsuarioAlteracao = a.UsuarioAlteracao,
+                    DataAlteracao = a.DataAlteracao,
+                    NmClass = nmClasses[idClasses.IndexOf(a.MateriaID)]
+                }).ToList();
+
+                return Ok(new
+                {
+                    success = true,
+                    message = "Atividades retornadas com sucesso!",
+                    atividades = dtoAtividades
+                });
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+        [HttpPost("CriarOuAdicionarAtividade")]
+        public async Task<IActionResult> CriarOuAdicionarAtividade([FromBody] AtividadesMaterias atividadeNova)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
+                }
+                if (!atividadeNova.AtividadesMateriasID.Equals(0))
+                {
+                    var atividadeExistente = await _context.AtividadesMaterias.FindAsync(atividadeNova.AtividadesMateriasID);
+
+                    if (atividadeExistente != null)
+                    {
+                        // Atualizar a atividade existente
+                        atividadeExistente.Nome = atividadeNova.Nome;
+                        atividadeExistente.TipoAtividadeID = atividadeNova.TipoAtividadeID;
+                        atividadeExistente.Situacao = atividadeNova.Situacao;
+                        atividadeExistente.PrazoInicial = atividadeNova.PrazoInicial;
+                        atividadeExistente.PrazoFinal = atividadeNova.PrazoFinal;
+                        atividadeExistente.Conteudo = atividadeNova.Conteudo;
+                        atividadeExistente.UsuarioAlteracao = atividadeNova.UsuarioID.ToString();
+                        atividadeExistente.DataAlteracao = DateTime.Now;
+
+                        _context.AtividadesMaterias.Update(atividadeExistente);
+                    }
+                    else
+                    {
+                        return NotFound($"Atividade com ID {atividadeNova.AtividadesMateriasID} não encontrada.");
+                    }
+
+                    await _context.SaveChangesAsync();
+                    return Ok(new { message = "Atividade Atualizada com sucesso!" });
                 }
 
                 var atividade = new AtividadesMaterias
@@ -87,7 +223,7 @@ namespace WebAPI.Controllers
 
                 await _context.SaveChangesAsync();
 
-                return Ok(new { message = "Atividade adicionada com sucesso!" });
+                return Ok(new { success = true, message = "Atividade adicionada com sucesso!" });
             }
             catch (Exception ex)
             {
@@ -117,7 +253,7 @@ namespace WebAPI.Controllers
                 await file.CopyToAsync(stream);
             }
 
-            return Ok(new {  filePath });;
+            return Ok(new { filePath }); ;
         }
 
 

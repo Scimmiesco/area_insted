@@ -1,6 +1,6 @@
 ﻿using WebAPI.Models;
 
-namespace WebAPI.Services
+namespace WebAPI.Interfaces
 {
     public interface ITokenService
     {

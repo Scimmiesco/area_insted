@@ -34,6 +34,10 @@ export interface IResponseAtividades {
   message: string;
   atividades: IAtividade[];
 }
+export interface IResponseAdicionarAtividade {
+  success: boolean;
+  message: string;
+}
 export interface IAtividade {
   AtividadesMateriasID?: number;
   UsuarioID: number;
@@ -49,6 +53,7 @@ export interface IAtividade {
   DataInclusao?: string;
   UsuarioAlteracao?: string;
   DataAlteracao?: Date;
+  NmClass?: string;
 }
 
 export const AtividadePadrao: IAtividade[] = [
@@ -57,38 +62,39 @@ export const AtividadePadrao: IAtividade[] = [
     UsuarioID: 0,
     MateriaID: 0,
     TipoAtividadeID: 0,
-    Nome: '',
+    Nome: 'Atividade padrão',
     PrazoFinal: new Date(),
     PrazoInicial: new Date(),
-    Conteudo: '',
-    Situacao: '',
+    Conteudo: 'Atividade padrão',
+    Situacao: 'A',
     CaminhoArquivo: undefined,
     UsuarioInclusao: 'Sistema',
     DataInclusao: new Date().toLocaleDateString(),
     UsuarioAlteracao: undefined,
     DataAlteracao: undefined,
+    NmClass: 'Materia Padrão',
   },
 ];
 export interface IAtividadeFormulario {
   AtividadesMateriasID?: number;
-  UsuarioID: number;
+  UsuarioID?: number;
   MateriaID: number;
   TipoAtividadeID: number;
   Nome: string;
-  PrazoFinal: string;
-  Conteudo: string;
+  PrazoFinal?: string;
+  Conteudo?: string;
   Situacao: string;
-  PrazoInicial: string;
-  CaminhoArquivo: string | null;
-  UsuarioInclusao: string | null;
-  DataInclusao: string | null;
-  UsuarioAlteracao: string | null;
-  DataAlteracao: Date | null;
+  PrazoInicial?: string;
+  CaminhoArquivo?: string;
+  UsuarioInclusao?: string;
+  DataInclusao?: string;
+  UsuarioAlteracao?: string;
+  DataAlteracao?: Date;
 }
 export interface InfoModalAddAtividade {
   MateriaID?: number;
   UsuarioID?: number;
-  atividade?: IAtividade;
+  Atividade?: IAtividade;
 }
 
 export const selectTiposAtividades: TipoAtividade[] = [
