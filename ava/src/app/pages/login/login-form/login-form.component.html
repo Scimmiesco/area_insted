@@ -2,8 +2,10 @@
   [formGroup]="loginForm"
   (submit)="Login()"
   id="formularioPadrao"
-  class=" laptop:min-h-[40vh] laptop:max-h-[85vh] laptop:min-w-[30vw] laptop:max-w-[25vw] fundo_vidro"
+  class="laptop:min-h-[40vh] laptop:max-h-[85vh] laptop:min-w-[30vw] laptop:max-w-[25vw] fundo_vidro"
 >
+  <h1 class="font-bold">Área do aluno</h1>
+
   <div
     class="flex flex-col flex-1 w-full justify-between items-center gap-2 relative"
   >
@@ -45,33 +47,28 @@
         message="A senha é obrigatória."
       />
     </div>
-    <div class="flex flex-row justify-center items-center gap-2">
-      <input
-        title="manterConectadoCheckBox"
-        type="checkbox"
-        id="checkbox1"
-        class="p-1 hover:cursor-pointer relative appearance-none w-[1.5rem] h-[1.5rem] box-content border-white border-[2px] rounded-full focus:outline-none aspect-square bg-green_insted checked:bg-white_transp checked:border-opacity-0 checked:bg-no-repeat checked:transition-all transition ease-linear delay-0 checked:bg-center checked:bg-contain checked:bg-checkmark"
-      />
-      <label
-        for="checkbox1"
-        class="dark:text-white text-green_insted font-semibold"
-        >Manter conectado</label
-      >
-    </div>
 
     <button class="w-1/2" type="submit" (onclick)="Login()">Entrar</button>
     <app-message
       erro="true"
-      class=" w-2/3"
+      class="w-2/3"
       *ngIf="errorMessage != null"
       message="{{ errorMessage }}"
     />
-
-    <a
-      [routerLink]="['/login/recuperarsenha']"
-      class="dark:text-white_transp text-green_insted font-semibold"
-    >
-      Esqueci minha senha
-    </a>
+    <div class="flex justify-evenly w-full">
+      <a
+        [routerLink]="['/login/recuperarsenha']"
+        class="dark:text-white_transp text-green_insted font-semibold w-2/5"
+      >
+        Recuperar senha
+      </a>
+      <p class="text-green_insted font-bold w-1/5">|</p>
+      <a
+        [routerLink]="['/login/professor']"
+        class="dark:text-white_transp text-green_insted font-semibold w-2/5"
+      >
+        Sou professor
+      </a>
+    </div>
   </div>
 </form>

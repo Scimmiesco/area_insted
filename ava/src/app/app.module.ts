@@ -28,8 +28,11 @@ import { FinanceiroModule } from './components/modais/financeiro/financeiro.modu
 import { MateriaAtividadesModule } from './pages/materiaAtividades/materiaAtividades.module';
 import { MaterialModule } from './components/material/material.module';
 import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
-import { LoginModule } from './pages/login/login.module';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { AtividadesModule } from './components/atividades/atividades.module';
+import { AtividadeModule } from './components/modais/atividade/atividade.module';
+import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
+import { CriarOuEditarAtividadeModule } from './shared/Atividade/CriarOuEditar.module';
 
 register();
 
@@ -39,19 +42,20 @@ register();
     LoadingComponent,
     AreaComponent,
     HorarioAulasComponent,
-
   ],
   imports: [
     ResetPasswordModule,
     ProfileModule,
     MateriaAtividadesModule,
     HomeModule,
-
+    AtividadesModule,
     SideNavModule,
     FinanceiroModule,
     MenuBottomModule,
     RetornoRequisicaoModalModule,
+    AtividadeModule,
     HorarioModule,
+    CriarOuEditarAtividadeModule,
 
     CommonModule,
     BrowserModule,
@@ -64,6 +68,7 @@ register();
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    EditorModule,
 
     InputMaskModule,
     CpfCnpjPipe,
@@ -82,6 +87,7 @@ register();
       multi: true,
     },
     provideNgxMask(),
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' },
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

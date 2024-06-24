@@ -30,10 +30,12 @@ export const appInitialState: IappState = {
     NmPhone2: '67999999999',
     NmEmail: 'email@email.com',
     ImgFile: null,
-    SnTeacher: false,
+    SnTeacher: true,
   },
   token: '',
 };
+
+export const resetState = createAction('[AppUser] Reset State');
 
 export const setUser = createAction(
   '[AppUser] SetUser',
@@ -49,18 +51,23 @@ export const browseReload = createAction(
   '[AppUser] browseReload',
   props<{ payload: Pessoa['user'] }>()
 );
+
 export const selectUser = createFeatureSelector<IappState>('app');
+
 export const getUser = createSelector(selectUser, (state: IappState) => {
   return state.user;
 });
+
 export const setToken = createAction(
   '[AppUser] setToken',
   props<{ payload: string }>()
 );
+
 export const browseReloadToken = createAction(
   '[AppUser] setToken',
   props<{ payload: string }>()
 );
+
 export const appReducer = createReducer(
   appInitialState,
   on(setUser, browseReload, (state, { payload }) => ({
@@ -75,5 +82,6 @@ export const appReducer = createReducer(
   on(setToken, browseReloadToken, (state, { payload }) => ({
     ...state,
     token: payload,
-  }))
+  })),
+  on(resetState, () => appInitialState) // Resetar o estado para o inicial
 );

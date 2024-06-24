@@ -38,6 +38,7 @@ module.exports = {
       white: "rgb(255, 255, 255)",
       white_transp: "rgba(244, 242, 255,0.85)",
       invalid_text: "rgba(202, 12, 12, 1)",
+      invalid_text_dark: "rgba(241, 59, 59, 1)",
       corFundo1: "rgb(124, 219, 148)",
       corFundo2: "rgb(255, 255, 153)",
       corFundo3: "rgb(233, 143, 236)",

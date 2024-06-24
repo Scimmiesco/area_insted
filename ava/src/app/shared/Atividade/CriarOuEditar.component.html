@@ -1,0 +1,180 @@
+<form [formGroup]="CriarOuEditarForm" (ngSubmit)="onSubmit()">
+  <div class="grid grid-cols-12 gap-4">
+    <div class="col-span-12 InputTexto">
+      <label for="TituloAtividade">Titulo da atividade</label>
+      <input
+        formControlName="TituloAtividade"
+        id="TituloAtividade"
+        type="text"
+        name="TituloAtividade"
+      />
+      <app-message
+        erro="true"
+        *ngIf="CriarOuEditarForm.get('TituloAtividade')?.errors?.['required']
+      && CriarOuEditarForm.get('TituloAtividade')?.touched"
+        message="O titulo da atividade é obrigatório."
+      />
+    </div>
+    <div class="col-span-6">
+      <label
+        for="select-TipoAtividade"
+        class="dark:text-white block text-sm font-medium text-gray-700 p-1"
+        >Tipo da atividade:</label
+      >
+      <select
+        id="select-TipoAtividade"
+        formControlName="TipoAtividade"
+        name="select-TipoAtividade"
+        class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
+      >
+        <option
+          *ngFor="let tipo of selectTiposAtividades"
+          [value]="tipo.tipoID"
+        >
+          {{ tipo.nomeTipo }}
+        </option>
+      </select>
+      <app-message
+        erro="true"
+        *ngIf="CriarOuEditarForm.get('TipoAtividade')?.errors?.['required']
+    && CriarOuEditarForm.get('TipoAtividade')?.touched"
+        message="O Tipo da Atividade é obrigatório."
+      />
+    </div>
+    <div class="col-span-6">
+      <label
+        for="select-materia"
+        class="dark:text-white block text-sm font-medium text-gray-700 p-1"
+        >Situação:</label
+      >
+      <select
+        id="select-materia"
+        formControlName="Situacao"
+        name="select-materia"
+        class="mt-1 p-2 w-full border bg-white border-none rounded-xl focus:outline-none focus:ring-green_insted focus:border-green_insted"
+      >
+        <option value="A">Ativo</option>
+        <option value="I">Inativo</option>
+      </select>
+      <app-message
+        erro="true"
+        *ngIf="CriarOuEditarForm.get('Situacao')?.errors?.['required']
+    && CriarOuEditarForm.get('Situacao')?.touched"
+        message="A situação é obrigatória."
+      />
+    </div>
+    <div class="grid col-span-6 grid-cols-3 grid-flow-row gap-2 InputData">
+      <div class="col-span-2">
+        <label for="DataInicioData">Data início</label>
+        <input
+          id="DataInicioData"
+          formControlName="DataInicioData"
+          type="date"
+        />
+      </div>
+      <div class="col-span-1 content-end">
+        <input
+          id="DataInicioHora"
+          formControlName="DataInicioHora"
+          type="time"
+        />
+      </div>
+      <app-message
+        erro="true"
+        *ngIf="CriarOuEditarForm.get('DataInicioData')?.errors?.['required']
+            && CriarOuEditarForm.get('DataInicioData')?.touched
+            || CriarOuEditarForm.get('DataInicioHora')?.errors?.['required']
+            && CriarOuEditarForm.get('DataInicioHora')?.touched"
+        message="Preencha a data e hora de inicio."
+        class="col-span-3"
+      />
+    </div>
+    <div class="grid col-span-6 grid-cols-3 grid-flow-row gap-2 InputData">
+      <div class="col-span-2">
+        <label for="DataFimData">Data fim</label>
+        <input id="DataFimData" formControlName="DataFimData" type="date" />
+      </div>
+      <div class="col-span-1 content-end">
+        <input id="DataFimHora" formControlName="DataFimHora" type="time" />
+      </div>
+      <app-message
+        erro="true"
+        *ngIf="CriarOuEditarForm.get('DataFimData')?.errors?.['required']
+            && CriarOuEditarForm.get('DataFimData')?.touched
+            || CriarOuEditarForm.get('DataFimHora')?.errors?.['required']
+            && CriarOuEditarForm.get('DataFimHora')?.touched"
+        message="Preencha a data e hora de inicio."
+        class="col-span-3"
+      />
+    </div>
+    <ng-container [ngSwitch]="CriarOuEditarForm.get('TipoAtividade')?.value">
+      <ng-container *ngSwitchCase="1">
+        <ng-template #textoTemplate>
+          <div class="col-span-12 InputTexto row-span-3">
+            <label for="ConteudoAtividade">Conteúdo:</label>
+            <editor formControlName="ConteudoAtividade" [init]="editorConfig">
+            </editor>
+          </div>
+        </ng-template>
+        <ng-container *ngTemplateOutlet="textoTemplate"></ng-container>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="2">
+        <ng-template #paginaTemplate>
+          <section class="col-span-12">
+            <div class="col-span-12 InputTexto row-span-3">
+              <label for="ConteudoAtividade">Conteúdo:</label>
+              <editor formControlName="ConteudoAtividade" [init]="editorConfig">
+              </editor>
+              <div class="uploadArquivo">
+                <input
+                  id="inputArquivo"
+                  type="file"
+                  (change)="anexarArquivo($event)"
+                />
+                <label for="inputArquivo">{{
+                  this.fileName == null ? "Anexe um arquivo" : "Arquivo anexado"
+                }}</label>
+                <span id="file-name">{{
+                  this.fileName ?? "Nenhum arquivo anexado"
+                }}</span>
+              </div>
+            </div>
+          </section>
+        </ng-template>
+        <ng-container *ngTemplateOutlet="paginaTemplate"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="3">
+        <ng-template #arquivoTemplate>
+          <section class="col-span-12">
+            <div class="col-span-12 InputTexto row-span-3">
+              <div class="uploadArquivo">
+                <input
+                  id="inputArquivo"
+                  type="file"
+                  (change)="anexarArquivo($event)"
+                />
+                <label for="inputArquivo">{{
+                  this.fileName == null ? "Anexe um arquivo" : "Arquivo anexado"
+                }}</label>
+                <span id="file-name">{{
+                  this.fileName ?? "Nenhum arquivo anexado"
+                }}</span>
+              </div>
+            </div>
+          </section></ng-template
+        >
+        <ng-container *ngTemplateOutlet="arquivoTemplate"></ng-container>
+      </ng-container>
+    </ng-container>
+
+    <button
+      title="submit"
+      type="submit"
+      name="submit"
+      class="col-start-4 col-span-6 content-center m-auto"
+    >
+      Adicionar atividade
+    </button>
+  </div>
+</form>

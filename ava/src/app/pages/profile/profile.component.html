@@ -52,7 +52,9 @@
           {{ NmUser.split(" ")[0] }} {{ NmUser.split(" ").slice(-1) }}
         </h2>
 
-        <p class="text-md">Cursando</p>
+        <p class="text-md">
+          {{ (user$ | async)?.SnTeacher === true ? "Docente" : "Aluno" }}
+        </p>
       </div>
       <div
         (click)="logout()"

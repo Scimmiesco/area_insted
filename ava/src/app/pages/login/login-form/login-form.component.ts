@@ -15,7 +15,7 @@ import { TemaService } from 'app/services/tema.service';
   templateUrl: './login-form.component.html',
 })
 export class LoginFormComponent implements OnInit {
-  loginForm!: FormGroup; //É estânciado no OnInit
+  loginForm!: FormGroup;
   errorMessage = null as string | null;
   passwordIsVisible = false as boolean;
 
@@ -36,13 +36,13 @@ export class LoginFormComponent implements OnInit {
 
   Login() {
     if (this.loginForm.valid) {
-      let passwordHashed: string = CryptoJS.SHA512(
+      let senhaCriptografada: string = CryptoJS.SHA512(
         this.loginForm.get('password')?.value
       ).toString();
 
       const loginRequest: LoginInterface = {
         login: this.loginForm.get('ra')?.value.toString(),
-        passwordHashed,
+        senhaCriptografada,
       };
       this.authentication(loginRequest);
     }

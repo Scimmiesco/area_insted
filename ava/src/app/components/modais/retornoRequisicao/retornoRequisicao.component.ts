@@ -14,9 +14,8 @@ import { retornoRequisicaoI } from 'app/Interfaces/retornoRequisicao-modal.inter
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RetornoRequisicaoModalComponent {
-  @Input()
-  message = '' as string;
-  tipoRetorno: string = 'sucesso';
+  @Input() message = '' as string;
+  @Input() tipoRetorno: string = '';
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: retornoRequisicaoI) {
     this.message = data.message;

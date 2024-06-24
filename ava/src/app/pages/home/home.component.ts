@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { TokenService } from 'app/services/token.service';
+import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { MatDialog } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
@@ -15,10 +16,10 @@ import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { notasDialogComponent } from 'app/components/modais/notas/notas.component';
 import { FinanceiroDialogComponent } from 'app/components/modais/financeiro/financeiro.component';
 import { Router } from '@angular/router';
-import {
-  ResponseMateriasI,
-  materiaPadrao,
-} from 'app/Interfaces/materias.interface';
+import { ResponseMateriasI } from 'app/Interfaces/materias.interface';
+import { cores } from 'app/Interfaces/cores.interface';
+import { EnumCargos } from 'app/Interfaces/token.interface';
+import { AtividadesService } from 'app/services/atividades.service';
 
 register();
 
@@ -32,41 +33,21 @@ export class HomeComponent {
   imageLoaded: boolean = false;
   divMateriaExpandido: boolean = false;
   materias: ResponseMateriasI['materias'] = [];
+  cores = cores;
 
-  cores: any = [
-    {
-      nome: 'Verde Menta Fresco',
-      codigoTailWind: 'rgba(144, 255, 222, 0.555)',
-    },
-    { nome: 'Rosa Lavanda Suave', codigoTailWind: 'rgba(214, 189, 238, 0.74)' },
-    {
-      nome: 'Laranja Pêssego Acolhedor',
-      codigoTailWind: 'rgba(147, 255, 143, 0.61)',
-    },
-    { nome: 'Azul Céu Sereno', codigoTailWind: 'rgba(180, 234, 255, 0.801)' },
-    {
-      nome: 'Laranja Tropical Vibrante',
-      codigoTailWind: 'rgba(255, 215, 141, 0.801)',
-    },
-  ];
   constructor(
     public dialog: MatDialog,
     public materiasService: MateriasService,
     public userService: UserService,
+    public tokenService: TokenService,
     public store: Store<{ app: IappState }>,
     private tamanhoDaTelaService: TamanhoDaTelaService,
-    private router: Router
+    private router: Router,
+    public atividadesService: AtividadesService
   ) {
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
-  ngAfterViewInit() {
-    // this.swiperEl = document.querySelector('#swiperMaterias');
-    // this.swiperEl.addEventListener('swiper-slidechange', (event: any) => {
-    //   console.log('slide changed', event);
-    // });
-    // console.log(this.swiperEl);
-    // this.materiasService.materias$.subscribe(() => {});
-  }
+
   ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
@@ -74,7 +55,9 @@ export class HomeComponent {
     this.materiasService.materias$.subscribe((materias) => {
       this.materias = materias;
     });
+
   }
+
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() =>
       this.handleScreenSizeChange()
@@ -84,12 +67,13 @@ export class HomeComponent {
   onImageLoad() {
     this.imageLoaded = true;
   }
+
   public handleScreenSizeChange(): boolean {
     return this.tamanhoDaTelaService.isMobile;
   }
 
-  navegarParaMateria(): void {
-    this.router.navigate(['area/materia']);
+  navegarParaMateria(idMateria: string): void {
+    this.router.navigate([`area/materia/${idMateria}`]);
   }
 
   OpenModais(iconId: number) {
@@ -124,14 +108,13 @@ export class HomeComponent {
   }
   ExpandirDivMaterias(expandirDivMateria: boolean) {
     this.divMateriaExpandido = !expandirDivMateria;
-    console.log(this.divMateriaExpandido);
   }
 
   getColor(index: number): string {
     if (index > this.cores.length - 1) {
-      return this.cores[index - this.cores.length].codigoTailWind;
+      return this.cores[index - this.cores.length].codigoHex;
     } else {
-      return this.cores[index].codigoTailWind;
+      return this.cores[index].codigoHex;
     }
   }
 }

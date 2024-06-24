@@ -3,12 +3,12 @@
 >
   <!--// Avisos-->
   <swiper-container
-    class="py-2 px-1 m-auto pb-4 min-h-[25svh] flex laptop:w-2/5"
-    [spaceBetween]="10"
-    [slidesPerView]="handleScreenSizeChange() ? 1.05 : 1"
+    class="py-2 px-1 m-auto pb-4 min-h-[25svh] flex laptop:w-1/2"
+    [slidesPerView]="handleScreenSizeChange() ? 1.15 : 1"
     [speed]="500"
     [loop]="true"
     [navigation]="!handleScreenSizeChange()"
+    [spaceBetween]="150"
     [pagination]="{ clickable: true }"
     [autoplay]="{ delay: 5000, disableOnInteraction: false }"
   >
@@ -47,26 +47,20 @@
       class="min-h-min cursor-pointer"
     >
       <mat-grid-tile-header
-        class="dark:bg-white bg-green_insted text-white
-        flex flex-1 justify-center items-center
-        w-full p-4 rounded-md m-auto"
+        class="dark:bg-white bg-green_insted text-white flex flex-1 justify-center items-center w-full p-4 rounded-md m-auto"
         [ngClass]="{
           'rounded-l-2xl': i === 0 || i === 4,
           'rounded-r-2xl': i === icons.length - 1 || i === 3
         }"
       >
         <span
-          class="material-symbols-outlined
-          text-3xl text-center
-          text-white dark:text-green_insted_dark"
+          class="material-symbols-outlined text-3xl text-center text-white dark:text-green_insted_dark"
           >{{ icon.icone }}</span
         >
       </mat-grid-tile-header>
       <mat-grid-tile-footer class="h-min">
         <p
-          class="text-center items-center
-          p-0 mx-auto  text-sm
-          text-green_insted_dark dark:text-white"
+          class="text-center items-center p-0 mx-auto text-sm text-green_insted_dark dark:text-white"
         >
           {{ icon.rotulo }}
         </p>
@@ -87,14 +81,12 @@
           class="material-symbols-outlined text-center cursor-pointer group-hover:text-green_insted_dark group-active:text-white duration-200 ease-in-out delay-75"
           (click)="ExpandirDivMaterias(this.divMateriaExpandido)"
         >
-          {{this.divMateriaExpandido ? 'expand_less' : 'expand_more' }}
+          {{ this.divMateriaExpandido ? "expand_less" : "expand_more" }}
         </span>
       </div>
     </div>
     <div class="flex flex-col gap-4">
-      <div
-        class="cursor-pointer w-full flex flex-row gap-1 min-h-min max-h-fit mb-2"
-      >
+      <div class="w-full flex flex-row gap-1 min-h-min max-h-fit mb-2">
         <ng-container *ngIf="!this.divMateriaExpandido">
           <div
             class="flex justify-center items-center w-1/5 bg-white rounded-l-2xl rounded-r-md"
@@ -127,10 +119,11 @@
             crossFade="true"
           >
             <swiper-slide
-              class="w-full h-full flex flex-row justify-start text-center items-center mx-auto dark:bg-green_insted_dark bg-white pb-2 px-3"
+              class="cursor-pointer w-full h-full flex flex-row justify-start text-center items-center mx-auto dark:bg-green_insted_dark bg-white pb-2 px-3"
               *ngFor="let materia of materias"
             >
               <div
+                (click)="navegarParaMateria(materia.IdClass)"
                 class="m-1 py-1"
                 class="flex justify-center items-center w-full min-h-full p-2 text-center"
               >
@@ -152,7 +145,7 @@
     >
       <div
         *ngFor="let materia of materias; let i = index"
-        class="flex flex-col flex-nowrap min-h-full flex-1 flex-grow gap-1 min-w-[39%] min-w-[200px]"
+        class="flex flex-col flex-nowrap min-h-full flex-1 flex-grow gap-1 min-w-[200px]"
       >
         <div
           class="flex justify-center items-center w-full rounded-b-md rounded-t-xl flex-1 max-h-[33%] min-h-fit p-3"
@@ -185,18 +178,24 @@
   </section>
   <!--// Atividades-->
   <section
-    class="bg-green_insted rounded-xl flex flex-col my-2 mx-1 p-2 h-[26%] laptop:w-1/2 laptop:mx-auto "
+    class="bg-green_insted rounded-xl flex flex-col my-2 mx-1 p-2 h-[26%] laptop:w-1/2 laptop:mx-auto"
   >
     <div>
       <h2 class="text-white font-bold py-1">Atividades</h2>
     </div>
     <swiper-container
+      *ngIf="this.atividadesService.AtividadesPorUsuario$ | async as atividades"
       class="w-full rounded-xl h-full m-auto gap-2"
       pagination="true"
+      navigation="true"
       [slidesPerView]="handleScreenSizeChange() ? 1 : 2"
-      [spaceBetween]="8"
+      [spaceBetween]="10"
     >
-      <swiper-slide class="flex flex-col gap-1">
+      <swiper-slide
+        *ngFor="let atividade of atividades; let i = index"
+        class="flex flex-col gap-1 text-center justify-center hover:cursor-pointer"
+        (click)="navegarParaMateria(atividade.MateriaID.toString())"
+      >
         <div
           class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-xl text-center p-2"
         >
@@ -207,28 +206,12 @@
           class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-xl dark:bg-green_insted_dark bg-white"
         >
           <h2 class="text-2xl font-bold dark:text-white text-center">
-            Exercício de compreensão
+            {{ atividade.Nome }}
           </h2>
-          <h3 class="text-lg dark:text-white text-center contrast-more:bg-okay_button">
-            Programação Orientada à objetos
-          </h3>
-        </div>
-      </swiper-slide>
-      <swiper-slide class="flex flex-col m-auto gap-1">
-        <div
-          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-xl text-center p-2"
-        >
-          <p class="m-0 dark:text-text_color">Quinta-feira, 18/08</p>
-          <p class="m-0 dark:text-text_color">20:30</p>
-        </div>
-        <div
-          class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-xl dark:bg-green_insted_dark bg-white"
-        >
-          <h2 class="text-2xl text-center font-bold dark:text-white">
-            Exercício de compreensão
-          </h2>
-          <h3 class="text-lg text-center dark:text-white">
-            Programação Orientada à objetos
+          <h3
+            class="text-lg dark:text-white text-center contrast-more:bg-okay_button"
+          >
+            {{ atividade.NmClass }}
           </h3>
         </div>
       </swiper-slide>

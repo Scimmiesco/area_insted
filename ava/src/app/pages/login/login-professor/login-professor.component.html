@@ -1,0 +1,74 @@
+<form
+  [formGroup]="loginProfessorForm"
+  id="formularioPadrao"
+  (submit)="Login()"
+  class="laptop:min-h-[40vh] laptop:max-h-[85vh] laptop:min-w-[30vw] laptop:max-w-[25vw] fundo_vidro"
+>
+  <h1 class="font-bold">Área docente</h1>
+
+  <div
+    class="flex flex-col flex-1 w-full justify-between items-center gap-2 relative"
+  >
+    <div class="flex flex-col justify-center items-center w-11/12">
+      <input
+        formControlName="login"
+        placeholder="Insira seu login"
+        type="text"
+      />
+      <app-message
+        erro="true"
+        *ngIf="loginProfessorForm.get('login')?.errors?.['required']
+  && loginProfessorForm.get('login')?.touched"
+        message="O login é obrigatório."
+      />
+    </div>
+    <div class="flex flex-col justify-center items-center relative w-full">
+      <div class="flex flex-col w-11/12 justify-center items-center">
+        <input
+          id="password"
+          formControlName="password"
+          type="{{ passwordIsVisible ? 'text' : 'password' }}"
+          autocomplete="on"
+          placeholder="Insira sua senha"
+        />
+        <svg
+          id="icon"
+          (click)="ToggleIcon()"
+          [ngClass]="passwordIsVisible ? 'bg-opened_eye' : 'bg-closed_eye'"
+          class="absolute top-50% right-[8%] bg-contain bg-center bg-no-repeat w-8 h-10 cursor-pointer"
+        ></svg>
+      </div>
+      <app-message
+        erro="true"
+        *ngIf="loginProfessorForm.get('password')?.errors?.['required']
+  && loginProfessorForm.get('password')?.touched && loginProfessorForm.get('ra')?.value"
+        message="A senha é obrigatória."
+      />
+    </div>
+
+    <button class="w-1/2" type="submit">Entrar</button>
+
+    <app-message
+      erro="true"
+      class="w-2/3"
+      *ngIf="errorMessage != null"
+      message="{{ errorMessage }}"
+    />
+
+    <div class="flex justify-evenly w-full">
+      <a
+        [routerLink]="['/login/recuperarsenha']"
+        class="dark:text-white_transp text-green_insted font-semibold w-2/5"
+      >
+        Recuperar senha
+      </a>
+      <p class="text-green_insted font-bold w-1/5">|</p>
+      <a
+        [routerLink]="['/login']"
+        class="dark:text-white_transp text-green_insted font-semibold w-2/5"
+      >
+        Sou aluno
+      </a>
+    </div>
+  </div>
+</form>
