@@ -114,7 +114,7 @@ export class HomeComponent {
           closeOnNavigation: true,
         });
         break;
-      case 7:
+      case 3:
         this.dialog.open(notasDialogComponent, {
           autoFocus: true,
           closeOnNavigation: true,

@@ -52,8 +52,16 @@
   ><label
     *ngIf="!this.acessoDocente"
     class="cursor-pointer p-2 bg-white dark:bg-green_insted_dark rounded-md flex flex-row flex-nowrap text-center items-center justify-end text-green_insted_dark"
-    for="inputArquivo"
-    ><input
+    [attr.for]="
+      validarPrazoFinalAtividade(
+        atividadeArquivo.prazoInicial,
+        atividadeArquivo.prazoFinal
+      )
+        ? 'inputArquivo'
+        : null
+    "
+  >
+    <input
       id="inputArquivo"
       #inputArquivo
       type="file"
