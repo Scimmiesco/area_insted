@@ -26,8 +26,23 @@
       <h2 class="text-lg text-green_insted_dark font-bold text-start p x-2">
         {{ atividadeArquivo.titulo }}
       </h2>
-    </div>
-  </a>
+    </div> </a
+  ><label
+    class="cursor-pointer p-2 bg-white dark:bg-green_insted_dark rounded-md flex flex-row flex-nowrap text-center items-center justify-end text-green_insted_dark"
+    for="inputArquivo"
+    ><input
+      id="inputArquivo"
+      type="file"
+      class="hidden"
+      accept=".pdf"
+      (change)="anexarArquivo($event)"
+    />
+    <span
+      class="material-symbols-outlined text-3xl w-full text-green_insted_dark dark:text-white text-center"
+    >
+      {{ this.arquivoAdicionado ? "edit" : "send" }}
+    </span>
+  </label>
   <div
     class="cursor-pointer p-2 bg-white rounded-r-2xl rounded-l-md flex flex-row flex-nowrap text-center items-center justify-end text-green_insted_dark"
     (click)="marcarVisto()"
