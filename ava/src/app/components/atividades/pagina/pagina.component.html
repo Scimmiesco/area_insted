@@ -29,7 +29,7 @@
         <h3
           class="text-sm text-start"
           [ngClass]="
-            validarPrazoFinalAtividade(
+            !validarPrazoFinalAtividade(
               atividadePagina.prazoInicial,
               atividadePagina.prazoFinal
             )
@@ -42,7 +42,7 @@
         <h2
           class="text-lg font-bold text-start p x-2 d"
           [ngClass]="
-            validarPrazoFinalAtividade(
+            !validarPrazoFinalAtividade(
               atividadePagina.prazoInicial,
               atividadePagina.prazoFinal
             )
@@ -67,7 +67,7 @@
         accept=".pdf"
         (change)="anexarArquivo($event)"
         [disabled]="
-          validarPrazoFinalAtividade(
+          !validarPrazoFinalAtividade(
             atividadePagina.prazoInicial,
             atividadePagina.prazoFinal
           )
