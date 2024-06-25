@@ -37,6 +37,12 @@
       class="hidden"
       accept=".pdf"
       (change)="anexarArquivo($event)"
+      [disabled]="
+        validarPrazoFinalAtividade(
+          atividadeArquivo.prazoInicial,
+          atividadeArquivo.prazoFinal
+        )
+      "
     />
     <span
       class="material-symbols-outlined text-3xl w-full text-green_insted_dark dark:text-white text-center"

@@ -12,6 +12,8 @@ export interface IAtividadesComponent {
   titulo?: string;
   href?: string;
   conteudo?: string;
+  prazoInicial?: Date;
+  prazoFinal?: Date;
 }
 
 export interface IAtividadeTexto {
@@ -21,12 +23,16 @@ export interface IAtividadeTexto {
 export interface IAtividadeArquivo {
   titulo: string;
   href: string;
+  prazoInicial: Date | undefined;
+  prazoFinal: Date | undefined;
 }
 
 export interface IAtividadePagina {
   titulo: string;
   href: string;
   conteudo: string;
+  prazoInicial: Date | undefined;
+  prazoFinal: Date | undefined;
 }
 
 export interface IResponseAtividades {

@@ -24,7 +24,9 @@
     <app-arquivo
       [atividadeArquivo]="{
         titulo: infosAtividades.titulo ?? '',
-        href: infosAtividades.href ?? ''
+        href: infosAtividades.href ?? '',
+        prazoInicial: infosAtividades.prazoInicial,
+        prazoFinal: infosAtividades.prazoFinal
       }"
     ></app-arquivo>
   </ng-container>
@@ -34,7 +36,9 @@
       [atividadePagina]="{
         titulo: infosAtividades.titulo ?? '',
         href: infosAtividades.href ?? '',
-        conteudo: infosAtividades.conteudo ?? ''
+        conteudo: infosAtividades.conteudo ?? '',
+        prazoInicial: infosAtividades.prazoInicial,
+        prazoFinal: infosAtividades.prazoFinal
       }"
     ></app-pagina>
   </ng-template>

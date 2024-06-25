@@ -49,4 +49,22 @@ export class ArquivoComponent {
       this.fileName = 'Nenhum arquivo adicionado';
     }
   }
+  validarPrazoFinalAtividade(
+    dataPrazoInicial: Date | undefined,
+    dataPrazoFinal: Date | undefined
+  ): boolean {
+    const dataAtual: Date = new Date();
+    const prazoFinalDate: Date = new Date(dataPrazoFinal ?? '');
+    const prazoInicialDate: Date = new Date(dataPrazoInicial ?? '');
+
+    if (prazoFinalDate && dataAtual > prazoFinalDate) {
+      return false;
+    }
+
+    if (prazoInicialDate && dataAtual < prazoInicialDate) {
+      return false;
+    }
+
+    return true;
+  }
 }
