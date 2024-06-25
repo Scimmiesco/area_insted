@@ -22,8 +22,30 @@
   </a>
   <a href="{{ atividadeArquivo.href }}" class="bg-white rounded-md w-full p-2">
     <div class="flex flex-col w-full gap-2">
-      <h3 class="text-sm text-green_insted_dark text-start">Arquivo</h3>
-      <h2 class="text-lg text-green_insted_dark font-bold text-start p x-2">
+      <h3
+        class="text-sm text-start"
+        [ngClass]="
+          validarPrazoFinalAtividade(
+            atividadeArquivo.prazoInicial,
+            atividadeArquivo.prazoFinal
+          )
+            ? 'text-invalid_text'
+            : 'dark:text-white text-green_insted_dark'
+        "
+      >
+        Arquivo
+      </h3>
+      <h2
+        class="text-lg font-bold text-start p x-2"
+        [ngClass]="
+          validarPrazoFinalAtividade(
+            atividadeArquivo.prazoInicial,
+            atividadeArquivo.prazoFinal
+          )
+            ? 'text-invalid_text'
+            : 'dark:text-white text-green_insted_dark'
+        "
+      >
         {{ atividadeArquivo.titulo }}
       </h2>
     </div> </a
@@ -33,6 +55,7 @@
     for="inputArquivo"
     ><input
       id="inputArquivo"
+      #inputArquivo
       type="file"
       class="hidden"
       accept=".pdf"
@@ -46,6 +69,7 @@
     />
     <span
       class="material-symbols-outlined text-3xl w-full text-green_insted_dark dark:text-white text-center"
+      [ngClass]="inputArquivo.disabled ? 'opacity-70' : 'opacity-100'"
     >
       {{ this.arquivoAdicionado ? "edit" : "send" }}
     </span>

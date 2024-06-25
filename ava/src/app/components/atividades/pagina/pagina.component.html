@@ -26,11 +26,29 @@
       class="bg-white dark:bg-green_insted_dark rounded-md w-full p-2"
     >
       <div class="flex flex-col w-full gap-2">
-        <h3 class="text-sm text-green_insted_dark text-start dark:text-white">
+        <h3
+          class="text-sm text-start"
+          [ngClass]="
+            validarPrazoFinalAtividade(
+              atividadePagina.prazoInicial,
+              atividadePagina.prazoFinal
+            )
+              ? 'text-invalid_text'
+              : 'dark:text-white text-green_insted_dark'
+          "
+        >
           Página
         </h3>
         <h2
-          class="text-lg text-green_insted_dark font-bold text-start p x-2 dark:text-white"
+          class="text-lg font-bold text-start p x-2 d"
+          [ngClass]="
+            validarPrazoFinalAtividade(
+              atividadePagina.prazoInicial,
+              atividadePagina.prazoFinal
+            )
+              ? 'text-invalid_text'
+              : 'dark:text-white text-green_insted_dark'
+          "
         >
           {{ atividadePagina.titulo }}
         </h2>
