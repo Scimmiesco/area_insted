@@ -3,6 +3,7 @@ import {
   IAtividadePagina,
   TiposAtividades,
 } from 'app/Interfaces/atividade.interface';
+import { AtividadesService } from 'app/services/atividades.service';
 
 @Component({
   selector: 'app-pagina',
@@ -11,11 +12,36 @@ import {
 export class PaginaComponent {
   @Input() atividadePagina!: IAtividadePagina;
 
-  atividadeVista!: boolean;
+  fileName!: string;
+  arquivoAdicionado!: boolean;
+  caminhoArquivo!: string;
+  atividadeVista = false as boolean;
   EnumTiposAtividades = TiposAtividades;
 
-  constructor() {
-    this.atividadeVista = false;
+  constructor(private atividadesService: AtividadesService) {}
+
+  anexarArquivo(e: Event) {
+    const input = e.target as HTMLInputElement;
+
+    this.arquivoAdicionado = input?.files ? true : false;
+    input?.files != null
+      ? (this.fileName = input?.files[0].name)
+      : (this.fileName = 'Nenhum arquivo adicionado');
+    if (input?.files && input.files.length > 0) {
+      const file = input.files[0];
+      this.fileName = file.name;
+      this.atividadesService.upload(file).subscribe(
+        (response) => {
+          this.caminhoArquivo = response.filePath;
+          this.fileName = 'Arquivo carregado com sucesso!';
+        },
+        (error) => {
+          this.fileName = 'Erro ao carregar o arquivo.';
+        }
+      );
+    } else {
+      this.fileName = 'Nenhum arquivo adicionado';
+    }
   }
 
   ngOnInit(): void {}
