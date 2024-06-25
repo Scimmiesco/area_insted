@@ -55,7 +55,6 @@ export class HomeComponent {
     this.materiasService.materias$.subscribe((materias) => {
       this.materias = materias;
     });
-
   }
 
   ngOnDestroy() {
@@ -76,6 +75,25 @@ export class HomeComponent {
     this.router.navigate([`area/materia/${idMateria}`]);
   }
 
+  validarPrazoFinalAtividade(
+    dataPrazoInicial: Date,
+    dataPrazoFinal: Date
+  ): boolean {
+    const dataAtual: Date = new Date();
+    const prazoFinalDate: Date = new Date(dataPrazoFinal);
+    const prazoInicialDate: Date = new Date(dataPrazoInicial);
+
+    if (prazoFinalDate && dataAtual > prazoFinalDate) {
+      return false;
+    }
+
+    if (prazoInicialDate && dataAtual < prazoInicialDate) {
+      return false;
+    }
+
+    return true;
+  }
+
   OpenModais(iconId: number) {
     switch (iconId) {
       case 1:
@@ -90,7 +108,7 @@ export class HomeComponent {
           closeOnNavigation: true,
         });
         break;
-      case 6:
+      case 4:
         this.dialog.open(calendarDialogComponent, {
           autoFocus: true,
           closeOnNavigation: true,

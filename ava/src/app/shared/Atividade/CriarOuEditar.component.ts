@@ -62,30 +62,33 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
       TituloAtividade: ['', Validators.required],
       TipoAtividade: ['', Validators.required],
       Situacao: ['', Validators.required],
-      DataInicioData: ['', Validators.required],
-      DataInicioHora: ['', Validators.required],
-      DataFimData: ['', Validators.required],
-      DataFimHora: ['', Validators.required],
+      DataInicioData: [''],
+      DataInicioHora: [''],
+      DataFimData: [''],
+      DataFimHora: [''],
       ConteudoAtividade: [null],
     });
 
-    if (this.atividadeParaEditar?.Atividade) {
+    if (this.atividadeParaEditar?.Atividade != null) {
+      console.log(
+        this.atividadeParaEditar?.Atividade,
+        'this.atividadeParaEditar?.Atividade'
+      );
+      let prazoInicial = this.atividadeParaEditar?.Atividade.PrazoInicial
+        ? this.atividadeParaEditar.Atividade.PrazoFinal.toString()
+        : '';
+      let prazoFinal = this.atividadeParaEditar.Atividade.PrazoFinal
+        ? this.atividadeParaEditar.Atividade.PrazoFinal.toString()
+        : '';
+
       this.CriarOuEditarForm.patchValue({
         TituloAtividade: this.atividadeParaEditar.Atividade.Nome ?? '',
         TipoAtividade: this.atividadeParaEditar.Atividade.TipoAtividadeID ?? '',
         Situacao: this.atividadeParaEditar.Atividade.Situacao ?? '',
-        DataInicioData: this.DividirDatahora(
-          this.atividadeParaEditar.Atividade.PrazoInicial.toString()
-        )[0],
-        DataInicioHora: this.DividirDatahora(
-          this.atividadeParaEditar.Atividade.PrazoInicial.toString()
-        )[1],
-        DataFimData: this.DividirDatahora(
-          this.atividadeParaEditar.Atividade.PrazoFinal.toString()
-        )[0],
-        DataFimHora: this.DividirDatahora(
-          this.atividadeParaEditar.Atividade.PrazoFinal.toString()
-        )[1],
+        DataInicioData: this.DividirDatahora(prazoInicial)[0],
+        DataInicioHora: this.DividirDatahora(prazoInicial)[1],
+        DataFimData: this.DividirDatahora(prazoFinal)[0],
+        DataFimHora: this.DividirDatahora(prazoFinal)[1],
         ConteudoAtividade: this.atividadeParaEditar.Atividade.Conteudo ?? null,
       });
     }
@@ -115,7 +118,6 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
 
   onSubmit() {
     if (this.CriarOuEditarForm.valid) {
-      console.log(this.atividadeParaEditar?.MateriaID);
       let formData: IAtividadeFormulario = {
         AtividadesMateriasID:
           this.atividadeParaEditar?.Atividade?.AtividadesMateriasID,
@@ -179,12 +181,12 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
     }
   }
 
-  FormatarData(dateString: string, timeString: string): string {
+  FormatarData(dateString: string, timeString: string): string | undefined {
     const date = new Date(dateString);
     const [hours, minutes] = timeString.split(':').map(Number);
 
     if (isNaN(date.getTime()) || isNaN(hours) || isNaN(minutes)) {
-      return '';
+      return undefined;
     }
 
     date.setHours(hours);
@@ -215,7 +217,10 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
       closeOnNavigation: true,
     });
   }
-  DividirDatahora(dataHora: string | undefined) {
-    return dataHora?.split('T') ?? '';
+  DividirDatahora(dataHora: string | undefined | null) {
+    if (dataHora) {
+      return dataHora.split('T');
+    }
+    return '';
   }
 }

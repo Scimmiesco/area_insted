@@ -78,7 +78,7 @@ export class SideNavComponent {
           closeOnNavigation: true,
         });
         break;
-      case 6:
+      case 4:
         this.dialog.open(calendarDialogComponent, {
           autoFocus: true,
           closeOnNavigation: true,

@@ -8,7 +8,7 @@
     [speed]="500"
     [loop]="true"
     [navigation]="!handleScreenSizeChange()"
-    [spaceBetween]="handleScreenSizeChange() ? 4: 150"
+    [spaceBetween]="handleScreenSizeChange() ? 4 : 150"
     [pagination]="{ clickable: true }"
     [autoplay]="{ delay: 5000, disableOnInteraction: false }"
   >
@@ -190,31 +190,42 @@
       navigation="true"
       [slidesPerView]="handleScreenSizeChange() ? 1 : 2"
       [spaceBetween]="10"
-    >
-      <swiper-slide
-        *ngFor="let atividade of atividades; let i = index"
-        class="flex flex-col gap-1 text-center justify-center hover:cursor-pointer"
-        (click)="navegarParaMateria(atividade.MateriaID.toString())"
-      >
-        <div
-          class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-xl text-center p-2"
+      ><ng-container *ngFor="let atividade of atividades; let i = index">
+        <swiper-slide
+          *ngIf="
+            atividade.PrazoFinal &&
+            this.validarPrazoFinalAtividade(
+              atividade.PrazoInicial,
+              atividade.PrazoFinal
+            )
+          "
+          class="flex flex-col gap-1 text-center justify-center hover:cursor-pointer"
+          (click)="navegarParaMateria(atividade.MateriaID.toString())"
         >
-          <p class="m-0 dark:text-text_color">Quinta-feira, 18/08</p>
-          <p class="m-0 dark:text-text_color">20:30</p>
-        </div>
-        <div
-          class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-xl dark:bg-green_insted_dark bg-white"
-        >
-          <h2 class="text-2xl font-bold dark:text-white text-center">
-            {{ atividade.Nome }}
-          </h2>
-          <h3
-            class="text-lg dark:text-white text-center contrast-more:bg-okay_button"
+          <div
+            class="flex flex-row justify-between font-bold dark:bg-white bg-white rounded-b-md rounded-t-xl text-center p-2"
           >
-            {{ atividade.NmClass }}
-          </h3>
-        </div>
-      </swiper-slide>
+            <p class="m-0 dark:text-text_color capitalize">
+              {{ atividade.PrazoFinal | date : "EEEE, dd/MM" }}
+            </p>
+            <p class="m-0 dark:text-text_color">
+              {{ atividade.PrazoFinal | date : "HH:mm" }}
+            </p>
+          </div>
+          <div
+            class="px-2 py-2 gap-4 flex flex-col justify-center items-center h-full rounded-t-md rounded-b-xl dark:bg-green_insted_dark bg-white"
+          >
+            <h2 class="text-2xl font-bold dark:text-white text-center">
+              {{ atividade.Nome }}
+            </h2>
+            <h3
+              class="text-lg dark:text-white text-center contrast-more:bg-okay_button"
+            >
+              {{ atividade.NmClass }}
+            </h3>
+          </div>
+        </swiper-slide></ng-container
+      >
     </swiper-container>
   </section>
   <!--// Menu-->

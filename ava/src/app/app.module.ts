@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +33,9 @@ import { AtividadesModule } from './components/atividades/atividades.module';
 import { AtividadeModule } from './components/modais/atividade/atividade.module';
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { CriarOuEditarAtividadeModule } from './shared/Atividade/CriarOuEditar.module';
-
+import { registerLocaleData } from '@angular/common';
+import localePT from '@angular/common/locales/pt';
+registerLocaleData(localePT);
 register();
 
 @NgModule({
@@ -81,6 +83,7 @@ register();
     }),
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'pt-br' },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
