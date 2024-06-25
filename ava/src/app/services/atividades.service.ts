@@ -40,13 +40,10 @@ export class AtividadesService {
     this.AtividadesPorUsuarioSubject.asObservable();
 
   ObterAtividadesPorMateria(materiaID: string, usuarioID: string) {
-    console.log(usuarioID, 'user ObterAtividadesPorMateria');
 
     const loginUrl = `${this.APIURL}GetAtividadesPorMateria?materiaID=${materiaID}&usuarioID=${usuarioID}`;
-    console.log(loginUrl, 'loginUrl');
     this.http.get<IResponseAtividades>(loginUrl).subscribe({
       next: (response) => {
-        console.log(response.atividades);
         this.setAtividades(response.atividades);
       },
       error: (error) => {},

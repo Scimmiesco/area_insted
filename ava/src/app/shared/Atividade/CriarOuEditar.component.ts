@@ -70,10 +70,6 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
     });
 
     if (this.atividadeParaEditar?.Atividade != null) {
-      console.log(
-        this.atividadeParaEditar?.Atividade,
-        'this.atividadeParaEditar?.Atividade'
-      );
       let prazoInicial = this.atividadeParaEditar?.Atividade.PrazoInicial
         ? this.atividadeParaEditar.Atividade.PrazoFinal.toString()
         : '';
@@ -150,7 +146,6 @@ export class CriarOuEditarAtividadeComponent implements OnInit {
           '',
         DataAlteracao: undefined,
       };
-      console.log(formData);
       this.atividadeService.AdicionarAtividade(formData).subscribe({
         next: (response: IResponseAdicionarAtividade) => {
           this.modalSucesso(response.message);

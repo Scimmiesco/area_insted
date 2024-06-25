@@ -87,7 +87,6 @@ export class AreaComponent implements OnInit {
           this.atividadesService.ObterAtividadesPorUsuario(
             usuarioID.toString()
           );
-          console.log(usuarioID, 'usuarioID ObterAtividadesPorUsuario');
         })
       )
       .subscribe();
