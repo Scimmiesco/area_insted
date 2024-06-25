@@ -20,6 +20,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { getUser, IappState } from 'app/store/app.state';
 import { EditarAtividadeComponent } from 'app/components/modais/atividade/editar-atividade/editar-atividade.component';
+import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 
 @Component({
   selector: 'app-materia',
@@ -39,6 +40,7 @@ export class MateriaAtividadesComponent {
     private store: Store<{ app: IappState }>,
     public userService: UserService,
     public atividadesService: AtividadesService,
+    private tamanhoDaTelaService: TamanhoDaTelaService,
     public dialog: MatDialog
   ) {
     this.subscription = this.getIDMateria().subscribe((value) => {
@@ -51,7 +53,7 @@ export class MateriaAtividadesComponent {
     });
     this.store.select(getUser).subscribe((user) => {
       this.idUsuario = user.IdUser;
-    });
+    });this.tamanhoDaTelaService.addListener(() => this.telaMobile());
   }
   ngOnInit(): void {
     this.ObterAtividadesPorMateria();
@@ -60,6 +62,9 @@ export class MateriaAtividadesComponent {
     return this.activatedRoute.params.pipe(
       map((params) => Number(params['id']))
     );
+  }
+  public telaMobile(): boolean {
+    return this.tamanhoDaTelaService.isMobile;
   }
 
   ngOnDestroy(): void {

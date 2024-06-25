@@ -61,6 +61,35 @@
                 conteudo: atividade.Conteudo
               }"
             ></app-atividade>
+            <ng-container
+              *ngIf="atividade.PrazoFinal && atividade.PrazoInicial"
+            >
+              <div class="flex justify-between w-full px-4 py-1">
+                <ng-container *ngIf="this.telaMobile()">
+                  <div
+                    class="text-white text-xl font-bold capitalize text-center"
+                  >
+                    Início
+                    <p>{{ atividade.PrazoInicial | date : "dd/MM - HH:mm" }}</p>
+                  </div>
+                  <div
+                    class="text-white text-xl font-bold capitalize text-center"
+                  >
+                    Fim
+                    <p>{{ atividade.PrazoFinal | date : "dd/MM - HH:mm" }}</p>
+                  </div> </ng-container
+                ><ng-container *ngIf="!this.telaMobile()">
+                  <div class="text-white text-xl font-bold capitalize">
+                    Início:
+                    {{ atividade.PrazoInicial | date : "EEEE, dd/MM - HH:mm" }}
+                  </div>
+                  <div class="text-white text-xl font-bold capitalize">
+                    Fim:
+                    {{ atividade.PrazoFinal | date : "EEEE, dd/MM - HH:mm" }}
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
           </mat-expansion-panel>
         </mat-accordion>
       </ng-container>
