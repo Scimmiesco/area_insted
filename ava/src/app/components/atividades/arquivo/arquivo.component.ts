@@ -12,6 +12,7 @@ import { AtividadesService } from 'app/services/atividades.service';
 })
 export class ArquivoComponent {
   @Input() atividadeArquivo!: IAtividadeArquivo;
+  @Input() acessoDocente!: boolean;
 
   atividadeVista = false as boolean;
   EnumTiposAtividades = TiposAtividades;

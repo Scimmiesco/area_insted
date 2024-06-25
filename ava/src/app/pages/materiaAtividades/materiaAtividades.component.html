@@ -60,6 +60,7 @@
                 href: atividade.CaminhoArquivo,
                 conteudo: atividade.Conteudo
               }"
+              [acessoDocente]="this.acessoDocente"
             ></app-atividade>
             <ng-container
               *ngIf="atividade.PrazoFinal && atividade.PrazoInicial"

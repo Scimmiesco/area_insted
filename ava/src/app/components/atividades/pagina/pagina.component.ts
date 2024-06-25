@@ -11,6 +11,7 @@ import { AtividadesService } from 'app/services/atividades.service';
 })
 export class PaginaComponent {
   @Input() atividadePagina!: IAtividadePagina;
+  @Input() acessoDocente!: boolean;
 
   fileName!: string;
   arquivoAdicionado!: boolean;
