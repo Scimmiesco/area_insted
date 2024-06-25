@@ -29,7 +29,6 @@ export class UserService {
   getUserAndFetchActivities() {
     this.getUser().subscribe(
       (user) => {
-        console.log('Usuário obtido:', user);
         this.atividadesService.ObterAtividadesPorUsuario(
           user.IdUser.toString()
         );

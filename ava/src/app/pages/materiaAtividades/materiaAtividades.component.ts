@@ -114,7 +114,6 @@ export class MateriaAtividadesComponent {
   }
   ObterAtividadesPorMateria() {
     this.store.select(getUser).subscribe((user) => {
-      console.log(user.IdUser, 'user');
       this.atividadesService.ObterAtividadesPorMateria(
         this.idMateria,
         user.IdUser.toString()

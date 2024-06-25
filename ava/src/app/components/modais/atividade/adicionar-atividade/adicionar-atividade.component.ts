@@ -18,7 +18,6 @@ export class AdicionarAtividadeComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.dataDaTela = data;
-    console.log(this.dataDaTela, 'this.dataDaTela');
   }
 
   ngOnInit(): void {}
