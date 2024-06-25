@@ -1,0 +1,41 @@
+<ng-container
+  *ngIf="
+    infosAtividades.tipo === EnumTiposAtividades.TEXTO;
+    then templateTexto;
+    else templateArquivo
+  "
+>
+</ng-container>
+<ng-template #templateTexto>
+  <app-texto
+    [atividadeTexto]="{
+      conteudo: infosAtividades.conteudo ?? ''
+    }"
+  ></app-texto>
+</ng-template>
+
+<ng-template #templateArquivo>
+  <ng-container
+    *ngIf="
+      infosAtividades.tipo === EnumTiposAtividades.ARQUIVO;
+      else templatePagina
+    "
+  >
+    <app-arquivo
+      [atividadeArquivo]="{
+        titulo: infosAtividades.titulo ?? '',
+        href: infosAtividades.href ?? ''
+      }"
+    ></app-arquivo>
+  </ng-container>
+
+  <ng-template #templatePagina>
+    <app-pagina
+      [atividadePagina]="{
+        titulo: infosAtividades.titulo ?? '',
+        href: infosAtividades.href ?? '',
+        conteudo: infosAtividades.conteudo ?? ''
+      }"
+    ></app-pagina>
+  </ng-template>
+</ng-template>

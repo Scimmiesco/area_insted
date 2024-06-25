@@ -16,12 +16,14 @@ import {
   RecaptchaSettings,
 } from 'ng-recaptcha';
 import { environment } from 'environments/environment';
+import { LoginProfessorComponent } from './login-professor/login-professor.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     LoginFormComponent,
     ForgotPasswordFormComponent,
+    LoginProfessorComponent,
   ],
   exports: [LoginComponent],
   imports: [

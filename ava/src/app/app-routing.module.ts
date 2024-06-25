@@ -8,6 +8,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { ResetPasswordAuthGuard } from './guards/reset-password.guard';
 import { MateriaAtividadesComponent } from './pages/materiaAtividades/materiaAtividades.component';
 import { HorarioAulasComponent } from './pages/horario-aulas/horario-aulas.component';
+import { AreaAuthGuard } from './guards/area-auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },

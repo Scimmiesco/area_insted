@@ -19,7 +19,7 @@ export class AutenticationService {
   auth(loginRequest: LoginInterface): Observable<ResponseInterface> {
     const json = {
       login: loginRequest.login as string,
-      password: loginRequest.passwordHashed as string,
+      password: loginRequest.senhaCriptografada as string,
     };
     const loginUrl = `${this.APIURL}auth`;
 
@@ -35,6 +35,6 @@ export class AutenticationService {
 
   getIsAuthenticated(): boolean {
     const value = sessionStorage.getItem(this.sessionStorageKey);
-    return value === '1'; // Converte a string armazenada de volta em booleano
+    return value === '1';
   }
 }

@@ -5,10 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { MaterialModule } from '../material/material.module';
-import { MateriaAtividadesModule } from 'app/pages/materiaAtividades/materiaAtividades.module';
+import { PaginaComponent } from './pagina/pagina.component';
+import { TextoComponent } from './texto/texto.component';
+import { AtividadeComponent } from './atividade/atividade.component';
 
 @NgModule({
-  declarations: [ArquivoComponent],
+  declarations: [ArquivoComponent, PaginaComponent, TextoComponent, AtividadeComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -16,7 +18,7 @@ import { MateriaAtividadesModule } from 'app/pages/materiaAtividades/materiaAtiv
     HttpClientModule,
     AngularSvgIconModule,
   ],
-  exports: [ArquivoComponent],
+  exports: [ArquivoComponent, PaginaComponent, TextoComponent, AtividadeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AtividadesModule {}

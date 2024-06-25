@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { TokenService } from 'app/services/token.service';
+import { Component } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 import { MatDialog } from '@angular/material/dialog';
 import { calendarDialogComponent } from 'app/components/modais/calendar/calendar.component';
@@ -15,11 +16,10 @@ import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { notasDialogComponent } from 'app/components/modais/notas/notas.component';
 import { FinanceiroDialogComponent } from 'app/components/modais/financeiro/financeiro.component';
 import { Router } from '@angular/router';
-import {
-  ResponseMateriasI,
-  materiaPadrao,
-} from 'app/Interfaces/materias.interface';
+import { ResponseMateriasI } from 'app/Interfaces/materias.interface';
 import { cores } from 'app/Interfaces/cores.interface';
+import { EnumCargos } from 'app/Interfaces/token.interface';
+import { AtividadesService } from 'app/services/atividades.service';
 
 register();
 
@@ -39,22 +39,25 @@ export class HomeComponent {
     public dialog: MatDialog,
     public materiasService: MateriasService,
     public userService: UserService,
+    public tokenService: TokenService,
     public store: Store<{ app: IappState }>,
     private tamanhoDaTelaService: TamanhoDaTelaService,
-    private router: Router
-    )
-  {
+    private router: Router,
+    public atividadesService: AtividadesService
+  ) {
     this.tamanhoDaTelaService.addListener(() => this.handleScreenSizeChange());
   }
-  ngOnInit()
-   {
+
+  ngOnInit() {
     this.avisos = Avisos;
     this.icons = Icons;
 
     this.materiasService.materias$.subscribe((materias) => {
       this.materias = materias;
     });
+
   }
+
   ngOnDestroy() {
     this.tamanhoDaTelaService.removeListener(() =>
       this.handleScreenSizeChange()
@@ -105,7 +108,6 @@ export class HomeComponent {
   }
   ExpandirDivMaterias(expandirDivMateria: boolean) {
     this.divMateriaExpandido = !expandirDivMateria;
-    console.log(this.divMateriaExpandido);
   }
 
   getColor(index: number): string {

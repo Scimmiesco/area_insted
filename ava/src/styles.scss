@@ -180,9 +180,10 @@ li {
   flex-direction: column;
   flex-grow: 1;
   box-sizing: content-box;
-  min-height: 50vh;
+  min-height: 40vh;
   width: 88vw;
   padding: 8px;
+  gap: 8px;
   border-radius: 1.5rem;
 }
 
@@ -253,5 +254,69 @@ html.alto_contraste {
   :is(.dark .dark\:hover\:text-green_insted_dark:hover),
   .group:hover .group-hover\:bg-green_insted_transp_dark {
     background-color: $altoContraste_hover !important;
+  }
+}
+
+.InputData {
+  label {
+    padding: 0.25rem !important;
+    font-weight: 500;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+
+  input {
+    background-color: #fff !important;
+    border: 1px solid #e0e0e0 !important;
+    padding: 2px;
+    color: $text_color !important;
+    font-size: 1rem !important;
+  }
+}
+
+.InputTexto {
+  label {
+    padding: 0.25rem !important;
+    font-weight: 500;
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+
+  input {
+    background-color: #fff !important;
+    border: 1px solid #e0e0e0 !important;
+    padding: 2px;
+    color: $text_color !important;
+    font-size: 1rem !important;
+  }
+}
+
+.uploadArquivo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  input[type="file"] {
+    display: none; // Esconde o input padrão
+  }
+
+  label {
+    background-color: $green_insted !important;
+    font-size: 1rem !important;
+    color: rgb(244, 242, 255) !important;
+    padding: 0.5rem 0.75rem !important;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 3em !important;
+
+    &:hover {
+      background-color: $green_insted_dark !important; // Cor de fundo do botão ao passar o mouse
+    }
+  }
+
+  #file-name {
+    font-size: 14px;
+    color: #666; // Cor do texto do nome do arquivo
   }
 }

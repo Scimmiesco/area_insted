@@ -1,11 +1,11 @@
-
+import { Token } from './token.interface';
 export interface LoginInterface {
   login: {
     ra?: string;
     email?: string;
     cpf?: string;
   }
-  passwordHashed: string;
+  senhaCriptografada: string;
 }
 
 export interface ResponseInterface {

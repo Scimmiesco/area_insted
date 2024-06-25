@@ -19,5 +19,5 @@ export interface DialogData {
 export class calendarDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
-
+  
 }

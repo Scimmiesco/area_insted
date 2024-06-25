@@ -1,3 +1,4 @@
+import { MateriasService } from 'app/services/materias.service';
 import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -6,7 +7,10 @@ import { IappState, getUser, setUser } from 'app/store/app.state';
 import { Store } from '@ngrx/store';
 import { userResponse } from 'app/Interfaces/user.Interface';
 import { environment } from 'environments/environment';
-import { take } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
+import { EnumCargos } from 'app/Interfaces/token.interface';
+import { Observable, of } from 'rxjs';
+import { AtividadesService } from './atividades.service';
 ('');
 @Injectable({
   providedIn: 'root',
@@ -17,11 +21,27 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private store: Store<{ app: IappState }>,
-    private tokenService: TokenService
-  ) {
+    private tokenService: TokenService,
+    private atividadesService: AtividadesService,
+    private materiasService: MateriasService
+  ) {}
+
+  getUserAndFetchActivities() {
+    this.getUser().subscribe(
+      (user) => {
+        console.log('Usuário obtido:', user);
+        this.atividadesService.ObterAtividadesPorUsuario(
+          user.IdUser.toString()
+        );
+        this.materiasService.getMateriasPorUsuario(user.SnTeacher, user.IdUser);
+      },
+      (error) => {
+        console.error('Erro ao obter usuário:', error);
+      }
+    );
   }
 
-  getUser() {
+  private getUser(): Observable<Pessoa['user']> {
     let ra = this.tokenService.getDataFromToken().unique_name;
     let urlGetUserByRA = `${this.APIURL}user/get-user/${ra}`;
     let token = this.tokenService.getToken();
@@ -31,18 +51,25 @@ export class UserService {
     });
     const options = { headers: headers };
 
-    this.http
-      .get<userResponse>(urlGetUserByRA, options)
-      .pipe(take(1))
-      .subscribe({
-        next: (response) => {
-          this.setUserInStore(response.user);
-        },
-        error: (error) => {},
-      });
+    return this.http.get<userResponse>(urlGetUserByRA, options).pipe(
+      map((response) => {
+        this.store.dispatch(setUser({ payload: response.user }));
+        return response.user;
+      })
+    );
   }
 
-  setUserInStore(user: Pessoa['user']) {
-    this.store.dispatch(setUser({ payload: user }));
+  obterCargoUsuario(): Observable<EnumCargos> {
+    return this.store.select(getUser).pipe(
+      map((user) => {
+        if (user.SnTeacher != null) {
+          return user.SnTeacher === false
+            ? EnumCargos.ALUNO
+            : EnumCargos.PROFESSOR;
+        } else {
+          return EnumCargos.ALUNO;
+        }
+      })
+    );
   }
 }

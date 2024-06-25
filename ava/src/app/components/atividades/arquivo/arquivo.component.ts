@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {
-  IAtividadesComponent,
+  IAtividadeArquivo,
   TiposAtividades,
 } from 'app/Interfaces/atividade.interface';
 
@@ -10,7 +10,7 @@ import {
   styleUrls: ['./arquivo.component.css'],
 })
 export class ArquivoComponent {
-  @Input() atividade!: IAtividadesComponent;
+  @Input() atividadeArquivo!: IAtividadeArquivo;
 
   atividadeVista!: boolean;
   EnumTiposAtividades = TiposAtividades;
@@ -19,9 +19,7 @@ export class ArquivoComponent {
     this.atividadeVista = false;
   }
 
-  ngOnInit(): void {
-    console.log(this.atividade);
-  }
+  ngOnInit(): void {}
   marcarVisto() {
     this.atividadeVista = !this.atividadeVista;
   }

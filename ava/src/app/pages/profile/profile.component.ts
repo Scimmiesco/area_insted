@@ -1,4 +1,5 @@
-import { IappState, getUser } from 'app/store/app.state';
+import { MateriasService } from 'app/services/materias.service';
+import { IappState, getUser, resetState } from 'app/store/app.state';
 import { Component } from '@angular/core';
 import { Pessoa } from 'app/Interfaces/Pessoa.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,6 +11,7 @@ import { UserService } from 'app/services/user.service';
 import { ResetPasswordsService } from 'app/services/reset-password.service';
 import { RetornoRequisicaoModalComponent } from 'app/components/modais/retornoRequisicao/retornoRequisicao.component';
 import * as CryptoJS from 'crypto-js';
+import { materiaPadrao } from 'app/Interfaces/materias.interface';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -28,38 +30,38 @@ export class ProfileComponent {
     public userService: UserService,
     private formBuilder: FormBuilder,
     private resetPasswordsService: ResetPasswordsService,
+    private materiasService: MateriasService
   ) {}
 
   ngOnInit() {
     this.user$ = this.store.select(getUser);
 
-    this.resetPasswordForm = this.formBuilder.group(
-      {
-        senhaAtual: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.maxLength(16),
-          ],
+    this.resetPasswordForm = this.formBuilder.group({
+      senhaAtual: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
         ],
-        novaSenha: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.maxLength(16),
-          ],
-        ],confirmeNovaSenha: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.maxLength(16),
-          ],
+      ],
+      novaSenha: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
         ],
-      },
-    );
+      ],
+      confirmeNovaSenha: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(16),
+        ],
+      ],
+    });
   }
 
   onImageLoad() {
@@ -68,8 +70,9 @@ export class ProfileComponent {
 
   logout() {
     sessionStorage.clear();
-    localStorage.removeItem('tema');
-    this.router.navigate(['/login']);
+    localStorage.clear();
+    this.router.navigate(['/']);
+    this.store.dispatch(resetState());
   }
   modalSucessoEnvioEmail(message: string) {
     this.dialog.open(RetornoRequisicaoModalComponent, {
@@ -81,9 +84,8 @@ export class ProfileComponent {
   }
 
   onSubmit() {
-      this.alteraSenha();
+    this.alteraSenha();
   }
-
 
   alteraSenha() {
     let senhaNova: string = CryptoJS.SHA512(
@@ -95,11 +97,9 @@ export class ProfileComponent {
         this.modalSucessoEnvioEmail(response.Message);
       },
       error: (error) => {
-
-          this.modalSucessoEnvioEmail(error.message);
+        this.modalSucessoEnvioEmail(error.message);
       },
       complete: () => {},
     });
   }
-
 }

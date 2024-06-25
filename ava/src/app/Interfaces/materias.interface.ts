@@ -1,18 +1,16 @@
 export interface ResponseMateriasI {
   success: boolean;
   message: string;
-  materias:
-    | {
-        IdClass: string;
-        IdUser: string;
-        NmClass: string;
-        NmWeekday: string;
-        NmClassroom: string;
-        NrTotal: number;
-        NmUser: string;
-        DtTime: string;
-      }[]
-    | null;
+  materias: {
+    IdClass: string;
+    IdUser: string;
+    NmClass: string;
+    NmWeekday: string;
+    NmClassroom: string;
+    NrTotal: number;
+    NmUser: string;
+    DtTime: string;
+  }[];
 }
 export const materiaPadrao: ResponseMateriasI['materias'] = [
   {

@@ -1,7 +1,7 @@
 import { UserService } from 'app/services/user.service';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { IappState, browseReloadToken } from 'app/store/app.state';
+import { select, Store } from '@ngrx/store';
+import { IappState, browseReloadToken, getUser } from 'app/store/app.state';
 import { TokenService } from 'app/services/token.service';
 import { MateriasService } from 'app/services/materias.service';
 import { materiaPadrao } from 'app/Interfaces/materias.interface';
@@ -12,6 +12,18 @@ import { TemaService } from 'app/services/tema.service';
 import { TamanhoDaTelaService } from 'app/services/tamanho-da-tela.service';
 import { IconsAcessibilidadeInterface } from 'app/shared/icons-acessibilidade/icons-acessibilidade.model';
 import { IconsAcessibilidade } from 'app/shared/icons-acessibilidade/mock-icons-acessibilidade';
+import {
+  catchError,
+  distinctUntilChanged,
+  of,
+  Subject,
+  Subscription,
+  switchMap,
+  takeUntil,
+  tap,
+} from 'rxjs';
+import { AtividadesService } from 'app/services/atividades.service';
+import { EnumCargos } from 'app/Interfaces/token.interface';
 
 @Component({
   selector: 'app-area',
@@ -20,53 +32,65 @@ import { IconsAcessibilidade } from 'app/shared/icons-acessibilidade/mock-icons-
 export class AreaComponent implements OnInit {
   tokenSession = localStorage.getItem('token') || '';
   icons!: IconInterface[];
-
   iconsAcessibilidade!: IconsAcessibilidadeInterface[];
   htmlRoot!: HTMLElement;
   tamanhoFontePadrao = '16px';
+  private materiasSubscription!: Subscription;
+  private unsubscribe$: Subject<void> = new Subject<void>();
+  cargoUsuario!: EnumCargos;
+  userID = 0 as number;
 
   constructor(
-    store: Store<{ app: IappState }>,
+    private store: Store<{ app: IappState }>,
     private tokenService: TokenService,
     public dialog: MatDialog,
     private userService: UserService,
     private materiasService: MateriasService,
     public temaService: TemaService,
-    private tamanhoDaTelaService: TamanhoDaTelaService
+    private tamanhoDaTelaService: TamanhoDaTelaService,
+    private atividadesService: AtividadesService
   ) {
     this.tamanhoDaTelaService.addListener(() => this.telaTamanhoMobile());
     this.icons = Icons;
     this.iconsAcessibilidade = IconsAcessibilidade;
     store.dispatch(browseReloadToken({ payload: this.tokenSession }));
-    this.getDados();
   }
   ngOnInit() {
     this.htmlRoot = <HTMLElement>document.getElementsByTagName('html')[0];
-  }
-  ngOnDestroy() {
-    this.tamanhoDaTelaService.removeListener(() => this.telaTamanhoMobile());
-  }
-  getDados() {
-    this.getUser();
+    this.userService.getUserAndFetchActivities();
+
+    this.userService.obterCargoUsuario().subscribe((cargo) => {
+      this.cargoUsuario = cargo;
+    });
+    this.store.select(getUser).subscribe((user) => {
+      this.userID = user.IdUser;
+    });
     this.getMaterias();
   }
 
-  getMaterias() {
-    let ra = this.tokenService.getDataFromToken().unique_name;
-
-    this.materiasService.materias$.subscribe((materias) => {
-      if (
-        materias === null ||
-        materias.length === 0 ||
-        materias === materiaPadrao
-      ) {
-        this.materiasService.getHttpMaterias(ra);
-      }
-    });
+  ngOnDestroy() {
+    this.tamanhoDaTelaService.removeListener(() => this.telaTamanhoMobile());
+    if (this.materiasSubscription) {
+      this.materiasSubscription.unsubscribe();
+    }
   }
 
-  getUser() {
-    this.userService.getUser();
+  getMaterias() {
+
+  }
+  ObterAtividadesPorUsuario() {
+    this.store
+      .pipe(
+        select(getUser),
+        tap((user) => {
+          const usuarioID = user.IdUser;
+          this.atividadesService.ObterAtividadesPorUsuario(
+            usuarioID.toString()
+          );
+          console.log(usuarioID, 'usuarioID ObterAtividadesPorUsuario');
+        })
+      )
+      .subscribe();
   }
 
   public telaTamanhoMobile(): boolean {
@@ -102,13 +126,12 @@ export class AreaComponent implements OnInit {
         break;
 
       case 'mudaContraste':
-          if(localStorage.getItem('tema') === 'alto_contraste'){
-            this.temaService.mudarTema('light');
-          }else{
+        if (localStorage.getItem('tema') === 'alto_contraste') {
+          this.temaService.mudarTema('light');
+        } else {
+          this.temaService.mudarTema('alto_contraste');
+        }
 
-            this.temaService.mudarTema('alto_contraste');
-          }
-        
         break;
 
       default:

@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/WebAPI20230927142946/providers/Microsoft.ServiceLinker/linkers/VaultUri_033A8A9EE6",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/Brownliusvault",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultUri"
+    },
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/WebAPI20230927142946/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsAreaInstedConnection_91F82BEB86",
+      "secretStore": "AzureKeyVault",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/brownliusserver/databases/WebAPI_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:AreaInstedConnection",
+      "dynamicId": null
+    },
+    "apis2": {
+      "apiEndpoint": "https://brownlius.azure-api.net/",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/Brownlius/apis/WebAPI",
+      "type": "apis.azure"
+    }
+  }
+}
